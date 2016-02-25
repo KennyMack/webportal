@@ -2,7 +2,7 @@
  * Created by jonathan on 21/02/16.
  */
 var jwt = require('jsonwebtoken');
-var config = require('./config.js');
+var config = require('../config/config.js');
 
 
 var validateToken = function(token, callback) {

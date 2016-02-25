@@ -1,7 +1,7 @@
 var express         = require('express');
 var router          = express.Router();
 var auth            = require('../auth/auth');
-var usersController = require('./users-controller');
+var usersController = require('../controller/users-controller');
 var utils           = require('../utils/utils');
 
 /* Middleware for authentication */

@@ -1,7 +1,7 @@
 /**
  * Created by jonathan on 21/02/16.
  */
-var usersModel = require('./users-model');
+var usersModel = require('../models/users-model');
 var bcrypt = require('bcrypt');
 var validator = require('validator');
 var utils = require('../utils/utils');
