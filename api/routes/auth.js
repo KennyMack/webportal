@@ -4,35 +4,32 @@
 var express = require('express');
 var router = express.Router();
 var auth = require('../auth/auth');
+var authController = require('../controller/auth-controller');
 
 router.post('/authenticate', function (req, res) {
     var user = {
-        username: String,
-        name: String,
-        _id: String,
-        password: String
+        login: req.body.username || '' ,
+        password: req.body.password || ''
     };
-    user.username = 'Kenny';
-    user.name = 'Jonathan';
-    user._id = 'objectid123456';
-    user.password = '123456';
+    authController.verifyLoginUser(user)
+        .then(function (result) {
+            authController.loginUser(result)
+                .then(function (token) {
+                    authController.lastUpdateLogin(result._id)
+                        .then(function (user) {
+                            res.json(token);
+                        }, function (err) {
+                            res.json(token);
+                        });
 
-    if (user.username == req.body.username &&
-        user.name == req.body.name &&
-        user.password == req.body.password){
-        var token = auth.getNewToken(user);
-        res.json({
-            success: true,
-            token: token,
-            message: 'Enjoy your token'
+                })
+                .fail(function (error) {
+                    res.json(error);
+                });
+        })
+        .fail(function (error) {
+            res.json(error);
         });
-    }
-    else {
-        res.status(401).json({
-            success: false,
-            message: 'Invalid login'
-        });
-    }
 });
 
 

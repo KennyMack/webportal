@@ -1,7 +1,7 @@
 /**
  * Created by jonathan on 23/02/16.
  */
-var helloWorld = require("./utils");
+var helloWorld = require("../utils/utils");
 
 describe("Calculations", function() {
     it("returns 6", function() {

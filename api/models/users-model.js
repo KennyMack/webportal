@@ -3,31 +3,53 @@
  */
 var database = require('../database/database');
 var bcrypt = require('bcrypt');
+var date = require('../utils/utils');
 
 var userSchema = new database.mongoose.Schema({
-    name: { type: String,
-            required: true },
-    username: { type: String,
-                required: true,
-                index: true,
-                unique: true },
+    email: {
+        type: String,
+        required: true,
+        index: true,
+        unique: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true,
+        index: true,
+        unique: true
+    },
     password: {
         type: String,
         required: true,
         bcrypt: true
     },
+    active: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    last_login:{
+        type: Date
+    },
     create_at: {
         type: Date,
         required: true,
-        default: Date.now()
+        default: date.getCurrentDateTime()
+    },
+    modified:{
+        type: Date,
+        required: true,
+        default: date.getCurrentDateTime()
     }
 
 });
 
-userSchema.pre('save', function(next){
-    var user = this;
-
-    if (!user.isModified('password')) return next();
+var preUpdate = function(user, next){
+    user.modified = date.getCurrentDateTime();
 
     bcrypt.hash(user.password, 10, function (err, hash) {
         if (err) return next(err);
@@ -35,8 +57,19 @@ userSchema.pre('save', function(next){
         user.password = hash;
         next();
     });
+};
+
+userSchema.pre('save', function(next){
+    var user = this;
+    preUpdate(user, next);
 });
 
+userSchema.pre('update', function(next) {
+    var user = this._update['$set'];
+
+    preUpdate(user, next);
+
+});
 
 
 exports.users = database.db.model('users', userSchema);

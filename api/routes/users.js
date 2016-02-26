@@ -29,34 +29,49 @@ router.get('/', function(req, res) {
 
 /* GET user by ID. */
 router.get('/:id', function (req, res) {
+  var user = {
+    _id: req.params.id  || ''
+  };
+
+  var errors = usersController.validateUser(user, utils.OPERATION_STATUS.SELECT);
+
+  if (Object.keys(errors).length !== 0) {
+    res.json({
+      success: false,
+      data: errors
+    });
+  }
+  else {
     usersController.getUserById(req.params.id)
-      .then(function (user) {
-        if (user) {
+        .then(function (user) {
+          if (user) {
+            res.json({
+              success: true,
+              data: user
+            });
+          } else {
+            res.status(404).json({
+              success: false,
+              data: '404 - Not Found'
+            });
+          }
+        }, function (err) {
           res.json({
-            success: true,
-            data: user
-          });
-        } else {
-          res.status(404).json({
             success: false,
-            data: '404 - Not Found'
+            data: err
           });
-        }
-      }, function(err){
-        res.json({
-          success: false,
-          data: err
         });
-      });
+  }
 });
 
 /* POST create a new user */
 router.post('/', function (req, res) {
   var user = {
-    name: req.body.name,
-    username: req.body.username,
-    password: req.body.password,
-    passwordbis: req.body.passwordbis
+    email: req.body.email  || '',
+    name: req.body.name  || '',
+    username: req.body.username  || '',
+    password: req.body.password  || '',
+    passwordbis: req.body.passwordbis  || ''
   };
 
   var errors = usersController.validateUser(user, utils.OPERATION_STATUS.NEW);
@@ -88,11 +103,13 @@ router.post('/', function (req, res) {
 /* PUT update a user */
 router.put('/', function (req, res) {
   var user = {
-    _id: req.body._id,
-    name: req.body.name,
-    username: req.body.username,
-    password: req.body.password,
-    passwordbis: req.body.passwordbis
+    _id: req.body._id || '',
+    email: req.body.email  || '',
+    name: req.body.name  || '',
+    username: req.body.username  || '',
+    password: req.body.password  || '',
+    passwordbis: req.body.passwordbis  || '',
+    active: req.body.active  || ''
   };
 
   var errors = usersController.validateUser(user, utils.OPERATION_STATUS.UPDATE);
@@ -123,25 +140,39 @@ router.put('/', function (req, res) {
 
 /* DELETE remove a user by ID. */
 router.delete('/:id', function (req, res) {
+  var user = {
+    _id: req.params.id  || ''
+  };
+
+  var errors = usersController.validateUser(user, utils.OPERATION_STATUS.DELETE);
+
+  if (Object.keys(errors).length !== 0) {
+    res.json({
+      success: false,
+      data: errors
+    });
+  }
+  else{
     usersController.removeById(req.params.id)
-      .then(function (user) {
-        if (user) {
+        .then(function (user) {
+          if (user) {
+            res.json({
+              success: true,
+              data: user
+            });
+          } else {
+            res.status(404).json({
+              success: false,
+              data: '404 - Not Found'
+            });
+          }
+        }, function(err){
           res.json({
-            success: true,
-            data: user
-          });
-        } else {
-          res.status(404).json({
             success: false,
-            data: '404 - Not Found'
+            data: err
           });
-        }
-      }, function(err){
-        res.json({
-          success: false,
-          data: err
         });
-      });
+  }
 });
 
 module.exports = router;

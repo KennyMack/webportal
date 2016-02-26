@@ -3,6 +3,7 @@
  */
 var jwt = require('jsonwebtoken');
 var config = require('../config/config.js');
+var util = require('../utils/utils');
 
 
 var validateToken = function(token, callback) {
@@ -13,10 +14,10 @@ var validateToken = function(token, callback) {
 
 module.exports.ensureAuthenticated = function(req, res, next) {
 
-    //var token = req.headers['x-access-token']|| req.body.token || req.params.token;
+    var token = req.headers['x-access-token']|| req.body.token || req.params.token;
 
-    if (req.token) {
-        validateToken(req.token, function (err, decoded) {
+    if (token) {
+        validateToken(token, function (err, decoded) {
             if (err) {
                 return res.status(401).json({
                     success: false,
@@ -39,11 +40,14 @@ module.exports.ensureAuthenticated = function(req, res, next) {
 module.exports.validateToken = validateToken;
 
 module.exports.getNewToken = function (user){
+    console.log("tk");
+    console.log("tk" + user);
     return jwt.sign({
         _id: user._id,
         name: user.name,
+        email: user.email,
         username: user.username,
-        date: Date.now()
+        date: util.getCurrentDateTime()
     }, config['secretKey'], {
         expiresIn: '24h'
     });

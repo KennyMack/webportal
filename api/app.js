@@ -1,20 +1,21 @@
 var express    = require('express');
 var path       = require('path');
-//var favicon    = require('serve-favicon');
 var logger     = require('morgan');
 var bodyParser = require('body-parser');
 var config     = require('./config/config.js');
+var validator  = require('validator');
 
 // Routers
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var auth = require('./routes/auth');
+var users  = require('./routes/users');
+var auth   = require('./routes/auth');
 
 // App
 var app = express();
 
 // Globals
 app.set('secretKey', config['secretKey']);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,12 +31,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware to headers
 app.use(function (req, res, next) {
   console.log('middleware');
-  res.header('Access-Control-Allow-Origin', '127.0.0.1:5000, 127.0.0.1:63342');
+  res.header('Access-Control-Allow-Origin', '127.0.0.1:5000');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header("Content-Type", "application/json; charset=utf-8");
-  req.token = req.headers['x-access-token'] || req.body.token || req.params.token;
+  //TODO: Verify requests
+  //if (req.body instanceof JSON){//Object.keys(req.body).length !== 0) {
+  //  console.log('body');
+  //  if (validator.isJSON(JSON.parse(req.body.toString())))
+  //    console.log('json ok');
+  //  else
+  //    console.log('Erro json');
+  //
+  //}
   next();
 });
 
