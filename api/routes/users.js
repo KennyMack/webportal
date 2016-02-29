@@ -5,13 +5,13 @@ var usersController = require('../controller/users-controller');
 var utils           = require('../utils/utils');
 
 /* Middleware for authentication */
-router.use(function (req, res, next) {
+/*router.use(function (req, res, next) {
   return auth.ensureAuthenticated(req, res, next);
-});
+});*/
 
 
 /* GET users listing. */
-router.get('/', function(req, res) {
+router.get('/', auth.ensureAuthenticated, function(req, res) {
     usersController.listUsers()
       .then(function (users) {
         res.json({
@@ -28,7 +28,7 @@ router.get('/', function(req, res) {
 });
 
 /* GET user by ID. */
-router.get('/:id', function (req, res) {
+router.get('/:id', auth.ensureAuthenticated, function (req, res) {
   var user = {
     _id: req.params.id  || ''
   };
@@ -68,7 +68,6 @@ router.get('/:id', function (req, res) {
 router.post('/', function (req, res) {
   var user = {
     email: req.body.email  || '',
-    name: req.body.name  || '',
     username: req.body.username  || '',
     password: req.body.password  || '',
     passwordbis: req.body.passwordbis  || ''
@@ -101,11 +100,10 @@ router.post('/', function (req, res) {
 
 
 /* PUT update a user */
-router.put('/', function (req, res) {
+router.put('/', auth.ensureAuthenticated, function (req, res) {
   var user = {
     _id: req.body._id || '',
     email: req.body.email  || '',
-    name: req.body.name  || '',
     username: req.body.username  || '',
     password: req.body.password  || '',
     passwordbis: req.body.passwordbis  || '',
@@ -139,7 +137,7 @@ router.put('/', function (req, res) {
 
 
 /* DELETE remove a user by ID. */
-router.delete('/:id', function (req, res) {
+router.delete('/:id', auth.ensureAuthenticated, function (req, res) {
   var user = {
     _id: req.params.id  || ''
   };

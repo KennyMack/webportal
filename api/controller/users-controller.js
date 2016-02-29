@@ -35,7 +35,6 @@ module.exports.createUser = function(user) {
     return new usersModel.users({
         'email': user['email'],
         'username': user['username'],
-        'name': user['name'],
         'password': user['password']
     }).save();
 };
@@ -46,7 +45,6 @@ module.exports.updateUser = function (user) {
     var query = { _id: user['_id'] };
     var data = {
         'username': user['username'],
-        'name': user['name'],
         'password': user['password'],
         'email': user['email'],
         'active': user['active']
@@ -88,15 +86,12 @@ module.exports.validateUser = function (user, status) {
         status !== utils.OPERATION_STATUS.SELECT ) {
         user['username'] = validator.trim(validator.escape(user['username'].toString() || ''));
         user['email'] = validator.trim(validator.escape(user['email'].toString() || ''));
-        user['name'] = validator.trim(validator.escape(user['name'].toString() || ''));
         user['password'] = validator.trim(validator.escape(user['password'].toString() || ''));
         user['active'] = validator.trim(validator.escape(user['active'].toString() || '0'));
 
 
         if (validator.isNull(user['username']))
             objRet['username'] = 'Usuário é de preenchimento obrigatório.';
-        if (validator.isNull(user['name']))
-            objRet['name'] = 'Nome é de preenchimento obrigatório.';
         if (validator.isNull(user['password']))
             objRet['password'] = 'Senha é de preenchimento obrigatório.';
 

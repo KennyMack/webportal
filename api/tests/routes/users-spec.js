@@ -44,7 +44,6 @@ config.frisby.create('return user (json)')
 //    .post(url,
 //    {
 //        "email": "tony@stark.com.br",
-//        "name" : "Tony Stark",
 //        "username" : "Iron Man",
 //        "password" : "123456",
 //        "passwordbis" : "123456"

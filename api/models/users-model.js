@@ -12,10 +12,6 @@ var userSchema = new database.mongoose.Schema({
         index: true,
         unique: true
     },
-    name: {
-        type: String,
-        required: true
-    },
     username: {
         type: String,
         required: true,
