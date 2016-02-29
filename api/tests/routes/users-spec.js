@@ -40,33 +40,33 @@ config.frisby.create('return user (json)')
     })
     .toss();
 
-config.frisby.create('Create user (json)')
-    .post(url,
-    {
-        "email": "tony@stark.com.br",
-        "name" : "Tony Stark",
-        "username" : "Iron Man",
-        "password" : "123456",
-        "passwordbis" : "123456"
-    }, { json: true })
-    .expectStatus(200)
-    .expectHeaderContains('content-type', 'application/json')
-    /*.expectJSON({
-     success: true,
-     data: {
-     _id : "56ca7d7140012b846bf8f6d9",
-     username : "Kenny",
-     name : "Jonathan Henrique do Vale",
-     password : "$2a$10$UC3fXQGUZOnBLLcBm/LPZOP3P96Ex0LG4i23F4gpPP4SmRFyZAC4K",
-     create_at : "2016-02-22T03:11:30.688Z",
-     __v : 0
-     }
-     })*/
-    .expectJSONTypes({
-        success: Boolean,
-        data: Object
-    })
-    .toss();
+//config.frisby.create('Create user (json)')
+//    .post(url,
+//    {
+//        "email": "tony@stark.com.br",
+//        "name" : "Tony Stark",
+//        "username" : "Iron Man",
+//        "password" : "123456",
+//        "passwordbis" : "123456"
+//    }, { json: true })
+//    .expectStatus(200)
+//    .expectHeaderContains('content-type', 'application/json')
+//    /*.expectJSON({
+//     success: true,
+//     data: {
+//     _id : "56ca7d7140012b846bf8f6d9",
+//     username : "Kenny",
+//     name : "Jonathan Henrique do Vale",
+//     password : "$2a$10$UC3fXQGUZOnBLLcBm/LPZOP3P96Ex0LG4i23F4gpPP4SmRFyZAC4K",
+//     create_at : "2016-02-22T03:11:30.688Z",
+//     __v : 0
+//     }
+//     })*/
+//    .expectJSONTypes({
+//        success: Boolean,
+//        data: Object
+//    })
+//    .toss();
 
 config.frisby.create('Update user (json)')
     .put(url,
@@ -87,7 +87,7 @@ config.frisby.create('Update user (json)')
     })
     .toss();
 
-config.frisby.create('Status user Inválid (json)')
+config.frisby.create('Status user Invalid (json)')
     .put(url,
     {
         "_id": "56ce6807a3b695466a37ea54",

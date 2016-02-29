@@ -21,7 +21,7 @@ module.exports.ensureAuthenticated = function(req, res, next) {
             if (err) {
                 return res.status(401).json({
                     success: false,
-                    message: 'Failed to authenticate token.'
+                    data: 'Failed to authenticate token.'
                 });
             } else {
                 req.decoded = decoded;
@@ -31,7 +31,7 @@ module.exports.ensureAuthenticated = function(req, res, next) {
     } else {
         return res.status(403).json({
             success: false,
-            message: 'No token provided.'
+            data: 'No token provided.'
         });
 
     }
@@ -40,8 +40,6 @@ module.exports.ensureAuthenticated = function(req, res, next) {
 module.exports.validateToken = validateToken;
 
 module.exports.getNewToken = function (user){
-    console.log("tk");
-    console.log("tk" + user);
     return jwt.sign({
         _id: user._id,
         name: user.name,

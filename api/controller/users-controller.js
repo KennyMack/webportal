@@ -2,8 +2,8 @@
  * Created by jonathan on 21/02/16.
  */
 var usersModel = require('../models/users-model');
-var validator = require('validator');
-var utils = require('../utils/utils');
+var validator  = require('validator');
+var utils      = require('../utils/utils');
 
 // List all Users
 module.exports.listUsers = function() {
@@ -56,22 +56,31 @@ module.exports.updateUser = function (user) {
 };
 
 // Update last Login
-module.exports.updateLastLogin = function (id) {
-    console.log('Update login');
-
-    var query = { _id: id };
+module.exports.updateLastLogin = function (id, callback) {
+    var q = require('q');
+    var deferred = q.defer();
+    var query = {'_id': id };
     var data = {
         $set: {
-            'last_login': util.getCurrentDateTime()
+            last_login: utils.getCurrentDateTime()
         }
     };
+    var options = { upsert: true };
 
-    return usersModel.users.update(query, data, { upsert: true } ).exec();
+    usersModel.users.findOneAndUpdate(query, data, options, function (err, data) {
+        if(err) {
+            deferred.reject(err);
+        }
+        else{
+            deferred.resolve(data);
+        }
+    });
 
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
 };
 
 module.exports.validateUser = function (user, status) {
-
 
     var objRet = {};
 

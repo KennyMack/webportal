@@ -5,17 +5,16 @@ var userController = require('../controller/users-controller');
 var auth           = require('../auth/auth');
 var validator      = require('validator');
 var crypt          = require('bcrypt');
-var util           = require('../utils/utils');
 var q              = require('q');
 
 var invalidLoginJSON = {
     success: false,
-    message: "Usuário e/ou senha inválido."
+    data: "Usuário e/ou senha inválido."
 };
 
 var inativeUserJson = {
     success: false,
-    message: "Usuário informado está inátivo."
+    data: "Usuário informado está inátivo."
 };
 
 module.exports.verifyLoginUser = function (user, callback) {
@@ -24,14 +23,12 @@ module.exports.verifyLoginUser = function (user, callback) {
         username: user['login'] || '',
         password: user['password'] || ''
     };
-    console.log(userLogin);
     var errors = validateLogin(userLogin);
 
     if (Object.keys(errors).length !== 0) {
-        console.log("Errors");
         deferred.reject({
             success: false,
-            message: errors
+            data: errors
         });
     }
     else {
@@ -56,7 +53,7 @@ module.exports.verifyLoginUser = function (user, callback) {
                 function (err) {
                     deferred.reject({
                         success: false,
-                        message: err
+                        data: err
                     });
                 });
         }
@@ -81,7 +78,7 @@ module.exports.verifyLoginUser = function (user, callback) {
                 function (err) {
                     deferred.reject({
                         success: false,
-                        message: err
+                        data: err
                     });
                 });
         }
@@ -93,20 +90,29 @@ module.exports.verifyLoginUser = function (user, callback) {
     return deferred.promise;
 };
 
-module.exports.lastUpdateLogin = function (id) {
-    return userController.updateLastLogin(id);
+module.exports.lastUpdateLogin = function (user, callback) {
+    var deferred = q.defer();
+
+    userController.updateLastLogin(user._id)
+        .then(function (user) {
+           deferred.resolve(user);
+        })
+        .fail(function (err) {
+            deferred.reject({
+                success: false,
+                data: err
+            });
+        });
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
 };
 
 module.exports.loginUser = function (user, callback) {
     var deferred = q.defer();
     if (user.active) {
         var token = auth.getNewToken(user);
-        deferred.resolve({
-            success: true,
-            token: token,
-            message: 'Enjoy your token'
-        });
-        //TODO: Update data do ultimo login do usuário
+        deferred.resolve(token);
     }
     else {
         deferred.reject(inativeUserJson);
@@ -128,9 +134,6 @@ var validateLogin = function (user) {
 
     return objRet;
 };
-
-
-
 
 var comparePassword = function(candidatePassword, hash, callback){
     crypt.compare(candidatePassword, hash, function(err, isMatch){
