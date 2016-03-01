@@ -42,7 +42,7 @@ router.get('/:id', auth.ensureAuthenticated, function (req, res) {
     });
   }
   else {
-    usersController.getUserById(req.params.id)
+    usersController.getUserById(user['_id'])
         .then(function (user) {
           if (user) {
             res.json({
@@ -151,7 +151,7 @@ router.delete('/:id', auth.ensureAuthenticated, function (req, res) {
     });
   }
   else{
-    usersController.removeById(req.params.id)
+    usersController.removeById(user['_id'])
         .then(function (user) {
           if (user) {
             res.json({
@@ -171,6 +171,37 @@ router.delete('/:id', auth.ensureAuthenticated, function (req, res) {
           });
         });
   }
+});
+
+/* POST add a person to User */
+router.post('/add-person', auth.ensureAuthenticated, function (req, res) {
+  var user = {
+    _id: req.body._id || '',
+    idparent: req.body.idparent || '',
+    type: req.body.type || ''
+  };
+
+  usersController.setLoginPerson(user)
+      .then(function (user) {
+        if (user) {
+          res.json({
+            success: true,
+            data: "Login vinculado com sucesso."
+          });
+        } else {
+          res.status(404).json({
+            success: false,
+            data: '404 - Not Found'
+          });
+        }
+      })
+      .fail(function (err) {
+        res.json({
+          success: false,
+          data: err
+        });
+      });
+
 });
 
 module.exports = router;

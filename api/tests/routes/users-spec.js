@@ -28,7 +28,6 @@ config.frisby.create('return user (json)')
         data: {
             _id : "56ca7d7140012b846bf8f6d9",
             username : "Kenny",
-            name : "Jonathan Henrique do Vale",
             password : "$2a$10$UC3fXQGUZOnBLLcBm/LPZOP3P96Ex0LG4i23F4gpPP4SmRFyZAC4K",
             create_at : "2016-02-22T03:11:30.688Z",
             __v : 0
@@ -72,7 +71,6 @@ config.frisby.create('Update user (json)')
     {
         "_id": "56ce6807a3b695466a37ea54",
         "email": "tony@stark.com.br",
-        "name" : "Tony Stark",
         "username" : "Iron Man",
         "password" : "12345",
         "passwordbis" : "12345",
@@ -91,7 +89,6 @@ config.frisby.create('Status user Invalid (json)')
     {
         "_id": "56ce6807a3b695466a37ea54",
         "email": "tony@stark.com",
-        "name" : "Tony Stark",
         "username" : "Iron Man",
         "password" : "12345",
         "passwordbis" : "12345",

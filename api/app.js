@@ -3,12 +3,13 @@ var path       = require('path');
 var logger     = require('morgan');
 var bodyParser = require('body-parser');
 var config     = require('./config/config.js');
-var validator  = require('validator');
+//var validator  = require('validator');
 
 // Routers
-var routes = require('./routes/index');
-var users  = require('./routes/users');
-var auth   = require('./routes/auth');
+var routes     = require('./routes/index');
+var users      = require('./routes/users');
+var auth       = require('./routes/auth');
+var courseType = require('./routes/course-type');
 
 // App
 var app = express();
@@ -51,6 +52,7 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/mordor', auth);
+app.use('/course-type', courseType);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -64,7 +66,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function(err, req, res) {
     res.status(err.status || 500);
     res.json({
       message: err.message,
@@ -75,7 +77,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   res.status(err.status || 500);
   res.json({
     message: err.message,

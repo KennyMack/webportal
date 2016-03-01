@@ -3,9 +3,6 @@
  */
 var moment = require('moment');
 
-
-
-
 module.exports.OPERATION_STATUS = {
     NEW: 'NEW',
     UPDATE: 'UPDATE',

@@ -5,7 +5,7 @@ var database = require('../database/database');
 var bcrypt = require('bcrypt');
 var date = require('../utils/utils');
 
-var userSchema = new database.mongoose.Schema({
+var userSchema = database.mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -40,8 +40,10 @@ var userSchema = new database.mongoose.Schema({
         type: Date,
         required: true,
         default: date.getCurrentDateTime()
-    }
+    },
+    persons: [
 
+    ]
 });
 
 var preUpdate = function(user, next){

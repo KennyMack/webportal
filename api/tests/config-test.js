@@ -9,7 +9,7 @@ var options = {
     request: {
         headers: {
             'Content-Type': 'application/json',
-            'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmNlNmM5YmFmNmFmYTM1NmRiMThiOTYiLCJuYW1lIjoiVG9ueSBTdGFyayIsImVtYWlsIjoidG9ueUBzdGFyay5jb20iLCJ1c2VybmFtZSI6Iklyb24gTWFuIDIiLCJkYXRlIjoiMjAxNi0wMi0yOVQwMDoyNjoxNS0wMzowMCIsImlhdCI6MTQ1NjcxNjM3NSwiZXhwIjoxNDU2ODAyNzc1fQ.j-AVZ5djv8szVG_6SWAb-posjMwc4t9vjU2VWQqXcss'
+            'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmNlNmM5YmFmNmFmYTM1NmRiMThiOTYiLCJlbWFpbCI6InRvbnlAc3RhcmsuY29tIiwidXNlcm5hbWUiOiJJcm9uIE1hbiAyIiwiZGF0ZSI6IjIwMTYtMDMtMDFUMDA6MzU6MjgtMDM6MDAiLCJpYXQiOjE0NTY4MDMzMjgsImV4cCI6MTQ1Njg4OTcyOH0.sc2GFiglORFzLcwcRxftwOQmKkXbBO5gPvi6Cja5B6E'
         }
     }
 };
