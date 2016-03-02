@@ -12,7 +12,6 @@ router.use(function (req, res, next) {
     return auth.ensureAuthenticated(req, res, next);
 });
 
-
 /* GET Course Type listing. */
 router.get('/', function(req, res) {
     courseTypeController.listCoursesType()
@@ -138,22 +137,16 @@ router.delete('/:id', function (req, res) {
     _id: req.params.id  || ''
   };
 
-    console.log('antes');
-    console.log(courseType);
 
   var errors = courseTypeController.validateCourseType(courseType, utils.OPERATION_STATUS.DELETE);
 
   if (Object.keys(errors).length !== 0) {
-      console.log('depois');
-      console.log(courseType);
     res.json({
       success: false,
       data: errors
     });
   }
   else{
-      console.log('depois');
-      console.log(courseType);
     courseTypeController.removeById(courseType['_id'])
         .then(function (courseType) {
           if (courseType) {

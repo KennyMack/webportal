@@ -64,8 +64,6 @@ module.exports.validateCourseType = function (courseType, status) {
         if (!idNull && (!validator.isMongoId(courseType['_id'])))
             objRet['_id'] = 'Id do Tipo do curso informado é inválido.';
     }
-    console.log('valida');
-    console.log(courseType);
 
     return objRet;
 };

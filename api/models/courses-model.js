@@ -1,9 +1,9 @@
 /**
  * Created by jonathan on 29/02/16.
  */
-var database = require('../database/database');
-var utils    = require('../utils/utils');
-var subjects = require('../models/subjects-model');
+var database   = require('../database/database');
+var utils      = require('../utils/utils');
+var courseTypeModel = require('../models/course-type-model');
 
 var coursesSchema = database.mongoose.Schema({
     identify: {
@@ -23,12 +23,39 @@ var coursesSchema = database.mongoose.Schema({
             required: true
         }
     },
-    subjects:[
+    course_type: {
+        _id: {
+            type: database.mongoose.Schema.Types.ObjectId,
+            ref: 'courseType',
+            required: true,
+            index: true
+        },
+        description: {
+            type: String,
+            required: true
+        }
+    },
+    subjects: [{
+        teacher:{
+            type: database.mongoose.Schema.Types.ObjectId,
+            ref: 'teachers',
+            required:true,
+            index:true
+        },
+        subject: {
+            type:  database.mongoose.Schema.Types.ObjectId,
+            ref: 'subjects',
+            required:true,
+            index:true
+        }
+    }],
+    schedule:[
 
     ],
     active: {
         type: Number,
-        required: true
+        required: true,
+        default: 1
     },
     create_at: {
         type: Date,
@@ -47,12 +74,12 @@ var preUpdate = function(student, next) {
     next();
 };
 
-userSchema.pre('save', function(next){
+coursesSchema.pre('save', function(next){
     var course = this;
     preUpdate(course, next);
 });
 
-userSchema.pre('update', function(next) {
+coursesSchema.pre('update', function(next) {
     var course = this._update['$set'];
 
     preUpdate(course, next);

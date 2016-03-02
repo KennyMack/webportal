@@ -2,6 +2,7 @@
  * Created by jonathan on 22/02/16.
  */
 var moment = require('moment');
+var utils  = require('../config/config');
 
 module.exports.OPERATION_STATUS = {
     NEW: 'NEW',
@@ -12,6 +13,14 @@ module.exports.OPERATION_STATUS = {
 
 module.exports.getCurrentDateTime = function () {
     return moment().format();
+};
+
+module.exports.isDate = function (date) {
+    return moment(date, utils['dateTimeFormat']).isValid();
+};
+
+module.exports.dateFormat = function (date) {
+    return moment(date, utils['dateTimeFormat']).format();
 };
 
 module.exports.multiply = function(var1, var2){

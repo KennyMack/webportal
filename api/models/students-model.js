@@ -1,12 +1,10 @@
 /**
  * Created by jonathan on 29/02/16.
  */
-var database = require('../database/database');
-var courses = require('./courses-model');
+var database   = require('../database/database');
+var courses    = require('./courses-model');
 var courseType = require('./course-type-model');
-var utils = require('../utils/utils');
-
-
+var utils      = require('../utils/utils');
 
 var studentsSchema = database.mongoose.Schema({
     identify: {
@@ -29,6 +27,18 @@ var studentsSchema = database.mongoose.Schema({
     social_number:{
         type: String
     },
+    phone: [
+
+    ],
+    emails: [
+
+    ],
+    address: [
+        //TODO: Make address Model
+    ],
+    courses: [
+
+    ],
     create_at: {
         type: Date,
         default: utils.getCurrentDateTime(),
@@ -43,19 +53,7 @@ var studentsSchema = database.mongoose.Schema({
         type: Number,
         required: true,
         default: 0
-    },
-    phone: [
-
-    ],
-    address: [
-        //TODO: Make address Model
-    ],
-    type: [
-        courseType
-    ],
-    courses: [
-
-    ]
+    }
 });
 
 
