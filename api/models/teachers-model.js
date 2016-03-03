@@ -1,9 +1,9 @@
 /**
  * Created by jonathan on 29/02/16.
  */
-var database    = require('../database/database');
-var subjects    = require('./subjects-model');
-var utils       = require('../utils/utils');
+var database      = require('../database/database');
+var subjectsModel = require('./subjects-model');
+var utils         = require('../utils/utils');
 
 var teachersSchema = database.mongoose.Schema({
     identify: {
@@ -35,14 +35,11 @@ var teachersSchema = database.mongoose.Schema({
     address: [
         //TODO: Make address Model
     ],
-    courses: [
-
-    ],
     schedule: [
 
     ],
     subjects:[
-        subjects
+        subjectsModel.subjects
     ],
     create_at: {
         type: Date,
@@ -52,7 +49,7 @@ var teachersSchema = database.mongoose.Schema({
     modified:{
         type: Date,
         required: true,
-        default: date.getCurrentDateTime()
+        default: utils.getCurrentDateTime()
     },
     active:{
         type: Number,
@@ -67,12 +64,12 @@ var preUpdate = function(teacher, next) {
     next();
 };
 
-userSchema.pre('save', function(next){
+teachersSchema.pre('save', function(next){
     var teacher = this;
     preUpdate(teacher, next);
 });
 
-userSchema.pre('update', function(next) {
+teachersSchema.pre('update', function(next) {
     var teacher = this._update['$set'];
 
     preUpdate(teacher, next);

@@ -11,6 +11,8 @@ var users      = require('./routes/users');
 var auth       = require('./routes/auth');
 var courseType = require('./routes/course-type');
 var courses    = require('./routes/courses');
+var teachers   = require('./routes/teachers');
+var subjects   = require('./routes/subjects');
 
 // App
 var app = express();
@@ -55,6 +57,8 @@ app.use('/users', users);
 app.use('/mordor', auth);
 app.use('/course-type', courseType);
 app.use('/courses', courses);
+app.use('/teachers', teachers);
+app.use('/subjects', subjects);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

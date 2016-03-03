@@ -14,7 +14,7 @@ var validateToken = function(token, callback) {
 
 module.exports.ensureAuthenticated = function(req, res, next) {
 
-    var token = req.headers['x-access-token']|| req.body.token || req.params.token;
+    var token = req.headers['x-access-token'] || req.body.token || req.params.token;
 
     if (token) {
         validateToken(token, function (err, decoded) {

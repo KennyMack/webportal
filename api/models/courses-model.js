@@ -3,7 +3,6 @@
  */
 var database   = require('../database/database');
 var utils      = require('../utils/utils');
-var courseTypeModel = require('../models/course-type-model');
 
 var coursesSchema = database.mongoose.Schema({
     identify: {

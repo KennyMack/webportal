@@ -70,7 +70,8 @@ router.post('/', function (req, res) {
     email: req.body.email  || '',
     username: req.body.username  || '',
     password: req.body.password  || '',
-    passwordbis: req.body.passwordbis  || ''
+    passwordbis: req.body.passwordbis  || '',
+    active: req.body.active || '0'
   };
 
   var errors = usersController.validateUser(user, utils.OPERATION_STATUS.NEW);

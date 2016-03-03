@@ -26,6 +26,7 @@ module.exports.createCourse = function(course) {
     return new coursesModel.courses({
         'identify': course['identify'],
         'description': course['description'],
+        'active': course['active'],
         'duration': {
             'start': course['duration']['start'],
             'end': course['duration']['end']
@@ -45,34 +46,50 @@ module.exports.updateCourse = function (course) {
     var data = {
         'identify': course['identify'],
         'description': course['description'],
+        'active': course['active'],
         'duration': {
             'start': course['duration']['start'],
             'end': course['duration']['end']
         },
-        'course_type': course['course_type']['description']
+        'course_type':  {
+            '_id': course['course_type']['_id'],
+            'description': course['course_type']['description']
+        }
     };
 
     return coursesModel.courses.update(query, data, { upsert: false }).exec();
 };
 
 // Validate Subject
-var validateSubject = function (subject) {
-    subject['_id'] = validator.trim(validator.escape(subject['_id'].toString() || ''));
-    subject['teacher'] = validator.trim(validator.escape(subject['idparent'].toString() || ''));
-    subject['subject'] = validator.trim(validator.escape(subject['subject'].toString() || ''));
-
+var validateSubject = function (subject, status) {
     var objRet = {};
+    if (status === utils.OPERATION_STATUS.NEW) {
 
-    if (validator.isNull(subject['teacher']))
-        objRet['teacher'] = 'Professor é de preenchimento obrigatório.';
-    else if (!validator.isMongoId(subject['teacher']))
-        objRet['teacher'] = 'Professor informado é inválido.';
+        subject['teacher'] = validator.trim(validator.escape(subject['teacher'].toString() || ''));
+        subject['subject'] = validator.trim(validator.escape(subject['subject'].toString() || ''));
 
-    if (validator.isNull(subject['subject']))
-        objRet['subject'] = 'Id da pessoa é de preenchimento obrigatório.';
-    else if (!validator.isMongoId(subject['subject']))
-        objRet['subject'] = 'Id da pessoa informado é inválido.';
 
+        if (validator.isNull(subject['teacher']))
+            objRet['teacher'] = 'Professor é de preenchimento obrigatório.';
+        else if (!validator.isMongoId(subject['teacher']))
+            objRet['teacher'] = 'Professor informado é inválido.';
+
+        if (validator.isNull(subject['subject']))
+            objRet['subject'] = 'Id da pessoa é de preenchimento obrigatório.';
+        else if (!validator.isMongoId(subject['subject']))
+            objRet['subject'] = 'Id da pessoa informado é inválido.';
+
+
+    }
+    if (status === utils.OPERATION_STATUS.DELETE){
+        subject['_idsubject'] = validator.trim(validator.escape(subject['_idsubject'].toString() || ''));
+        if (validator.isNull(subject['_idsubject']))
+            objRet['_idsubject'] = 'Id da materia é de preenchimento obrigatório.';
+        else if (!validator.isMongoId(subject['_id']))
+            objRet['_idsubject'] = 'Id da materia informado é inválido.';
+    }
+
+    subject['_id'] = validator.trim(validator.escape(subject['_id'].toString() || ''));
     if (validator.isNull(subject['_id']))
         objRet['_id'] = 'Id do Curso é de preenchimento obrigatório.';
     else if (!validator.isMongoId(subject['_id']))
@@ -86,7 +103,7 @@ module.exports.addSubject = function(subject, callback) {
     var q = require('q');
     var deferred = q.defer();
 
-    var objRet = validateSubject(subject);
+    var objRet = validateSubject(subject, utils.OPERATION_STATUS.NEW);
 
     if (Object.keys(objRet).length !== 0) {
         deferred.reject(objRet);
@@ -121,7 +138,7 @@ module.exports.removeSubject = function(subject, callback) {
     var q = require('q');
     var deferred = q.defer();
 
-    var objRet = validateSubject(subject);
+    var objRet = validateSubject(subject, utils.OPERATION_STATUS.DELETE);
 
     if (Object.keys(objRet).length !== 0) {
         deferred.reject(objRet);
@@ -131,8 +148,7 @@ module.exports.removeSubject = function(subject, callback) {
         var data = {
             $pull: {
                 "subjects": {
-                    teacher: subject['teacher'],
-                    subject: subject['subject']
+                    _id: subject['_idsubject']
                 }
             }
         };
@@ -152,16 +168,16 @@ module.exports.removeSubject = function(subject, callback) {
 };
 
 // Validate fields
-module.exports.validateCourse = function (course, status) {
+var validateCourse = function (course, status) {
     var objRet = {};
 
     if (status !== utils.OPERATION_STATUS.DELETE &&
         status !== utils.OPERATION_STATUS.SELECT) {
-        course['description'] = validator.trim(validator.escape(course['description'].toString() || ''));
         course['identify']  = validator.trim(validator.escape(course['identify'].toString() || ''));
+        course['active']  = validator.trim(validator.escape(course['active'].toString() || ''));
         course['description']  = validator.trim(validator.escape(course['description'].toString() || ''));
-        course['duration']['start']  = validator.trim(validator.escape(course['duration']['start'].toString() || ''));
-        course['duration']['end']  = validator.trim(validator.escape(course['duration']['end'].toString() || ''));
+        course['duration']['start']  = validator.trim(course['duration']['start'].toString() || '');
+        course['duration']['end']  = validator.trim(course['duration']['end'].toString() || '');
         course['course_type']['_id']  = validator.trim(validator.escape(course['course_type']['_id'].toString() || ''));
         course['course_type']['description']  = validator.trim(validator.escape(course['course_type']['description'].toString() || ''));
 
@@ -170,12 +186,12 @@ module.exports.validateCourse = function (course, status) {
 
         if (validator.isNull(course['duration']['start']))
             objRet['start'] = 'Data de início é de preenchimento obrigatório.';
-        else if (!utils.isDate(course['duration']['start']))
+        else if (!validator.isDate(course['duration']['start']))
             objRet['start'] = 'Data de início informada não é válida.';
 
         if (validator.isNull(course['duration']['end']))
             objRet['end'] = 'Data de término é de preenchimento obrigatório.';
-        else if (!utils.isDate(course['duration']['end']))
+        else if (!validator.isDate(course['duration']['end']))
             objRet['end'] = 'Data de término informada não é válida.';
 
         if (validator.isNull(course['course_type']['description']))
@@ -185,6 +201,10 @@ module.exports.validateCourse = function (course, status) {
             objRet['course_type__id'] = 'id do Tipo do curso é de preenchimento obrigatório.';
         else if (!validator.isMongoId(course['course_type']['_id']))
             objRet['course_type__id'] = 'id do Tipo do curso informado não é válida.';
+
+        if ((!validator.isNull(course['active'])) && (!validator.isIn(course['active'], [0, 1])))
+            objRet['active'] = 'Status informado não é válido.';
+
     }
 
     if (status === utils.OPERATION_STATUS.UPDATE ||
@@ -196,10 +216,76 @@ module.exports.validateCourse = function (course, status) {
 
         if (idNull)
             objRet['_id'] = 'Id do curso é de preenchimento obrigatório.';
-
-        if (!idNull && (!validator.isMongoId(course['_id'])))
+        else if (!validator.isMongoId(course['_id']))
             objRet['_id'] = 'Id do curso informado é inválido.';
     }
 
     return objRet;
 };
+
+// Validate Duration of course
+var validateDate = function (course) {
+    var objRet = {};
+    if (course['duration']['start'] > course['duration']['end'])
+        objRet['duration'] = 'Período informado é inválido.';
+
+    return objRet;
+};
+
+// Validate a create Course
+module.exports.validateNewCourse = function (course, callback) {
+    var q = require('q');
+    var deferred = q.defer();
+
+    var errors = validateCourse(course, utils.OPERATION_STATUS.NEW);
+    if (Object.keys(errors).length !== 0) {
+        deferred.reject(errors)
+    }
+    else {
+        errors = validateDate(course);
+        if (Object.keys(errors).length !== 0) {
+            deferred.reject(errors)
+        }
+        else {
+            var moment = require('moment');
+            course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+            course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+            deferred.resolve(course)
+        }
+    }
+
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+
+};
+
+// Validate a update Course
+module.exports.validateUpdateCourse = function (course, callback) {
+    var q = require('q');
+    var deferred = q.defer();
+
+    var errors = validateCourse(course, utils.OPERATION_STATUS.UPDATE);
+    if (Object.keys(errors).length !== 0) {
+        deferred.reject(errors)
+    }
+    else {
+        errors = validateDate(course);
+        if (Object.keys(errors).length !== 0) {
+            deferred.reject(errors)
+        }
+        else {
+            var moment = require('moment');
+            course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+            course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+            deferred.resolve(course)
+        }
+    }
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+
+};
+
+module.exports.validateDate = validateDate;
+module.exports.validateCourse = validateCourse;
