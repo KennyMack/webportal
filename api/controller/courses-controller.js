@@ -4,8 +4,8 @@
 var coursesModel = require('../models/courses-model');
 var validator   = require('validator');
 var utils       = require('../utils/utils');
-
-
+var q           = require('q');
+var moment      = require('moment');
 // List all Courses
 module.exports.listCourses = function() {
     return coursesModel.courses.find({}).exec();
@@ -85,7 +85,7 @@ var validateSubject = function (subject, status) {
         subject['_idsubject'] = validator.trim(validator.escape(subject['_idsubject'].toString() || ''));
         if (validator.isNull(subject['_idsubject']))
             objRet['_idsubject'] = 'Id da materia é de preenchimento obrigatório.';
-        else if (!validator.isMongoId(subject['_id']))
+        else if (!validator.isMongoId(subject['_idsubject']))
             objRet['_idsubject'] = 'Id da materia informado é inválido.';
     }
 
@@ -100,7 +100,6 @@ var validateSubject = function (subject, status) {
 
 // Add subjects to Course
 module.exports.addSubject = function(subject, callback) {
-    var q = require('q');
     var deferred = q.defer();
 
     var objRet = validateSubject(subject, utils.OPERATION_STATUS.NEW);
@@ -109,22 +108,45 @@ module.exports.addSubject = function(subject, callback) {
         deferred.reject(objRet);
     }
     else {
-        var query = {_id: subject['_id']};
-        var data = {
-            $push: {
-                "subjects": {
-                    teacher: subject['teacher'],
-                    subject: subject['subject']
+        var query = {
+            $and: [
+                {
+                    _id: subject['_id']
+                },
+                {
+                    "subjects.subject": subject['subject']
                 }
-            }
+            ]
         };
-        var options = { safe: true, upsert: true, new: true };
-        coursesModel.courses.findOneAndUpdate(query, data, options, function (err, data) {
-            if (err) {
+
+        coursesModel.courses.find(query, function (err, course) {
+            if (err)
                 deferred.reject(err);
-            }
             else {
-                deferred.resolve(data);
+                if (course.length === 0){
+                    query = {_id: subject['_id']};
+
+                    var data = {
+                        $push: {
+                            "subjects": {
+                                teacher: subject['teacher'],
+                                subject: subject['subject']
+                            }
+                        }
+                    };
+                    var options = {safe: true, upsert: true, new: true};
+                    coursesModel.courses.findOneAndUpdate(query, data, options, function (err, data) {
+                        if (err) {
+                            deferred.reject(err);
+                        }
+                        else {
+                            deferred.resolve(data);
+                        }
+                    });
+                }
+                else {
+                    deferred.reject({ subject : "Matéria já vinculada neste curso." });
+                }
             }
         });
     }
@@ -133,9 +155,8 @@ module.exports.addSubject = function(subject, callback) {
     return deferred.promise;
 };
 
-// Remove subjects to Course
+// Remove subjects of Course
 module.exports.removeSubject = function(subject, callback) {
-    var q = require('q');
     var deferred = q.defer();
 
     var objRet = validateSubject(subject, utils.OPERATION_STATUS.DELETE);
@@ -166,6 +187,219 @@ module.exports.removeSubject = function(subject, callback) {
     deferred.promise.nodeify(callback);
     return deferred.promise;
 };
+
+// Validate Schedule
+var validateSchedule = function (item, status) {
+    var objRet = {};
+    if (status === utils.OPERATION_STATUS.NEW ||
+        status === utils.OPERATION_STATUS.UPDATE) {
+        item['day'] = validator.trim(validator.escape(item['day'].toString() || ''));
+        item['subject'] = validator.trim(validator.escape(item['subject'].toString() || ''));
+        item['duration']['start']  = validator.trim(item['duration']['start'].toString() || '');
+        item['duration']['end']  = validator.trim(item['duration']['end'].toString() || '');
+
+        console.log(item);
+
+        if (validator.isNull(item['subject']))
+            objRet['subject'] = 'Id da matéria é de preenchimento obrigatório.';
+        else if (!validator.isMongoId(item['subject']))
+            objRet['subject'] = 'Id da matéria informado é inválido.';
+
+        if (validator.isNull(item['day']))
+            objRet['day'] = 'Dia da semana é de preenchimento obrigatório.';
+        else if (!validator.isInt(item['day']))
+            objRet['day'] = 'Dia da semana informado é inválido.';
+        else if (!validator.isIn(item['day'], [1, 2, 3, 4, 5, 6, 7]))
+            objRet['day'] = 'Dia da semana informado é inválido.';
+
+        if (validator.isNull(item['duration']['start']))
+            objRet['start'] = 'Data de início é de preenchimento obrigatório.';
+        else if (!validator.isDate(item['duration']['start']))
+            objRet['start'] = 'Data de início informada não é válida.';
+
+
+        if (validator.isNull(item['duration']['end']))
+            objRet['end'] = 'Data de término é de preenchimento obrigatório.';
+        else if (!validator.isDate(item['duration']['end']))
+            objRet['end'] = 'Data de término informada não é válida.';
+    }
+    if (status === utils.OPERATION_STATUS.DELETE){
+
+        item['_idschedule'] = validator.trim(validator.escape(item['_idschedule'].toString() || ''));
+        if (validator.isNull(item['_idschedule']))
+            objRet['_idschedule'] = 'Id do item do cronograma é de preenchimento obrigatório.';
+        else if (!validator.isMongoId(item['_idschedule']))
+            objRet['_idschedule'] = 'Id do item do cronograma informado é inválido.';
+    }
+
+    item['_id'] = validator.trim(validator.escape(item['_id'].toString() || ''));
+    if (validator.isNull(item['_id']))
+        objRet['_id'] = 'Id do Curso é de preenchimento obrigatório.';
+    else if (!validator.isMongoId(item['_id']))
+        objRet['_id'] = 'Id do Curso informado é inválido.';
+
+    return objRet;
+};
+
+module.exports.addSchedule = function (item, callback) {
+
+    var deferred = q.defer();
+
+    var objRet = validateSchedule(item, utils.OPERATION_STATUS.NEW);
+
+    if (Object.keys(objRet).length !== 0) {
+        deferred.reject(objRet);
+    }
+    else {
+        var query = {
+            $and: [
+                {
+                    _id: item['_id']
+                },
+                {
+                    "schedule.day": item['day']
+                }
+            ]
+        };
+        //TODO: Reavaliar a forma que a funcao foi construida
+        coursesModel.courses.find(query).exec()
+            .then(function (course) {
+                console.log(course);
+                objRet = validateDateScheduleItem(item, course);
+                if (Object.keys(objRet).length !== 0) {
+                    deferred.reject(objRet);
+                }
+                else {
+                    addScheduleItem(item)
+                        .then(function (data) {
+                            deferred.resolve(data);
+                        })
+                        .fail(function (err) {
+                            deferred.reject(err);
+                        });
+                }
+            },
+            function (err) {
+                deferred.reject(err);
+            });
+    }
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+};
+
+var validateDateScheduleItem = function (item, course) {
+    var objRet = {};
+    if (course.length > 0) {
+
+        var candidateScheduleItem = {
+            start: moment(item['duration']['start']).format('HH:mm:ss'),
+            end: moment(item['duration']['end']).format('HH:mm:ss')
+        };
+        if (candidateScheduleItem.start > candidateScheduleItem.end) {
+            objRet['duration'] = 'Período informado é inválido.';
+        }
+        else {
+
+            var courseItem = course[0];
+            for (var i = 0, length = courseItem.schedule.length; i < length; i++) {
+                var scheduleItem = {
+                    start: moment(courseItem.schedule[i].duration.start).format('HH:mm:ss'),
+                    end: moment(courseItem.schedule[i].duration.end).format('HH:mm:ss')
+                };
+
+                if (utils.betweenII(candidateScheduleItem.start, scheduleItem.start, scheduleItem.end)) {
+                    objRet['start'] = 'Já existe outra matéria vinculada neste Horário.';
+                    console.log('betweenII candidateScheduleItem.start');
+                }
+
+                if (utils.betweenII(candidateScheduleItem.end, scheduleItem.start, scheduleItem.end)) {
+                    objRet['end'] = 'Já existe outra matéria vinculada neste Horário.';
+                    console.log('betweenII candidateScheduleItem.end');
+                }
+
+                if (Object.keys(objRet).length !== 0) {
+                    break;
+                }
+
+                scheduleItem = null;
+            }
+            courseItem = null;
+        }
+        candidateScheduleItem = null;
+    }
+    return objRet;
+};
+
+var addScheduleItem = function (item, callback) {
+    var deferred = q.defer();
+
+    var query = { _id: item['_id'] };
+
+    var data = {
+        $push: {
+            "schedule": {
+                day: item['day'],
+                subject: item['subject'],
+                duration: {
+                    start: moment(item['duration']['start']).format('YYYY-MM-DD HH:mm:ss'),
+                    end: moment(item['duration']['end']).format('YYYY-MM-DD HH:mm:ss')
+                }
+            }
+        }
+    };
+    var options = {safe: true, upsert: false, new: true};
+    coursesModel.courses.findOneAndUpdate(query, data, options, function (err, data) {
+        console.log('erro '+err);
+        console.log('data '+ data);
+        if (err) {
+            deferred.reject(err);
+        }
+        else {
+            if (!data)
+                deferred.reject('404 - Not Found');
+            else
+                deferred.resolve(data);
+        }
+    });
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+};
+
+// Remove subjects to Course
+module.exports.removeSchedule = function(item, callback) {
+    var deferred = q.defer();
+
+    var objRet = validateSchedule(item, utils.OPERATION_STATUS.DELETE);
+
+    if (Object.keys(objRet).length !== 0) {
+        deferred.reject(objRet);
+    }
+    else {
+        var query = { _id: item['_id'] };
+        var data = {
+            $pull: {
+                "schedule": {
+                    _id: item['_idschedule']
+                }
+            }
+        };
+        var options = { safe: true, upsert: true, new: true };
+        coursesModel.courses.findOneAndUpdate(query, data, options, function (err, data) {
+            if (err) {
+                deferred.reject(err);
+            }
+            else {
+                deferred.resolve(data);
+            }
+        });
+    }
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+};
+
 
 // Validate fields
 var validateCourse = function (course, status) {
@@ -234,7 +468,6 @@ var validateDate = function (course) {
 
 // Validate a create Course
 module.exports.validateNewCourse = function (course, callback) {
-    var q = require('q');
     var deferred = q.defer();
 
     var errors = validateCourse(course, utils.OPERATION_STATUS.NEW);
@@ -247,7 +480,6 @@ module.exports.validateNewCourse = function (course, callback) {
             deferred.reject(errors)
         }
         else {
-            var moment = require('moment');
             course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
             course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
             deferred.resolve(course)
@@ -262,7 +494,6 @@ module.exports.validateNewCourse = function (course, callback) {
 
 // Validate a update Course
 module.exports.validateUpdateCourse = function (course, callback) {
-    var q = require('q');
     var deferred = q.defer();
 
     var errors = validateCourse(course, utils.OPERATION_STATUS.UPDATE);
@@ -275,7 +506,6 @@ module.exports.validateUpdateCourse = function (course, callback) {
             deferred.reject(errors)
         }
         else {
-            var moment = require('moment');
             course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
             course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
             deferred.resolve(course)

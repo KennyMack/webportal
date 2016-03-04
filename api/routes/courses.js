@@ -250,4 +250,59 @@ router.delete('/:id/remove-subject/:idsubject', function (req, res) {
         });
 });
 
+/* POST add a Course schedule. */
+router.post('/:id/add-schedule', function (req, res) {
+    var duration = {
+        start: '',
+        end: ''
+    };
+
+    duration.start = (req.body.duration && req.body.duration.start || '');
+    duration.end = (req.body.duration && req.body.duration.end || '');
+
+    var item = {
+        _id: req.params.id  || '',
+        day: req.body.day || '',
+        subject: req.body.subject || '',
+        duration: duration
+    };
+
+
+    coursesController.addSchedule(item)
+        .then(function (course) {
+            res.json({
+                success: true,
+                data: course
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
+/* DELETE remove a Course subject. */
+router.delete('/:id/remove-schedule/:idschedule', function (req, res) {
+    var item = {
+        _id: req.params.id  || '',
+        _idschedule: req.params.idschedule
+    };
+
+    coursesController.removeSchedule(item)
+        .then(function (course) {
+            res.json({
+                success: true,
+                data: course
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
 module.exports = router;

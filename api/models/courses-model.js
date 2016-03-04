@@ -48,9 +48,31 @@ var coursesSchema = database.mongoose.Schema({
             index:true
         }
     }],
-    schedule:[
-
-    ],
+    schedule:[{
+        day:{
+            type: Number,
+            required: true,
+            index: true
+        },
+        subject: {
+            type:  database.mongoose.Schema.Types.ObjectId,
+            ref: 'subjects',
+            required:true,
+            index:true
+        },
+        duration: {
+            start: {
+                type: Date,
+                required: true,
+                index:true
+            },
+            end: {
+                type: Date,
+                required: true,
+                index:true
+            }
+        }
+    }],
     active: {
         type: Number,
         required: true,

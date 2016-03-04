@@ -23,6 +23,19 @@ module.exports.dateFormat = function (date) {
     return moment(date, utils['dateTimeFormat']).format();
 };
 
+module.exports.betweenII = function (value, a, b) {
+    return (value >= a && value <= b);
+};
+module.exports.betweenEI = function (value, a, b) {
+    return (value > a && value <= b);
+};
+module.exports.betweenIE = function (value, a, b) {
+    return (value >= a && value < b);
+};
+module.exports.betweenEE = function (value, a, b) {
+    return (value > a && value < b);
+};
+
 module.exports.multiply = function(var1, var2){
     return var1 * var2;
 };
