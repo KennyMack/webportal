@@ -1,5 +1,3 @@
-# webportal
-===========
 Web Portal
 ===========
 A small school portal
