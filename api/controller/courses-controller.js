@@ -251,33 +251,35 @@ module.exports.addSchedule = function (item, callback) {
         deferred.reject(objRet);
     }
     else {
-        var query = {
-            $and: [
-                {
-                    _id: item['_id']
-                },
-                {
-                    "schedule.day": item['day']
-                }
-            ]
-        };
-        //TODO: Reavaliar a forma que a funcao foi construida
-        coursesModel.courses.find(query).exec()
+        coursesModel.courses.findById(item['_id']).exec()
             .then(function (course) {
-                console.log(course);
-                objRet = validateDateScheduleItem(item, course);
-                if (Object.keys(objRet).length !== 0) {
-                    deferred.reject(objRet);
-                }
-                else {
-                    addScheduleItem(item)
-                        .then(function (data) {
-                            deferred.resolve(data);
-                        })
-                        .fail(function (err) {
-                            deferred.reject(err);
+                if (course) {
+                    objRet = validateDateScheduleItem(item, course);
+
+                    if (Object.keys(objRet).length !== 0) {
+                        deferred.reject(objRet);
+                    }
+                    else {
+                        course.schedule.push({
+                            day: item['day'],
+                            subject: item['subject'],
+                            duration: {
+                                start: moment(item['duration']['start']).format('YYYY-MM-DD HH:mm:ss'),
+                                end: moment(item['duration']['end']).format('YYYY-MM-DD HH:mm:ss')
+                            }
                         });
+
+                        course.save(function (err, course) {
+                            if (err) {
+                                deferred.reject(err);
+                            } else {
+                                deferred.resolve(course)
+                            }
+                        });
+                    }
                 }
+                else
+                    deferred.reject('404 - Not Found');
             },
             function (err) {
                 deferred.reject(err);
@@ -290,32 +292,29 @@ module.exports.addSchedule = function (item, callback) {
 
 var validateDateScheduleItem = function (item, course) {
     var objRet = {};
-    if (course.length > 0) {
+    var candidateScheduleItem = {
+        start: moment(item['duration']['start']).format('HH:mm:ss'),
+        end: moment(item['duration']['end']).format('HH:mm:ss')
+    };
+    if (candidateScheduleItem.start > candidateScheduleItem.end) {
+        objRet['duration'] = 'Período informado é inválido.';
+    }
+    else {
 
-        var candidateScheduleItem = {
-            start: moment(item['duration']['start']).format('HH:mm:ss'),
-            end: moment(item['duration']['end']).format('HH:mm:ss')
-        };
-        if (candidateScheduleItem.start > candidateScheduleItem.end) {
-            objRet['duration'] = 'Período informado é inválido.';
-        }
-        else {
+        for (var i = 0, length = course.schedule.length; i < length; i++) {
+            if (course.schedule[i].day == item['day']) {
 
-            var courseItem = course[0];
-            for (var i = 0, length = courseItem.schedule.length; i < length; i++) {
                 var scheduleItem = {
-                    start: moment(courseItem.schedule[i].duration.start).format('HH:mm:ss'),
-                    end: moment(courseItem.schedule[i].duration.end).format('HH:mm:ss')
+                    start: moment(course.schedule[i].duration.start).format('HH:mm:ss'),
+                    end: moment(course.schedule[i].duration.end).format('HH:mm:ss')
                 };
 
                 if (utils.betweenII(candidateScheduleItem.start, scheduleItem.start, scheduleItem.end)) {
                     objRet['start'] = 'Já existe outra matéria vinculada neste Horário.';
-                    console.log('betweenII candidateScheduleItem.start');
                 }
 
                 if (utils.betweenII(candidateScheduleItem.end, scheduleItem.start, scheduleItem.end)) {
                     objRet['end'] = 'Já existe outra matéria vinculada neste Horário.';
-                    console.log('betweenII candidateScheduleItem.end');
                 }
 
                 if (Object.keys(objRet).length !== 0) {
@@ -324,47 +323,11 @@ var validateDateScheduleItem = function (item, course) {
 
                 scheduleItem = null;
             }
-            courseItem = null;
         }
-        candidateScheduleItem = null;
     }
+    candidateScheduleItem = null;
+
     return objRet;
-};
-
-var addScheduleItem = function (item, callback) {
-    var deferred = q.defer();
-
-    var query = { _id: item['_id'] };
-
-    var data = {
-        $push: {
-            "schedule": {
-                day: item['day'],
-                subject: item['subject'],
-                duration: {
-                    start: moment(item['duration']['start']).format('YYYY-MM-DD HH:mm:ss'),
-                    end: moment(item['duration']['end']).format('YYYY-MM-DD HH:mm:ss')
-                }
-            }
-        }
-    };
-    var options = {safe: true, upsert: false, new: true};
-    coursesModel.courses.findOneAndUpdate(query, data, options, function (err, data) {
-        console.log('erro '+err);
-        console.log('data '+ data);
-        if (err) {
-            deferred.reject(err);
-        }
-        else {
-            if (!data)
-                deferred.reject('404 - Not Found');
-            else
-                deferred.resolve(data);
-        }
-    });
-
-    deferred.promise.nodeify(callback);
-    return deferred.promise;
 };
 
 // Remove subjects to Course
