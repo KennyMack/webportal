@@ -6,6 +6,7 @@ static/bower_components/
 tmp
 .DS_Store
 .idea
+.idea/
 bin/
 api/dist/*
 images/uploads/
