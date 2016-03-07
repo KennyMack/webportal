@@ -40,7 +40,7 @@ module.exports.createCourse = function(course) {
 };
 
 // Update a Course
-module.exports.updateCourse = function (course) {
+module.exports.updateCourse = function ( course) {
 
     var query = { _id: course['_id'] };
     var data = {
@@ -198,8 +198,6 @@ var validateSchedule = function (item, status) {
         item['duration']['start']  = validator.trim(item['duration']['start'].toString() || '');
         item['duration']['end']  = validator.trim(item['duration']['end'].toString() || '');
 
-        console.log(item);
-
         if (validator.isNull(item['subject']))
             objRet['subject'] = 'Id da matéria é de preenchimento obrigatório.';
         else if (!validator.isMongoId(item['subject']))
@@ -241,6 +239,7 @@ var validateSchedule = function (item, status) {
     return objRet;
 };
 
+// Add Schedule to Course
 module.exports.addSchedule = function (item, callback) {
 
     var deferred = q.defer();
@@ -330,7 +329,7 @@ var validateDateScheduleItem = function (item, course) {
     return objRet;
 };
 
-// Remove subjects to Course
+// Remove Schedule to Course
 module.exports.removeSchedule = function(item, callback) {
     var deferred = q.defer();
 
@@ -362,7 +361,6 @@ module.exports.removeSchedule = function(item, callback) {
     deferred.promise.nodeify(callback);
     return deferred.promise;
 };
-
 
 // Validate fields
 var validateCourse = function (course, status) {

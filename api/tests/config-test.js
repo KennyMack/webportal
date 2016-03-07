@@ -9,10 +9,28 @@ var options = {
     request: {
         headers: {
             'Content-Type': 'application/json',
-            'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmNlNmM5YmFmNmFmYTM1NmRiMThiOTYiLCJlbWFpbCI6InRvbnlAc3RhcmsuY29tIiwidXNlcm5hbWUiOiJJcm9uIE1hbiAyIiwiZGF0ZSI6IjIwMTYtMDMtMDFUMDA6MzU6MjgtMDM6MDAiLCJpYXQiOjE0NTY4MDMzMjgsImV4cCI6MTQ1Njg4OTcyOH0.sc2GFiglORFzLcwcRxftwOQmKkXbBO5gPvi6Cja5B6E'
+            'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78'
         }
     }
 };
+module.exports.names =[
+    'Edward',
+    'Jean',
+    'Mand',
+    'Paul',
+    'Dilz',
+    'Carl',
+    'Guz'
+];
+module.exports.surnames = [
+    'Ortiz',
+    'Marc',
+    'Paul',
+    'Allen',
+    'Stuart',
+    'Drew',
+    'Rainz'
+];
 
 frisby.globalSetup(options);
 

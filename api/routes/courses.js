@@ -5,6 +5,7 @@ var express           = require('express');
 var router            = express.Router();
 var auth              = require('../auth/auth');
 var coursesController = require('../controller/courses-controller');
+var classController   = require('../controller/class-controller');
 var utils             = require('../utils/utils');
 
 /* Middleware for authentication */
@@ -232,7 +233,7 @@ router.post('/:id/add-subject', function (req, res) {
 router.delete('/:id/remove-subject/:idsubject', function (req, res) {
     var subject = {
         _id: req.params.id  || '',
-        _idsubject: req.params.idsubject
+        _idsubject: req.params.idsubject || ''
     };
 
     coursesController.removeSubject(subject)
@@ -283,14 +284,84 @@ router.post('/:id/add-schedule', function (req, res) {
         });
 });
 
-/* DELETE remove a Course subject. */
+/* DELETE remove a Course schedule. */
 router.delete('/:id/remove-schedule/:idschedule', function (req, res) {
     var item = {
         _id: req.params.id  || '',
-        _idschedule: req.params.idschedule
+        _idschedule: req.params.idschedule || ''
     };
 
     coursesController.removeSchedule(item)
+        .then(function (course) {
+            res.json({
+                success: true,
+                data: course
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
+/* POST add a class. */
+router.post('/:id/add-class', function (req, res) {
+    var clas = {
+        _id: req.params.id || '',
+        class: []
+    };
+
+    clas.class = req.body.class || [];
+
+    classController.createClass(clas)
+        .then(function (course) {
+            res.json({
+                success: true,
+                data: course
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
+/* DELETE deactivate a student. */
+router.delete('/:id/deactive-student/:idstudent', function (req, res) {
+    var clas = {
+        _id: req.params.id || '',
+        _idstudent: req.params.idstudent || ''
+    };
+
+
+    classController.deactiveStudent(clas)
+        .then(function (course) {
+            res.json({
+                success: true,
+                data: course
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
+/* DELETE deactivate a student. */
+router.post('/:id/activate-student', function (req, res) {
+    var clas = {
+        _id: req.params.id || '',
+        _idstudent: req.body._idstudent || ''
+    };
+
+
+    classController.activateStudent(clas)
         .then(function (course) {
             res.json({
                 success: true,

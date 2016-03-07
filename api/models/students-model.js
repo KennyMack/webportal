@@ -36,9 +36,31 @@ var studentsSchema = database.mongoose.Schema({
     address: [
         //TODO: Make address Model
     ],
-    courses: [
+    courses: [{
+        _id:{
+            type: database.mongoose.Schema.Types.ObjectId,
+            ref: 'courses',
+            required: true,
+            index: true
+        },
+        active: {
+            type: Number,
+            required: true,
+            default: true
+        },
+        duration: {
+            start: {
+                type: Date,
+                required: true,
+                index: true
+            },
+            end: {
+                type: Date,
+                index: true
+            }
+        }
 
-    ],
+    }],
     create_at: {
         type: Date,
         default: utils.getCurrentDateTime(),
@@ -47,7 +69,7 @@ var studentsSchema = database.mongoose.Schema({
     modified:{
         type: Date,
         required: true,
-        default: date.getCurrentDateTime()
+        default: utils.getCurrentDateTime()
     },
     active:{
         type: Number,
@@ -62,12 +84,12 @@ var preUpdate = function(student, next) {
     next();
 };
 
-userSchema.pre('save', function(next){
+studentsSchema.pre('save', function(next){
     var student = this;
     preUpdate(student, next);
 });
 
-userSchema.pre('update', function(next) {
+studentsSchema.pre('update', function(next) {
     var student = this._update['$set'];
 
     preUpdate(student, next);

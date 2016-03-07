@@ -73,6 +73,19 @@ var coursesSchema = database.mongoose.Schema({
             }
         }
     }],
+    class: [{
+        _id: {
+            type: database.mongoose.Schema.Types.ObjectId,
+            ref: 'students',
+            required: true,
+            index: true
+        },
+        name: {
+            type: String,
+            required: true,
+            index: true
+        }
+    }],
     active: {
         type: Number,
         required: true,

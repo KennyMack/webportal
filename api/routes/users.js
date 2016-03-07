@@ -71,7 +71,7 @@ router.post('/', function (req, res) {
     username: req.body.username  || '',
     password: req.body.password  || '',
     passwordbis: req.body.passwordbis  || '',
-    active: req.body.active || '0'
+    active: req.body.active || '1'
   };
 
   var errors = usersController.validateUser(user, utils.OPERATION_STATUS.NEW);

@@ -2,7 +2,6 @@
  * Created by jonathan on 29/02/16.
  */
 var database      = require('../database/database');
-var subjectsModel = require('./subjects-model');
 var utils         = require('../utils/utils');
 
 var teachersSchema = database.mongoose.Schema({
@@ -35,12 +34,37 @@ var teachersSchema = database.mongoose.Schema({
     address: [
         //TODO: Make address Model
     ],
-    schedule: [
-
-    ],
-    subjects:[
-        subjectsModel.subjects
-    ],
+    schedule: [{
+        day:{
+            type: Number,
+            required: true,
+            index: true
+        },
+        duration: {
+            start: {
+                type: Date,
+                required: true,
+                index:true
+            },
+            end: {
+                type: Date,
+                required: true,
+                index:true
+            }
+        }
+    }],
+    subjects:[{
+        _id: {
+            type: database.mongoose.Schema.Types.ObjectId,
+            ref: 'subjects',
+            required: true,
+            index: true
+        },
+        description: {
+            type: String,
+            required: true
+        }
+    }],
     create_at: {
         type: Date,
         default: utils.getCurrentDateTime(),

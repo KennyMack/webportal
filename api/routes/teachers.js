@@ -178,4 +178,106 @@ router.delete('/:id', function (req, res) {
     }
 });
 
+
+
+/* POST add a Subject. */
+router.post('/:id/add-subject', function (req, res) {
+    var subject = {
+        _id: req.params.id  || '',
+        _idsubject: req.body._idsubject || '',
+        description: req.body.description || ''
+    };
+
+    teachersController.addSubject(subject)
+        .then(function (teacher) {
+            res.json({
+                success: true,
+                data: teacher
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
+
+/* DELETE remove a subject. */
+router.delete('/:id/remove-subject/:idsubject', function (req, res) {
+    var subject = {
+        _id: req.params.id  || '',
+        _idsubject: req.params.idsubject || ''
+    };
+
+    teachersController.removeSubject(subject)
+        .then(function (teacher) {
+            res.json({
+                success: true,
+                data: teacher
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
+/* POST add a schedule. */
+router.post('/:id/add-schedule', function (req, res) {
+    var duration = {
+        start: '',
+        end: ''
+    };
+
+    duration.start = (req.body.duration && req.body.duration.start || '');
+    duration.end = (req.body.duration && req.body.duration.end || '');
+
+    var item = {
+        _id: req.params.id  || '',
+        day: req.body.day || '',
+        duration: duration
+    };
+
+
+    teachersController.addSchedule(item)
+        .then(function (course) {
+            res.json({
+                success: true,
+                data: course
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
+/* DELETE remove a schedule. */
+router.delete('/:id/remove-schedule/:idschedule', function (req, res) {
+    var item = {
+        _id: req.params.id  || '',
+        _idschedule: req.params.idschedule || ''
+    };
+
+    teachersController.removeSchedule(item)
+        .then(function (course) {
+            res.json({
+                success: true,
+                data: course
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+});
+
 module.exports = router;
