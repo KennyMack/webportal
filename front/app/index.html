@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+
+
+      .toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
+        color: white; }
+
+
+      /*[ng-click]:hover {
+        cursor: pointer;
+      }
+
+      md-content.md-default-theme {
+        background-color: #eee;
+      }
+
+      md-sidenav > md-toolbar {
+           padding: 15px;
+           height: 150px;
+           max-height: 150px;
+         }
+      md-sidenav md-list-item.md-2-line .md-list-item-text {
+         padding-top: 14px;
+         padding-bottom: 12px;
+       }
+      md-sidenav md-divider {
+         margin-top: 4px;
+         margin-bottom: 4px;
+       }
+
+
+
+      md-sidenav md-icon {
+        fill: #737373;
+        position: relative;
+      }
+     .md-avatar {
+       height: 64px;
+       width: 64px;
+
+     }
+
+     md-divider[md-inset] {
+       left: 70px;
+     }
+
+        .md-avatar > svg {
+           border-radius: 50%;
+         }
+
+
+     .animate-show {
+       transition: 0.75s ease-out opacity;
+       opacity: 1;
+     }
+     .animate-show.ng-hide {
+        height: 0;
+        min-height: 0;
+        opacity: 0;
+        overflow: hidden;
+
+     }*/
+      /*md-sidenav  {
+        width: 110px;height:100%;
+        padding:20px;
+        background-color: #6bc7cc;
+      }*/
+
+      md-sidenav#side-left > md-toolbar {
+        padding: 15px;
+        height: 150px;
+        max-height: 150px;
+      }
+      md-sidenav#side-left md-icon {
+        fill: #737373;
+        position: relative;
+      }
+      md-sidenav#side-left .md-avatar {
+        height: 64px;
+        width: 64px;
+        background-color: #ffffff;
+        border-radius: 75%;
+      }
+      md-list-item{
+        cursor: pointer;
+      }
+    </style>
+    <!-- endbuild -->
+  </head>
+  <body ng-app="frontApp" layout="column" ng-controller="AppCtrl">
+    <!--[if lte IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+      your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+    <div ng-controller="AppCtrl" layout="column" style="height:500px;" ng-cloak>
+      <section layout="row" flex>
+        <md-sidenav id="side-left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+          <md-toolbar class="md-hue-2">
+            <span flex></span>
+            <div layout="row" layout-align="start center">
+              <md-icon class="md-avatar" md-svg-icon="images/android.svg"></md-icon>
+              <span flex></span>
+            </div>
+            <span flex></span>
+            <div class="md-body-2">Firstname Lastname</div>
+            <div class="md-body-1">email@domainname.com</div>
+          </md-toolbar>
+          <md-content layout-padding ng-controller="LeftCtrl">
+            <md-list>
+              <md-subheader  class="md-no-sticky">Menu</md-subheader>
+              <md-divider></md-divider>
+              <md-list-item class="md-2-line" role="link" md-ink-ripple>
+                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
+                <div class="md-list-item-text">
+                  <span class="md-body-2">Alunos</span>
+                </div>
+              </md-list-item>
+              <md-list-item class="md-2-line" role="link" md-ink-ripple>
+                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
+                <div class="md-list-item-text">
+                  <span class="md-body-2">Professores</span>
+                </div>
+              </md-list-item>
+              <md-list-item class="md-2-line" role="link" md-ink-ripple>
+                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
+                <div class="md-list-item-text">
+                  <span class="md-body-2">Cursos</span>
+                </div>
+              </md-list-item>
+              <md-divider></md-divider>
+              <md-subheader  class="md-no-sticky">Administração</md-subheader>
+              <md-list-item class="md-2-line"  role="link" md-ink-ripple>
+                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
+                <div class="md-list-item-text">
+                  <span class="md-body-2">Usuários</span>
+                </div>
+              </md-list-item>
+              <md-divider></md-divider>
+              <md-subheader  class="md-no-sticky">Conta</md-subheader>
+              <md-list-item class="md-2-line"  role="link" md-ink-ripple>
+                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
+                <div class="md-list-item-text">
+                  <span class="md-body-2">Minha Conta</span>
+                </div>
+              </md-list-item>
+              <md-list-item class="md-2-line"  role="link" md-ink-ripple>
+                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
+                <div class="md-list-item-text">
+                  <span class="md-body-2">Sair</span>
+                </div>
+              </md-list-item>
+            </md-list>
+          </md-content>
+        </md-sidenav>
+        <md-content flex>
+          <div layout="column" layout-fill layout-align="top center">
+            <md-toolbar class="animate-show">
+              <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+                  <md-icon md-svg-icon="images/menu.svg"></md-icon>
+                </md-button>
+                <h2>
+                  <span>Toolbar with Icon Buttons</span>
+                </h2>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="More" ng-click="toggleRight()">
+                  <md-icon md-svg-icon="images/more_vert.svg"></md-icon>
+                </md-button>
+              </div>
+            </md-toolbar>
+          </div>
+          <ng-view >
+
+          </ng-view>
+        </md-content>
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+          <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">Sidenav Right</h1>
+          </md-toolbar>
+          <md-content ng-controller="RightCtrl" layout-padding>
+            <form>
+              <md-input-container>
+                <label for="testInput">Test input</label>
+                <input type="text" id="testInput"
+                       ng-model="data" md-autofocus>
+              </md-input-container>
+            </form>
+            <md-button ng-click="close()" class="md-primary">
+              Close Sidenav Right
+            </md-button>
+          </md-content>
+        </md-sidenav>
+      </section>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      !function (A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+          (A[l].q = A[l].q || []).push(arguments)
+        }, A[l].l = +new Date, a = n.createElement(g),
+          r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+      }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <!--<script src="bower_components/angular-touch/angular-touch.js"></script>-->
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/lib/angular-material-icons.min.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+
+    <script>
+
+      var app = angular
+        .module('frontApp')
+        .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+          $scope.toggleLeft = buildDelayedToggler('left');
+          $scope.toggleRight = buildToggler('right');
+          /*$scope.isOpenLeft = function(){
+            return $mdSidenav('left').isOpen();
+          };
+          $scope.isOpenRight = function(){
+            return $mdSidenav('right').isOpen();
+          };*/
+          /**
+           * Supplies a function that will continue to operate until the
+           * time is up.
+           */
+          function debounce(func, wait, context) {
+            var timer;
+            return function debounced() {
+              var context = $scope,
+                args = Array.prototype.slice.call(arguments);
+              $timeout.cancel(timer);
+              timer = $timeout(function() {
+                timer = undefined;
+                func.apply(context, args);
+              }, wait || 10);
+            };
+          }
+          /**
+           * Build handler to open/close a SideNav; when animation finishes
+           * report completion in console
+           */
+          function buildDelayedToggler(navID) {
+            return debounce(function() {
+              $mdSidenav(navID)
+                .toggle()
+                .then(function () {
+                  $log.debug("toggle " + navID + " is done");
+                });
+            }, 200);
+          }
+          function buildToggler(navID) {
+            return function() {
+              $mdSidenav(navID)
+                .toggle()
+                .then(function () {
+                  $log.debug("toggle " + navID + " is done");
+                });
+            }
+          }
+        })
+        .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+          $scope.close = function () {
+            $mdSidenav('left').close()
+              .then(function () {
+                $log.debug("close LEFT is done");
+              });
+          };
+        })
+        .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+          $scope.close = function () {
+            $mdSidenav('right').close()
+              .then(function () {
+                $log.debug("close RIGHT is done");
+              });
+          };
+        });
+
+
+
+
+    </script>
+
+    <!-- endbuild -->
+  </body>
+</html>

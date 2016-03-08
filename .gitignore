@@ -3,6 +3,12 @@ logs/*
 node_modules/
 bower_components/
 static/bower_components/
+front/node_modules
+front/dist
+front/.tmp
+front/.sass-cache
+front/bower_components
+
 tmp
 .DS_Store
 .idea
