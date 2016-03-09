@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Inicial</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -13,92 +13,6 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <style>
-
-
-      .toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
-        color: white; }
-
-
-      /*[ng-click]:hover {
-        cursor: pointer;
-      }
-
-      md-content.md-default-theme {
-        background-color: #eee;
-      }
-
-      md-sidenav > md-toolbar {
-           padding: 15px;
-           height: 150px;
-           max-height: 150px;
-         }
-      md-sidenav md-list-item.md-2-line .md-list-item-text {
-         padding-top: 14px;
-         padding-bottom: 12px;
-       }
-      md-sidenav md-divider {
-         margin-top: 4px;
-         margin-bottom: 4px;
-       }
-
-
-
-      md-sidenav md-icon {
-        fill: #737373;
-        position: relative;
-      }
-     .md-avatar {
-       height: 64px;
-       width: 64px;
-
-     }
-
-     md-divider[md-inset] {
-       left: 70px;
-     }
-
-        .md-avatar > svg {
-           border-radius: 50%;
-         }
-
-
-     .animate-show {
-       transition: 0.75s ease-out opacity;
-       opacity: 1;
-     }
-     .animate-show.ng-hide {
-        height: 0;
-        min-height: 0;
-        opacity: 0;
-        overflow: hidden;
-
-     }*/
-      /*md-sidenav  {
-        width: 110px;height:100%;
-        padding:20px;
-        background-color: #6bc7cc;
-      }*/
-
-      md-sidenav#side-left > md-toolbar {
-        padding: 15px;
-        height: 150px;
-        max-height: 150px;
-      }
-      md-sidenav#side-left md-icon {
-        fill: #737373;
-        position: relative;
-      }
-      md-sidenav#side-left .md-avatar {
-        height: 64px;
-        width: 64px;
-        background-color: #ffffff;
-        border-radius: 75%;
-      }
-      md-list-item{
-        cursor: pointer;
-      }
-    </style>
     <!-- endbuild -->
   </head>
   <body ng-app="frontApp" layout="column" ng-controller="AppCtrl">
@@ -107,123 +21,109 @@
       your browser</a> to improve your experience.</p>
     <![endif]-->
 
-
-    <div ng-controller="AppCtrl" layout="column" style="height:500px;" ng-cloak>
-      <section layout="row" flex>
-        <md-sidenav id="side-left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-          <md-toolbar class="md-hue-2">
-            <span flex></span>
-            <div layout="row" layout-align="start center">
-              <md-icon class="md-avatar" md-svg-icon="images/android.svg"></md-icon>
-              <span flex></span>
-            </div>
-            <span flex></span>
-            <div class="md-body-2">Firstname Lastname</div>
-            <div class="md-body-1">email@domainname.com</div>
-          </md-toolbar>
-          <md-content layout-padding ng-controller="LeftCtrl">
-            <md-list>
-              <md-subheader  class="md-no-sticky">Menu</md-subheader>
-              <md-divider></md-divider>
-              <md-list-item class="md-2-line" role="link" md-ink-ripple>
-                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
-                <div class="md-list-item-text">
-                  <span class="md-body-2">Alunos</span>
-                </div>
-              </md-list-item>
-              <md-list-item class="md-2-line" role="link" md-ink-ripple>
-                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
-                <div class="md-list-item-text">
-                  <span class="md-body-2">Professores</span>
-                </div>
-              </md-list-item>
-              <md-list-item class="md-2-line" role="link" md-ink-ripple>
-                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
-                <div class="md-list-item-text">
-                  <span class="md-body-2">Cursos</span>
-                </div>
-              </md-list-item>
-              <md-divider></md-divider>
-              <md-subheader  class="md-no-sticky">Administração</md-subheader>
-              <md-list-item class="md-2-line"  role="link" md-ink-ripple>
-                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
-                <div class="md-list-item-text">
-                  <span class="md-body-2">Usuários</span>
-                </div>
-              </md-list-item>
-              <md-divider></md-divider>
-              <md-subheader  class="md-no-sticky">Conta</md-subheader>
-              <md-list-item class="md-2-line"  role="link" md-ink-ripple>
-                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
-                <div class="md-list-item-text">
-                  <span class="md-body-2">Minha Conta</span>
-                </div>
-              </md-list-item>
-              <md-list-item class="md-2-line"  role="link" md-ink-ripple>
-                <md-icon md-svg-icon="item.icon" aria-label="item.title"></md-icon>
-                <div class="md-list-item-text">
-                  <span class="md-body-2">Sair</span>
-                </div>
-              </md-list-item>
-            </md-list>
-          </md-content>
-        </md-sidenav>
-        <md-content flex>
-          <div layout="column" layout-fill layout-align="top center">
-            <md-toolbar class="animate-show">
-              <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
-                  <md-icon md-svg-icon="images/menu.svg"></md-icon>
-                </md-button>
-                <h2>
-                  <span>Toolbar with Icon Buttons</span>
-                </h2>
-                <span flex></span>
-                <md-button class="md-icon-button" aria-label="More" ng-click="toggleRight()">
-                  <md-icon md-svg-icon="images/more_vert.svg"></md-icon>
-                </md-button>
-              </div>
-            </md-toolbar>
-          </div>
-          <ng-view >
-
-          </ng-view>
-        </md-content>
-        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-          <md-toolbar class="md-theme-light">
-            <h1 class="md-toolbar-tools">Sidenav Right</h1>
-          </md-toolbar>
-          <md-content ng-controller="RightCtrl" layout-padding>
-            <form>
-              <md-input-container>
-                <label for="testInput">Test input</label>
-                <input type="text" id="testInput"
-                       ng-model="data" md-autofocus>
-              </md-input-container>
-            </form>
-            <md-button ng-click="close()" class="md-primary">
-              Close Sidenav Right
+    <div layout="column">
+      <div layout="column" layout-align="top center">
+        <md-toolbar class="animate-show" style="background-color: dodgerblue">
+          <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="toggleLeft()" aria-label="toggleLeft">
+              <md-icon md-svg-icon="images/menu.svg"></md-icon>
             </md-button>
-          </md-content>
-        </md-sidenav>
-      </section>
+            <h2>
+              <span>DashBoard</span>
+            </h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="More" ng-click="toggleRight()">
+              <md-icon md-svg-icon="images/more_vert.svg"></md-icon>
+            </md-button>
+          </div>
+        </md-toolbar>
+      </div>
     </div>
+    <md-sidenav id="side-left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+      <md-toolbar class="md-hue-2" style="background-color: dodgerblue">
+        <span flex></span>
+        <div layout="row" layout-align="start center">
+          <md-icon class="md-avatar" md-svg-icon="images/android.svg"></md-icon>
+          <span flex></span>
+        </div>
+        <span flex></span>
+        <div class="md-body-2">Firstname Lastname</div>
+        <div class="md-body-1">email@domainname.com</div>
+      </md-toolbar>
+      <md-content ng-controller="LeftCtrl">
+        <md-list>
+          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="goTo('')" md-ink-ripple>
+              <div class="md-list-item-inner ng-scope">
+                <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
+                <p>Home</p>
+              </div>
+          </md-list-item>
+          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="goTo('students')" md-ink-ripple>
+            <div class="md-list-item-inner ng-scope">
+              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
+              <p>Alunos</p>
+            </div>
+          </md-list-item>
+          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="goTo('teachers')" md-ink-ripple>
+            <div class="md-list-item-inner ng-scope">
+              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
+              <p>Professores</p>
+            </div>
+          </md-list-item>
+          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="goTo('courses')" md-ink-ripple>
+            <div class="md-list-item-inner ng-scope">
+              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
+              <p>Cursos</p>
+            </div>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-subheader  class="md-no-sticky">Administração</md-subheader>
+          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="goTo('users')" md-ink-ripple>
+            <div class="md-list-item-inner ng-scope">
+              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
+              <p>Usuários</p>
+            </div>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-subheader  class="md-no-sticky">Conta</md-subheader>
+          <md-list-item class="md-clickable" role="listitem" tabindex="-1" md-ink-ripple>
+            <div class="md-list-item-inner ng-scope">
+              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
+              <p>Minha Conta</p>
+            </div>
+          </md-list-item>
+          <md-list-item class="md-clickable" role="listitem" tabindex="-1" md-ink-ripple>
+            <div class="md-list-item-inner ng-scope">
+              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
+              <p>Sair</p>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </md-sidenav>
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" >
+      <md-toolbar class="md-theme-light" style="background-color: dodgerblue">
+        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+      </md-toolbar>
+      <md-content ng-controller="RightCtrl" layout-padding>
+        <form>
+          <md-input-container>
+            <label for="testInput">Test input</label>
+            <input type="text" id="testInput"
+                   ng-model="data" md-autofocus>
+          </md-input-container>
+        </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+    </md-sidenav>
 
+    <md-content flex>
+      <ng-view >
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </ng-view>
+    </md-content>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -245,7 +145,7 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <!--<script src="bower_components/angular-touch/angular-touch.js"></script>-->
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
@@ -263,9 +163,13 @@
 
       var app = angular
         .module('frontApp')
-        .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+        .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log, $location) {
           $scope.toggleLeft = buildDelayedToggler('left');
           $scope.toggleRight = buildToggler('right');
+          $scope.goTo = function(path) {
+            $mdSidenav('left').close();
+            $location.path(path);
+          };
           /*$scope.isOpenLeft = function(){
             return $mdSidenav('left').isOpen();
           };

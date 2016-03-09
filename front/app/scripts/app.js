@@ -34,6 +34,26 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .when('/courses', {
+        templateUrl: 'views/courses.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/students', {
+        templateUrl: 'views/students.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/teachers', {
+        templateUrl: 'views/teachers.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -59,6 +59,33 @@ body {
   margin-top: 28px;
 }
 
+md-sidenav#side-left > md-toolbar {
+  padding: 15px;
+  height: 150px;
+  max-height: 150px;
+}
+md-sidenav#side-left {
+  padding: 0;
+}
+md-sidenav#side-left md-icon {
+  fill: #737373;
+  position: relative;
+}
+md-sidenav#side-left .md-avatar {
+  height: 64px;
+  width: 64px;
+  background-color: #ffffff;
+  border-radius: 75%;
+}
+md-list-item:hover {
+  background-color: rgb(240,240,240);
+  color: dodgerblue;
+}
+md-list-item{
+  padding: 0;
+  cursor: pointer;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
