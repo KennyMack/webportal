@@ -40,7 +40,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9325153">
+            <state vertical-scroll-proportion="1.4709678">
               <caret line="186" column="61" selection-start-line="186" selection-start-column="61" selection-end-line="186" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#md-toolbar#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -2448,7 +2448,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457500477020</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="layout 100%, pages: students, teachers, users, courses, main layout OK&#10;">
+      <created>1457500532593</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1457500532593</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -2475,7 +2481,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38551402" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964718" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875144" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3290441" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2528,7 +2534,8 @@
     <MESSAGE value="create class 100%&#10;create teacher 100%&#10;create student 100%&#10;" />
     <MESSAGE value="Front end initiated, layout 50%&#10;" />
     <MESSAGE value="layout 100, pages: students, teachers, users, courses, main layout OK&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="layout 100, pages: students, teachers, users, courses, main layout OK&#10;" />
+    <MESSAGE value="layout 100%, pages: students, teachers, users, courses, main layout OK&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="layout 100%, pages: students, teachers, users, courses, main layout OK&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2917,7 +2924,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9325153">
+        <state vertical-scroll-proportion="1.4709678">
           <caret line="186" column="61" selection-start-line="186" selection-start-column="61" selection-end-line="186" selection-end-column="61" />
           <folding>
             <element signature="n#style#0;n#md-toolbar#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
