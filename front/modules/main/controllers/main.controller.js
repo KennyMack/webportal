@@ -1,17 +1,11 @@
-'use strict';
 
-/**
- * @ngdoc function
- * @name frontApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the frontApp
- */
-angular.module('frontApp')
-  .controller('MainCtrl', [ 'authentication', '$scope', '$timeout', '$mdSidenav', '$log', '$location', 'localSave',
-    function (authentication, $scope, $timeout, $mdSidenav, $log, $location, localSave) {
+(function (angular, frontApp) {
+  'use strict';
+angular.module(frontApp.modules.main.name)
+  .controller(frontApp.modules.main.controllers.main.name, [ function () {
 
-    }]);
+  }]);
+}(angular, frontApp));
 /*      var vm = this;
       vm.toggleLeft = buildDelayedToggler('left');
       vm.toggleRight = buildToggler('right');

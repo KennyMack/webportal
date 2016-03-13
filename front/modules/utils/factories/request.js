@@ -2,14 +2,11 @@
 /**
  * Created by jonathan on 10/03/16.
  */
-(function() {
+(function(angular, frontApp) {
   'use strict';
-  angular.module('utils.requestFactory', ['utils.localStorage'])
-    .factory('request', [
-      'URLS',
-      '$http',
-      'localSave',
-      function (URLS, $http, localSave) {
+  angular.module(frontApp.modules.utils.name)
+    .factory(frontApp.modules.utils.factories.request,
+      function (URLS, $http, $window) {
         return {
           get: function (url, data, callback) {
             var uri = URLS.BASE_API + url;
@@ -18,7 +15,7 @@
               url: uri,
               headers: {
                 'Content-Type': 'application/json',
-                'x-access-token': localSave.getValueLS('User-Token')
+                'x-access-token': $window.localStorage.getItem('User-Token')
               }
             }).success(function (data, status) {
               callback(false, data, status);
@@ -33,7 +30,7 @@
               url: uri,
               headers: {
                 'Content-Type': 'application/json',
-                'x-access-token': localSave.getValueLS('User-Token')
+                'x-access-token': $window.localStorage.getItem('User-Token')
               },
               data: data
             }).success(function (data, status) {
@@ -49,7 +46,7 @@
               url: uri,
               headers: {
                 'Content-Type': 'application/json',
-                'x-access-token': localSave.getValueLS('User-Token')
+                'x-access-token': $window.localStorage.getItem('User-Token')
               },
               data: data
             }).success(function (data, status) {
@@ -65,7 +62,7 @@
               url: uri,
               headers: {
                 'Content-Type': 'application/json',
-                'x-access-token': localSave.getValueLS('User-Token')
+                'x-access-token': $window.localStorage.getItem('User-Token')
               }
             }).success(function (data, status) {
               callback(false, data, status);
@@ -75,5 +72,5 @@
           }
         }
       }
-    ]);
-})();
+    );
+}(angular, frontApp));

@@ -1,36 +1,33 @@
-'use strict';
 /**
  * Created by jonathan on 07/03/16.
  */
-
-
-/**
- * @ngdoc function
- * @name frontApp.controller:loginCtrl
- * @description
- * # loginCtrl
- * Controller of the frontApp
- */
-angular.module('frontApp')
-  .controller('LoginCtrl', ['authentication', 'localSave', '$location', 'users', '$scope',
-    function (authentication, localSave, $location, users, $scope) {
+(function (angular, frontApp) {
+  'use strict';
+  angular.module(frontApp.modules.auth.name)
+    .controller(frontApp.modules.auth.controllers.login.name, [
+      frontApp.modules.auth.factories.authentication,
+      frontApp.modules.auth.imports.localSave,
+      frontApp.modules.auth.factories.users,
+      '$location',
+      '$scope',
+    function (authentication, localSave,  users, $location, $scope) {
       var vm = this;
       vm.user = users.getUser();
 
       vm.init = function () {
         authentication.credential(function (err, data, status) {
-          if(!err || status !== 401) {
+          if (!err || status !== 401) {
             $location.path('/');
           }
+          else
+            vm.doLogOut();
         });
       };
 
       vm.doLogin = function () {
-        $scope.error= [
+        $scope.error = [];
 
-        ];
-
-        if (!vm.user.username ){
+        if (!vm.user.username) {
           $scope.error.push('Informe o E-mail ou Usuário.');
         }
 
@@ -41,9 +38,7 @@ angular.module('frontApp')
         if ($scope.error.length <= 0) {
           authentication.authenticate(vm.user.username, vm.user.pass, function (err, data) {
             if (err || !data.success) {
-              $scope.error = [
-
-              ];
+              $scope.error = [];
               if ((data.data instanceof Object)) {
                 angular.forEach(data.data, function (value) {
                   this.push(value);
@@ -73,9 +68,7 @@ angular.module('frontApp')
           });
         }
       };
-      $scope.error = [
-
-      ];
+      $scope.error = [];
 
       vm.doLogOut = function () {
         $scope.error = [];
@@ -86,3 +79,4 @@ angular.module('frontApp')
 
     }]);
 
+}(angular, frontApp));

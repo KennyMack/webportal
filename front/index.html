@@ -53,47 +53,15 @@
         </div>
       </md-toolbar>
       <md-content>
+        <md-list ng-repeat="item in index.mainMenu">
+          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="index.goTo(item.url)" md-ink-ripple>
+            <div class="md-list-item-inner ng-scope">
+              <md-icon class="material-icons" md-svg-icon="{{ item.icon }}"></md-icon>
+              <p>{{ item.name }}</p>
+            </div>
+          </md-list-item>
+        </md-list>
         <md-list>
-          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="index.goTo('')" md-ink-ripple>
-              <div class="md-list-item-inner ng-scope">
-                <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
-                <p>Home</p>
-              </div>
-          </md-list-item>
-          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="index.goTo('students')" md-ink-ripple>
-            <div class="md-list-item-inner ng-scope">
-              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
-              <p>Alunos</p>
-            </div>
-          </md-list-item>
-          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="index.goTo('teachers')" md-ink-ripple>
-            <div class="md-list-item-inner ng-scope">
-              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
-              <p>Professores</p>
-            </div>
-          </md-list-item>
-          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="index.goTo('courses')" md-ink-ripple>
-            <div class="md-list-item-inner ng-scope">
-              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
-              <p>Cursos</p>
-            </div>
-          </md-list-item>
-          <md-divider></md-divider>
-          <md-subheader  class="md-no-sticky">Administração</md-subheader>
-          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="index.goTo('users')" md-ink-ripple>
-            <div class="md-list-item-inner ng-scope">
-              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
-              <p>Usuários</p>
-            </div>
-          </md-list-item>
-          <md-divider></md-divider>
-          <md-subheader  class="md-no-sticky">Conta</md-subheader>
-          <md-list-item class="md-clickable" role="listitem" tabindex="-1" ng-click="index.test()" md-ink-ripple>
-            <div class="md-list-item-inner ng-scope">
-              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
-              <p>Minha Conta</p>
-            </div>
-          </md-list-item>
           <md-list-item ng-controller="LoginCtrl as loginMain" ng-click="loginMain.doLogOut(); index.closeLeft()" class="md-clickable" role="listitem" tabindex="-1" md-ink-ripple>
             <div class="md-list-item-inner ng-scope">
               <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
@@ -148,23 +116,45 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/utils/constants.js"></script>
-    <script src="scripts/services/localStorage.js"></script>
-    <script src="scripts/directives/forms.js"></script>
-    <script src="scripts/services/request.js"></script>
-    <script src="scripts/services/messages.js"></script>
-    <script src="scripts/services/auth.js"></script>
-    <script src="scripts/services/users.js"></script>
-    <script src="scripts/app.routes.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/lib/angular-material-icons.min.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
-    <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/controllers/personType.js"></script>
-    <script src="scripts/controllers/index.js"></script>
+    <script src="modules/lib/angular-material-icons.min.js"></script>
 
+    <script src="modules/frontApp.js"></script>
+    <script src="modules/utils/constants.js"></script>
+    <script src="modules/utils/urls.js"></script>
 
+    <script src="modules/utils/module.utils.js"></script>
+    <script src="modules/utils/services/localStorage.js"></script>
+    <script src="modules/utils/services/messages.js"></script>
+    <script src="modules/utils/directives/forms.js"></script>
+    <script src="modules/utils/factories/request.js"></script>
+
+    <script src="modules/auth/module.auth.js"></script>
+    <script src="modules/auth/module.auth.route.js"></script>
+    <script src="modules/auth/controllers/login.controller.js"></script>
+    <script src="modules/auth/controllers/person.type.controller.js"></script>
+    <script src="modules/auth/factories/auth.factory.js"></script>
+    <script src="modules/auth/factories/users.factory.js"></script>
+
+    <script src="modules/courses/module.courses.js"></script>
+    <script src="modules/courses/module.courses.route.js"></script>
+    <script src="modules/courses/controllers/courses.controller.js"></script>
+
+    <script src="modules/index/module.index.js"></script>
+    <script src="modules/index/controllers/index.controller.js"></script>
+
+    <script src="modules/main/module.main.js"></script>
+    <script src="modules/main/module.main.route.js"></script>
+    <script src="modules/main/controllers/main.controller.js"></script>
+
+    <script src="modules/students/module.students.js"></script>
+    <script src="modules/students/module.students.routes.js"></script>
+    <script src="modules/students/controllers/students.controller.js"></script>
+
+    <script src="modules/teachers/module.teachers.js"></script>
+    <script src="modules/teachers/module.teachers.route.js"></script>
+    <script src="modules/teachers/controllers/teachers.controller.js"></script>
+
+    <script src="modules/app.js"></script>
     <!-- endbuild -->
   </body>
 </html>

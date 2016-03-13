@@ -1,10 +1,10 @@
 /**
  * Created by jonathan on 12/03/16.
  */
-(function () {
+(function(angular, frontApp) {
   'use strict';
-  angular.module('utils.messages', ['ngMaterial'])
-    .factory('messages', ['$mdDialog', function ($mdDialog) {
+  angular.module(frontApp.modules.utils.name)
+    .factory(frontApp.modules.utils.services.messages, function ($mdDialog) {
       return {
         confirm: function (title, content, origin) {
           var mConfirm = $mdDialog.confirm();
@@ -35,5 +35,5 @@
           return $mdDialog.show(mAlert);
         }
       };
-    }]);
-})();
+    });
+}(angular, frontApp));

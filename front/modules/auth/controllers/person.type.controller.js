@@ -1,8 +1,16 @@
 /**
  * Created by jonathan on 12/03/16.
  */
-angular.module('frontApp')
-  .controller('personTypeCtrl', function ($location, messages, localSave, $scope, $filter) {
+(function (angular, frontApp) {
+  'use strict';
+  angular.module(frontApp.modules.auth.name)
+    .controller(frontApp.modules.auth.controllers.personType.name, [
+      frontApp.modules.auth.imports.messages,
+      frontApp.modules.auth.imports.localSave,
+      '$location',
+      '$scope',
+      '$filter',
+    function (messages, localSave, $location, $scope, $filter) {
       var vm = this;
       vm.personType = [];
 
@@ -14,28 +22,32 @@ angular.module('frontApp')
 
         if (Object.keys(teacher_id || '').length > 0) {
           vm.personType.push({
-            type:'Professor',
+            typedesc: 'Professor',
+            type: 'teacher',
             name: teacher_id.name,
             id: teacher_id._id
           });
         }
-        if (Object.keys(student_id|| '').length > 0) {
+        if (Object.keys(student_id || '').length > 0) {
           vm.personType.push({
-            type:'Estudante',
+            typedesc: 'Estudante',
+            type: 'student',
             name: student_id.name,
             id: student_id._id
           });
         }
-        if (Object.keys(manager_id|| '').length > 0) {
+        if (Object.keys(manager_id || '').length > 0) {
           vm.personType.push({
-            type:'Gestor',
+            typedesc: 'Gestor',
+            type: 'manager',
             name: manager_id.name,
             id: manager_id._id
           });
         }
-        if (Object.keys(master_id|| '').length > 0) {
+        if (Object.keys(master_id || '').length > 0) {
           vm.personType.push({
-            type:'Administrador',
+            typedesc: 'Administrador',
+            type: 'master',
             name: master_id.name,
             id: master_id._id
           });
@@ -54,23 +66,25 @@ angular.module('frontApp')
       vm.doAccess = function () {
         if (vm.selectedId !== -1) {
           var id = vm.selectedUser();
-          localSave.setJSONValueLS('PERSON-ID',id);
+          localSave.setJSONValueLS('PERSON-ID', id);
           $location.path('/');
         }
-        else{
+        else {
           messages.alert("Selecione", "Selecione uma opção válida.", "btnAccess");
         }
       };
 
       vm.selectedId = -1;
 
-      vm.selectedUser = function() {
+      vm.selectedUser = function () {
         try {
-          return $filter('filter')(vm.personType, { id: vm.selectedId })[0];
+          return $filter('filter')(vm.personType, {id: vm.selectedId})[0];
         }
         catch (e) {
           return '';
         }
 
       }
-    });
+    }]);
+
+}(angular, frontApp));

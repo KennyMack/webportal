@@ -2,10 +2,15 @@
 /**
  * Created by jonathan on 11/03/16.
  */
-(function() {
+(function(angular, frontApp) {
   'use strict';
-  angular.module('auth.authFactory', ['utils.requestFactory', 'utils.localStorage'])
-    .factory('authentication', ['request', 'localSave', function (request, localSave) {
+  console.log('frontApp');
+  console.log(frontApp);
+  angular.module(frontApp.modules.auth.name)
+    .factory(frontApp.modules.auth.factories.authentication, [
+      frontApp.modules.auth.imports.request,
+      frontApp.modules.auth.imports.localSave,
+    function (request, localSave) {
       return {
         authenticate: function (usr, pass, callback) {
           var user = {
@@ -38,8 +43,9 @@
           return tok != null;
         }
       };
-    }])
-    .factory('authInterceptor', ['localSave', function(localSave) {
+    }]);
+    /*TODO: Verificar utilidade
+    .factory('authInterceptor', function(localSave) {
       return {
         request: function (config) {
           var token = localSave.getValueLS('User-Token');
@@ -49,5 +55,5 @@
           return config;
         }
       }
-    }]);
-})();
+    });*/
+}(angular, frontApp));
