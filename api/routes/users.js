@@ -64,6 +64,89 @@ router.get('/:id', auth.ensureAuthenticated, function (req, res) {
   }
 });
 
+/* GET user by ID. */
+router.get('/view/:id', auth.ensureAuthenticated, function (req, res) {
+  var user = {
+    _id: req.params.id  || ''
+  };
+
+  var errors = usersController.validateUser(user, utils.OPERATION_STATUS.SELECT);
+
+  if (Object.keys(errors).length !== 0) {
+    res.json({
+      success: false,
+      data: errors
+    });
+  }
+  else {
+    usersController.getUserById(user['_id'])
+        .then(function (user) {
+          if (user) {
+            var usr = {
+              _id: user._id,
+              email: user.email,
+              username: user.username,
+              last_login: user.last_login,
+              persons: user.persons
+            };
+
+            res.json({
+              success: true,
+              data: usr
+            });
+          } else {
+            res.status(404).json({
+              success: false,
+              data: '404 - Not Found'
+            });
+          }
+        }, function (err) {
+          res.json({
+            success: false,
+            data: err
+          });
+        });
+  }
+});
+
+
+/* GET user by ID. */
+router.get('/all-path/:id', auth.ensureAuthenticated, function (req, res) {
+  var user = {
+    _id: req.params.id  || ''
+  };
+
+  var errors = usersController.validateUser(user, utils.OPERATION_STATUS.SELECT);
+
+  if (Object.keys(errors).length !== 0) {
+    res.json({
+      success: false,
+      data: errors
+    });
+  }
+  else {
+    usersController.getUserByIdAllPath(user['_id'])
+        .then(function (user) {
+          if (user) {
+            res.json({
+              success: true,
+              data: user
+            });
+          } else {
+            res.status(404).json({
+              success: false,
+              data: '404 - Not Found'
+            });
+          }
+        }, function (err) {
+          res.json({
+            success: false,
+            data: err
+          });
+        });
+  }
+});
+
 /* POST create a new user */
 router.post('/', function (req, res) {
   var user = {

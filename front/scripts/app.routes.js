@@ -1,22 +1,10 @@
 'use strict';
-
 /**
- * @ngdoc overview
- * @name frontApp
- * @description
- * # frontApp
- *
- * Main module of the application.
+ * Created by jonathan on 10/03/16.
  */
-angular
-  .module('frontApp', [
-    'ngMaterial',
-    'ngMdIcons',
-    'ngAnimate',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize'
-  ])
+
+
+angular.module('app.routes', ['ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -33,6 +21,11 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'login'
+      })
+      .when('/person-type', {
+        templateUrl: 'views/personType.html',
+        controller: 'personTypeCtrl',
+        controllerAs: 'person'
       })
       .when('/courses', {
         templateUrl: 'views/courses.html',
@@ -57,16 +50,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  })
-.run(['$rootScope', '$http', '$location',
-    function ($rootScope, $http, $location) {
-      /*$http.defaults.headers.post['X-CSRFToken'] = $cookies.get('csrf-Token');
-      $http.defaults.headers.post['x-access-token'] = $cookies.get('User-Token');
-      $rootScope.$on('$locationChangeStart', function (event) {
-        Auth.isLoggedIn(function (ok) {
-          $rootScope.IS_LOGGED = ok;
-          if (!ok)
-            $location.path('/login');
-        });
-      });*/
-    }]);
+  });

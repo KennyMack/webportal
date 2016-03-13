@@ -1,6 +1,8 @@
 /**
  * Created by jonathan on 21/02/16.
  */
+'use strict';
+
 var jwt = require('jsonwebtoken');
 var config = require('../config/config.js');
 var util = require('../utils/utils');
@@ -42,9 +44,9 @@ module.exports.validateToken = validateToken;
 module.exports.getNewToken = function (user){
     return jwt.sign({
         _id: user._id,
-        name: user.name,
         email: user.email,
         username: user.username,
+        persons: user.persons,
         date: util.getCurrentDateTime()
     }, config['secretKey'], {
         expiresIn: '24h'

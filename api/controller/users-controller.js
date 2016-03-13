@@ -15,6 +15,15 @@ module.exports.getUserById = function(id){
     return usersModel.users.findById(id).exec();
 };
 
+// Get User By Id
+module.exports.getUserByIdAllPath = function(id){
+    return usersModel.users.findById(id)
+        .populate('student_id', 'name')
+        .populate('teachers_id', 'name')
+        // TODO: Adicionar os campos que faltam quando fizer os vinculos
+        .exec();
+};
+
 // Get User By UserName
 module.exports.getUserByUserName = function(username){
     return usersModel.users.findOne({ username: username }).exec();
@@ -116,15 +125,38 @@ module.exports.setLoginPerson = function(user, callback) {
     }
     else {
         var query = {_id: user['_id']};
-        var data = {
-            $push: {
-                "persons": {
-                    id: user['idparent'],
-                    type: user['type']
+        var data = {};
+
+        if (user['type'].toString() === 'student') {
+            data = {
+                $set: {
+                    "student_id": user['idparent']
                 }
-            }
-        };
-        var options = { safe: true, upsert: true, new: true };
+            };
+        }
+        else if (user['type'].toString() === 'teacher') {
+            data = {
+                $set: {
+                    "teachers_id": user['idparent']
+                }
+            };
+        }
+        else if (user['type'].toString() === 'manager') {
+            data = {
+                $set: {
+                    "manager_id":  user['idparent']
+                }
+            };
+        }
+        else if (user['type'].toString() === 'master') {
+            data = {
+                $set: {
+                    "master_id": user['idparent']
+                }
+            };
+        }
+
+        var options = { safe: true, upsert: false, new: true };
         usersModel.users.findOneAndUpdate(query, data, options, function (err, data) {
             if (err) {
                 deferred.reject(err);

@@ -82,7 +82,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware to headers
 app.use(function (req, res, next) {
   console.log('middleware');
-  res.header('Access-Control-Allow-Origin', '127.0.0.1:5000');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   res.header('Access-Control-Allow-Credentials', 'true');

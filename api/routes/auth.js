@@ -19,10 +19,21 @@ router.post('/authenticate', function (req, res) {
         .then(function (user) {
             return authController.loginUser(user);
         })
-        .then(function (token) {
+        .then(function (ut) {
+            var usr = {
+                _id: ut.user._id,
+                email: ut.user.email,
+                username: ut.user.username,
+                last_login: ut.user.last_login,
+                student_id: ut.user.student_id,
+                teachers_id: ut.user.teachers_id,
+                manager_id: ut.user.manager_id,
+                master_id: ut.user.master_id
+            };
             res.json({
                 success: true,
-                token: token,
+                token: ut.token,
+                user: usr,
                 message: 'Enjoy your token'
             });
         })
@@ -33,7 +44,6 @@ router.post('/authenticate', function (req, res) {
 
 
 router.get('/credential', auth.ensureAuthenticated, function (req, res) {
-   console.log(req.decoded);
    res.json({
        success: true,
        credential: req.decoded

@@ -1,0 +1,44 @@
+<div flex-xs flex-gt-xs="100" layout="row" layout-align="center"
+     layout="column" layout-padding ng-cloak ng-init="login.init()">
+  <md-card>
+    <form name="frmLogin" novalidate>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Login</span>
+          <span class="md-subhead">Seja bem vindo efetue login para continuar</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <md-content class="md-no-momentum" layout="column">
+          <md-input-container class="md-icon-float md-block">
+            <label>Usuário/E-mail</label>
+            <md-icon md-svg-src="../images/user_active.svg" class="Usuário/E-mail"></md-icon>
+            <input name="txtEmail" ng-model="login.user.username"
+                   required username-Validate md-autofocus  />
+            <div ng-messages="frmLogin.txtEmail.$error">
+              <div ng-message="frmLogin.$error.username">Por favor digite um e-mail ou usuário válido.</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-icon-float md-block">
+            <label>Senha</label>
+            <md-icon md-svg-src="../images/password_active.svg"></md-icon>
+            <input ng-model="login.user.pass" type="password" required name="txtPass">
+            <div ng-messages="frmLogin.txtPass.$error">
+              <div ng-message="required">Por favor digite a senha</div>
+            </div>
+          </md-input-container>
+          <div ng-show="error.length > 0" style="color:rgb(221,44,0)"  >
+            <ul style="padding:0" ng-repeat="er in error">
+              <li>{{er}}</li>
+            </ul>
+          </div>
+        </md-content>
+      </md-card-content>
+
+      <md-card-actions layout="column" layout-align="center">
+          <md-button class="md-raised md-primary" ng-click="login.doLogin()" >Login</md-button>
+          <md-button class="md-raised"  ng-click="login.dologOut()" style="background-color: #009926; color:white">Cadastrar</md-button>
+      </md-card-actions>
+    </form>
+  </md-card>
+</div>

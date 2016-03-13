@@ -1,0 +1,35 @@
+<div ng-init="person.init()" flex-xs flex-gt-xs="100" layout="row"
+     layout-align="center" layout="column" layout-padding ng-cloak>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <h2>Conectar como</h2>
+        <span class="md-subhead">Selecione uma opção para continuar</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-divider></md-divider>
+      <md-radio-group ng-model="person.selectedId" >
+        <div ng-repeat='p in person.personType' class="row">
+          <div flex layout='row' layout-padding layout-align="start center" >
+            <div flex style="max-width:200px;">
+              {{ p.type }}
+            </div>
+            <md-radio-button flex
+                             ng-value="p.id"
+                             class="md-primary" >
+              {{ p.name }}
+            </md-radio-button>
+          </div>
+        </div>
+      </md-radio-group>
+      <md-divider></md-divider>
+    </md-card-content>
+
+    <md-card-actions layout="column" layout-align="center">
+      <md-button class="md-raised md-primary" ng-click="person.doAccess()" id="btnAccess">Continuar</md-button>
+    </md-card-actions>
+  </md-card>
+</div>
+
+

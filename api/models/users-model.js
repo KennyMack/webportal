@@ -41,9 +41,28 @@ var userSchema = database.mongoose.Schema({
         required: true,
         default: date.getCurrentDateTime()
     },
-    persons: [
-
-    ]
+    student_id: {
+        type: database.mongoose.Schema.Types.ObjectId,
+        ref: 'students',
+        index: true
+    },
+    teachers_id: {
+        type: database.mongoose.Schema.Types.ObjectId,
+        ref: 'teachers',
+        index: true
+    },
+    manager_id: {
+        type: database.mongoose.Schema.Types.ObjectId,
+        //TODO: Adicionar a referencia ao manager
+        //ref: 'teachers',
+        index: true
+    },
+    master_id: {
+        type: database.mongoose.Schema.Types.ObjectId,
+        //TODO: Adicionar a referencia ao master
+        //ref: 'teachers',
+        index: true
+    }
 });
 
 var preUpdate = function(user, next){

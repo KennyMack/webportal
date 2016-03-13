@@ -112,7 +112,16 @@ module.exports.loginUser = function (user, callback) {
     var deferred = q.defer();
     if (user.active) {
         var token = auth.getNewToken(user);
-        deferred.resolve(token);
+        userController.getUserByIdAllPath(user._id)
+            .then(function (userPath) {
+                deferred.resolve({ user: userPath, token: token});
+            },
+            function (err) {
+                deferred.reject({
+                    success: false,
+                    data: err
+                });
+            });
     }
     else {
         deferred.reject(inativeUserJson);
