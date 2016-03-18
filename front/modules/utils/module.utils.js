@@ -5,8 +5,15 @@
   'use strict';
   frontApp.modules.utils = {
     name: 'utils',
+    controllers: {
+      defaultMessagesCtrl: {
+        name: 'DefaultMessagesCtrl',
+        nameas: 'defaultMessages'
+      }
+    },
     factories:{
-      request: 'requestFactory'
+      request: 'requestFactory',
+      resource: 'resourceFactory'
     },
     services: {
       localSave: 'localSaveService',

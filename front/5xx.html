@@ -1,0 +1,21 @@
+<div flex="100" layout="row" layout-align="center center"
+     layout="column" ng-cloak>
+  <md-card>
+    <md-card-title style="background-color: dodgerblue; color: white; " >
+      <md-card-title-text >
+        <h1 class="md-headline" style="font-size: 2.5em">ERRO {{ servererror.errorCode }}</h1>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+      <md-button style="float: right; margin-top: -25px"
+                 class="md-fab md-primary" aria-label="Home"
+                 ng-click="servererror.goBack()">
+        <md-icon class="material-icons" md-svg-icon="images/ic_home_white.svg"></md-icon>
+      </md-button>
+      <md-content class="md-no-momentum" layout="column">
+        <p>Aconteceu algo errado na aplicação, por favor tente novamente. :'(</p>
+      </md-content>
+    </md-card-content>
+  </md-card>
+</div>

@@ -12,7 +12,7 @@
         <md-content class="md-no-momentum" layout="column">
           <md-input-container class="md-icon-float md-block">
             <label>Usuário/E-mail</label>
-            <md-icon md-svg-src="../images/user_active.svg" class="Usuário/E-mail"></md-icon>
+            <md-icon md-svg-src="../images/ic_user_hover.svg"></md-icon>
             <input name="txtEmail" ng-model="login.user.username"
                    required username-Validate md-autofocus  />
             <div ng-messages="frmLogin.txtEmail.$error">
@@ -21,7 +21,7 @@
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <label>Senha</label>
-            <md-icon md-svg-src="../images/password_active.svg"></md-icon>
+            <md-icon md-svg-src="../images/ic_password_active.svg"></md-icon>
             <input ng-model="login.user.pass" type="password" required name="txtPass">
             <div ng-messages="frmLogin.txtPass.$error">
               <div ng-message="required">Por favor digite a senha</div>

@@ -7,6 +7,14 @@ var URLS = (function () {
     HOME: function () {
         return '/';
     },
+    MORDOR: {
+      AUTHENTICATE: function () {
+        return '/mordor/authenticate';
+      },
+      CREDENTIAL: function () {
+        return '/mordor/credential';
+      }
+    },
     STUDENTS: function () {
         return '/students';
     },
@@ -24,6 +32,21 @@ var URLS = (function () {
     },
     LOGIN: function () {
         return '/login';
+    },
+    PERSONTYPE: function () {
+      return '/person-type';
+    },
+    NOTAUTHORIZED: function () {
+      return '/not-authorized';
+    },
+    SERVERERROR: function (code) {
+      if (code)
+        return '/server-error/' + code;
+      else
+        return '/server-error/:errorCode';
+    },
+    NOTFOUND: function () {
+      return '/not-found';
     }
   }
 })();

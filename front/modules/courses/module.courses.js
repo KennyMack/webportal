@@ -12,7 +12,10 @@
       }
     },
     routes: {
-      courses: '/courses'
+      courses: URLS.COURSES()
+    },
+    factories: {
+      courses: 'coursesFactory'
     },
     templates: {
       courses: {
@@ -21,7 +24,8 @@
     }
   };
   angular.module(frontApp.modules.courses.name, [
-    'ngRoute'
+    'ngRoute',
+    'ngMaterial'
   ]);
 
 }(angular, frontApp));

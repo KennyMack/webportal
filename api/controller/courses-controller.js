@@ -25,6 +25,7 @@ module.exports.removeById = function(id) {
 module.exports.createCourse = function(course) {
     return new coursesModel.courses({
         'identify': course['identify'],
+        'name': course['name'],
         'description': course['description'],
         'active': course['active'],
         'duration': {
@@ -45,6 +46,7 @@ module.exports.updateCourse = function ( course) {
     var query = { _id: course['_id'] };
     var data = {
         'identify': course['identify'],
+        'name': course['name'],
         'description': course['description'],
         'active': course['active'],
         'duration': {
@@ -68,6 +70,8 @@ var validateSubject = function (subject, status) {
         subject['teacher'] = validator.trim(validator.escape(subject['teacher'].toString() || ''));
         subject['subject'] = validator.trim(validator.escape(subject['subject'].toString() || ''));
 
+        if (validator.isNull(subject['name']))
+            objRet['name'] = 'Nome do Curso é de preenchumento obrigatório.';
 
         if (validator.isNull(subject['teacher']))
             objRet['teacher'] = 'Professor é de preenchimento obrigatório.';

@@ -13,6 +13,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/lib/paper-collapse.min.css">
     <!-- endbuild -->
   </head>
   <body ng-app="frontApp" layout="column"  ng-controller="IndexCtrl as index" ng-init="index.init()">
@@ -26,14 +27,14 @@
         <md-toolbar class="animate-show md-whiteframe-z3" style="background-color: dodgerblue">
           <div class="md-toolbar-tools">
             <md-button class="md-icon-button" ng-click="index.toggleLeft()" aria-label="toggleLeft" ng-show="index.ensureAuthenticated()">
-              <md-icon md-svg-icon="images/menu.svg"></md-icon>
+              <md-icon md-svg-icon="images/ic_menu_white.svg"></md-icon>
             </md-button>
             <h2>
               <span>DashBoard</span>
             </h2>
             <span flex></span>
             <md-button class="md-icon-button" aria-label="More" ng-click="index.toggleRight()" ng-show="index.ensureAuthenticated()">
-              <md-icon md-svg-icon="images/more_vert.svg"></md-icon>
+              <md-icon md-svg-icon="images/ic_vmore_white.svg"></md-icon>
             </md-button>
           </div>
         </md-toolbar>
@@ -64,8 +65,14 @@
         <md-list>
           <md-list-item ng-controller="LoginCtrl as loginMain" ng-click="loginMain.doLogOut(); index.closeLeft()" class="md-clickable" role="listitem" tabindex="-1" md-ink-ripple>
             <div class="md-list-item-inner ng-scope">
-              <md-icon class="material-icons" md-svg-icon="images/message.svg"></md-icon>
+              <md-icon class="material-icons" md-svg-icon="images/ic_exit.svg"></md-icon>
               <p>Sair</p>
+            </div>
+          </md-list-item>
+          <md-list-item ng-click="index.test();" class="md-clickable" role="listitem" tabindex="-1" md-ink-ripple>
+            <div class="md-list-item-inner ng-scope">
+              <md-icon class="material-icons" md-svg-icon="images/ic_exit.svg"></md-icon>
+              <p>test</p>
             </div>
           </md-list-item>
         </md-list>
@@ -82,10 +89,31 @@
       </md-content>
     </md-sidenav>
 
-    <md-content flex>
-      <ng-view >
+    <md-content class="backview" flex="100" >
+      <ng-view>
 
       </ng-view>
+      <!--<div class="lock-size" layout="row" layout-align="start start" style="position: fixed; left: 85%; top: 90%;">
+        <md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}"
+                           ng-class="selectedMode">
+          <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-warn">
+              <md-icon md-svg-src="../images/ic_menu.svg"></md-icon>
+            </md-button>
+          </md-fab-trigger>
+          <md-fab-actions>
+            <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+              <md-icon md-svg-src="../images/ic_menu.svg" aria-label="Twitter"></md-icon>
+            </md-button>
+            <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+              <md-icon md-svg-src="../images/ic_menu.svg" aria-label="Facebook"></md-icon>
+            </md-button>
+            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+              <md-icon md-svg-src="../images/ic_menu.svg" aria-label="Google Hangout"></md-icon>
+            </md-button>
+          </md-fab-actions>
+        </md-fab-speed-dial>
+      </div>-->
     </md-content>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -103,6 +131,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -116,6 +145,8 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="modules/lib/paper-collapse.min.js"></script>
+
     <script src="modules/lib/angular-material-icons.min.js"></script>
 
     <script src="modules/frontApp.js"></script>
@@ -123,10 +154,12 @@
     <script src="modules/utils/urls.js"></script>
 
     <script src="modules/utils/module.utils.js"></script>
+    <script src="modules/utils/controllers/default.message.controller.js"></script>
     <script src="modules/utils/services/localStorage.js"></script>
     <script src="modules/utils/services/messages.js"></script>
     <script src="modules/utils/directives/forms.js"></script>
     <script src="modules/utils/factories/request.js"></script>
+    <script src="modules/utils/factories/resource.js"></script>
 
     <script src="modules/auth/module.auth.js"></script>
     <script src="modules/auth/module.auth.route.js"></script>
@@ -134,9 +167,11 @@
     <script src="modules/auth/controllers/person.type.controller.js"></script>
     <script src="modules/auth/factories/auth.factory.js"></script>
     <script src="modules/auth/factories/users.factory.js"></script>
+    <script src="modules/auth/factories/header.factory.js"></script>
 
     <script src="modules/courses/module.courses.js"></script>
     <script src="modules/courses/module.courses.route.js"></script>
+    <script src="modules/courses/factories/courses.factory.js"></script>
     <script src="modules/courses/controllers/courses.controller.js"></script>
 
     <script src="modules/index/module.index.js"></script>
@@ -154,7 +189,13 @@
     <script src="modules/teachers/module.teachers.route.js"></script>
     <script src="modules/teachers/controllers/teachers.controller.js"></script>
 
+    <script src="modules/handlers/module.handlers.js"></script>
+    <script src="modules/handlers/module.handlers.route.js"></script>
+    <script src="modules/handlers/controllers/handlers.controller.js"></script>
+    <script src="modules/handlers/factories/handlers.factory.js"></script>
+
     <script src="modules/app.js"></script>
     <!-- endbuild -->
   </body>
 </html>
+

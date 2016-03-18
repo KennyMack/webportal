@@ -35,6 +35,9 @@ md-list-item{
   padding: 0;
   cursor: pointer;
 }
+md-content.backview {
+  background-color: #ECEFF1 !important;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

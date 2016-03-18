@@ -10,7 +10,10 @@
         .when(frontApp.modules.courses.routes.courses, {
           controller:  frontApp.modules.courses.controllers.courses.name,
           controllerAs:  frontApp.modules.courses.controllers.courses.nameas,
-          templateUrl: frontApp.modules.courses.templates.courses.url
+          templateUrl: frontApp.modules.courses.templates.courses.url,
+          access: {
+            requiresLogin: true
+          }
         })
     });
 

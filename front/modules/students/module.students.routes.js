@@ -10,7 +10,12 @@
         .when(frontApp.modules.students.routes.students, {
           controller:  frontApp.modules.students.controllers.students.name,
           controllerAs:  frontApp.modules.students.controllers.students.nameas,
-          templateUrl: frontApp.modules.students.templates.students.url
+          templateUrl: frontApp.modules.students.templates.students.url,
+          access: {
+            requiresLogin: true,
+            requiredPermissions: ['manager', 'master', 'teacher'],
+            permissionType: 'AtLeastOne'
+          }
         })
     });
 

@@ -11,6 +11,7 @@
     'ngResource',
     'ngSanitize',
     frontApp.modules.utils.name,
+    frontApp.modules.handlers.name,
     frontApp.modules.auth.name,
     frontApp.modules.index.name,
     frontApp.modules.main.name,
@@ -18,36 +19,49 @@
     frontApp.modules.students.name,
     frontApp.modules.teachers.name
   ])
-    .constant('URLS', {
-      BASE: 'http://portal.com/',
-      BASE_API: 'http://portal.com/api/'
+    .constant('BASEURLS', {
+      BASE: 'http://portal.com',
+      BASE_API: 'http://portal.com/api'
     })
-    .config(function ($routeProvider) {
+    .constant('LOCALNAME', {
+      MANAGER_ID: 'MANAGER-ID',
+      MASTER_ID: 'MASTER-ID',
+      PERSON_ID: 'PERSON-ID',
+      STUDENT_ID: 'STUDENT-ID',
+      SESSION_USER: 'Session-User',
+      TEACHERS_ID: 'TEACHERS-ID',
+      USER_TOKEN: 'User-Token'
+    })
+    .config(function ($routeProvider, $httpProvider) {
+      $httpProvider.interceptors.push(
+        frontApp.modules.auth.factories.authHeaders
+      );
+      //TODO: Remover ao finalizar os teste
+      //$httpProvider.interceptors.push(
+      //  frontApp.modules.handlers.factories.notFound);
+      //$httpProvider.interceptors.push(
+      //  frontApp.modules.handlers.factories.notAuthorized);
+      $httpProvider.interceptors.push(
+          frontApp.modules.handlers.factories.serverError);
+
+
       $routeProvider.otherwise({
-        redirectTo: '/'
+        redirectTo: URLS.NOTFOUND()
       });
     })
-    .run(['$rootScope', frontApp.modules.auth.factories.authentication, '$location',
-      function ($rootScope, authentication, $location) {
-        $rootScope.$on('$routeChangeStart', function (event, next) {
-          console.log('event');
-          console.log(event);
-          console.log('next');
-          console.log(next);
+    .run([
+      frontApp.modules.auth.factories.authentication,
+      frontApp.modules.auth.factories.authorization,
 
+      '$rootScope', '$location',
+      function (authentication, authorization, $rootScope, $location) {
+        /*$rootScope.$on('$routeChangeStart', function (event, next) {
+          authorization.authorize(next, function (cont, path) {
+            if(!cont)
+              $location.path(path);
+          });
 
-          if (!authentication.isAuthenticated())
-            $location.path('/login');
-          else {
-            authentication.credential(function (err) {
-              if (err || status === 401) {
-                authentication.logOut();
-                $location.path('/login');
-              }
-            });
-          }
-
-        });
+        });*/
       }]);
 }(angular, frontApp));
 

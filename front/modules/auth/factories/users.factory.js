@@ -5,9 +5,10 @@
   'use strict';
   angular.module(frontApp.modules.auth.name)
     .factory(frontApp.modules.auth.factories.users,[
+      'LOCALNAME',
       frontApp.modules.auth.imports.localSave,
       frontApp.modules.auth.imports.request,
-    function (localSave, request) {
+    function (LOCALNAME, localSave, request) {
       var uri = 'users/';
       var user = {
         _id: '',
@@ -37,7 +38,7 @@
           user.master_id = ''
         },
         setUserLocal: function (usr) {
-          localSave.setJSONValueLS('Session-User', usr);
+          localSave.setJSONValueLS(LOCALNAME.SESSION_USER, usr);
 
         },
         getUserView: function (_id) {

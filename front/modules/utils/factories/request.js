@@ -6,10 +6,10 @@
   'use strict';
   angular.module(frontApp.modules.utils.name)
     .factory(frontApp.modules.utils.factories.request,
-      function (URLS, $http, $window) {
+      function (BASEURLS, $http, $window) {
         return {
           get: function (url, data, callback) {
-            var uri = URLS.BASE_API + url;
+            var uri = BASEURLS.BASE_API + url;
             $http({
               method: 'GET',
               url: uri,
@@ -24,7 +24,7 @@
             });
           },
           post: function (url, data, callback) {
-            var uri = URLS.BASE_API + url;
+            var uri = BASEURLS.BASE_API + url;
             $http({
               method: 'POST',
               url: uri,
@@ -40,7 +40,7 @@
             });
           },
           put: function (url, data, callback) {
-            var uri = URLS.BASE_API + url;
+            var uri = BASEURLS.BASE_API + url;
             $http({
               method: 'PUT',
               url: uri,
@@ -56,7 +56,7 @@
             });
           },
           delete: function (url, data, callback) {
-            var uri = URLS.BASE_API + url;
+            var uri = BASEURLS.BASE_API + url;
             $http({
               method: 'DELETE',
               url: uri,

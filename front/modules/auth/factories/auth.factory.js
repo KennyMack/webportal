@@ -4,46 +4,95 @@
  */
 (function(angular, frontApp) {
   'use strict';
-  console.log('frontApp');
-  console.log(frontApp);
   angular.module(frontApp.modules.auth.name)
     .factory(frontApp.modules.auth.factories.authentication, [
+      'LOCALNAME',
       frontApp.modules.auth.imports.request,
       frontApp.modules.auth.imports.localSave,
-    function (request, localSave) {
+    function (LOCALNAME, request, localSave) {
       return {
         authenticate: function (usr, pass, callback) {
           var user = {
             username: usr,
             password: pass
           };
-          request.post('mordor/authenticate', user, function (err, data) {
+          request.post(URLS.MORDOR.AUTHENTICATE(), user, function (err, data) {
             callback(err, data);
           });
         },
         setToken: function (value) {
-          localSave.setValueLS('User-Token', value);
+          localSave.setValueLS(LOCALNAME.USER_TOKEN, value);
         },
         credential: function (callback) {
-          request.get('mordor/credential', {}, function (err, data, status) {
+          request.get(URLS.MORDOR.CREDENTIAL(), {}, function (err, data, status) {
             callback(err, data, status);
           })
         },
         logOut: function () {
-          localSave.removeValueLS('User-Token');
-          localSave.removeValueLS('Session-User');
-          localSave.removeValueLS('PERSON-ID');
-          localSave.removeValueLS('STUDENT-ID');
-          localSave.removeValueLS('TEACHERS-ID');
-          localSave.removeValueLS('MANAGER-ID');
-          localSave.removeValueLS('MASTER-ID');
+          localSave.removeValueLS(LOCALNAME.USER_TOKEN);
+          localSave.removeValueLS(LOCALNAME.SESSION_USER);
+          localSave.removeValueLS(LOCALNAME.PERSON_ID);
+          localSave.removeValueLS(LOCALNAME.STUDENT_ID);
+          localSave.removeValueLS(LOCALNAME.TEACHERS_ID);
+          localSave.removeValueLS(LOCALNAME.MANAGER_ID);
+          localSave.removeValueLS(LOCALNAME.MASTER_ID);
         },
         isAuthenticated: function () {
-          var tok = localSave.getValueLS('User-Token');
+          var tok = localSave.getValueLS(LOCALNAME.USER_TOKEN);
           return tok != null;
         }
       };
-    }]);
+    }])
+    .factory(frontApp.modules.auth.factories.authorization, [
+      frontApp.modules.auth.imports.localSave,
+      frontApp.modules.auth.factories.authentication,
+      function (localSave, authentication) {
+        return {
+          authorize: function (next, callback) {
+            var authorized = false;
+
+            if (next.access != undefined) {
+              var type = localSave.getJSONValueLS(LOCALNAME.PERSON_ID);
+              if (type != null && next.access.requiresLogin && next.access.requiredPermissions !== undefined) {
+                for (var i = 0, length = next.access.requiredPermissions.length; i < length; i++) {
+                  if (type.type == next.access.requiredPermissions[i]) {
+                    authorized = true;
+                    break;
+                  }
+                }
+              }
+              else
+                authorized = true;
+            }
+            else {
+              authorized = true;
+            }
+
+            if (!authorized) {
+              callback(false, URLS.NOTAUTHORIZED());
+            }
+            else {
+              if (!authentication.isAuthenticated()){
+                authentication.logOut();
+                callback(false, URLS.LOGIN());
+              }
+              else {
+                authentication.credential(function (err) {
+                  if (err || status === 401) {
+                    authentication.logOut();
+                    authorized = false;
+                  }
+                  callback(authorized, URLS.LOGIN());
+                });
+              }
+            }
+          }
+        }
+      }
+
+    ]);
+
+
     /*TODO: Verificar utilidade
     .factory('authInterceptor', function(localSave) {
       return {

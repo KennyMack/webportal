@@ -1,0 +1,37 @@
+<md-dialog aria-label="{{ pageHeader }}"  flex="50" ng-cloak ng-controller="DefaultMessagesCtrl">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{pageHeader}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeClick()">
+          <md-icon md-svg-src="../images/ic_close_white.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" style="overflow-x: auto">
+        <md-list ng-cloak>
+          <md-list-item ng-repeat="item in itemsList" ng-click="itemListClick(item, $event)" class="noright" flex="100" layout="row">
+            <div layout="row" flex="70">
+              <img alt="{{ item.value }}" ng-src="{{ item.img }}" class="md-avatar" />
+              <p>{{ item.value }}</p>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="cancelClick($event)">
+        CANCELAR
+      </md-button>
+      <md-button ng-click="confirmClick($event)" style="margin-right:20px;">
+        OK
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+<style>
+
+
+</style>

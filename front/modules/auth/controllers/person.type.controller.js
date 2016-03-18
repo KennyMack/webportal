@@ -5,20 +5,22 @@
   'use strict';
   angular.module(frontApp.modules.auth.name)
     .controller(frontApp.modules.auth.controllers.personType.name, [
+      'LOCALNAME',
       frontApp.modules.auth.imports.messages,
       frontApp.modules.auth.imports.localSave,
       '$location',
       '$scope',
       '$filter',
-    function (messages, localSave, $location, $scope, $filter) {
+    function (LOCALNAME, messages, localSave,
+              $location, $scope, $filter) {
       var vm = this;
       vm.personType = [];
 
       vm.init = function () {
-        var teacher_id = localSave.getJSONValueLS('TEACHERS-ID');
-        var student_id = localSave.getJSONValueLS('STUDENT-ID');
-        var manager_id = localSave.getJSONValueLS('MANAGER-ID');
-        var master_id = localSave.getJSONValueLS('MASTER-ID');
+        var teacher_id = localSave.getJSONValueLS(LOCALNAME.TEACHERS_ID);
+        var student_id = localSave.getJSONValueLS(LOCALNAME.STUDENT_ID);
+        var manager_id = localSave.getJSONValueLS(LOCALNAME.MANAGER_ID);
+        var master_id = localSave.getJSONValueLS(LOCALNAME.MASTER_ID);
 
         if (Object.keys(teacher_id || '').length > 0) {
           vm.personType.push({
@@ -66,8 +68,8 @@
       vm.doAccess = function () {
         if (vm.selectedId !== -1) {
           var id = vm.selectedUser();
-          localSave.setJSONValueLS('PERSON-ID', id);
-          $location.path('/');
+          localSave.setJSONValueLS(LOCALNAME.PERSON_ID, id);
+          $location.path(URLS.HOME());
         }
         else {
           messages.alert("Selecione", "Selecione uma opção válida.", "btnAccess");

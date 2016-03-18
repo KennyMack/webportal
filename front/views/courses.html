@@ -1,29 +1,318 @@
-<div ng-cloak >
-  <md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="100" layout="column">
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Cursos</span>
-            <span class="md-subhead">Small</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row">
-          <md-button class="md-icon-button" aria-label="Mais">
-            <md-icon md-svg-icon="../images/more_vert.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Opções">
-            <md-icon md-svg-icon="../images/menu.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Compartilhar">
-            <md-icon md-svg-icon="../images/share-arrow.svg"></md-icon>
-          </md-button>
-        </md-card-actions>
-      </md-card>
-    </div>
-  </md-content>
+<div layout="row" layout-padding layout-sm="column" layout-xs="column" class="grid-data" ng-init="courses.init()">
+  <div flex="100">
+    <md-content class="backview" style="  height: auto; padding-bottom: 50px" ng-repeat="year in courses.yearsList | orderBy:'-name':false">
+      <div class="group-header" flex="100">
+          <p class="md-caption">{{ year.name }}</p>
+      </div>
+      <div ng-repeat="itemcourse in courses.getCoursesYear(year.name)">
+        <md-card class="card-item"
+              ng-class="{
+                        'card-expanded md-whiteframe-z3': itemcourse._id == courses.selectedUserIndex,
+                        'card-collapsed': (itemcourse._id != courses.selectedUserIndex && !courses.undefinedIndex)
+                        }" >
+          <md-card-title class="card-item-header" ng-click="courses.selectUserIndex(itemcourse._id)">
+            <md-card-title-text class="card-item-title-header">
+              <div class="icon">
+                <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>
+              </div>
+              <div class="title">
+                <p ng-class="{'title-header-collapse': itemcourse._id == courses.selectedUserIndex }">{{ itemcourse.name }}
+                  <span ng-show="itemcourse._id != courses.selectedUserIndex" class="md-subhead center" >{{itemcourse.course_type.description }}</span></p>
+              </div>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content class="card-item-content"
+                           ng-class="{'card-item-content-expanded': itemcourse._id == courses.selectedUserIndex,
+                                      'card-item-content-text-expanded': itemcourse._id == courses.expandedTextIndex }"
+                           ng-show="itemcourse._id == courses.selectedUserIndex">
+            <div layout="column" layout-padding class="card-item-content-data">
+              <div flex="100" layout="row" layout-xs="column" class="data-top">
+                <div flex="100" flex-xs="100" layout="column">
+                  <div flex="100">
+                    <p class="name">{{ itemcourse.name  }}</p>
+                    <p class="identify">{{ itemcourse.identify }}</p>
+                    <p class="course-type-description">{{ itemcourse.course_type.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="row" layout-xs="column"
+                   class="data-middle">
+                <div flex layout="row" layout-xs="column" class="left">
+                    <p>Inicio: {{ itemcourse.duration.start | date:'dd/MM/yyyy' }}</p>
+                    <p>Término: {{ itemcourse.duration.end | date:'dd/MM/yyyy' }}</p>
+                </div>
+                <div flex layout="row" layout-align="end" class="right">
+                    <p>{{ itemcourse.create_at | date:'dd/MM/yyyy'}}</p>
+                    <p>{{ itemcourse.modified | date:'dd/MM/yyyy'}}</p>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="column"
+                   class="data-footer">
+                <div flex="67" layout="column" class="description">
+                  <p ng-show="courses.expandedTextIndex != itemcourse._id">{{ courses.getShortDescription(itemcourse.description) }}</p>
+                  <p ng-show="courses.expandedTextIndex == itemcourse._id">{{ itemcourse.description }}</p>
+                </div>
+                <div flex="33" layout="column" class="button">
+                  <md-button flex="100" ng-show="courses.expandedTextIndex != itemcourse._id && courses.showCollapseButton(itemcourse.description)"
+                             ng-click="courses.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver mais</md-button>
+                  <md-button flex="100" ng-show="courses.expandedTextIndex == itemcourse._id && courses.showCollapseButton(itemcourse.description)"
+                             ng-click="courses.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver menos</md-button>
+                </div>
+              </div>
+            </div>
+          </md-card-content>
+          <md-card-footer class="card-item-footer"
+                          ng-show="itemcourse._id == courses.selectedUserIndex">
+            <section layout="row" layout-align="space-around center" layout-wrap>
+              <md-button class="md-primary" md-ink-ripple id="btn-class-{{ itemcourse._id }}" ng-click="courses.showClass(itemcourse._id)">Alunos</md-button>
+              <md-button class="md-primary" md-ink-ripple>Matérias</md-button>
+              <md-button class="md-primary" md-ink-ripple>Cronograma</md-button>
+              <md-button class="md-primary" md-ink-ripple>Notas</md-button>
+            </section>
+          </md-card-footer>
+        </md-card>
+      </div>
+    </md-content>
+  </div>
 </div>
+
+
+
+<style>
+   /* Sub Header */
+  .grid-data .group-header{
+    height: 35px;
+  }
+
+   .grid-data .group-header p {
+     text-align: end;
+     padding-right: 25px;
+     padding-top: 10px;
+   }
+   /* Sub Header */
+
+  /* Card */
+  .card-item{
+    box-sizing: content-box;
+    border-radius:0;
+    height: auto;
+    margin-bottom:0;
+    margin-top:0;
+    min-height:55px;
+    -webkit-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -moz-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -o-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -ms-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+  }
+  /* Card */
+
+  /* Card Header */
+  .card-item-header {
+    margin: 0;
+    padding: 0;
+    min-height: 55px;
+    cursor: pointer;
+    outline:none;
+  }
+
+  .card-item-title-header{
+    padding: 0;
+    width: 100%;
+    height: 50px;
+    display: inline-table;
+  }
+
+  .card-item-title-header .icon{
+    padding: 0;
+    margin: 0;
+    display: table-cell;
+    width: 50px;
+    box-sizing: content-box;
+    height: 10px;
+  }
+   .card-item-title-header .icon md-icon{
+     padding: 0;
+     margin: 0 15px;
+   }
+
+  .card-item-title-header .title {
+    padding: 0;
+    margin: 0;
+    display: table-cell;
+  }
+
+   .card-item-title-header .title p {
+     -webkit-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+     -moz-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+     -o-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+     -ms-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+   }
+
+   .title-header-collapse {
+     padding-top: 10px;
+     padding-bottom: 5px;
+     padding-left: 20px;
+   }
+
+  /* Content */
+  .card-item-content{
+    height: 0;
+    padding: 0;
+    -webkit-transition: all 200ms cubic-bezier(.01,.63,.22,.72);
+    -moz-transition: all 200ms cubic-bezier(.01,.63,.22,.72);
+    -o-transition: all 200ms cubic-bezier(.01,.63,.22,.72);
+    -ms-transition: all 200ms cubic-bezier(.01,.63,.22,.72);
+  }
+
+  .card-item-content .card-item-content-data {
+    padding: 0;
+    padding-top: 10px;
+    border-top: solid 1px #dddddd;
+
+  }
+
+   .card-item-content-data .data-top{
+     padding: 0;
+     margin: 0;
+   }
+   .card-item-content-data .data-top p{
+     padding: 0;
+     margin: 0 0 0 25px;
+   }
+
+   .card-item-content-data .data-top p.name {
+     color: rgba(0,0,0,0.87);
+     font-size: 16px;
+     line-height: 24px;
+   }
+   .card-item-content-data .data-top p.identify, p.course-type-description {
+     color: #757575;
+     font-size: 13px;
+     line-height: 24px;
+   }
+
+
+   .card-item-content-data .data-middle{
+     box-sizing: content-box;
+     padding: 0;
+     padding-bottom: 15px;
+     margin: 0;
+     border-top: solid 1px #e5e5e5
+   }
+
+   .card-item-content-data .data-middle .right p{
+     color: #757575;
+     text-align: right;
+     font-size: .8em;
+     line-height: 24px;
+   }
+
+   .card-item-content-data .data-middle p{
+     padding: 0;
+     margin: 15px 0 0 25px;
+   }
+
+   .card-item-content-data .data-footer{
+     padding: 0;
+     margin: 0;
+     border-top: solid 1px #e5e5e5;
+     max-height: 250px;
+   }
+
+   .card-item-content-data .data-footer .description{
+     padding: 0;
+     margin: 0;
+     overflow-x: auto;
+   }
+   .card-item-content-data .data-footer .description p{
+     padding:5px 25px 5px 25px;
+
+     text-align: center;
+   }
+   .card-item-content-data .data-footer .button{
+     margin: 0;
+     padding: 0;
+     max-height: 45px;
+   }
+
+   .card-item-content-data .data-footer .button md-button {
+     margin: 0;
+     padding: 0;
+   }
+
+  /* Content */
+
+  /* Footer */
+  .card-item-footer {
+    padding: 0;
+    margin: 10px 0 0 0;
+    background: #f6f6f6;
+    -webkit-transition: all 200ms cubic-bezier(.01,.63,.22,.72);
+    -moz-transition: all 200ms cubic-bezier(.01,.63,.22,.72);
+    -o-transition: all 200ms cubic-bezier(.01,.63,.22,.72);
+    -ms-transition: all 200ms cubic-bezier(.01,.63,.22,.72);
+  }
+
+  .card-item-footer section {
+    padding: 10px 0 10px 0;
+    border-top: solid 1px #e5e5e5;
+  }
+  /* Footer */
+
+  /* On Select */
+
+  .card-item-content-expanded {
+    height: 280px;
+  }
+   .card-item-content-text-expanded {
+     height: auto;
+   }
+
+  .card-expanded {
+    border-radius: 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 110px;
+    height: auto;
+    -webkit-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -moz-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -o-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -ms-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+  }
+  .card-collapsed {
+    transform: scale(.985);
+    -webkit-transform: scale(.985);
+    -moz-transform: scale(.985);
+    -o-transform: scale(.985);
+    -ms-transform: scale(.985);
+  }
+ /* On Select */
+ @media screen and (max-width: 600px) {
+   .card-item-title-header .icon{
+     display: none;
+   }
+
+   .card-item-title-header .title {
+     padding-left: 20px;
+   }
+
+   .card-item-title-header .title p span {
+     display: none;
+   }
+
+   .card-item-content-expanded {
+     height: 550px;
+
+   }
+
+   .card-item-content-data .data-footer{
+     max-height: 300px;
+   }
+
+   .title-header-collapse {
+     padding-left: 5px;
+   }
+ }
+</style>
+
 

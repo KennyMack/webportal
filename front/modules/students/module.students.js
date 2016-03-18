@@ -12,7 +12,7 @@
       }
     },
     routes: {
-      students: '/students'
+      students: URLS.STUDENTS()
     },
     templates: {
       students: {

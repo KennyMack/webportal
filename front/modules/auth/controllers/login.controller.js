@@ -8,19 +8,23 @@
       frontApp.modules.auth.factories.authentication,
       frontApp.modules.auth.imports.localSave,
       frontApp.modules.auth.factories.users,
+      'LOCALNAME',
       '$location',
       '$scope',
-    function (authentication, localSave,  users, $location, $scope) {
+    function (authentication, localSave, users, LOCALNAME, $location, $scope) {
       var vm = this;
       vm.user = users.getUser();
 
       vm.init = function () {
         authentication.credential(function (err, data, status) {
-          if (!err || status !== 401) {
-            $location.path('/');
+          if (!err && status !== 401) {
+            $location.path(URLS.HOME());
           }
-          else
-            vm.doLogOut();
+          else {
+            $scope.error = [];
+            users.clearUser();
+            authentication.logOut();
+          }
         });
       };
 
@@ -44,7 +48,7 @@
                   this.push(value);
                 }, $scope.error);
               } else {
-                $scope.error.push(data.data);
+                $scope.error.push(data.data || 'Ocorreu um erro no aplicativo.');
               }
             }
             else {
@@ -59,11 +63,11 @@
               vm.user.manager_id = data.user.manager_id;
               vm.user.master_id = data.user.master_id;
               users.setUserLocal(vm.user);
-              localSave.setJSONValueLS('STUDENT-ID', vm.user.student_id);
-              localSave.setJSONValueLS('TEACHERS-ID', vm.user.teachers_id);
-              localSave.setJSONValueLS('MANAGER-ID', vm.user.manager_id);
-              localSave.setJSONValueLS('MASTER-ID', vm.user.master_id);
-              $location.path('/person-type');
+              localSave.setJSONValueLS(LOCALNAME.STUDENT_ID, vm.user.student_id);
+              localSave.setJSONValueLS(LOCALNAME.TEACHERS_ID, vm.user.teachers_id);
+              localSave.setJSONValueLS(LOCALNAME.MANAGER_ID, vm.user.manager_id);
+              localSave.setJSONValueLS(LOCALNAME.MASTER_ID, vm.user.master_id);
+              $location.path(URLS.PERSONTYPE());
             }
           });
         }
@@ -74,7 +78,7 @@
         $scope.error = [];
         users.clearUser();
         authentication.logOut();
-        $location.path('/login');
+        $location.path(URLS.LOGIN());
       };
 
     }]);

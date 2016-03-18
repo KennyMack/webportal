@@ -11,7 +11,7 @@
         nameas: 'index'
       },
       routes: {
-        index: '/'
+        index: URLS.HOME()
       }
     },
     imports: {

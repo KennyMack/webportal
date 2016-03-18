@@ -13,15 +13,22 @@
       personType: {
         name: 'personTypeCtrl',
         nameas: 'person'
+      },
+      users: {
+        name: 'usersCtrl',
+        nameas: 'users'
       }
     },
     factories:{
       authentication: 'authenticationFactory',
-      users: 'usersFactory'
+      authorization: 'authorizationFactory',
+      users: 'usersFactory',
+      authHeaders: 'authHeadersInterceptorFactory'
     },
     routes: {
-      login: '/login',
-      personType: '/person-type'
+      login: URLS.LOGIN(),
+      personType: URLS.PERSONTYPE(),
+      users: URLS.USERS()
     },
     templates: {
       login: {
@@ -29,6 +36,9 @@
       },
       personType: {
         url: 'views/personType.html'
+      },
+      users: {
+        url: 'views/users.html'
       }
     },
     imports: {

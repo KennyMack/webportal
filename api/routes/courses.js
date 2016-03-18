@@ -87,6 +87,7 @@ router.post('/', function (req, res) {
 
     var course = {
         identify: req.body.identify || '',
+        name: req.body.name  || '',
         description: req.body.description  || '',
         active: req.body.active || '0',
         duration: duration,
@@ -138,6 +139,7 @@ router.put('/', function (req, res) {
     var course = {
         _id: req.body._id || '',
         identify: req.body.identify || '',
+        name: req.body.name  || '',
         description: req.body.description  || '',
         active: req.body.active || '0',
         duration: duration,
@@ -374,6 +376,36 @@ router.post('/:id/activate-student', function (req, res) {
                 data: err
             });
         });
+});
+
+
+router.get('/test', function (req, res) {
+    res.json({
+        success: true,
+        body: req.body,
+        param: req.params
+    });
+});
+router.post('/test', function (req, res) {
+    res.json({
+        success: true,
+        body: req.body,
+        param: req.params
+    });
+});
+router.put('/test', function (req, res) {
+    res.json({
+        success: true,
+        body: req.body,
+        param: req.params
+    });
+});
+router.delete('/test/:id', function (req, res) {
+    res.json({
+        success: true,
+        body: req.body,
+        param: req.params
+    });
 });
 
 module.exports = router;

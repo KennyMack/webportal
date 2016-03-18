@@ -12,7 +12,7 @@
       }
     },
     routes: {
-      main: '/'
+      main: URLS.HOME()
     },
     templates: {
       main: {
