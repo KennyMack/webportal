@@ -5,8 +5,8 @@
   'use strict';
   angular.module(frontApp.modules.courses.name)
     .controller(frontApp.modules.courses.controllers.courses.name, [
-      frontApp.modules.utils.factories.resource,
-      frontApp.modules.utils.services.messages,
+      frontApp.modules.courses.imports.resource,
+      frontApp.modules.courses.imports.messages,
       frontApp.modules.courses.factories.courses,
       '$controller',
       '$scope',
@@ -18,7 +18,7 @@
                 $scope, $filter, $location,
                 $mdDialog, $mdMedia) {
         var vm = this;
-        var GridListCtrl = $controller(frontApp.modules.utils.controllers.GridListCtrl.name, {$scope: $scope});
+        var GridListCtrl = $controller(frontApp.modules.courses.imports.gridlistctrl, {$scope: $scope});
 
         vm.expandedTextIndex = undefined;
         vm.undefinedIndex = true;

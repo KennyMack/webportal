@@ -21,6 +21,12 @@
       courses: {
         url: 'views/courses.html'
       }
+    },
+    imports: {
+      gridlistctrl: frontApp.modules.utils.controllers.GridListCtrl.name,
+      messages: frontApp.modules.utils.services.messages,
+      request: frontApp.modules.utils.factories.request,
+      resource: frontApp.modules.utils.factories.resource
     }
   };
   angular.module(frontApp.modules.courses.name, [
