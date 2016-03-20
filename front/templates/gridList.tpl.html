@@ -1,8 +1,9 @@
-<md-dialog aria-label="{{ pageHeader }}"  flex="50" ng-cloak>
+<md-dialog flex="50" aria-label="{{ pageHeader }}">
   <form>
     <md-toolbar>
-      <div class="md-toolbar-tools">
+      <div class="md-toolbar-tools" style="background: dodgerblue">
         <h2>{{pageHeader}}</h2>
+
         <span flex></span>
         <md-button class="md-icon-button" ng-click="closeClick()">
           <md-icon md-svg-src="../images/ic_close_white.svg" aria-label="Close dialog"></md-icon>
@@ -12,26 +13,24 @@
     <md-dialog-content>
       <div class="md-dialog-content" style="overflow-x: auto">
         <md-list ng-cloak>
-          <md-list-item ng-repeat="item in itemsList" ng-click="itemListClick(item, $event)" class="noright" flex="100" layout="row">
-            <div layout="row" flex="70">
-              <img alt="{{ item.value }}" ng-src="{{ item.img }}" class="md-avatar" />
-              <p>{{ item.value }}</p>
-            </div>
-          </md-list-item>
+        <md-list-item class="md-3-line" ng-repeat="item in itemsList" ng-click="itemListClick(item)">
+          <img alt="{{ item.value }}" ng-src="{{ item.img }}" class="md-avatar" ng-show="itemHasImage" />
+          <div class="md-list-item-text" layout="column">
+            <h3 ng-show="showText(1, style)">{{ item.valueA }}</h3>
+            <h4 ng-show="showText(2, style)">{{ item.valueB }}</h4>
+            <p  ng-show="showText(3, style)">{{ item.valueC }}</p>
+          </div>
+        </md-list-item>
         </md-list>
       </div>
     </md-dialog-content>
-    <md-dialog-actions layout="row">
-      <md-button ng-click="cancelClick($event)">
+    <md-dialog-actions layout="row" layout="end">
+      <md-button ng-click="cancelClick()">
         CANCELAR
       </md-button>
-      <md-button ng-click="confirmClick($event)" style="margin-right:20px;">
+      <md-button ng-click="confirmClick(item)" style="margin-right:20px;">
         OK
       </md-button>
     </md-dialog-actions>
   </form>
 </md-dialog>
-<style>
-
-
-</style>

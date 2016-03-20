@@ -8,7 +8,10 @@ var q           = require('q');
 var moment      = require('moment');
 // List all Courses
 module.exports.listCourses = function() {
-    return coursesModel.courses.find({}).exec();
+    return coursesModel.courses.find({})
+        .populate('subjects.teacher', 'name')
+        .populate('subjects.subject', 'description')
+        .populate('schedule.subject').exec();
 };
 
 // Get Course By Id

@@ -5,10 +5,10 @@
           <p class="md-caption">{{ year.name }}</p>
       </div>
       <div ng-repeat="itemcourse in courses.getCoursesYear(year.name)">
-        <md-card class="card-item"
+        <md-card class="card-item" style="overflow: hidden"
               ng-class="{
-                        'card-expanded md-whiteframe-z3': itemcourse._id == courses.selectedUserIndex,
-                        'card-collapsed': (itemcourse._id != courses.selectedUserIndex && !courses.undefinedIndex)
+                        'card-expanded md-whiteframe-z3': itemcourse._id == courses.selectedCourseIndex,
+                        'card-collapsed': (itemcourse._id != courses.selectedCourseIndex && !courses.undefinedIndex)
                         }" >
           <md-card-title class="card-item-header" ng-click="courses.selectUserIndex(itemcourse._id)">
             <md-card-title-text class="card-item-title-header">
@@ -16,15 +16,15 @@
                 <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>
               </div>
               <div class="title">
-                <p ng-class="{'title-header-collapse': itemcourse._id == courses.selectedUserIndex }">{{ itemcourse.name }}
-                  <span ng-show="itemcourse._id != courses.selectedUserIndex" class="md-subhead center" >{{itemcourse.course_type.description }}</span></p>
+                <p ng-class="{'title-header-collapse': itemcourse._id == courses.selectedCourseIndex }">{{ itemcourse.name }}
+                  <span ng-show="itemcourse._id != courses.selectedCourseIndex" class="md-subhead center" >{{itemcourse.course_type.description }}</span></p>
               </div>
             </md-card-title-text>
           </md-card-title>
           <md-card-content class="card-item-content"
-                           ng-class="{'card-item-content-expanded': itemcourse._id == courses.selectedUserIndex,
+                           ng-class="{'card-item-content-expanded': itemcourse._id == courses.selectedCourseIndex,
                                       'card-item-content-text-expanded': itemcourse._id == courses.expandedTextIndex }"
-                           ng-show="itemcourse._id == courses.selectedUserIndex">
+                           ng-show="itemcourse._id == courses.selectedCourseIndex">
             <div layout="column" layout-padding class="card-item-content-data">
               <div flex="100" layout="row" layout-xs="column" class="data-top">
                 <div flex="100" flex-xs="100" layout="column">
@@ -53,20 +53,20 @@
                   <p ng-show="courses.expandedTextIndex == itemcourse._id">{{ itemcourse.description }}</p>
                 </div>
                 <div flex="33" layout="column" class="button">
-                  <md-button flex="100" ng-show="courses.expandedTextIndex != itemcourse._id && courses.showCollapseButton(itemcourse.description)"
+                  <md-button  ng-show="courses.expandedTextIndex != itemcourse._id && courses.showCollapseButton(itemcourse.description)"
                              ng-click="courses.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver mais</md-button>
-                  <md-button flex="100" ng-show="courses.expandedTextIndex == itemcourse._id && courses.showCollapseButton(itemcourse.description)"
+                  <md-button  ng-show="courses.expandedTextIndex == itemcourse._id && courses.showCollapseButton(itemcourse.description)"
                              ng-click="courses.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver menos</md-button>
                 </div>
               </div>
             </div>
           </md-card-content>
           <md-card-footer class="card-item-footer"
-                          ng-show="itemcourse._id == courses.selectedUserIndex">
+                          ng-show="itemcourse._id == courses.selectedCourseIndex">
             <section layout="row" layout-align="space-around center" layout-wrap>
-              <md-button class="md-primary" md-ink-ripple id="btn-class-{{ itemcourse._id }}" ng-click="courses.showClass(itemcourse._id)">Alunos</md-button>
-              <md-button class="md-primary" md-ink-ripple>Matérias</md-button>
-              <md-button class="md-primary" md-ink-ripple>Cronograma</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-class-{{ itemcourse._id }}" ng-click="courses.showClass(itemcourse._id, itemcourse.class)">Alunos</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-subjects-{{ itemcourse._id }}" ng-click="courses.showSubjects(itemcourse._id, itemcourse.subjects)">Matérias</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-schedule-{{ itemcourse._id }}" ng-click="courses.showSchedule(itemcourse._id, itemcourse.schedule)">Cronograma</md-button>
               <md-button class="md-primary" md-ink-ripple>Notas</md-button>
             </section>
           </md-card-footer>
@@ -77,8 +77,9 @@
 </div>
 
 
-
 <style>
+
+
    /* Sub Header */
   .grid-data .group-header{
     height: 35px;
@@ -197,7 +198,7 @@
      padding: 0;
      padding-bottom: 15px;
      margin: 0;
-     border-top: solid 1px #e5e5e5
+     border-top: solid 1px #e5e5e5;
    }
 
    .card-item-content-data .data-middle .right p{
@@ -226,7 +227,6 @@
    }
    .card-item-content-data .data-footer .description p{
      padding:5px 25px 5px 25px;
-
      text-align: center;
    }
    .card-item-content-data .data-footer .button{
@@ -301,7 +301,7 @@
    }
 
    .card-item-content-expanded {
-     height: 550px;
+     height: 530px;
 
    }
 

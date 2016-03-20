@@ -7,8 +7,7 @@
     .factory(frontApp.modules.utils.services.messages, [
       '$mdDialog',
       '$mdMedia',
-    function (/*DefaultMessagesCtrl, */$mdDialog, $mdMedia) {
-      console.log(frontApp.modules.utils.controllers.defaultMessagesCtrl.name);
+    function ($mdDialog, $mdMedia) {
       return {
         confirm: function (title, content, origin, destiny) {
           var mConfirm = $mdDialog.confirm();
@@ -45,28 +44,6 @@
           mAlert.ok('OK');
 
           return $mdDialog.show(mAlert);
-        },
-        dialog: function (tpl, controller, origin, destiny) {
-          var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
-          return $mdDialog.show({
-            templateUrl: tpl,
-            openFrom: '#'+destiny,
-            closeTo: '#'+destiny,
-            controller:  controller,
-            parent: angular.element(document.body),
-            clickOutsideToClose: true,
-            fullscreen: true
-          });
-            /*.then(function (answer) {
-              $scope.status = 'You said the information was "' + answer + '".';
-            }, function () {
-              $scope.status = 'You cancelled the dialog.';
-            });
-          $scope.$watch(function () {
-            return $mdMedia('xs') || $mdMedia('sm');
-          }, function (wantsFullScreen) {
-            $scope.customFullscreen = (wantsFullScreen === true);
-          });*/
         }
       };
     }]);

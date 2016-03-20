@@ -6,9 +6,9 @@
   frontApp.modules.utils = {
     name: 'utils',
     controllers: {
-      defaultMessagesCtrl: {
-        name: 'DefaultMessagesCtrl',
-        nameas: 'defaultMessages'
+      GridListCtrl: {
+        name: 'GridListCtrl',
+        nameas: 'gridlist'
       }
     },
     factories:{
@@ -18,9 +18,6 @@
     services: {
       localSave: 'localSaveService',
       messages: 'messagesService'
-    },
-    directives: {
-      usernameValidate: 'usernameValidateDirective'
     }
   };
 

@@ -379,33 +379,5 @@ router.post('/:id/activate-student', function (req, res) {
 });
 
 
-router.get('/test', function (req, res) {
-    res.json({
-        success: true,
-        body: req.body,
-        param: req.params
-    });
-});
-router.post('/test', function (req, res) {
-    res.json({
-        success: true,
-        body: req.body,
-        param: req.params
-    });
-});
-router.put('/test', function (req, res) {
-    res.json({
-        success: true,
-        body: req.body,
-        param: req.params
-    });
-});
-router.delete('/test/:id', function (req, res) {
-    res.json({
-        success: true,
-        body: req.body,
-        param: req.params
-    });
-});
 
 module.exports = router;
