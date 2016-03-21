@@ -24,7 +24,7 @@
           localSave.setValueLS(LOCALNAME.USER_TOKEN, value);
         },
         credential: function (callback) {
-          request.get(URLS.MORDOR.CREDENTIAL(), {}, function (err, data, status) {
+          request.get(URLS.MORDOR.CREDENTIAL(), function (err, data, status) {
             callback(err, data, status);
           })
         },

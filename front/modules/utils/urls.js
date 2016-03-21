@@ -21,8 +21,14 @@ var URLS = (function () {
     TEACHERS: function () {
         return '/teachers';
     },
-    COURSES: function () {
+    COURSES: function (code) {
+      if (code)
+        return '/courses/' + code;
+      else
         return '/courses';
+    },
+    COURSETYPE: function () {
+      return '/course-type';
     },
     USERS: function () {
         return '/users';

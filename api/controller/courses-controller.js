@@ -376,6 +376,7 @@ var validateCourse = function (course, status) {
     if (status !== utils.OPERATION_STATUS.DELETE &&
         status !== utils.OPERATION_STATUS.SELECT) {
         course['identify']  = validator.trim(validator.escape(course['identify'].toString() || ''));
+        course['name']  = validator.trim(validator.escape(course['name'].toString() || ''));
         course['active']  = validator.trim(validator.escape(course['active'].toString() || ''));
         course['description']  = validator.trim(validator.escape(course['description'].toString() || ''));
         course['duration']['start']  = validator.trim(course['duration']['start'].toString() || '');
@@ -385,6 +386,9 @@ var validateCourse = function (course, status) {
 
         if (validator.isNull(course['description']))
             objRet['description'] = 'Descrição é de preenchimento obrigatório.';
+
+        if (validator.isNull(course['name']))
+            objRet['description'] = 'Nome do curso é de preenchimento obrigatório.';
 
         if (validator.isNull(course['duration']['start']))
             objRet['start'] = 'Data de início é de preenchimento obrigatório.';

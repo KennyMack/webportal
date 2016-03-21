@@ -1,52 +1,50 @@
 <md-dialog flex="50" aria-label="{{ pageHeader }}">
-  <form>
-    <md-toolbar>
-      <div class="md-toolbar-tools" style="background: dodgerblue">
-        <h2>{{pageHeader}}</h2>
+  <md-toolbar>
+    <div class="md-toolbar-tools" style="background: dodgerblue">
+      <h2>{{pageHeader}}</h2>
 
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="closeClick()">
-          <md-icon md-svg-src="../images/ic_close_white.svg" aria-label="Close dialog"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-    <md-dialog-content>
-      <div class="md-dialog-content" style="padding: 0">
-        <table flex="100" flex-xs="100">
-          <thead >
-            <tr >
-              <th>Matéria</th>
-              <th>Dia</th>
-              <th>Inicio</th>
-              <th>Término</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="item in itemsList" ng-click="itemListClick(item)">
-              <td>{{ item.subject.description }}</td>
-              <td>{{ getDayDescription(item.day) }}</td>
-              <td>{{ getHour(item.duration.start) }}</td>
-              <td>{{ getHour(item.duration.end) }}</td>
-              <td>
-                <md-button class="md-icon-button" aria-label="Mais" layout="center">
-                  <md-icon md-svg-icon="../images/ic_vmore.svg"></md-icon>
-                </md-button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </md-dialog-content>
-    <md-dialog-actions layout="row" layout="end">
-      <md-button ng-click="cancelClick()">
-        CANCELAR
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeClick()">
+        <md-icon md-svg-src="../images/ic_close_white.svg" aria-label="Close dialog"></md-icon>
       </md-button>
-      <md-button ng-click="confirmClick(item)" style="margin-right:20px;">
-        OK
-      </md-button>
-    </md-dialog-actions>
-  </form>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content" style="padding: 0">
+      <table flex="100" flex-xs="100">
+        <thead >
+          <tr >
+            <th>Matéria</th>
+            <th>Dia</th>
+            <th>Inicio</th>
+            <th>Término</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in itemsList" ng-click="itemListClick(item)">
+            <td>{{ item.subject.description }}</td>
+            <td>{{ getDayDescription(item.day) }}</td>
+            <td>{{ getHour(item.duration.start) }}</td>
+            <td>{{ getHour(item.duration.end) }}</td>
+            <td>
+              <md-button class="md-icon-button" aria-label="Mais" layout="center">
+                <md-icon md-svg-icon="../images/ic_vmore.svg"></md-icon>
+              </md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row" layout="end">
+    <md-button ng-click="cancelClick()">
+      CANCELAR
+    </md-button>
+    <md-button ng-click="confirmClick(item)" style="margin-right:20px;">
+      OK
+    </md-button>
+  </md-dialog-actions>
 </md-dialog>
 <style>
   .md-dialog-content {

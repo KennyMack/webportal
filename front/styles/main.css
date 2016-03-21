@@ -7,6 +7,16 @@
 
 body {
   padding: 0;
+  background-color: #ECEFF1 !important;
+}
+
+md-content .btn-action-control {
+  position: fixed;
+  bottom: 10px;
+  width: 99%;
+  height: 0;
+  background:#ECEFF1 !important;
+
 }
 
 md-sidenav#side-left > md-toolbar {
@@ -35,8 +45,13 @@ md-list-item{
   padding: 0;
   cursor: pointer;
 }
+md-content{
+  overflow-x: hidden;
+}
+
 md-content.backview {
   background-color: #ECEFF1 !important;
+
 }
 
 /* Responsive: Portrait tablets and up */

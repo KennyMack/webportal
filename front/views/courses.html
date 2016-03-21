@@ -10,7 +10,7 @@
                         'card-expanded md-whiteframe-z3': itemcourse._id == courses.selectedCourseIndex,
                         'card-collapsed': (itemcourse._id != courses.selectedCourseIndex && !courses.undefinedIndex)
                         }" >
-          <md-card-title class="card-item-header" ng-click="courses.selectUserIndex(itemcourse._id)">
+          <md-card-title class="card-item-header" ng-click="courses.selectCourseIndex(itemcourse._id)">
             <md-card-title-text class="card-item-title-header">
               <div class="icon">
                 <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>

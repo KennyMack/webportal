@@ -6,6 +6,7 @@
   angular.module(frontApp.modules.courses.name)
     .controller(frontApp.modules.courses.controllers.courses.name, [
       frontApp.modules.courses.imports.resource,
+      frontApp.modules.courses.imports.request,
       frontApp.modules.courses.imports.messages,
       frontApp.modules.courses.factories.courses,
       '$controller',
@@ -14,15 +15,62 @@
       '$location',
       '$mdDialog',
       '$mdMedia',
-      function (resource, messages, courses, $controller,
-                $scope, $filter, $location,
+      function (resource, request, messages, courses,
+                $controller, $scope, $filter, $location,
                 $mdDialog, $mdMedia) {
         var vm = this;
         var GridListCtrl = $controller(frontApp.modules.courses.imports.gridlistctrl, {$scope: $scope});
+        $scope.$on('actionMenu::NEW', function() {
+          console.log('NEW');
+          request.get(URLS.COURSETYPE(),
+            function (err, data) {
+              if(!err) {
+                console.log(data);
+                formAction('NEW', data.data);
+              }
+              else
+                messages.alert('Cronograma', 'Não foi possível carregar os tipos de cursos.', '#bt-action-menu-NEW', '#bt-action-menu-NEW');
+            })
+
+        });
+        $scope.$on('actionMenu::EDIT', function() {
+          console.log('EDIT');
+          formAction('EDIT');
+        });
+
+        $scope.$on('actionMenu::REMOVE', function() {
+          vm.removeCourse();
+        });
+
+        vm.removeCourse = function () {
+          if (vm.selectedCourseIndex != undefined) {
+            messages.confirm('Exclusão', 'Confirma a exclusão do curso ?', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE')
+              .then(function () {
+                request.delete(URLS.COURSES(vm.selectedCourseIndex),
+                  function (err, data, status) {
+                    if(!err && status === 200 ){
+                      for (var i = 0, length = vm.courseslist.length; i < length; i++) {
+                        if (vm.courseslist[i]._id === vm.selectedCourseIndex){
+                          vm.courseslist.splice(i, 1);
+                        }
+
+                      }
+                    }
+                  });
+              },
+              function () {
+
+              });
+          }
+          else {
+            messages.alert('Exclusão', 'Selecione um curso para realizar a exclusão.', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE');
+          }
+        };
 
         vm.expandedTextIndex = undefined;
         vm.undefinedIndex = true;
         vm.selectedCourseIndex = undefined;
+
 
         vm.courseslist = [];
         vm.yearsList = [];
@@ -195,6 +243,84 @@
             messages.alert('Cronograma', 'Esse curso não possui cronograma.', 'btn-schedule-' + idCourse, 'btn-schedule-' + idCourse);
         };
 
+        var formAction = function (action, types) {
+          $mdDialog.show({
+            templateUrl: '../../../templates/courseForm.tpl.html',
+            openFrom: '#bt-action-menu-' + action,
+            closeTo: '#bt-action-menu-' + action,
+            locals: {
+              courseType: types,
+              pageHeader: 'Novo Curso',
+              courses: courses,
+              Course: courses.Course()
+            },
+            controller: ['$scope', 'courseType', 'pageHeader', '$q', 'courses', 'Course',
+              function ($scope, courseType, pageHeader, $q, courses, Course) {
+                var vm = this;
+
+                /*var c = new Course();
+
+                c.name = 'Curso teste';
+                c.identify = '000255';
+                c.description = 'Curso testeasasd sda sd';
+                c.active = '1';
+                c.course_type = {
+                  _id : '56db93aa3a8281116f5802e4',
+                  description : 'Curso de verão'
+                };
+                c.duration = {
+                  start: new Date(),
+                  end: new Date()
+                };
+
+
+                c.$post();*/
+
+                Course.get({Id:'56ef8dde823d25863ebe8997'}, function(user, getResponseHeaders){
+                  console.log(user);
+                  user.data.name = 'Curso Novo Teste 3';
+                  new Course(user.data).$put(function(user, putResponseHeaders) {
+                    //user => saved user object
+                    //putResponseHeaders => $http header getter
+                  });
+                  console.log(getResponseHeaders);
+                });
+
+
+                //console.log(c);
+                vm.courseType = courseType;
+                vm.pageHeader = pageHeader;
+                vm.duration = {
+                  start:new Date(), //$filter('date')(Date.now(), 'dd/mm/yyyy'),
+                  end: new Date()//$filter('date')(Date.now(), 'dd/mm/yyyy')
+                };
+
+                vm.closeClick = function () {
+                  $mdDialog.cancel();
+                };
+
+                vm.cancelClick = function () {
+                  $mdDialog.cancel();
+                };
+
+                vm.saveClick = function () {
+                  console.log(self.selectedItem);
+                  //$mdDialog.hide();
+                };
+
+              }],
+            controllerAs: 'frmCourseCtrl',
+            parent: angular.element(document.body),
+            clickOutsideToClose: false,
+            fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
+          })
+            .then(function (day) {
+              console.log(day);
+            }, function (err) {
+              console.error(err);
+            });
+        };
+
         vm.showCollapseButton = function (text) {
           return text.length > 125;
         };
@@ -212,7 +338,7 @@
           }
         };
 
-        vm.selectUserIndex = function (index) {
+        vm.selectCourseIndex = function (index) {
           vm.expandedTextIndex = undefined;
           if (vm.selectedCourseIndex !== index) {
             vm.selectedCourseIndex = index;

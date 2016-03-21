@@ -8,7 +8,7 @@
     .factory(frontApp.modules.utils.factories.request,
       function (BASEURLS, $http, $window) {
         return {
-          get: function (url, data, callback) {
+          get: function (url, callback) {
             var uri = BASEURLS.BASE_API + url;
             $http({
               method: 'GET',
@@ -55,7 +55,7 @@
               callback(true, data, status);
             });
           },
-          delete: function (url, data, callback) {
+          delete: function (url, callback) {
             var uri = BASEURLS.BASE_API + url;
             $http({
               method: 'DELETE',

@@ -13,8 +13,11 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
-    <link rel="stylesheet" type="text/css" href="styles/lib/paper-collapse.min.css">
     <!-- endbuild -->
+    <style>
+
+    </style>
+
   </head>
   <body ng-app="frontApp" layout="column"  ng-controller="IndexCtrl as index" ng-init="index.init()">
     <!--[if lte IE 8]>
@@ -93,28 +96,60 @@
       <ng-view>
 
       </ng-view>
-      <!--<div class="lock-size" layout="row" layout-align="start start" style="position: fixed; left: 85%; top: 90%;">
-        <md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}"
-                           ng-class="selectedMode">
+      <div class="btn-action-control" layout="row" layout-align="end end" style="">
+        <md-fab-speed-dial md-open="index.isOpen" md-direction="up"
+                           ng-class="index.selectedMode">
           <md-fab-trigger>
-            <md-button aria-label="menu" class="md-fab md-warn">
-              <md-icon md-svg-src="../images/ic_menu.svg"></md-icon>
+            <md-button aria-label="Menu" class="md-fab  md-primary" style="background-color: #00b3ee">
+              <md-tooltip md-direction="left">
+                Menu
+              </md-tooltip>
+              <md-icon md-svg-src="../images/ic_add_white.svg" aria-label="Menu"></md-icon>
             </md-button>
           </md-fab-trigger>
           <md-fab-actions>
-            <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
-              <md-icon md-svg-src="../images/ic_menu.svg" aria-label="Twitter"></md-icon>
+            <md-button id="bt-action-menu-NEW" ng-click="index.actionMenu('NEW')" aria-label="Novo" class="md-fab md-mini" style="background-color: #0086b3">
+              <md-icon md-svg-src="../images/ic_draw_white.svg" aria-label="Novo"></md-icon>
+              <md-tooltip md-direction="left">
+                Novo
+              </md-tooltip>
             </md-button>
-            <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
-              <md-icon md-svg-src="../images/ic_menu.svg" aria-label="Facebook"></md-icon>
+            <md-button id="bt-action-menu-EDIT" ng-click="index.actionMenu('EDIT')"  aria-label="Editar" class="md-fab md-mini" style="background-color: dodgerblue">
+              <md-icon md-svg-src="../images/ic_edit_white.svg" aria-label="Editar"></md-icon>
+              <md-tooltip md-direction="left">
+                Editar
+              </md-tooltip>
             </md-button>
-            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
-              <md-icon md-svg-src="../images/ic_menu.svg" aria-label="Google Hangout"></md-icon>
+            <md-button id="bt-action-menu-REMOVE" ng-click="index.actionMenu('REMOVE')"  aria-label="Excluir" class="md-fab md-mini" style="background-color: #ac2925">
+              <md-icon md-svg-src="../images/ic_delete_white.svg" aria-label="Excluir"></md-icon>
+              <md-tooltip md-direction="left">
+                Excluir
+              </md-tooltip>
+            </md-button>
+            <md-button id="bt-action-menu-PRINT" ng-click="index.actionMenu('PRINT')"  aria-label="Imprimir" class="md-fab md-raised md-mini">
+              <md-icon md-svg-src="../images/ic_printer.svg" aria-label="Imprimir"></md-icon>
+              <md-tooltip md-direction="left">
+                Imprimir
+              </md-tooltip>
             </md-button>
           </md-fab-actions>
         </md-fab-speed-dial>
-      </div>-->
+      </div>
+
     </md-content>
+    <script>
+     /* window.addEventListener("resize", function () {
+        var btnActionControl = document.getElementById("btn-action-control");
+
+        btnActionControl.style.position = "static";
+        btnActionControl.style.top = window.innerHeight - 100;
+        console.log(window.innerHeight);
+      });*/
+
+
+    </script>
+
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <!--<script>
@@ -173,6 +208,7 @@
 
     <script src="modules/index/module.index.js"></script>
     <script src="modules/index/controllers/index.controller.js"></script>
+    <script src="modules/index/directives/actions.directive.js"></script>
 
     <script src="modules/main/module.main.js"></script>
     <script src="modules/main/module.main.route.js"></script>

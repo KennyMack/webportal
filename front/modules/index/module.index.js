@@ -14,6 +14,9 @@
         index: URLS.HOME()
       }
     },
+    directives:{
+      actionDirective: 'actionControl'
+    },
     imports: {
       users: frontApp.modules.auth.factories.users,
       authentication: frontApp.modules.auth.factories.authentication,
@@ -24,16 +27,7 @@
     'ngRoute',
     frontApp.modules.utils.name,
     frontApp.modules.auth.name
-  ])/*.config(function ($routeProvider) {
-    $routeProvider.when(frontApp.modules.index.routes.index, {
-      controller: frontApp.modules.index.controllers.index.name,
-      controllerAs: frontApp.modules.index.controllers.index.nameas
-    });
-  })*/;
-
-  /*'modules.auth.factories.authFactory',
-    'modules.utils.services.localStorage',
-    'modules.app.factories.usersFactory'*/
+  ])
 
 }(angular, frontApp));
 

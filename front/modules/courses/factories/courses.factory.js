@@ -22,6 +22,33 @@
               }
             }
           ).get({}).$promise;
+        },
+        Course: function () {
+          return $resource(BASEURLS.BASE_API + URLS.COURSES(':Id'), {Id:'@id'},
+            {
+              post: {
+                method: "POST",
+                headers: {
+                  'Content-Type': 'application/json',
+                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
+                }
+              },
+              put: {
+                method: "PUT",
+                headers: {
+                  'Content-Type': 'application/json',
+                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
+                }
+              },
+              get: {
+                method: "GET",
+                headers: {
+                  'Content-Type': 'application/json',
+                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
+                }
+              }
+            }
+          );
         }
       }
 

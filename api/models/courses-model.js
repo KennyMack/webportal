@@ -6,7 +6,12 @@ var utils      = require('../utils/utils');
 
 var coursesSchema = database.mongoose.Schema({
     identify: {
-       type: String
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
     },
     description: {
         type: String,

@@ -16,15 +16,22 @@ angular.module(frontApp.modules.index.name)
               $scope, $timeout, $mdSidenav,
               $log, $location) {
       var vm = this;
+      vm.mainMenu = [];
       vm.user = users.getUser();
       vm.person = {};
       vm.toggleLeft = buildDelayedToggler('left');
       vm.toggleRight = buildToggler('right');
+      vm.isOpen = true;
+      vm.selectedMode = 'md-fling';
+      vm.imagePath = '../images/android.svg';
 
+      vm.actionMenu = function (action) {
+        $scope.$broadcast('actionMenu::'+action);
+      };
 
       vm.init = function () {
         authentication.credential(function (err, data, status) {
-          if (err || status === 401) {
+          if (err || status !== 200) {
             authentication.logOut();
             vm.goTo(URLS.LOGIN());
           }
@@ -41,7 +48,8 @@ angular.module(frontApp.modules.index.name)
       };
 
       vm.test = function () {
-        localSave.setValueLS(LOCALNAME.USER_TOKEN, 'sadasd');
+        $scope.$broadcast('actionDirective::NEW');
+        /*localSave.setValueLS(LOCALNAME.USER_TOKEN, 'sadasd');*/
       };
 
 
@@ -108,9 +116,7 @@ angular.module(frontApp.modules.index.name)
           });
       };
 
-      vm.imagePath = '../images/android.svg';
 
-      vm.mainMenu = [];
       function buildMenu() {
         console.log('show');
         vm.mainMenu = [];
