@@ -1,4 +1,4 @@
-<md-dialog flex="50" flex-md="60" aria-label="{{ frmCourseCtrl.pageHeader }}">
+<md-dialog flex="50" flex-md="60" aria-label="{{ frmCourseCtrl.pageHeader }}" ng-init="frmCourseCtrl.init()">
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools" style="background: dodgerblue">
@@ -14,16 +14,16 @@
         <div layout="row" flex="100" layout-xs="column" layout-sm="column">
           <md-input-container flex="40" flex-xs="100" flex-sm="100">
             <label>Nome *</label>
-            <input type="text">
+            <input ng-model="frmCourseCtrl.newCourse.name" type="text">
           </md-input-container>
           <md-input-container flex="40" flex-xs="100" flex-sm="100">
             <label>Identificador *</label>
-            <input type="text" >
+            <input ng-model="frmCourseCtrl.newCourse.identify" type="text" >
           </md-input-container>
           <md-input-container flex="20" flex-xs="100" flex-sm="100">
             <label>Tipo *</label>
-            <md-select ng-model="frmCourseCtrl.userState">
-              <md-option ng-repeat="type in frmCourseCtrl.courseType" value="{{type._id}}" >
+            <md-select id="cbe-course-type"  ng-model="frmCourseCtrl.newCourse.course_type._id">
+              <md-option ng-repeat="type in frmCourseCtrl.courseType" value="{{type._id}}">
                 {{type.description}}
               </md-option>
             </md-select>
@@ -32,15 +32,15 @@
         <div layout="row" flex="100" layout-xs="column" layout-sm="column" style="padding: 0">
           <div flex="40" flex-xs="100" layout="column" style="padding: 0">
             <label class="lblDate">Início *</label>
-            <md-datepicker ng-model="frmCourseCtrl.duration.start" md-placeholder="Selecione"></md-datepicker>
+            <md-datepicker ng-model="frmCourseCtrl.newCourse.duration.start" md-placeholder="Selecione"></md-datepicker>
           </div>
           <div flex="40" flex-xs="100" layout="column" style="padding: 0">
             <label class="lblDate">Término *</label>
-            <md-datepicker ng-model="frmCourseCtrl.duration.end" md-placeholder="Selecione"></md-datepicker>
+            <md-datepicker ng-model="frmCourseCtrl.newCourse.duration.end" md-placeholder="Selecione"></md-datepicker>
           </div>
           <div flex="20" flex-xs="100" layout="column" style="padding: 0">
             <label>Status</label>
-            <md-switch class="md-primary" md-no-ink aria-label="Curso Status" ng-model="data.cb5">
+            <md-switch class="md-primary" md-no-ink aria-label="Curso Status" ng-true-value="1" ng-false-value="0" ng-model="frmCourseCtrl.newCourse.active">
 
             </md-switch>
           </div>
@@ -48,7 +48,7 @@
         <div layout="row" flex="100" layout-xs="column" layout-sm="column" style="padding: 0">
           <md-input-container class="md-block" flex="100">
             <label>Descrição do Curso</label>
-            <textarea ng-model="user.biography" md-maxlength="500" rows="5"  ng-true-value="1" ng-false-value="0"  md-select-on-focus></textarea>
+            <textarea ng-model="frmCourseCtrl.newCourse.description" md-maxlength="500" rows="5" md-select-on-focus></textarea>
           </md-input-container>
         </div>
       </div>

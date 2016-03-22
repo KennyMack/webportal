@@ -148,11 +148,29 @@ router.put('/', function (req, res) {
 
     coursesController.validateUpdateCourse(course)
         .then(function (course) {
+            return coursesController.updateCourse(course);
+        })
+        .then(function (course) {
+            res.json({
+                success: true,
+                data: course
+            });
+        })
+        .fail(function (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        });
+
+    /*coursesController.validateUpdateCourse(course)
+        .then(function (course) {
             coursesController.updateCourse(course)
-                .then(function (course) {
+                .then(function (ret, rets) {
                     res.json({
                         success: true,
-                        data: course
+                        data: ret,
+                        ret: rets
                     });
                 }, function (err) {
                     res.json({
@@ -166,7 +184,7 @@ router.put('/', function (req, res) {
                 success: false,
                 data: err
             });
-        });
+        });*/
 });
 
 

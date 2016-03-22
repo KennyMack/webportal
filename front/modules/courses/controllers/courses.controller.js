@@ -21,21 +21,30 @@
         var vm = this;
         var GridListCtrl = $controller(frontApp.modules.courses.imports.gridlistctrl, {$scope: $scope});
         $scope.$on('actionMenu::NEW', function() {
-          console.log('NEW');
           request.get(URLS.COURSETYPE(),
             function (err, data) {
               if(!err) {
-                console.log(data);
                 formAction('NEW', data.data);
               }
               else
-                messages.alert('Cronograma', 'Não foi possível carregar os tipos de cursos.', '#bt-action-menu-NEW', '#bt-action-menu-NEW');
+                messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-NEW', 'bt-action-menu-NEW');
             })
 
         });
         $scope.$on('actionMenu::EDIT', function() {
-          console.log('EDIT');
-          formAction('EDIT');
+          if (vm.selectedCourseIndex != undefined) {
+            request.get(URLS.COURSETYPE(),
+              function (err, data) {
+                if (!err) {
+                  formAction('EDIT', data.data);
+                }
+                else
+                  messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
+              });
+          }
+          else {
+            messages.alert('Edição', 'Selecione um curso para realizar a edição.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
+          }
         });
 
         $scope.$on('actionMenu::REMOVE', function() {
@@ -80,33 +89,27 @@
             .then(function (courses) {
               vm.courseslist = [];
               vm.yearsList = [];
-
-              for (var i = 0, length = courses.data.length; i < length; i++) {
-
-                var year = $filter('date')(courses.data[i]['create_at'], 'yyyy');
-                if (!yearInList(year)) {
-                  vm.yearsList.push({'name': year});
-                }
-                courses.data[i]['year'] = year;
-              }
-
               vm.courseslist = courses.data;
+              createYearList();
             },
             function () {
               $location.path(URLS.SERVERERROR(500));
             });
         };
 
-        var yearInList = function (year) {
-          for (var i = 0, length = vm.yearsList.length; i < length; i++) {
-            if (year == vm.yearsList[i]['name'])
-              return true;
+        var createYearList = function () {
+          vm.yearsList = [];
+          for (var i = 0, length = vm.courseslist.length; i < length; i++) {
+            var year = $filter('date')(vm.courseslist[i]['duration']['start'], 'yyyy');
+            if (!yearInList(year)) {
+              vm.yearsList.push({'name': year});
+            }
+            vm.courseslist[i]['year'] = year;
           }
-          return false;
         };
 
-        vm.getCoursesYear = function (year) {
-          return $filter('filter')(vm.courseslist, {year: year});
+        var yearInList = function (year) {
+          return $filter('filter')(vm.yearsList, { name: year }).length > 0;
         };
 
         vm.showClass = function (idCourse, students) {
@@ -250,50 +253,57 @@
             closeTo: '#bt-action-menu-' + action,
             locals: {
               courseType: types,
-              pageHeader: 'Novo Curso',
+              pageHeader: action === 'EDIT' ? 'Alterar Curso' : 'Novo Curso',
               courses: courses,
-              Course: courses.Course()
+              action: action,
+              Course: courses.Course(),
+              id_course: vm.selectedCourseIndex
             },
-            controller: ['$scope', 'courseType', 'pageHeader', '$q', 'courses', 'Course',
-              function ($scope, courseType, pageHeader, $q, courses, Course) {
+            controller: ['$scope', 'courseType', 'pageHeader', '$q',
+              'courses', 'action', 'Course', 'id_course',
+              function ($scope, courseType, pageHeader, $q,
+                        courses, action, Course, id_course) {
                 var vm = this;
-
-                /*var c = new Course();
-
-                c.name = 'Curso teste';
-                c.identify = '000255';
-                c.description = 'Curso testeasasd sda sd';
-                c.active = '1';
-                c.course_type = {
-                  _id : '56db93aa3a8281116f5802e4',
-                  description : 'Curso de verão'
+                vm.newCourse = {
+                  _id: '',
+                  name: '',
+                  identify: '',
+                  description: '',
+                  active: '',
+                  course_type: {
+                    _id: '',
+                    description: ''
+                  },
+                  duration: {
+                    start: new Date(),
+                    end: new Date()
+                  }
                 };
-                c.duration = {
-                  start: new Date(),
-                  end: new Date()
+
+                vm.init = function () {
+                  if (action !== 'NEW') {
+                    Course.get({Id: id_course}, function (course) {
+                      vm.newCourse = {
+                        _id: id_course,
+                        name: course.data.name,
+                        identify: course.data.identify,
+                        description: course.data.description,
+                        active: course.data.active,
+                        course_type: {
+                          _id: course.data.course_type._id,
+                          description: course.data.course_type.description
+                        },
+                        duration: {
+                          start: new Date(course.data.duration.start),
+                          end: new Date(course.data.duration.end)
+                        }
+                      };
+                    });
+                  }
                 };
 
-
-                c.$post();*/
-
-                Course.get({Id:'56ef8dde823d25863ebe8997'}, function(user, getResponseHeaders){
-                  console.log(user);
-                  user.data.name = 'Curso Novo Teste 3';
-                  new Course(user.data).$put(function(user, putResponseHeaders) {
-                    //user => saved user object
-                    //putResponseHeaders => $http header getter
-                  });
-                  console.log(getResponseHeaders);
-                });
-
-
-                //console.log(c);
                 vm.courseType = courseType;
                 vm.pageHeader = pageHeader;
-                vm.duration = {
-                  start:new Date(), //$filter('date')(Date.now(), 'dd/mm/yyyy'),
-                  end: new Date()//$filter('date')(Date.now(), 'dd/mm/yyyy')
-                };
 
                 vm.closeClick = function () {
                   $mdDialog.cancel();
@@ -304,21 +314,58 @@
                 };
 
                 vm.saveClick = function () {
-                  console.log(self.selectedItem);
-                  //$mdDialog.hide();
-                };
+                  //TODO: Construir a validacao antes de inserir
+                  vm.newCourse.course_type.description = document.getElementById('cbe-course-type').innerText;
+                  if (action === 'NEW') {
+                    var objCourse = new Course(vm.newCourse);
+                    objCourse.$post(function (course) {
+                      if (course.success)
+                        $mdDialog.hide(course.data);
+                      else {
+                        console.log(course.data);
+                        // TODO: implementar mensagens de erro
+                      }
+                    });
+                  }
+                  else {
 
+                    Course.put({}, vm.newCourse, function (course) {
+                      if (course.success) {
+                        $mdDialog.hide(course.data);
+                      }
+                      else {
+                        console.log(course.data);
+                        // TODO: implementar mensagens de erro
+                      }
+                    });
+                  }
+                };
               }],
             controllerAs: 'frmCourseCtrl',
             parent: angular.element(document.body),
             clickOutsideToClose: false,
             fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
           })
-            .then(function (day) {
-              console.log(day);
-            }, function (err) {
-              console.error(err);
-            });
+          .then(function (course) {
+              if (action === 'NEW') {
+                vm.courseslist.push(course);
+              }
+              else {
+                var foundCourse = $filter('filter')(vm.courseslist, {_id: vm.selectedCourseIndex});
+                foundCourse[0].name = course.name;
+                foundCourse[0].identify = course.identify;
+                foundCourse[0].description = course.description;
+                foundCourse[0].active = course.active;
+                foundCourse[0].course_type._id = course.course_type._id;
+                foundCourse[0].course_type.description = course.course_type.description;
+                foundCourse[0].duration.start = new Date(course.duration.start);
+                foundCourse[0].duration.end = new Date(course.duration.end);
+              }
+              createYearList();
+
+          }, function (err) {
+              // TODO: implementar mensagens de erro
+          });
         };
 
         vm.showCollapseButton = function (text) {

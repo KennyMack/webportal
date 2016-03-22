@@ -96,7 +96,7 @@
       <ng-view>
 
       </ng-view>
-      <div class="btn-action-control" layout="row" layout-align="end end" style="">
+      <div class="btn-action-control" layout="row" layout-align="end end" ng-show="index.ensureAuthenticated()">
         <md-fab-speed-dial md-open="index.isOpen" md-direction="up"
                            ng-class="index.selectedMode">
           <md-fab-trigger>

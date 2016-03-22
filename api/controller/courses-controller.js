@@ -44,8 +44,8 @@ module.exports.createCourse = function(course) {
 };
 
 // Update a Course
-module.exports.updateCourse = function ( course) {
-
+module.exports.updateCourse = function (course, callback) {
+    var deferred = q.defer();
     var query = { _id: course['_id'] };
     var data = {
         'identify': course['identify'],
@@ -62,7 +62,19 @@ module.exports.updateCourse = function ( course) {
         }
     };
 
-    return coursesModel.courses.update(query, data, { upsert: false }).exec();
+    coursesModel.courses.findOneAndUpdate(query, data, { upsert: false, new:true }, function (err, course) {
+        if (err)
+            deferred.reject(err);
+        else
+            deferred.resolve(course);
+    });
+
+
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+
+    //return coursesModel.courses.update(query, data, { upsert: false }).exec();
 };
 
 // Validate Subject

@@ -4,7 +4,7 @@
       <div class="group-header" flex="100">
           <p class="md-caption">{{ year.name }}</p>
       </div>
-      <div ng-repeat="itemcourse in courses.getCoursesYear(year.name)">
+      <div ng-repeat="itemcourse in courses.courseslist| filter:{ year: year.name }">
         <md-card class="card-item" style="overflow: hidden"
               ng-class="{
                         'card-expanded md-whiteframe-z3': itemcourse._id == courses.selectedCourseIndex,
@@ -79,7 +79,12 @@
 
 <style>
 
-
+  md-content.backview {
+    -webkit-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -moz-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -o-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -ms-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+  }
    /* Sub Header */
   .grid-data .group-header{
     height: 35px;
