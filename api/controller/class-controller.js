@@ -21,8 +21,8 @@ module.exports.createClass = function (clas, callback) {
             .then(function (course) {
                 actualCourse = course;
                 var classCourse = [];
-                for(var i= 0, length = clas['class'].length; i < length; i++){
-                    if (!studentExistsInCourse(clas['class'][i], course.class)){
+                for (var i = 0, length = clas['class'].length; i < length; i++) {
+                    if (!studentExistsInCourse(clas['class'][i], course.class)) {
                         console.log('item ' + i);
                         classCourse.push(clas['class'][i]);
                     }

@@ -32,7 +32,16 @@
       TEACHERS_ID: 'TEACHERS-ID',
       USER_TOKEN: 'User-Token'
     })
-    .config(function ($routeProvider, $httpProvider) {
+    .config(function ($routeProvider, $httpProvider, $mdDateLocaleProvider) {
+      $mdDateLocaleProvider.formatDate = function(date) {
+        return date ? moment(date).format('DD/MM/YYYY') : '';
+      };
+
+      $mdDateLocaleProvider.parseDate = function(dateString) {
+        var m = moment(dateString, 'DD/MM/YYYY', true);
+        return m.isValid() ? m.toDate() : new Date(NaN);
+      };
+
       $httpProvider.interceptors.push(
         frontApp.modules.auth.factories.authHeaders
       );

@@ -4,20 +4,37 @@
       <div class="group-header" flex="100">
           <p class="md-caption">{{ year.name }}</p>
       </div>
-      <div ng-repeat="itemcourse in courses.courseslist| filter:{ year: year.name }">
+      <div id="grid-courses" ng-repeat="itemcourse in courses.courseslist| filter:{ year: year.name }">
         <md-card class="card-item" style="overflow: hidden"
               ng-class="{
                         'card-expanded md-whiteframe-z3': itemcourse._id == courses.selectedCourseIndex,
                         'card-collapsed': (itemcourse._id != courses.selectedCourseIndex && !courses.undefinedIndex)
                         }" >
-          <md-card-title class="card-item-header" ng-click="courses.selectCourseIndex(itemcourse._id)">
+          <md-card-title class="card-item-header" >
             <md-card-title-text class="card-item-title-header">
-              <div class="icon">
+              <div class="icon" ng-click="courses.selectCourseIndex(itemcourse._id)">
                 <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>
               </div>
-              <div class="title">
+              <div class="title" ng-click="courses.selectCourseIndex(itemcourse._id)">
                 <p ng-class="{'title-header-collapse': itemcourse._id == courses.selectedCourseIndex }">{{ itemcourse.name }}
                   <span ng-show="itemcourse._id != courses.selectedCourseIndex" class="md-subhead center" >{{itemcourse.course_type.description }}</span></p>
+              </div>
+              <div class="tools" ng-click="courses.selectCourseIndex(itemcourse._id)">
+                <md-menu md-offset="-50 4" md-position-mode="target-right target">
+                  <md-button aria-label="Open demo menu"
+                             ng-show="itemcourse._id == courses.selectedCourseIndex"
+                             class="md-icon-button"
+                             ng-click="$mdOpenMenu($event)">
+                    <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg"></md-icon>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item ng-repeat="item in ['Alterar Alunos', 'Alterar Matérias', 'Alterar Cronograma', 'Alterar Notas']">
+                      <md-button ng-click="courses.optionClicked($index)">
+                        <span md-menu-align-target>{{item}} </span>
+                      </md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
               </div>
             </md-card-title-text>
           </md-card-title>
@@ -135,16 +152,34 @@
     width: 50px;
     box-sizing: content-box;
     height: 10px;
+    outline:none;
   }
    .card-item-title-header .icon md-icon{
      padding: 0;
      margin: 0 15px;
+     outline:none;
    }
 
   .card-item-title-header .title {
     padding: 0;
     margin: 0;
     display: table-cell;
+    outline:none;
+  }
+
+  .card-item-title-header .tools {
+    padding: 0;
+    margin: 0;
+    width: 60px;
+    display: table-cell;
+    outline:none;
+  }
+
+  .card-item-title-header .tools md-menu {
+    -webkit-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -moz-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -o-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
+    -ms-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
   }
 
    .card-item-title-header .title p {

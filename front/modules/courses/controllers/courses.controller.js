@@ -20,6 +20,13 @@
                 $mdDialog, $mdMedia) {
         var vm = this;
         var GridListCtrl = $controller(frontApp.modules.courses.imports.gridlistctrl, {$scope: $scope});
+        var active = true;
+        vm.expandedTextIndex = undefined;
+        vm.undefinedIndex = true;
+        vm.selectedCourseIndex = undefined;
+        vm.courseslist = [];
+        vm.yearsList = [];
+
         $scope.$on('actionMenu::NEW', function() {
           request.get(URLS.COURSETYPE(),
             function (err, data) {
@@ -31,6 +38,7 @@
             })
 
         });
+
         $scope.$on('actionMenu::EDIT', function() {
           if (vm.selectedCourseIndex != undefined) {
             request.get(URLS.COURSETYPE(),
@@ -51,9 +59,20 @@
           vm.removeCourse();
         });
 
+        vm.menuActionsCard = function (index) {
+          if (vm.selectedCourseIndex === index) {
+            active = !active;
+          }
+        };
+
+        vm.optionClicked = function (index) {
+          messages.alert('alert', 'option ' + index);
+
+        };
+
         vm.removeCourse = function () {
           if (vm.selectedCourseIndex != undefined) {
-            messages.confirm('Exclusão', 'Confirma a exclusão do curso ?', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE')
+            messages.confirm('Exclusão', 'Confirma a exclusão do curso ?', 'bt-action-menu-REMOVE', 'grid-courses')
               .then(function () {
                 request.delete(URLS.COURSES(vm.selectedCourseIndex),
                   function (err, data, status) {
@@ -64,6 +83,8 @@
                         }
 
                       }
+
+                      createYearList();
                     }
                   });
               },
@@ -76,15 +97,8 @@
           }
         };
 
-        vm.expandedTextIndex = undefined;
-        vm.undefinedIndex = true;
-        vm.selectedCourseIndex = undefined;
-
-
-        vm.courseslist = [];
-        vm.yearsList = [];
-
         vm.init = function () {
+
           courses.getCourses()
             .then(function (courses) {
               vm.courseslist = [];
@@ -250,7 +264,7 @@
           $mdDialog.show({
             templateUrl: '../../../templates/courseForm.tpl.html',
             openFrom: '#bt-action-menu-' + action,
-            closeTo: '#bt-action-menu-' + action,
+            closeTo: '#grid-courses',
             locals: {
               courseType: types,
               pageHeader: action === 'EDIT' ? 'Alterar Curso' : 'Novo Curso',
@@ -316,6 +330,9 @@
                 vm.saveClick = function () {
                   //TODO: Construir a validacao antes de inserir
                   vm.newCourse.course_type.description = document.getElementById('cbe-course-type').innerText;
+                  vm.newCourse.duration.start = moment(vm.newCourse.duration.start)._d;
+                  vm.newCourse.duration.end = moment(vm.newCourse.duration.end)._d;
+
                   if (action === 'NEW') {
                     var objCourse = new Course(vm.newCourse);
                     objCourse.$post(function (course) {
@@ -358,8 +375,8 @@
                 foundCourse[0].active = course.active;
                 foundCourse[0].course_type._id = course.course_type._id;
                 foundCourse[0].course_type.description = course.course_type.description;
-                foundCourse[0].duration.start = new Date(course.duration.start);
-                foundCourse[0].duration.end = new Date(course.duration.end);
+                foundCourse[0].duration.start = Date.parse(course.duration.start);
+                foundCourse[0].duration.end = Date.parse(course.duration.end);
               }
               createYearList();
 
@@ -386,6 +403,8 @@
         };
 
         vm.selectCourseIndex = function (index) {
+          //active = !active;
+
           vm.expandedTextIndex = undefined;
           if (vm.selectedCourseIndex !== index) {
             vm.selectedCourseIndex = index;

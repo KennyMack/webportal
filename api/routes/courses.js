@@ -162,29 +162,6 @@ router.put('/', function (req, res) {
                 data: err
             });
         });
-
-    /*coursesController.validateUpdateCourse(course)
-        .then(function (course) {
-            coursesController.updateCourse(course)
-                .then(function (ret, rets) {
-                    res.json({
-                        success: true,
-                        data: ret,
-                        ret: rets
-                    });
-                }, function (err) {
-                    res.json({
-                        success: false,
-                        data: err
-                    });
-                });
-        })
-        .fail(function(err){
-            res.json({
-                success: false,
-                data: err
-            });
-        });*/
 });
 
 
