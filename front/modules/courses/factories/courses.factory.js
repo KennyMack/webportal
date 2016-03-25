@@ -23,6 +23,18 @@
             }
           ).get({}).$promise;
         },
+        getCourse: function (id) {
+          return $resource(BASEURLS.BASE_API + URLS.COURSES(id), {},
+            {
+              get: {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
+                }
+              }
+            }
+          ).get({}).$promise;
+        },
         Course: function () {
           return $resource(BASEURLS.BASE_API + URLS.COURSES(':Id'), {Id:'@id'},
             {

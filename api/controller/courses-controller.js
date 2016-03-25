@@ -16,7 +16,10 @@ module.exports.listCourses = function() {
 
 // Get Course By Id
 module.exports.getById = function(id) {
-    return coursesModel.courses.findById(id).exec();
+    return coursesModel.courses.findById(id)
+        .populate('subjects.teacher', 'name')
+        .populate('subjects.subject', 'description')
+        .populate('schedule.subject').exec();
 };
 
 // Remove Course By Id
@@ -62,7 +65,7 @@ module.exports.updateCourse = function (course, callback) {
         }
     };
 
-    coursesModel.courses.findOneAndUpdate(query, data, { upsert: false, new:true }, function (err, course) {
+    coursesModel.courses.findOneAndUpdate(query, data, { upsert: false }, function (err, course) {
         if (err)
             deferred.reject(err);
         else
@@ -84,9 +87,6 @@ var validateSubject = function (subject, status) {
 
         subject['teacher'] = validator.trim(validator.escape(subject['teacher'].toString() || ''));
         subject['subject'] = validator.trim(validator.escape(subject['subject'].toString() || ''));
-
-        if (validator.isNull(subject['name']))
-            objRet['name'] = 'Nome do Curso é de preenchumento obrigatório.';
 
         if (validator.isNull(subject['teacher']))
             objRet['teacher'] = 'Professor é de preenchimento obrigatório.';

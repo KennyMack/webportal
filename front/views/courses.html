@@ -20,15 +20,15 @@
                   <span ng-show="itemcourse._id != courses.selectedCourseIndex" class="md-subhead center" >{{itemcourse.course_type.description }}</span></p>
               </div>
               <div class="tools" ng-click="courses.selectCourseIndex(itemcourse._id)">
-                <md-menu md-offset="-50 4" md-position-mode="target-right target">
+                <md-menu md-offset="-20 4" md-position-mode="target-right target">
                   <md-button aria-label="Open demo menu"
                              ng-show="itemcourse._id == courses.selectedCourseIndex"
                              class="md-icon-button"
                              ng-click="$mdOpenMenu($event)">
-                    <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg"></md-icon>
+                    <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
                   </md-button>
                   <md-menu-content>
-                    <md-menu-item ng-repeat="item in ['Alterar Alunos', 'Alterar Matérias', 'Alterar Cronograma', 'Alterar Notas']">
+                    <md-menu-item ng-repeat="item in ['Detalhar', 'Encerrar']">
                       <md-button ng-click="courses.optionClicked($index)">
                         <span md-menu-align-target>{{item}} </span>
                       </md-button>

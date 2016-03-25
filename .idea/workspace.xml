@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="grid structure 100%, default Search List 10%, added new icons&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/app.js" afterPath="$PROJECT_DIR$/front/modules/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/bower.json" afterPath="$PROJECT_DIR$/front/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/class-controller.js" afterPath="$PROJECT_DIR$/api/controller/class-controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/views/course-detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/courses-controller.js" afterPath="$PROJECT_DIR$/api/controller/courses-controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js" afterPath="$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/views/courses.html" afterPath="$PROJECT_DIR$/front/views/courses.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/courses.js" afterPath="$PROJECT_DIR$/api/routes/courses.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/index.html" afterPath="$PROJECT_DIR$/front/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/module.courses.js" afterPath="$PROJECT_DIR$/front/modules/courses/module.courses.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/module.courses.route.js" afterPath="$PROJECT_DIR$/front/modules/courses/module.courses.route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/utils/urls.js" afterPath="$PROJECT_DIR$/front/modules/utils/urls.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="auth.iws" />
@@ -33,36 +36,31 @@
     <favorites_list name="auth" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3184524">
+    <splitter split-orientation="horizontal" split-proportion="0.45723474">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/front/index.html">
+          <file leaf-file-name="courses.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api/routes/courses.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-                  <folding>
-                    <element signature="n#style#0;n#md-toolbar#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-toolbar#0;n#md-sidenav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-toolbar#0;n#md-sidenav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-button#0;n#md-fab-trigger#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-button#0;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-button#1;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-button#2;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <marker date="1458695081528" expanded="true" signature="786:941" placeholder="..." />
-                    <marker date="1458695081528" expanded="true" signature="879:909" placeholder="..." />
-                  </folding>
+                  <caret line="264" column="26" selection-start-line="264" selection-start-column="26" selection-end-line="264" selection-end-column="26" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="courses-controller.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
+          <file leaf-file-name="course-detail.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/front/views/course-detail.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+                  <caret line="69" column="95" selection-start-line="69" selection-start-column="95" selection-end-line="69" selection-end-column="95" />
                   <folding>
-                    <element signature="e#2359#4051#0" expanded="false" />
+                    <element signature="n#style#0;n#md-card#0;n#div#0;n#div#0;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-menu#0;n#div#2;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#0;n#div#0;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#md-card-content#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#md-card-content#0;n#md-card#1;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+                    <marker date="1458885863220" expanded="true" signature="3172:3457" placeholder="{...}" />
+                    <marker date="1458885863220" expanded="true" signature="5383:5603" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -72,32 +70,60 @@
             <entry file="file://$PROJECT_DIR$/front/templates/courseForm.tpl.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+                  <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="67" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="course-detail.controller.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.73341376">
+                  <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
                   <folding>
-                    <element signature="n#style#0;n#div#0;n#md-toolbar#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#1;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#2;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-button#1;n#md-dialog-actions#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
+                    <element signature="e#0#43#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="courses.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/front/views/courses.html">
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.29794934">
-                  <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-                  <folding>
-                    <element signature="n#style#0;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <marker date="1458702937361" expanded="true" signature="572:821" placeholder="{...}" />
-                    <marker date="1458702937361" expanded="true" signature="2681:2877" placeholder="{...}" />
-                  </folding>
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="module.courses.route.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/front/modules/courses/module.courses.route.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="courses-controller.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="260" column="25" selection-start-line="260" selection-start-column="25" selection-end-line="260" selection-end-column="25" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="module.courses.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/front/modules/courses/module.courses.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="19" column="48" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="48" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -106,21 +132,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="courses.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/api/routes/courses.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="314" column="28" selection-start-line="314" selection-start-column="28" selection-end-line="314" selection-end-column="28" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="class-controller.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="class-controller.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/controller/class-controller.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.58504224">
-                  <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -130,7 +146,7 @@
             <entry file="file://$PROJECT_DIR$/front/modules/index/controllers/index.controller.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+                  <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
                   <folding>
                     <element signature="e#1004#1213#0" expanded="false" />
                     <element signature="e#1248#1323#0" expanded="false" />
@@ -148,31 +164,42 @@
             <entry file="file://$PROJECT_DIR$/front/modules/app.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="36" column="55" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="55" />
+                  <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gridList.tpl.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/front/templates/gridList.tpl.html">
+          <file leaf-file-name="handlers.factory.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/front/modules/handlers/factories/handlers.factory.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+                  <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gridListSchedule.tpl.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/front/templates/gridListSchedule.tpl.html">
+          <file leaf-file-name="handlers.controller.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/front/modules/handlers/controllers/handlers.controller.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+                  <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="courses.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/front/views/courses.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="90" column="12" selection-start-line="6" selection-start-column="6" selection-end-line="90" selection-end-column="12" />
                   <folding>
-                    <element signature="n#style#0;n#div#0;n#md-toolbar#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#md-dialog-content#0;n#md-dialog#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-button#1;n#md-dialog-actions#0;n#md-dialog#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+                    <element signature="n#style#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-menu#0;n#div#2;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -182,39 +209,52 @@
             <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+                  <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#43#0" expanded="false" />
                     <element signature="e#2102#2142#0" expanded="false" />
-                    <element signature="e#3465#3802#0" expanded="false" />
-                    <element signature="e#3846#4209#0" expanded="false" />
-                    <element signature="e#4253#4341#0" expanded="false" />
-                    <element signature="e#4397#5293#0" expanded="false" />
-                    <element signature="e#5352#6357#0" expanded="false" />
-                    <element signature="e#6417#8842#0" expanded="false" />
-                    <element signature="e#13886#13933#0" expanded="false" />
-                    <element signature="e#13985#14047#0" expanded="false" />
-                    <element signature="e#14100#14288#0" expanded="false" />
+                    <element signature="e#3903#4266#0" expanded="false" />
+                    <element signature="e#4310#4398#0" expanded="false" />
+                    <element signature="e#6474#8899#0" expanded="false" />
+                    <element signature="e#8952#13892#0" expanded="false" />
+                    <element signature="e#13943#13990#0" expanded="false" />
+                    <element signature="e#14042#14104#0" expanded="false" />
+                    <element signature="e#14157#14345#0" expanded="false" />
+                    <element signature="e#14396#14742#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="urls.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/front/modules/utils/urls.js">
+          <file leaf-file-name="auth.factory.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/front/modules/auth/factories/auth.factory.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-                  <folding />
+                <state vertical-scroll-proportion="0.20627262">
+                  <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+                  <folding>
+                    <element signature="e#1#44#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/front/views/login.html">
+          <file leaf-file-name="courses.factory.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+                  <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+                  <folding>
+                    <element signature="e#0#43#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="students.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/front/views/students.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -228,8 +268,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Html5" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -240,13 +280,18 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="dummy://restClient/response34.json" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/front/404.html" />
-        <option value="$PROJECT_DIR$/front/modules/lib/hammer.min.js" />
-        <option value="$PROJECT_DIR$/front/views/main.html" />
         <option value="$PROJECT_DIR$/front/views/teachers.html" />
         <option value="$PROJECT_DIR$/front/views/users.html" />
         <option value="$PROJECT_DIR$/front/views/students.html" />
@@ -275,7 +320,6 @@
         <option value="$PROJECT_DIR$/front/templates/gridListSchedule.html" />
         <option value="$PROJECT_DIR$/front/modules/utils/module.utils.js" />
         <option value="$PROJECT_DIR$/front/views/login.html" />
-        <option value="$PROJECT_DIR$/front/modules/courses/module.courses.js" />
         <option value="$PROJECT_DIR$/front/modules/index/module.index.js" />
         <option value="$PROJECT_DIR$/front/modules/index/directives/actions.directive.js" />
         <option value="$PROJECT_DIR$/front/modules/index/controllers/index.controller.js" />
@@ -284,17 +328,21 @@
         <option value="$PROJECT_DIR$/front/templates/gridList.tpl.html" />
         <option value="$PROJECT_DIR$/front/styles/main.css" />
         <option value="$PROJECT_DIR$/api/models/courses-model.js" />
-        <option value="$PROJECT_DIR$/front/modules/utils/urls.js" />
         <option value="$PROJECT_DIR$/front/modules/utils/factories/request.js" />
-        <option value="$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js" />
-        <option value="$PROJECT_DIR$/api/controller/courses-controller.js" />
         <option value="$PROJECT_DIR$/front/modules/app.js" />
         <option value="$PROJECT_DIR$/front/templates/courseForm.tpl.html" />
-        <option value="$PROJECT_DIR$/front/index.html" />
-        <option value="$PROJECT_DIR$/front/views/courses.html" />
-        <option value="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" />
         <option value="$PROJECT_DIR$/api/routes/courses.js" />
         <option value="$PROJECT_DIR$/api/controller/class-controller.js" />
+        <option value="$PROJECT_DIR$/front/views/courses.html" />
+        <option value="$PROJECT_DIR$/front/modules/courses/module.courses.route.js" />
+        <option value="$PROJECT_DIR$/front/modules/utils/urls.js" />
+        <option value="$PROJECT_DIR$/front/index.html" />
+        <option value="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" />
+        <option value="$PROJECT_DIR$/front/modules/courses/module.courses.js" />
+        <option value="$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js" />
+        <option value="$PROJECT_DIR$/api/controller/courses-controller.js" />
+        <option value="$PROJECT_DIR$/front/views/course-detail.html" />
+        <option value="$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js" />
       </list>
     </option>
   </component>
@@ -430,7 +478,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -478,24 +525,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -667,7 +696,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="handlers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -681,7 +714,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="handlers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factories" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -695,17 +740,122 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
+              <option name="myItemId" value="front" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="handlers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="courses" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="courses" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factories" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -758,6 +908,374 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9/add-schedule" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{            &quot;day&quot;:&quot;3&quot;,   &quot;subject&quot;: &quot;56db96183a8281116f5802ea&quot;,   &quot;duration&quot;: {                    &quot;start&quot;: &quot;2016-12-01 10:00:01&quot;,                    &quot;end&quot;: &quot;2016-12-01 11:00:00&quot;         }    }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9/add-schedule" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{            &quot;day&quot;:&quot;3&quot;,   &quot;subject&quot;: &quot;56db96183a8281116f5802ea&quot;,   &quot;duration&quot;: {                    &quot;start&quot;: &quot;2016-12-01 10:00:00&quot;,                    &quot;end&quot;: &quot;2016-12-01 11:00:00&quot;         }    }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9/add-schedule" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{            &quot;day&quot;:&quot;3&quot;,   &quot;subject&quot;: &quot;56db96183a8281116f5802ea&quot;,   &quot;duration&quot;: {                    &quot;start&quot;: &quot;2016-12-01 09:00:00&quot;,                    &quot;end&quot;: &quot;2016-12-01 10:00:00&quot;         }    }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9/add-schedule" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{            &quot;day&quot;:&quot;2&quot;,   &quot;subject&quot;: &quot;56db962a3a8281116f5802eb&quot;,   &quot;duration&quot;: {                    &quot;start&quot;: &quot;2016-12-01 10:00:01&quot;,                    &quot;end&quot;: &quot;2016-12-01 10:00:00&quot;         }    }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9/add-schedule" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{            &quot;day&quot;:&quot;2&quot;,   &quot;subject&quot;: &quot;56db962a3a8281116f5802eb&quot;,   &quot;duration&quot;: {                    &quot;start&quot;: &quot;2016-12-01 09:00:01&quot;,                    &quot;end&quot;: &quot;2016-12-01 10:00:00&quot;         }    }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9/add-schedule" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{            &quot;day&quot;:&quot;2&quot;,   &quot;subject&quot;: &quot;56db962a3a8281116f5802eb&quot;,   &quot;duration&quot;: {                    &quot;start&quot;: &quot;2016-12-01 09:00:01&quot;,                    &quot;end&quot;: &quot;2016-12-01 10:00:00&quot;         }    }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{      &quot;subject&quot;: &quot;56db962a3a8281116f5802eb&quot;,   &quot;teacher&quot;: &quot;56db959a3a8281116f5802e9&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9/add-subject" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{      &quot;subject&quot;: &quot;56db962a3a8281116f5802eb&quot;,   &quot;teacher&quot;: &quot;56db959a3a8281116f5802e9&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/courses/56dcc49dcd8c58e24c6eacb9/add-subject" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMjVUMDE6Mjg6NDktMDM6MDAiLCJpYXQiOjE0NTg4ODAxMjksImV4cCI6MTQ1ODk2NjUyOX0.Suz9FJDQTpg6MUWU0D0Y-A_ViuVlE0O-suRuO95e5vQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{      &quot;subject&quot;: &quot;56db96183a8281116f5802ea&quot;,   &quot;teacher&quot;: &quot;56db953e3a8281116f5802e7&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/mordor/authenticate" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="PUT" />
           <option name="urlBase" value="http://portal.com" />
@@ -827,43 +1345,6 @@
             </list>
           </option>
           <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/mordor/authenticate" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
           <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
@@ -2288,335 +2769,6 @@
           <option name="textToSend" value="{       &quot;class&quot;: [           &quot;56dbb3bd3e1f5c9f144cb64b&quot;,    &quot;56dbb5233e1f5c9f144cb64e&quot;       ] }" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/courses" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{   &quot;identify&quot;: &quot;00002&quot;,   &quot;description&quot;: &quot;Ensino Médio&quot;,   &quot;active&quot;: &quot;1&quot;,   &quot;duration&quot;: {     &quot;start&quot;: &quot;2016-01-01&quot;,     &quot;end&quot;: &quot;2016-12-01&quot;   },   &quot;course_type&quot;:{     &quot;_id&quot;: &quot;56db93aa3a8281116f5802e4&quot;,     &quot;description&quot;: &quot;Curso de verão&quot;   } }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/courses/56db94a73a8281116f5802e6/add-class" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{       &quot;class&quot;: [           &quot;56dbb3bd3e1f5c9f144cb64b&quot;,    &quot;56dbb5233e1f5c9f144cb64e&quot;       ] }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/courses/56db94a73a8281116f5802e6/add-class" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="       &quot;class&quot;: [           &quot;56dbb3bd3e1f5c9f144cb64b&quot;,    &quot;56dbb5233e1f5c9f144cb64e&quot;       ] }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/courses/56db94a73a8281116f5802e6/add-class" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{     &quot;class&quot;: [     {       &quot;_id&quot;: &quot;56dbb3bd3e1f5c9f144cb64b&quot;,       &quot;name&quot;: &quot;Jonathan Henrique do Vale&quot;     },     {       &quot;_id&quot;: &quot;56dbb5233e1f5c9f144cb64e&quot;,       &quot;name&quot;: &quot;Allan Harper&quot;     }    ] }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/students/" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;identify&quot;: &quot;00001&quot;,   &quot;name&quot;: &quot;Allan Harper&quot;,   &quot;gender&quot;: &quot;M&quot;,   &quot;dob&quot;: &quot;1980-03-22&quot;,   &quot;active&quot;: &quot;1&quot;,   &quot;social_number&quot;: &quot;123.369.455-32&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/students/" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{   &quot;identify&quot;: &quot;00001&quot;,   &quot;name&quot;: &quot;Allan Harper&quot;,   &quot;gender&quot;: &quot;M&quot;,   &quot;dob&quot;: &quot;1980-03-22&quot;,   &quot;active&quot;: &quot;1&quot;,   &quot;social_number&quot;: &quot;123.369.455-32&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/students/" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;identify&quot;: &quot;00001&quot;,   &quot;name&quot;: &quot;Allan Harper&quot;,   &quot;gender&quot;: &quot;M&quot;,   &quot;dob&quot;: &quot;1980-03-22&quot;,   &quot;active&quot;: &quot;1&quot;,   &quot;social_number&quot;: &quot;123.369.455-32&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="DELETE" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/students/56dbb4f63e1f5c9f144cb64d" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;identify&quot;: &quot;00001&quot;,   &quot;name&quot;: &quot;Allan Harper&quot;,   &quot;gender&quot;: &quot;M&quot;,   &quot;dob&quot;: &quot;1980-03-22&quot;,   &quot;active&quot;: &quot;1&quot;,   &quot;social_number&quot;: &quot;123.369.455-32&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:3000" />
-          <option name="urlPath" value="/students/" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGQ1ZDNhODI4MTExNmY1ODAyZTMiLCJlbWFpbCI6InN0ZXZlQGpvYnMuY29tIiwidXNlcm5hbWUiOiJTdGV2ZSIsImRhdGUiOiIyMDE2LTAzLTA1VDIyOjUyOjQ3LTAzOjAwIiwiaWF0IjoxNDU3MjI5MTY3LCJleHAiOjE0NTczMTU1Njd9.EhCuEhgWZ9kggVok2QXaPUPNuG3TVhA4WyjR4wTEb78" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{    &quot;_id&quot;: &quot;56dbb3bd3e1f5c9f144cb64b&quot;,   &quot;identify&quot;: &quot;00002&quot;,   &quot;name&quot;: &quot;Jonathan Henrique do Vale&quot;,   &quot;gender&quot;: &quot;M&quot;,   &quot;dob&quot;: &quot;1991-03-22&quot;,   &quot;active&quot;: &quot;1&quot;,   &quot;social_number&quot;: &quot;123.369.455-32&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
       </list>
     </option>
   </component>
@@ -2775,28 +2927,51 @@
     <frame x="-1" y="30" width="1922" height="994" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29556075" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53504676" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22257721" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10543131" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17199148" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39836448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17289719" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2593458" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17039403" sideWeight="0.5046729" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" sideWeight="0.5021299" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="SvgViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30724174" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53504676" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39836448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17039403" sideWeight="0.5046729" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" sideWeight="0.5021299" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="SvgViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30724174" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29556075" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22257721" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17199148" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-    </layout>
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17289719" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.gitignore" />
@@ -2843,55 +3018,10 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/front/modules/handlers/module.handlers.route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61881787">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/5xx.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48130277">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18335344">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/views/students.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/controller/students-controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/handlers/factories/handlers.factory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/handlers/module.handlers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2902,14 +3032,6 @@
           <folding>
             <element signature="e#0#43#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/courses/module.courses.route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69469833">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3014,14 +3136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/courses/module.courses.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29794934">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/modules/index/directives/actions.directive.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3055,23 +3169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/auth/factories/auth.factory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding>
-            <element signature="e#1#44#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55006033">
-          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/routes/course-type.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3087,22 +3184,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/courses-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1145959">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/templates/gridListSchedule.tpl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#md-toolbar#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#md-dialog-content#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-button#1;n#md-dialog-actions#0;n#md-dialog#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#md-toolbar#0;n#md-dialog#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#md-dialog-content#0;n#md-dialog#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#md-button#1;n#md-dialog-actions#0;n#md-dialog#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3123,47 +3212,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/index/controllers/index.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding>
-            <element signature="e#1004#1213#0" expanded="false" />
-            <element signature="e#1248#1323#0" expanded="false" />
-            <element signature="e#1678#2016#0" expanded="false" />
-            <element signature="e#2060#2957#0" expanded="false" />
-            <element signature="e#2994#3198#0" expanded="false" />
-            <element signature="e#3233#3367#0" expanded="false" />
-            <element signature="e#3571#6805#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/modules/auth/controllers/person.type.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
-          <folding>
-            <element signature="e#2359#4051#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3179,7 +3232,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52714115">
           <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3187,30 +3239,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.93968636">
           <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/templates/gridList.tpl.html">
+    <entry file="file://$PROJECT_DIR$/front/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding />
+        <state vertical-scroll-proportion="0.93968636">
+          <caret line="206" column="62" selection-start-line="206" selection-start-column="62" selection-end-line="206" selection-end-column="62" />
+          <folding>
+            <element signature="n#style#0;n#md-toolbar#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-toolbar#0;n#md-sidenav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-toolbar#0;n#md-sidenav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-button#0;n#md-fab-trigger#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-fab-trigger#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-button#0;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-button#1;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#1;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-button#2;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#2;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#3;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1458879204088" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1458879204088" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/utils/urls.js">
+    <entry file="file://$PROJECT_DIR$/api/models/courses-model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="55" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="55" />
+        <state vertical-scroll-proportion="-0.44444445">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -3218,47 +3284,167 @@
     <entry file="file://$PROJECT_DIR$/front/templates/courseForm.tpl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/templates/gridList.tpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/index/controllers/index.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#md-toolbar#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#md-dialog-content#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-button#1;n#md-dialog-actions#0;n#form#0;n#md-dialog#0;n#!!top" expanded="true" />
+            <element signature="e#1004#1213#0" expanded="false" />
+            <element signature="e#1248#1323#0" expanded="false" />
+            <element signature="e#1678#2016#0" expanded="false" />
+            <element signature="e#2060#2957#0" expanded="false" />
+            <element signature="e#2994#3198#0" expanded="false" />
+            <element signature="e#3233#3367#0" expanded="false" />
+            <element signature="e#3571#6805#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/index.html">
+    <entry file="file://$PROJECT_DIR$/front/modules/utils/urls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.057901084">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/views/students.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/handlers/module.handlers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4499397">
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/handlers/factories/handlers.factory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/courses/module.courses.route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/courses/module.courses.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="48" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controller/class-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
           <folding>
-            <element signature="n#style#0;n#md-toolbar#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-toolbar#0;n#md-sidenav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-toolbar#0;n#md-sidenav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-button#0;n#md-fab-trigger#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-button#0;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-button#1;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-button#2;n#md-fab-actions#0;n#md-fab-speed-dial#0;n#div#0;n#md-content#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1458695081528" expanded="true" signature="786:941" placeholder="..." />
-            <marker date="1458695081528" expanded="true" signature="879:909" placeholder="..." />
+            <element signature="e#0#43#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/handlers/controllers/handlers.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front/views/courses.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29794934">
-          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="12" selection-start-line="6" selection-start-column="6" selection-end-line="90" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1458702937361" expanded="true" signature="572:821" placeholder="{...}" />
-            <marker date="1458702937361" expanded="true" signature="2681:2877" placeholder="{...}" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-menu#0;n#div#2;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/views/course-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="95" selection-start-line="69" selection-start-column="95" selection-end-line="69" selection-end-column="95" />
+          <folding>
+            <element signature="n#style#0;n#md-card#0;n#div#0;n#div#0;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-menu#0;n#div#2;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#0;n#div#0;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#md-card-content#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#md-card-content#0;n#md-card#1;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1458885863220" expanded="true" signature="3172:3457" placeholder="{...}" />
+            <marker date="1458885863220" expanded="true" signature="5383:5603" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="260" column="25" selection-start-line="260" selection-start-column="25" selection-end-line="260" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/courses.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="264" column="26" selection-start-line="264" selection-start-column="26" selection-end-line="264" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73341376">
+          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3266,36 +3452,29 @@
     <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
           <folding>
             <element signature="e#0#43#0" expanded="false" />
             <element signature="e#2102#2142#0" expanded="false" />
-            <element signature="e#3465#3802#0" expanded="false" />
-            <element signature="e#3846#4209#0" expanded="false" />
-            <element signature="e#4253#4341#0" expanded="false" />
-            <element signature="e#4397#5293#0" expanded="false" />
-            <element signature="e#5352#6357#0" expanded="false" />
-            <element signature="e#6417#8842#0" expanded="false" />
-            <element signature="e#13886#13933#0" expanded="false" />
-            <element signature="e#13985#14047#0" expanded="false" />
-            <element signature="e#14100#14288#0" expanded="false" />
+            <element signature="e#3903#4266#0" expanded="false" />
+            <element signature="e#4310#4398#0" expanded="false" />
+            <element signature="e#6474#8899#0" expanded="false" />
+            <element signature="e#8952#13892#0" expanded="false" />
+            <element signature="e#13943#13990#0" expanded="false" />
+            <element signature="e#14042#14104#0" expanded="false" />
+            <element signature="e#14157#14345#0" expanded="false" />
+            <element signature="e#14396#14742#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/courses.js">
+    <entry file="file://$PROJECT_DIR$/front/modules/auth/factories/auth.factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="314" column="28" selection-start-line="314" selection-start-column="28" selection-end-line="314" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/controller/class-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58504224">
-          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
-          <folding />
+        <state vertical-scroll-proportion="0.20627262">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding>
+            <element signature="e#1#44#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

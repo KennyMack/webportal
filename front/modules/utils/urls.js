@@ -27,6 +27,12 @@ var URLS = (function () {
       else
         return '/courses';
     },
+    COURSEDETAIL: function (code) {
+      if (code)
+        return '/course-detail/' + code;
+      else
+        return '/course-detail';
+    },
     COURSETYPE: function () {
       return '/course-type';
     },

@@ -9,10 +9,15 @@
       courses: {
         name: 'CoursesCtrl',
         nameas: 'courses'
+      },
+      courseDetail: {
+        name: 'CourseDetailCtrl',
+        nameas: 'courseDetail'
       }
     },
     routes: {
-      courses: URLS.COURSES()
+      courses: URLS.COURSES(),
+      courseDetail: URLS.COURSEDETAIL(':idcourse')
     },
     factories: {
       courses: 'coursesFactory'
@@ -20,6 +25,9 @@
     templates: {
       courses: {
         url: 'views/courses.html'
+      },
+      courseDetail: {
+        url: 'views/course-detail.html'
       }
     },
     imports: {

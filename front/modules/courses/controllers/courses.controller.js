@@ -66,7 +66,10 @@
         };
 
         vm.optionClicked = function (index) {
-          messages.alert('alert', 'option ' + index);
+
+          if(index === 0){
+            $location.path(URLS.COURSEDETAIL(vm.selectedCourseIndex));
+          }
 
         };
 

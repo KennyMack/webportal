@@ -1,0 +1,342 @@
+<div ng-cloak ng-init="courseDetail.init()">
+  <md-content class="md-padding backview" layout-md="column"  layout-sm="column" layout-xs="column" layout="row">
+    <div flex="75" flex-md="100" flex-sm="100" flex-xs="100" layout="column">
+      <md-card class="card-left card-item">
+          <md-card-title class="card-item-header" >
+            <md-card-title-text class="card-item-title-header">
+              <div class="icon">
+                <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>
+              </div>
+              <div class="title">
+                <p>{{ itemcourse.name }}
+                  <span class="md-subhead center" >{{courseDetail.course.course_type.description }}</span></p>
+              </div>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content class="card-item-content">
+            <div layout="column"  class="card-item-content-data">
+              <div flex="100" layout="row" layout-xs="column" class="data-top">
+                <div flex="100" flex-xs="100" layout="column">
+                  <div flex="100">
+                    <p class="name">{{ courseDetail.course.name  }}</p>
+                    <p class="identify">{{ courseDetail.course.identify }}</p>
+                    <p class="course-type-description">{{ courseDetail.course.course_type.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="row" layout-xs="column"
+                   class="data-middle">
+                <div flex layout="row" layout-xs="column" class="left">
+                  <p>Inicio: {{ courseDetail.course.duration.start | date:'dd/MM/yyyy' }}</p>
+                  <p>Término: {{ courseDetail.course.duration.end | date:'dd/MM/yyyy' }}</p>
+                </div>
+                <div flex layout="row" layout-align="end" class="right">
+                  <p>{{ courseDetail.course.create_at | date:'dd/MM/yyyy'}}</p>
+                  <p>{{ courseDetail.course.modified | date:'dd/MM/yyyy'}}</p>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="column"
+                   class="data-footer">
+                <div flex="67" layout="column" class="description">
+                  <p>{{ courseDetail.course.description }}</p>
+                </div>
+              </div>
+            </div>
+          </md-card-content>
+        <md-card-actions layout="row">
+          <md-button class="md-icon-button" aria-label="Mais">
+            <md-icon md-svg-icon="../images/ic_vmore.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Opções">
+            <md-icon md-svg-icon="../images/ic_menu.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Compartilhar">
+            <md-icon md-svg-icon="../images/ic_share_arrow.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+      <div id="grid-courses" ng-repeat="itemcourse in courseDetail.course.courseDetail.courselist">
+        <md-card class="card-item" style="overflow: hidden"
+                 ng-class="{
+                        'card-expanded md-whiteframe-z3': itemcourse._id == courseDetail.course.selectedCourseIndex,
+                        'card-collapsed': (itemcourse._id != courseDetail.course.selectedCourseIndex && !courseDetail.course.undefinedIndex)
+                        }" >
+          <md-card-title class="card-item-header" >
+            <md-card-title-text class="card-item-title-header">
+              <div class="icon" ng-click="courseDetail.course.selectCourseIndex(itemcourse._id)">
+                <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>
+              </div>
+              <div class="title" ng-click="courseDetail.course.selectCourseIndex(itemcourse._id)">
+                <p ng-class="{'title-header-collapse': itemcourse._id == courseDetail.course.selectedCourseIndex }">{{ itemcourse.name }}
+                  <span ng-show="itemcourse._id != courseDetail.course.selectedCourseIndex" class="md-subhead center" >{{itemcourse.course_type.description }}</span></p>
+              </div>
+              <div class="tools" ng-click="courseDetail.course.selectCourseIndex(itemcourse._id)">
+                <md-menu md-offset="-20 4" md-position-mode="target-right target">
+                  <md-button aria-label="Open demo menu"
+                             ng-show="itemcourse._id == courseDetail.course.selectedCourseIndex"
+                             class="md-icon-button"
+                             ng-click="$mdOpenMenu($event)">
+                    <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item ng-repeat="item in ['Detalhar', 'Encerrar']">
+                      <md-button ng-click="courseDetail.course.optionClicked($index)">
+                        <span md-menu-align-target>{{item}} </span>
+                      </md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+              </div>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content class="card-item-content"
+                           ng-class="{'card-item-content-expanded': itemcourse._id == courseDetail.course.selectedCourseIndex,
+                                      'card-item-content-text-expanded': itemcourse._id == courseDetail.course.expandedTextIndex }"
+                           ng-show="itemcourse._id == courseDetail.course.selectedCourseIndex">
+            <div layout="column" layout-padding class="card-item-content-data">
+              <div flex="100" layout="row" layout-xs="column" class="data-top">
+                <div flex="100" flex-xs="100" layout="column">
+                  <div flex="100">
+                    <p class="name">{{ itemcourse.name  }}</p>
+                    <p class="identify">{{ itemcourse.identify }}</p>
+                    <p class="course-type-description">{{ itemcourse.course_type.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="row" layout-xs="column"
+                   class="data-middle">
+                <div flex layout="row" layout-xs="column" class="left">
+                  <p>Inicio: {{ itemcourse.duration.start | date:'dd/MM/yyyy' }}</p>
+                  <p>Término: {{ itemcourse.duration.end | date:'dd/MM/yyyy' }}</p>
+                </div>
+                <div flex layout="row" layout-align="end" class="right">
+                  <p>{{ itemcourse.create_at | date:'dd/MM/yyyy'}}</p>
+                  <p>{{ itemcourse.modified | date:'dd/MM/yyyy'}}</p>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="column"
+                   class="data-footer">
+                <div flex="67" layout="column" class="description">
+                  <p ng-show="courseDetail.course.expandedTextIndex != itemcourse._id">{{ courseDetail.course.getShortDescription(itemcourse.description) }}</p>
+                  <p ng-show="courseDetail.course.expandedTextIndex == itemcourse._id">{{ itemcourse.description }}</p>
+                </div>
+                <div flex="33" layout="column" class="button">
+                  <md-button  ng-show="courseDetail.course.expandedTextIndex != itemcourse._id && courseDetail.course.showCollapseButton(itemcourse.description)"
+                              ng-click="courseDetail.course.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver mais</md-button>
+                  <md-button  ng-show="courseDetail.course.expandedTextIndex == itemcourse._id && courseDetail.course.showCollapseButton(itemcourse.description)"
+                              ng-click="courseDetail.course.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver menos</md-button>
+                </div>
+              </div>
+            </div>
+          </md-card-content>
+          <md-card-footer class="card-item-footer"
+                          ng-show="itemcourse._id == courseDetail.course.selectedCourseIndex">
+            <section layout="row" layout-align="space-around center" layout-wrap>
+              <md-button class="md-primary" md-ink-ripple id="btn-class-{{ itemcourse._id }}" ng-click="courseDetail.course.showClass(itemcourse._id, itemcourse.class)">Alunos</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-subjects-{{ itemcourse._id }}" ng-click="courseDetail.course.showSubjects(itemcourse._id, itemcourse.subjects)">Matérias</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-schedule-{{ itemcourse._id }}" ng-click="courseDetail.course.showSchedule(itemcourse._id, itemcourse.schedule)">Cronograma</md-button>
+              <md-button class="md-primary" md-ink-ripple>Notas</md-button>
+            </section>
+          </md-card-footer>
+        </md-card>
+      </div>
+    </div>
+    <div flex="25" flex-xs="100" flex-md="100" flex-sm="100" layout="column" layout-md="row">
+      <md-card class="card-right" flex>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Alunos ({{ courseDetail.course.class.length }})</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div class="md-dialog-content" style="overflow-x: auto">
+            <md-list ng-cloak>
+              <md-list-item class="md-3-line" ng-repeat="item in courseDetail.course.class">
+                <img alt="{{ item.name }}" ng-src="../images/ic_person.svg" class="md-avatar" />
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ item.name }}</h3>
+                </div>
+              </md-list-item>
+            </md-list>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="row">
+          <md-button class="md-icon-button" aria-label="Opções">
+            <md-icon md-svg-icon="../images/ic_menu.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card class="card-right" flex>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Matérias ({{ courseDetail.course.subjects.length }})</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div class="md-dialog-content" style="overflow-x: auto">
+            <md-list ng-cloak>
+              <md-list-item class="md-3-line" ng-repeat="item in courseDetail.course.subjects">
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ item.subject.description }}</h3>
+                  <p>{{ item.teacher.name }}</p>
+                </div>
+              </md-list-item>
+            </md-list>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="row">
+          <md-button class="md-icon-button" aria-label="Opções">
+            <md-icon md-svg-icon="../images/ic_menu.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card class="card-right" flex>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Notas</span>
+            <span class="md-subhead">todo :)</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-actions layout="row">
+          <md-button class="md-icon-button" aria-label="Mais">
+            <md-icon md-svg-icon="../images/ic_vmore.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Opções">
+            <md-icon md-svg-icon="../images/ic_menu.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Compartilhar">
+            <md-icon md-svg-icon="../images/ic_share_arrow.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </md-content>
+</div>
+
+<style>
+  .card-right{
+    max-height: 550px;
+  }
+  .card-right .md-dialog-content{
+    height: 400px;
+  }
+
+  /* Card */
+  .card-left .card-item{
+    box-sizing: content-box;
+    border-radius:0;
+    margin-bottom:0;
+    margin-top:0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Card */
+
+  /* Card Header */
+  .card-left .card-item-header {
+    margin: 0;
+    padding: 0;
+    min-height: 55px;
+    cursor: pointer;
+    outline:none;
+  }
+
+  .card-left .card-item-title-header{
+    padding: 0;
+    width: 100%;
+    display: inline-table;
+  }
+
+  .card-left .card-item-title-header .icon{
+    padding: 0;
+    margin: 0;
+    display: table-cell;
+    width: 50px;
+    box-sizing: content-box;
+    height: 10px;
+    outline:none;
+  }
+  .card-left .card-item-title-header .icon md-icon{
+    padding: 0;
+    margin: 0 15px;
+    outline:none;
+  }
+
+  .card-left .card-item-title-header .title {
+    padding: 0;
+    margin: 0;
+    display: table-cell;
+    outline:none;
+  }
+
+  /* Content */
+  .card-left .card-item-content{
+    padding: 0;
+  }
+
+  .card-left .card-item-content .card-left .card-item-content-data {
+    padding: 0;
+    padding-top: 10px;
+    border-top: solid 1px #dddddd;
+
+  }
+
+  .card-left .card-item-content-data .data-top{
+    padding: 0;
+    margin: 0;
+  }
+  .card-left .card-item-content-data .data-top p{
+    padding: 0;
+    margin: 0 0 0 25px;
+  }
+
+  .card-left .card-item-content-data .data-top p.name {
+    color: rgba(0,0,0,0.87);
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .card-left .card-item-content-data .data-top p.identify, p.course-type-description {
+    color: #757575;
+    font-size: 13px;
+    line-height: 24px;
+  }
+
+
+  .card-left .card-item-content-data .data-middle{
+    box-sizing: content-box;
+    padding: 0;
+    padding-bottom: 15px;
+    margin: 0;
+    border-top: solid 1px #e5e5e5;
+  }
+
+  .card-left .card-item-content-data .data-middle .right p{
+    color: #757575;
+    text-align: right;
+    font-size: .8em;
+    line-height: 24px;
+  }
+
+  .card-left .card-item-content-data .data-middle p{
+    padding: 0;
+    margin: 15px 0 0 25px;
+  }
+
+  .card-left .card-item-content-data .data-footer{
+    padding: 0;
+    margin: 0;
+    border-top: solid 1px #e5e5e5;
+    max-height: 250px;
+  }
+
+  .card-left .card-item-content-data .data-footer .description{
+    padding: 0;
+    margin: 0;
+    overflow-x: auto;
+  }
+  .card-left .card-item-content-data .data-footer .description p{
+    padding:5px 25px 5px 25px;
+    text-align: center;
+  }
+
+</style>
