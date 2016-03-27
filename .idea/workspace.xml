@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="grid structure 100%, default Search List 10%, added new icons&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/views/course-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/courses-controller.js" afterPath="$PROJECT_DIR$/api/controller/courses-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js" afterPath="$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/views/courses.html" afterPath="$PROJECT_DIR$/front/views/courses.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/index.html" afterPath="$PROJECT_DIR$/front/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/module.courses.js" afterPath="$PROJECT_DIR$/front/modules/courses/module.courses.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/module.courses.route.js" afterPath="$PROJECT_DIR$/front/modules/courses/module.courses.route.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/utils/urls.js" afterPath="$PROJECT_DIR$/front/modules/utils/urls.js" />
+    <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="auth.iws" />
@@ -79,7 +69,7 @@
           <file leaf-file-name="course-detail.controller.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.73341376">
+                <state vertical-scroll-proportion="1.1094891">
                   <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
                   <folding>
                     <element signature="e#0#43#0" expanded="false" />
@@ -229,7 +219,7 @@
           <file leaf-file-name="auth.factory.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/front/modules/auth/factories/auth.factory.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.20627262">
+                <state vertical-scroll-proportion="0.3120438">
                   <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
                   <folding>
                     <element signature="e#1#44#0" expanded="false" />
@@ -2911,7 +2901,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458344232633</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="view details of class 20%">
+      <created>1458886481715</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1458886481715</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -2925,8 +2921,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="30" width="1922" height="994" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29556075" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53504676" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2939,12 +2936,11 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17039403" sideWeight="0.5046729" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" sideWeight="0.5021299" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="SvgViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30724174" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32827103" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2997,7 +2993,8 @@
     <MESSAGE value="layout 100%, login and security 100%, users type 10% &#10;" />
     <MESSAGE value="FrontApp file structure reorganized, authorization 5%, users type 10% &#10;" />
     <MESSAGE value="grid structure 100%, default Search List 10%, added new icons&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="grid structure 100%, default Search List 10%, added new icons&#10;" />
+    <MESSAGE value="view details of class 20%" />
+    <option name="LAST_COMMIT_MESSAGE" value="view details of class 20%" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3441,7 +3438,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73341376">
+        <state vertical-scroll-proportion="1.1094891">
           <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
           <folding>
             <element signature="e#0#43#0" expanded="false" />
@@ -3470,7 +3467,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front/modules/auth/factories/auth.factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20627262">
+        <state vertical-scroll-proportion="0.3120438">
           <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
           <folding>
             <element signature="e#1#44#0" expanded="false" />
