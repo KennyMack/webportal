@@ -7,8 +7,8 @@ var url = config.base_url + 'mordor/authenticate';
 config.frisby.create('Login Inválido')
     .post(url,
     {
-        "username": "tony@stark.com",
-        "password": "1234"
+        "username": "bill@gates.com",
+        "password": "12345"
     }, { json: true })
     .expectStatus(200)
     .expectHeaderContains('content-type', 'application/json')
@@ -47,7 +47,7 @@ config.frisby.create('Sem usuário e sem senha')
 config.frisby.create('Sem senha')
     .post(url,
     {
-        "username": "tony@stark.com",
+        "username": "bill@gates.com",
         "password": ""
     }, { json: true })
     .expectStatus(200)
@@ -88,7 +88,7 @@ config.frisby.create('Sem Usuario')
 config.frisby.create('Login Ok')
     .post(url,
     {
-        "username": "tony@stark.com",
+        "username": "bill@gates.com",
         "password": "123456"
     }, { json: true })
     .expectStatus(200)

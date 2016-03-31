@@ -24,7 +24,7 @@ config.frisby.create('return error 404 (json)')
 
 
 config.frisby.create('return Teacher (json)')
-    .get(url + '/56ce6807a3b695466a37ea54')
+    .get(url + '/56fc666aab1c1e1e16cec4d3')
     .expectStatus(200)
     .expectHeaderContains('content-type', 'application/json')
     .expectJSONTypes({
@@ -54,7 +54,7 @@ config.frisby.create('Create Teacher (json)')
 config.frisby.create('Update Teacher (json)')
     .put(url,
     {
-        "_id": "56db959a3a8281116f5802e9",
+        "_id": "56fc666aab1c1e1e16cec4d3",
         "name": config.names[teacherName] + " " + config.surnames[teacherSurName],
         "gender": "M",
         "dob": "1990-10-21",

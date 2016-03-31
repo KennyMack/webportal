@@ -4,8 +4,11 @@
 var config = require('../config-test');
 var url = config.base_url + 'users';
 
+var emailNum = Math.floor((Math.random() * 6));
+var dominioNum = Math.floor((Math.random() * 6));
+
 config.frisby.create('return error 404 (json)')
-    .get(url + '/56ca7d7140012b846bf8f6dc')
+    .get(url + '/56db8d5d3a8281116f5802ea')
     .expectStatus(404)
     .expectHeaderContains('content-type', 'application/json')
     .expectJSON({
@@ -20,7 +23,7 @@ config.frisby.create('return error 404 (json)')
 
 
 config.frisby.create('return user (json)')
-    .get(url + '/56ce6807a3b695466a37ea54')
+    .get(url + '/56db8d5d3a8281116f5802e3')
     .expectStatus(200)
     .expectHeaderContains('content-type', 'application/json')
     /*.expectJSON({
@@ -69,9 +72,9 @@ config.frisby.create('return user (json)')
 config.frisby.create('Update user (json)')
     .put(url,
     {
-        "_id": "56ce6807a3b695466a37ea54",
-        "email": "tony@stark.com.br",
-        "username" : "Iron Man",
+        "_id": "56db8d5d3a8281116f5802e3",
+        "email": config.names[emailNum] +"@" + config.surnames[dominioNum] + ".com.br",
+        "username" : config.names[emailNum] + " " + config.surnames[dominioNum],
         "password" : "12345",
         "passwordbis" : "12345",
         "active": "1"

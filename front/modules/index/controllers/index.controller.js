@@ -16,6 +16,7 @@ angular.module(frontApp.modules.index.name)
               $scope, $timeout, $mdSidenav,
               $log, $location) {
       var vm = this;
+      vm.showButton = true;
       vm.mainMenu = [];
       vm.user = users.getUser();
       vm.person = {};
@@ -28,6 +29,16 @@ angular.module(frontApp.modules.index.name)
       vm.actionMenu = function (action) {
         $scope.$broadcast('actionMenu::'+action);
       };
+
+      $scope.$on('actionMenu::SHOWBUTTON', function() {
+        vm.showButton = true;
+        console.log('actionMenu::SHOWBUTTON');
+      });
+
+      $scope.$on('actionMenu::HIDEBUTTON', function() {
+        vm.showButton = false;
+        console.log('actionMenu::HIDEBUTTON');
+      });
 
       vm.init = function () {
         authentication.credential(function (err, data, status) {
@@ -48,7 +59,8 @@ angular.module(frontApp.modules.index.name)
       };
 
       vm.test = function () {
-        $scope.$broadcast('actionDirective::NEW');
+        $scope.$broadcast('actionMenu::HIDEBUTTON');
+        //$scope.$broadcast('actionDirective::NEW');
         /*localSave.setValueLS(LOCALNAME.USER_TOKEN, 'sadasd');*/
       };
 

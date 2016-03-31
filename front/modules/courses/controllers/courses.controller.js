@@ -101,7 +101,7 @@
         };
 
         vm.init = function () {
-
+          $scope.$broadcast('actionMenu::SHOWBUTTON');
           courses.getCourses()
             .then(function (courses) {
               vm.courseslist = [];

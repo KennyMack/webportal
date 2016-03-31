@@ -3,24 +3,17 @@ var path       = require('path');
 var logger     = require('morgan');
 var bodyParser = require('body-parser');
 var config     = require('./config/config.js');
-//var validator  = require('validator');
-
-// Routers
-var routes     = require('./routes/index');
-var users      = require('./routes/users');
-var auth       = require('./routes/auth');
-var courseType = require('./routes/course-type');
-var courses    = require('./routes/courses');
-var teachers   = require('./routes/teachers');
-var subjects   = require('./routes/subjects');
-var students   = require('./routes/students');
+var socket_io  = require( "socket.io" );
 
 // App
 var app = express();
 
+// Socket.io
+var io           = socket_io();
+app.io           = io;
+
 // Globals
 app.set('secretKey', config['secretKey']);
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -81,6 +74,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware to headers
 app.use(function (req, res, next) {
+
+  io.emit('hello', {hello: 'world'});
   console.log('middleware');
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -98,6 +93,17 @@ app.use(function (req, res, next) {
   //}
   next();
 });
+
+// Routers
+var routes     = require('./routes/index')(express, io);
+var users      = require('./routes/users')(express, io);
+var auth       = require('./routes/auth')(express, io);
+var courseType = require('./routes/course-type')(express, io);
+var courses    = require('./routes/courses')(express, io);
+var teachers   = require('./routes/teachers')(express, io);
+var subjects   = require('./routes/subjects')(express, io);
+var students   = require('./routes/students')(express, io);
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -137,6 +143,15 @@ app.use(function(err, req, res) {
     message: err.message,
     error: {}
   });
+});
+
+io.on("connection", function(socket){
+  console.log('New connection found.');
+
+  /*socket.on('loko', function (data) {
+    console.log(data);
+    socket.broadcast.emit('loko', data);
+  })*/
 });
 
 
