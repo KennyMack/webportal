@@ -68,7 +68,7 @@
         </md-card-title>
         <md-card-content class="card-item-content" style="overflow-x: auto">
           <div layout="column"  class="card-item-content-data">
-            <table flex="100" flex-xs="100">
+            <table flex="100" flex-xs="100" id="tbl-schedule">
               <thead>
               <tr>
                 <th>Dia</th>
@@ -87,9 +87,24 @@
                 <td>{{ item.duration.start }}</td>
                 <td>{{ item.duration.end }}</td>
                 <td>
-                  <md-button class="md-icon-button" aria-label="Mais" layout="center">
+                  <md-menu md-offset="-20 4" md-position-mode="target-right target" >
+                    <md-button aria-label="Open demo menu"
+                               class="md-icon-button"
+                               id="opt-schedule-{{ item._id }}"
+                               ng-click="$mdOpenMenu($event)">
+                      <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
+                    </md-button>
+                    <md-menu-content>
+                      <md-menu-item ng-repeat="opt in ['Alterar', 'Excluir']">
+                        <md-button ng-click="courseDetail.optionClicked($index, item._id)" >
+                          <span md-menu-align-target>{{opt}} </span>
+                        </md-button>
+                      </md-menu-item>
+                    </md-menu-content>
+                  </md-menu>
+                  <!--<md-button class="md-icon-button" aria-label="Mais" layout="center">
                     <md-icon md-svg-icon="../images/ic_vmore.svg" style="width: 14px; height: 14px"></md-icon>
-                  </md-button>
+                  </md-button>-->
                 </td>
               </tr>
               </tbody>
@@ -98,6 +113,8 @@
         </md-card-content>
         <md-card-actions layout="row"  style="padding: 0; margin-top: 20px;" layout-align="end end">
           <md-button style="float: right; margin-top: -25px; background: mediumpurple"
+                     id="btn-add-schedule"
+                     ng-click="courseDetail.addSchedule()"
                      class="md-fab md-mini md-primary" aria-label="Home">
             <md-icon class="material-icons" md-svg-icon="images/ic_add_white.svg" style="width: 14px; height: 14px"></md-icon>
           </md-button>

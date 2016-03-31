@@ -1,0 +1,78 @@
+<md-dialog flex="50" flex-md="60" aria-label="Cronograma" ng-init="courseSchedule.init()">
+  <form ng-submit="$event.preventDefault()" name="searchForm" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools" style="background: dodgerblue">
+        <h2>Cronograma</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="courseSchedule.closeClick()">
+          <md-icon md-svg-src="../images/ic_close_white.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column" flex="100" layout-xs="column" style="overflow-x: auto">
+        <div layout="row" flex="100" layout-xs="column" layout-sm="column">
+          <md-input-container flex="20" flex-xs="100" flex-sm="100">
+            <label>Dia da Semana *</label>
+            <md-select id="cbeDayWeek" name="cbeDayWeek"  ng-model="courseSchedule.newCourse.course_type._id">
+              <md-option ng-repeat="day in [1, 2, 3, 4, 5, 6, 7]" value="{{day}}">
+                {{ courseSchedule.getDayDescription(day) }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-autocomplete flex="20" flex-xs="100" flex-sm="100" required
+                           md-input-name="autocompleteField"
+                           md-no-cache="courseSchedule.noCache"
+                           md-selected-item="courseSchedule.selectedItem"
+                           md-search-text="courseSchedule.searchText"
+                           md-items="item in courseSchedule.querySearch(courseSchedule.searchText)"
+                           md-item-text="item.description"
+                           md-floating-label="Matéria*">
+            <md-item-template>
+              <span md-highlight-text="courseSchedule.searchText">{{item.description}}</span>
+            </md-item-template>
+          </md-autocomplete>
+          <div flex="20" flex-xs="100" flex-sm="100">
+            <h4 class="md-subhead">Using $mdpDatePicker service</h4>
+            <md-button class="md-raised md-warn" ng-click="courseSchedule.showTimePicker($event)" aria-label="show picker">show picker</md-button>
+            <p>
+              {{ courseSchedule.currentDate | date:'hh24:mm' }}
+            </p>
+          </div>
+
+        </div>
+        <div layout="row" flex="100" layout-xs="column" layout-sm="column" style="padding: 0">
+          <div flex="40" flex-xs="100" layout="column" style="padding: 0">
+            <label class="lblDate">Início *</label>
+            <md-datepicker ng-model="courseSchedule.newCourse.duration.start" md-placeholder="Selecione"></md-datepicker>
+          </div>
+          <div flex="40" flex-xs="100" layout="column" style="padding: 0">
+            <label class="lblDate">Término *</label>
+            <md-datepicker ng-model="courseSchedule.newCourse.duration.end" md-placeholder="Selecione"></md-datepicker>
+          </div>
+          <div flex="20" flex-xs="100" layout="column" style="padding: 0">
+            <label>Status</label>
+            <md-switch class="md-primary" md-no-ink aria-label="Curso Status" ng-true-value="1" ng-false-value="0" ng-model="courseSchedule.newCourse.active">
+
+            </md-switch>
+          </div>
+        </div>
+        <div layout="row" flex="100" layout-xs="column" layout-sm="column" style="padding: 0">
+          <md-input-container class="md-block" flex="100">
+            <label>Descrição do Curso</label>
+            <textarea ng-model="courseSchedule.newCourse.description" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+          </md-input-container>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout="end">
+      <md-button ng-click="courseSchedule.cancelClick()">
+        CANCELAR
+      </md-button>
+      <md-button ng-click="courseSchedule.saveClick()" style="margin-right:20px;">
+        SALVAR
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+

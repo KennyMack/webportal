@@ -13,6 +13,10 @@
       courseDetail: {
         name: 'CourseDetailCtrl',
         nameas: 'courseDetail'
+      },
+      courseSchedule: {
+        name: 'CourseScheduleCtrl',
+        nameas: 'courseSchedule'
       }
     },
     routes: {

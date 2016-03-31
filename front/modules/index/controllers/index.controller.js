@@ -10,13 +10,12 @@ angular.module(frontApp.modules.index.name)
     frontApp.modules.index.imports.localSave,
     frontApp.modules.index.imports.users,
     '$scope', '$timeout', '$mdSidenav',
-    '$log', '$location',
+    '$log', '$location', '$rootScope',
     function (LOCALNAME,
               authentication, localSave, users,
               $scope, $timeout, $mdSidenav,
-              $log, $location) {
+              $log, $location, $rootScope) {
       var vm = this;
-      vm.showButton = true;
       vm.mainMenu = [];
       vm.user = users.getUser();
       vm.person = {};
@@ -27,18 +26,8 @@ angular.module(frontApp.modules.index.name)
       vm.imagePath = '../images/android.svg';
 
       vm.actionMenu = function (action) {
-        $scope.$broadcast('actionMenu::'+action);
+        $scope.$broadcast('actionMenu::'+ action);
       };
-
-      $scope.$on('actionMenu::SHOWBUTTON', function() {
-        vm.showButton = true;
-        console.log('actionMenu::SHOWBUTTON');
-      });
-
-      $scope.$on('actionMenu::HIDEBUTTON', function() {
-        vm.showButton = false;
-        console.log('actionMenu::HIDEBUTTON');
-      });
 
       vm.init = function () {
         authentication.credential(function (err, data, status) {

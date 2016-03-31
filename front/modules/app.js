@@ -10,6 +10,7 @@
     'ngAnimate',
     'ngResource',
     'ngSanitize',
+    'mdPickers',
     frontApp.modules.utils.name,
     frontApp.modules.handlers.name,
     frontApp.modules.auth.name,
@@ -61,16 +62,18 @@
     .run([
       frontApp.modules.auth.factories.authentication,
       frontApp.modules.auth.factories.authorization,
-
-      '$rootScope', '$location',
+      '$rootScope',
+      '$location',
       function (authentication, authorization, $rootScope, $location) {
-        /*$rootScope.$on('$routeChangeStart', function (event, next) {
-          authorization.authorize(next, function (cont, path) {
+
+        $rootScope.$on('$routeChangeStart', function (event, next) {
+          $rootScope.__showButton = true;
+          /*authorization.authorize(next, function (cont, path) {
             if(!cont)
               $location.path(path);
-          });
+          });*/
 
-        });*/
+        });
       }]);
 }(angular, frontApp));
 

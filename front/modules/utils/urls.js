@@ -18,6 +18,12 @@ var URLS = (function () {
     STUDENTS: function () {
         return '/students';
     },
+    SUBJECTS: function (code) {
+      if (code)
+        return '/subjects/' + code;
+      else
+        return '/subjects';
+    },
     TEACHERS: function () {
         return '/teachers';
     },
@@ -32,6 +38,12 @@ var URLS = (function () {
         return '/course-detail/' + code;
       else
         return '/course-detail';
+    },
+    COURSEADDSCHEDULE: function (idCourse) {
+      return '/courses/' + idCourse + '/';
+    },
+    COURSEREMOVESCHEDULE: function (idCourse, idschedule) {
+      return '/courses/' + idCourse + '/remove-schedule/' + idschedule;
     },
     COURSETYPE: function () {
       return '/course-type';
