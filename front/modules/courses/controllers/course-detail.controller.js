@@ -58,126 +58,57 @@
         };
 
         vm.addSchedule = function () {
-          $mdDialog.show({
-            templateUrl: '../../../templates/courseScheduleForm.tpl.html',
-            openFrom: '#btn-add-schedule',
-            closeTo: '#tbl-schedule',
-            /*locals: {
-              courseType: types,
-              courses: courses,
-              action: action,
-              Course: courses.Course(),
-              id_course: vm.selectedCourseIndex
-            },*/
-            controllerAs: frontApp.modules.courses.controllers.courseSchedule.nameas,
-            controller:frontApp.modules.courses.controllers.courseSchedule.name,/* ['$scope', 'courseType', 'pageHeader', '$q',
-              'courses', 'action', 'Course', 'id_course',
-              function ($scope, courseType, pageHeader, $q,
-                        courses, action, Course, id_course) {
-                var vm = this;
-                vm.newCourse = {
-                  _id: '',
-                  name: '',
-                  identify: '',
-                  description: '',
-                  active: '',
-                  course_type: {
-                    _id: '',
-                    description: ''
-                  },
-                  duration: {
-                    start: new Date(),
-                    end: new Date()
-                  }
-                };
+          if (vm.course.subjects.length > 0) {
+            $mdDialog.show({
+              templateUrl: '../../../templates/courseScheduleForm.tpl.html',
+              openFrom: '#btn-add-schedule',
+              closeTo: '#tbl-schedule',
+              controllerAs: frontApp.modules.courses.controllers.courseSchedule.nameas,
+              controller: frontApp.modules.courses.controllers.courseSchedule.name,
+              parent: angular.element(document.body),
+              clickOutsideToClose: false,
+              locals: {
+                status: 'NEW'
+              },
+              fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
+            })
+              .then(function (course, status) {
+                console.log(course);
+                if (status === 'NEW') {
+                  vm.schedule.push({
+                    _id: course.schedule[i]['_id'],
+                    day_num: course.schedule[i]['day'],
+                    day: DAYS.DAY_DESCRIPTION(course.schedule[i]['day']),
+                    subject: course.schedule[i]['subject']['description'],
+                    duration: {
+                      start: $filter('date')(course.schedule[i]['duration']['start'], 'HH:mm'),
+                      end: $filter('date')(course.schedule[i]['duration']['end'], 'HH:mm')
+                    },
+                    teacher: getTeacher(course.schedule[i]['subject']['_id'])
+                  });
+                }
 
-                vm.init = function () {
-                  if (action !== 'NEW') {
-                    Course.get({Id: id_course}, function (course) {
-                      vm.newCourse = {
-                        _id: id_course,
-                        name: course.data.name,
-                        identify: course.data.identify,
-                        description: course.data.description,
-                        active: course.data.active,
-                        course_type: {
-                          _id: course.data.course_type._id,
-                          description: course.data.course_type.description
-                        },
-                        duration: {
-                          start: new Date(course.data.duration.start),
-                          end: new Date(course.data.duration.end)
-                        }
-                      };
-                    });
-                  }
-                };
+                /*if (action === 'NEW') {
+                 vm.courseslist.push(course);
+                 }
+                 else {
+                 var foundCourse = $filter('filter')(vm.courseslist, {_id: vm.selectedCourseIndex});
+                 foundCourse[0].name = course.name;
+                 foundCourse[0].identify = course.identify;
+                 foundCourse[0].description = course.description;
+                 foundCourse[0].active = course.active;
+                 foundCourse[0].course_type._id = course.course_type._id;
+                 foundCourse[0].course_type.description = course.course_type.description;
+                 foundCourse[0].duration.start = Date.parse(course.duration.start);
+                 foundCourse[0].duration.end = Date.parse(course.duration.end);
+                 }*/
 
-                vm.courseType = courseType;
-                vm.pageHeader = pageHeader;
-
-                vm.closeClick = function () {
-                  $mdDialog.cancel();
-                };
-
-                vm.cancelClick = function () {
-                  $mdDialog.cancel();
-                };
-
-                vm.saveClick = function () {
-                  //TODO: Construir a validacao antes de inserir
-                  vm.newCourse.course_type.description = document.getElementById('cbe-course-type').innerText;
-                  vm.newCourse.duration.start = moment(vm.newCourse.duration.start)._d;
-                  vm.newCourse.duration.end = moment(vm.newCourse.duration.end)._d;
-
-                  if (action === 'NEW') {
-                    var objCourse = new Course(vm.newCourse);
-                    objCourse.$post(function (course) {
-                      if (course.success)
-                        $mdDialog.hide(course.data);
-                      else {
-                        console.log(course.data);
-                        // TODO: implementar mensagens de erro
-                      }
-                    });
-                  }
-                  else {
-
-                    Course.put({}, vm.newCourse, function (course) {
-                      if (course.success) {
-                        $mdDialog.hide(course.data);
-                      }
-                      else {
-                        console.log(course.data);
-                        // TODO: implementar mensagens de erro
-                      }
-                    });
-                  }
-                };
-              }],*/
-            parent: angular.element(document.body),
-            clickOutsideToClose: false,
-            fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
-          })
-            .then(function (course) {
-              /*if (action === 'NEW') {
-                vm.courseslist.push(course);
-              }
-              else {
-                var foundCourse = $filter('filter')(vm.courseslist, {_id: vm.selectedCourseIndex});
-                foundCourse[0].name = course.name;
-                foundCourse[0].identify = course.identify;
-                foundCourse[0].description = course.description;
-                foundCourse[0].active = course.active;
-                foundCourse[0].course_type._id = course.course_type._id;
-                foundCourse[0].course_type.description = course.course_type.description;
-                foundCourse[0].duration.start = Date.parse(course.duration.start);
-                foundCourse[0].duration.end = Date.parse(course.duration.end);
-              }*/
-
-            }, function (err) {
-              // TODO: implementar mensagens de erro
-            });
+              }, function (err) {
+                // TODO: implementar mensagens de erro
+              });
+          }
+          else
+            messages.alert('Cronograma', 'Este curso ainda não possui nenhuma matéria relacionada.', 'btn-add-schedule', 'btn-add-schedule');
         };
 
         vm.optionClicked = function (index, id) {

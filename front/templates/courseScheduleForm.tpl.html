@@ -10,17 +10,9 @@
       </div>
     </md-toolbar>
     <md-dialog-content>
-      <div class="md-dialog-content" layout="column" flex="100" layout-xs="column" style="overflow-x: auto">
-        <div layout="row" flex="100" layout-xs="column" layout-sm="column">
-          <md-input-container flex="20" flex-xs="100" flex-sm="100">
-            <label>Dia da Semana *</label>
-            <md-select id="cbeDayWeek" name="cbeDayWeek"  ng-model="courseSchedule.newCourse.course_type._id">
-              <md-option ng-repeat="day in [1, 2, 3, 4, 5, 6, 7]" value="{{day}}">
-                {{ courseSchedule.getDayDescription(day) }}
-              </md-option>
-            </md-select>
-          </md-input-container>
-          <md-autocomplete flex="20" flex-xs="100" flex-sm="100" required
+      <div class="md-dialog-content" layout="column" flex="100" layout-xs="column">
+        <md-input-container flex="100" flex-xs="100" flex-sm="100">
+          <md-autocomplete flex="100" flex-xs="100" flex-sm="100" required style=" height: 50px;"
                            md-input-name="autocompleteField"
                            md-no-cache="courseSchedule.noCache"
                            md-selected-item="courseSchedule.selectedItem"
@@ -32,37 +24,39 @@
               <span md-highlight-text="courseSchedule.searchText">{{item.description}}</span>
             </md-item-template>
           </md-autocomplete>
-          <div flex="20" flex-xs="100" flex-sm="100">
-            <h4 class="md-subhead">Using $mdpDatePicker service</h4>
-            <md-button class="md-raised md-warn" ng-click="courseSchedule.showTimePicker($event)" aria-label="show picker">show picker</md-button>
-            <p>
-              {{ courseSchedule.currentDate | date:'hh24:mm' }}
-            </p>
+        </md-input-container>
+        <md-input-container flex="100" flex-xs="100" flex-sm="100">
+          <label>Dia da Semana *</label>
+          <md-select id="cbeDayWeek" name="cbeDayWeek"  ng-model="courseSchedule.newSchedule.schedule.day">
+            <md-option ng-repeat="day in [1, 2, 3, 4, 5, 6, 7]" value="{{day}}">
+              {{ courseSchedule.getDayDescription(day) }}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex="100" flex-xs="100" flex-sm="100">
+          <div flex="100"  layout="column">
+            <span class="md-body-1">Início Hora {{ courseSchedule.timeStart.hour}}</span>
+            <md-slider flex class="md-primary" md-discrete ng-model="courseSchedule.timeStart.hour" step="1" min="0" max="23" aria-label="Horas"></md-slider>
           </div>
-
-        </div>
-        <div layout="row" flex="100" layout-xs="column" layout-sm="column" style="padding: 0">
-          <div flex="40" flex-xs="100" layout="column" style="padding: 0">
-            <label class="lblDate">Início *</label>
-            <md-datepicker ng-model="courseSchedule.newCourse.duration.start" md-placeholder="Selecione"></md-datepicker>
+        </md-input-container>
+        <md-input-container flex="100" flex-xs="100" flex-sm="100">
+          <div flex="100" layout="column">
+              <span class="md-body-1">Início Minuto {{ courseSchedule.timeStart.minute }}</span>
+            <md-slider flex class="md-primary" md-discrete ng-model="courseSchedule.timeStart.minute" step="1" min="0" max="59" aria-label="Minutos"></md-slider>
           </div>
-          <div flex="40" flex-xs="100" layout="column" style="padding: 0">
-            <label class="lblDate">Término *</label>
-            <md-datepicker ng-model="courseSchedule.newCourse.duration.end" md-placeholder="Selecione"></md-datepicker>
+        </md-input-container>
+        <md-input-container flex="100" flex-xs="100" flex-sm="100">
+          <div flex="100"  layout="column">
+            <span class="md-body-1">Término Hora {{ courseSchedule.timeEnd.hour}}</span>
+            <md-slider flex class="md-primary" md-discrete ng-model="courseSchedule.timeEnd.hour" step="1" min="0" max="23" aria-label="Horas"></md-slider>
           </div>
-          <div flex="20" flex-xs="100" layout="column" style="padding: 0">
-            <label>Status</label>
-            <md-switch class="md-primary" md-no-ink aria-label="Curso Status" ng-true-value="1" ng-false-value="0" ng-model="courseSchedule.newCourse.active">
-
-            </md-switch>
+        </md-input-container>
+        <md-input-container flex="100" flex-xs="100" flex-sm="100">
+          <div flex="100" layout="column">
+            <span class="md-body-1">Término Minuto {{ courseSchedule.timeEnd.minute }}</span>
+            <md-slider flex class="md-primary" md-discrete ng-model="courseSchedule.timeEnd.minute" step="1" min="0" max="59" aria-label="Minutos"></md-slider>
           </div>
-        </div>
-        <div layout="row" flex="100" layout-xs="column" layout-sm="column" style="padding: 0">
-          <md-input-container class="md-block" flex="100">
-            <label>Descrição do Curso</label>
-            <textarea ng-model="courseSchedule.newCourse.description" md-maxlength="500" rows="5" md-select-on-focus></textarea>
-          </md-input-container>
-        </div>
+        </md-input-container>
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row" layout="end">

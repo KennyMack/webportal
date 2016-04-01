@@ -40,7 +40,7 @@ var URLS = (function () {
         return '/course-detail';
     },
     COURSEADDSCHEDULE: function (idCourse) {
-      return '/courses/' + idCourse + '/';
+      return '/courses/' + idCourse + '/add-schedule';
     },
     COURSEREMOVESCHEDULE: function (idCourse, idschedule) {
       return '/courses/' + idCourse + '/remove-schedule/' + idschedule;

@@ -10,7 +10,6 @@
     'ngAnimate',
     'ngResource',
     'ngSanitize',
-    'mdPickers',
     frontApp.modules.utils.name,
     frontApp.modules.handlers.name,
     frontApp.modules.auth.name,
