@@ -22,6 +22,15 @@ module.exports.getById = function(id) {
         .populate('schedule.subject').exec();
 };
 
+// Get Subjects in Course
+module.exports.getCourseSubjects = function (id) {
+    return coursesModel.courses.findById(id)
+        .select('subjects.subject')
+        .populate('subjects.subject', 'description')
+        .exec();
+
+};
+
 // Remove Course By Id
 module.exports.removeById = function(id) {
     return coursesModel.courses.findByIdAndRemove(id).exec();

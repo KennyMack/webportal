@@ -382,6 +382,42 @@ module.exports = function (express, io) {
             });
     });
 
+    router.get('/:id/subjects', function (req, res) {
+        var course = {
+            _id: req.params.id || ''
+        };
+
+        var errors = coursesController.validateCourse(course, utils.OPERATION_STATUS.SELECT);
+
+        if (Object.keys(errors).length !== 0) {
+            res.json({
+                success: false,
+                data: errors
+            });
+        }
+        else {
+            coursesController.getCourseSubjects(course['_id'])
+                .then(function (course) {
+                    if (course) {
+                        res.json({
+                            success: true,
+                            data: course
+                        });
+                    } else {
+                        res.status(404).json({
+                            success: false,
+                            data: '404 - Not Found'
+                        });
+                    }
+                }, function (err) {
+                    res.json({
+                        success: false,
+                        data: err
+                    });
+                });
+        }
+    });
+
 
     return router;
 };

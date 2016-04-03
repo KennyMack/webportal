@@ -66,7 +66,7 @@
             </div>
           </md-card-title-text>
         </md-card-title>
-        <md-card-content class="card-item-content" style="overflow-x: auto">
+        <md-card-content class="card-item-content" style="overflow-x: auto; max-height: 300px; min-height: 100px">
           <div layout="column"  class="card-item-content-data">
             <table flex="100" flex-xs="100" id="tbl-schedule">
               <thead>
@@ -83,7 +83,7 @@
               <tr ng-repeat="item in courseDetail.schedule">
                 <td>{{ item.day }}</td>
                 <td>{{ item.teacher }}</td>
-                <td>{{ item.subject }}</td>
+                <td>{{ item.subject.description }}</td>
                 <td>{{ item.duration.start }}</td>
                 <td>{{ item.duration.end }}</td>
                 <td>
@@ -95,7 +95,7 @@
                       <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
                     </md-button>
                     <md-menu-content>
-                      <md-menu-item ng-repeat="opt in ['Alterar', 'Excluir']">
+                      <md-menu-item ng-repeat="opt in ['Excluir']">
                         <md-button ng-click="courseDetail.optionClicked($index, item._id)" >
                           <span md-menu-align-target>{{opt}} </span>
                         </md-button>
@@ -164,13 +164,13 @@
       <md-card class="card-right" flex>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline">Matérias ({{ courseDetail.course.subjects.length }})</span>
+            <span class="md-headline">Matérias ({{ courseDetail.subjects.length }})</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
           <div class="md-dialog-content" style="overflow-x: auto">
             <md-list ng-cloak>
-              <md-list-item class="md-3-line" ng-repeat="item in courseDetail.course.subjects">
+              <md-list-item class="md-3-line" ng-repeat="item in courseDetail.subjects">
                 <div class="md-list-item-text" layout="column">
                   <h3>{{ item.subject.description }}</h3>
                   <p>{{ item.teacher.name }}</p>
@@ -181,6 +181,7 @@
         </md-card-content>
         <md-card-actions layout="row"  style="padding: 0; margin-top: 20px;" layout-align="end end">
           <md-button style="float: right; margin-top: -25px; background: orange"
+                     ng-click="courseDetail.addSubjects()"
                      class="md-fab md-mini md-primary" aria-label="Home">
             <md-icon class="material-icons" md-svg-icon="images/ic_add_white.svg" style="width: 14px; height: 14px"></md-icon>
           </md-button>

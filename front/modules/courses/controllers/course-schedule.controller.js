@@ -6,12 +6,14 @@
   angular.module(frontApp.modules.courses.name)
     .controller(frontApp.modules.courses.controllers.courseSchedule.name, [
       frontApp.modules.courses.imports.request,
-      'status',
+      frontApp.modules.courses.imports.messages,
+      '_Schedule',
       '$routeParams',
       '$mdDialog',
       '$q',
       '$timeout',
-      function (request, status, $routeParams, $mdDialog, $q, $timeout
+      'messages',
+      function (request, messages, _Schedule, $routeParams, $mdDialog, $q, $timeout
                 ) {
         var vm = this;
         vm.subjects = [];
@@ -59,10 +61,27 @@
         }
 
         vm.init = function () {
-          console.log(status);
-          request.get(URLS.SUBJECTS(), function (err, data) {
+          if (_Schedule) {
+            vm.newSchedule['schedule']['_id'] = _Schedule['_id'];
+            vm.newSchedule['schedule']['day'] = _Schedule['day_num'];
+            vm.selectedItem = _Schedule['subject'];
+            var start = _Schedule['duration']['start'].split(':');
+            var end = _Schedule['duration']['end'].split(':');
+            vm.timeStart.hour = start[0] || 0;
+            vm.timeStart.minute = start[1] || 0;
+            vm.timeEnd.hour = end[0] || 0;
+            vm.timeEnd.minute = end[1] || 0;
+          }
+
+          request.get(URLS.COURSESUBJECTS($routeParams.idcourse), function (err, data) {
             if(!err) {
-              vm.subjects = data.data;
+              for (var i = 0, length = data.data.subjects.length; i < length; i++) {
+                vm.subjects.push({
+                    _id: data.data.subjects[i].subject._id,
+                    description: data.data.subjects[i].subject.description
+                });
+              }
+
             }
             else
               messages.alert('Matérias', 'Não foi possível carregar as matérias.');
@@ -82,6 +101,7 @@
         };
 
         vm.saveClick = function () {
+          //TODO: Implementar o salvar da edição
           var date = new Date();
           var schedule = {
             day: vm.newSchedule.schedule.day,
@@ -95,16 +115,13 @@
                              0, 0)
             }
           };
-
-          console.log(vm.newSchedule);
-          console.log(new Date());
           request.post(URLS.COURSEADDSCHEDULE($routeParams.idcourse), schedule, function (err, data) {
               if (!err){
                 $mdDialog.hide(data.data);
               }
               else {
                 //TODO: Implementar tratativa de erro
-                alert(data.data, status);
+                alert(data.data);
               }
 
           });

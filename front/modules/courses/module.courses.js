@@ -17,6 +17,10 @@
       courseSchedule: {
         name: 'CourseScheduleCtrl',
         nameas: 'courseSchedule'
+      },
+      courseSubject: {
+        name: 'CourseSubjectsCtrl',
+        nameas: 'courseSubjects'
       }
     },
     routes: {

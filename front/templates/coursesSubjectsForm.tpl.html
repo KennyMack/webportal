@@ -1,0 +1,54 @@
+<md-dialog flex="50" flex-md="60" aria-label="Cronograma" ng-init="courseSubjects.init()">
+  <form ng-submit="$event.preventDefault()" name="searchForm" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools" style="background: dodgerblue">
+        <h2>Cronograma</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="courseSubjects.closeClick()">
+          <md-icon md-svg-src="../images/ic_close_white.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column" flex="100" layout-xs="column">
+        <md-input-container flex="100" flex-xs="100" flex-sm="100">
+          <md-autocomplete flex="100" flex-xs="100" flex-sm="100" required style="height: 50px;"
+                           md-input-name="acfSubjects"
+                           md-no-cache="true"
+                           md-selected-item="courseSubjects.selectedSubjectItem"
+                           md-search-text="courseSubjects.searchSubjectText"
+                           md-items="item in courseSubjects.querySubjectSearch(courseSubjects.searchSubjectText)"
+                           md-item-text="item.description"
+                           md-floating-label="Matéria*">
+            <md-item-template>
+              <span md-highlight-text="courseSubjects.searchSubjectText">{{item.description}}</span>
+            </md-item-template>
+          </md-autocomplete>
+        </md-input-container>
+        <md-input-container flex="100" flex-xs="100" flex-sm="100">
+          <md-autocomplete flex="100" flex-xs="100" flex-sm="100" required style="height: 50px;"
+                           md-input-name="acfTeachers"
+                           md-no-cache="true"
+                           md-selected-item="courseSubjects.selectedTeacherItem"
+                           md-search-text="courseSubjects.searchTeacherText"
+                           md-items="item in courseSubjects.queryTeacherSearch(courseSubjects.searchTeacherText)"
+                           md-item-text="item.name"
+                           md-floating-label="Professor*">
+            <md-item-template>
+              <span md-highlight-text="courseSubjects.searchTeacherText">{{item.name}}</span>
+            </md-item-template>
+          </md-autocomplete>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout="end">
+      <md-button ng-click="courseSubjects.cancelClick()">
+        CANCELAR
+      </md-button>
+      <md-button ng-click="courseSubjects.saveClick()" style="margin-right:20px;">
+        SALVAR
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+

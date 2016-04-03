@@ -22,26 +22,19 @@
         var vm = this;
         vm.course = null;
         vm.schedule = [];
+        vm.subjects = [];
 
         vm.init = function () {
           $rootScope.__showButton = false;
           courses.getCourse($routeParams.idcourse)
             .then(function (courses) {
               vm.course = courses.data;
-              for (var i = 0, length = courses.data.schedule.length; i < length; i++) {
-                vm.schedule.push({
-                  _id: courses.data.schedule[i]['_id'],
-                  day_num: courses.data.schedule[i]['day'],
-                  day: DAYS.DAY_DESCRIPTION(courses.data.schedule[i]['day']),
-                  subject: courses.data.schedule[i]['subject']['description'],
-                  duration: {
-                    start: $filter('date')(courses.data.schedule[i]['duration']['start'], 'HH:mm'),
-                    end: $filter('date')(courses.data.schedule[i]['duration']['end'], 'HH:mm')
-                  },
-                  teacher: getTeacher(courses.data.schedule[i]['subject']['_id'])
-                });
-              }
-              vm.schedule = $filter('orderBy')(vm.schedule, 'day_num');
+              console.log(vm.course);
+              loadSchedules(courses.data.schedule);
+              loadSubjects(courses.data.subjects);
+
+
+              courses.data = null;
             },
             function () {
               $location.path(URLS.SERVERERROR(500));
@@ -57,6 +50,53 @@
           }
         };
 
+        var loadSubjects = function (subjects) {
+          vm.subjects = subjects;
+
+        };
+
+        var loadSchedules = function (schedules) {
+          vm.schedule = [];
+
+          for (var i = 0, length = schedules.length; i < length; i++) {
+            vm.schedule.push({
+              _id: schedules[i]['_id'],
+              day_num: schedules[i]['day'],
+              day: DAYS.DAY_DESCRIPTION(schedules[i]['day']),
+              subject: {
+                description: schedules[i]['subject']['description'],
+                _id: schedules[i]['subject']['_id']
+              },
+              duration: {
+                start: $filter('date')(schedules[i]['duration']['start'], 'HH:mm'),
+                end: $filter('date')(schedules[i]['duration']['end'], 'HH:mm')
+              },
+              teacher: getTeacher(schedules[i]['subject']['_id'])
+            });
+          }
+          vm.schedule = $filter('orderBy')(vm.schedule, 'day_num');
+        };
+
+        vm.addSubjects = function () {
+          $mdDialog.show({
+            templateUrl: '../../../templates/coursesSubjectsForm.tpl.html',
+            openFrom: '#btn-add-schedule',
+            closeTo: '#tbl-schedule',
+            controllerAs: frontApp.modules.courses.controllers.courseSubject.nameas,
+            controller: frontApp.modules.courses.controllers.courseSubject.name,
+            parent: angular.element(document.body),
+            clickOutsideToClose: false,
+            fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
+          })
+            .then(function (course) {
+              console.log(course);
+              loadSubjects(course.subjects);
+
+            }, function (err) {
+              // TODO: implementar mensagens de erro
+            });
+        };
+
         vm.addSchedule = function () {
           if (vm.course.subjects.length > 0) {
             $mdDialog.show({
@@ -67,41 +107,39 @@
               controller: frontApp.modules.courses.controllers.courseSchedule.name,
               parent: angular.element(document.body),
               clickOutsideToClose: false,
-              locals: {
-                status: 'NEW'
+              locals:{
+                _Schedule: undefined
               },
               fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
             })
-              .then(function (course, status) {
-                console.log(course);
-                if (status === 'NEW') {
-                  vm.schedule.push({
-                    _id: course.schedule[i]['_id'],
-                    day_num: course.schedule[i]['day'],
-                    day: DAYS.DAY_DESCRIPTION(course.schedule[i]['day']),
-                    subject: course.schedule[i]['subject']['description'],
-                    duration: {
-                      start: $filter('date')(course.schedule[i]['duration']['start'], 'HH:mm'),
-                      end: $filter('date')(course.schedule[i]['duration']['end'], 'HH:mm')
-                    },
-                    teacher: getTeacher(course.schedule[i]['subject']['_id'])
-                  });
-                }
+              .then(function (course) {
+                loadSchedules(course.schedule);
 
-                /*if (action === 'NEW') {
-                 vm.courseslist.push(course);
-                 }
-                 else {
-                 var foundCourse = $filter('filter')(vm.courseslist, {_id: vm.selectedCourseIndex});
-                 foundCourse[0].name = course.name;
-                 foundCourse[0].identify = course.identify;
-                 foundCourse[0].description = course.description;
-                 foundCourse[0].active = course.active;
-                 foundCourse[0].course_type._id = course.course_type._id;
-                 foundCourse[0].course_type.description = course.course_type.description;
-                 foundCourse[0].duration.start = Date.parse(course.duration.start);
-                 foundCourse[0].duration.end = Date.parse(course.duration.end);
-                 }*/
+              }, function (err) {
+                // TODO: implementar mensagens de erro
+              });
+          }
+          else
+            messages.alert('Cronograma', 'Este curso ainda não possui nenhuma matéria relacionada.', 'btn-add-schedule', 'btn-add-schedule');
+        };
+
+        var updateSchedule = function (schedule) {
+          if (vm.course.subjects.length > 0) {
+            $mdDialog.show({
+              templateUrl: '../../../templates/courseScheduleForm.tpl.html',
+              openFrom: '#btn-add-schedule',
+              closeTo: '#tbl-schedule',
+              controllerAs: frontApp.modules.courses.controllers.courseSchedule.nameas,
+              controller: frontApp.modules.courses.controllers.courseSchedule.name,
+              parent: angular.element(document.body),
+              clickOutsideToClose: false,
+              locals: {
+                _Schedule:  schedule
+              },
+              fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
+            })
+              .then(function (course) {
+                loadSchedules(course.schedule);
 
               }, function (err) {
                 // TODO: implementar mensagens de erro
@@ -113,14 +151,12 @@
 
         vm.optionClicked = function (index, id) {
           if(index == 0) {
-            // TODO: alterar schedule
+            updateSchedule($filter('filter')(vm.schedule,{ _id: id} )[0]);
           }
           else {
             removeSchedule(id);
           }
         };
-
-
 
         var removeSchedule = function (id) {
           messages.confirm('Exclusão', 'Confirma a exclusão do horário ?', 'opt-schedule-'+id, 'tbl-schedule')
