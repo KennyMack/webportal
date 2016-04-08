@@ -163,14 +163,15 @@ module.exports.addSubject = function(subject, callback) {
                         }
                     };
                     var options = {safe: true, upsert: true, new: true};
-                    coursesModel.courses.findOneAndUpdate(query, data, options, function (err, data) {
-                        if (err) {
-                            deferred.reject(err);
-                        }
-                        else {
+                    coursesModel.courses.findOneAndUpdate(query, data, options)
+                        .populate('subjects.teacher', 'name')
+                        .populate('subjects.subject', 'description')
+                        .populate('schedule.subject').exec()
+                        .then(function (data) {
                             deferred.resolve(data);
-                        }
-                    });
+                        }, function (err) {
+                            deferred.reject(err);
+                        });
                 }
                 else {
                     deferred.reject({ subject : "Matéria já vinculada neste curso." });

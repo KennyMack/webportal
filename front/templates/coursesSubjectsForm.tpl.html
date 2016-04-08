@@ -1,4 +1,4 @@
-<md-dialog flex="50" flex-md="60" aria-label="Cronograma" ng-init="courseSubjects.init()">
+<md-dialog flex="50" flex-md="60" aria-label="Matérias" ng-init="courseSubjects.init()">
   <form ng-submit="$event.preventDefault()" name="searchForm" novalidate>
     <md-toolbar>
       <div class="md-toolbar-tools" style="background: dodgerblue">
@@ -39,6 +39,11 @@
             </md-item-template>
           </md-autocomplete>
         </md-input-container>
+        <div ng-show="courseSubjects.error.length > 0" style="color:rgb(221,44,0)"  >
+          <ul style="padding-left:20px" ng-repeat="er in courseSubjects.error">
+            <li>{{er}}</li>
+          </ul>
+        </div>
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row" layout="end">

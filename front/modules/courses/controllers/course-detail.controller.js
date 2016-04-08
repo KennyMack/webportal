@@ -29,7 +29,6 @@
           courses.getCourse($routeParams.idcourse)
             .then(function (courses) {
               vm.course = courses.data;
-              console.log(vm.course);
               loadSchedules(courses.data.schedule);
               loadSubjects(courses.data.subjects);
 
@@ -80,8 +79,8 @@
         vm.addSubjects = function () {
           $mdDialog.show({
             templateUrl: '../../../templates/coursesSubjectsForm.tpl.html',
-            openFrom: '#btn-add-schedule',
-            closeTo: '#tbl-schedule',
+            openFrom: '#btn-add-subjects',
+            closeTo: '#tbl-subjects',
             controllerAs: frontApp.modules.courses.controllers.courseSubject.nameas,
             controller: frontApp.modules.courses.controllers.courseSubject.name,
             parent: angular.element(document.body),
@@ -89,7 +88,6 @@
             fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
           })
             .then(function (course) {
-              console.log(course);
               loadSubjects(course.subjects);
 
             }, function (err) {
@@ -150,12 +148,12 @@
         };
 
         vm.optionClicked = function (index, id) {
-          if(index == 0) {
+          /*if(index == 0) {
             updateSchedule($filter('filter')(vm.schedule,{ _id: id} )[0]);
           }
-          else {
+          else {*/
             removeSchedule(id);
-          }
+          //}
         };
 
         var removeSchedule = function (id) {

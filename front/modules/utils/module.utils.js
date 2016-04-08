@@ -18,6 +18,9 @@
     services: {
       localSave: 'localSaveService',
       messages: 'messagesService'
+    },
+    filters:{
+      removeAccents: 'removeAccentsFilter'
     }
   };
 

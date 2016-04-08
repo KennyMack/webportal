@@ -227,6 +227,8 @@ module.exports = function (express, io) {
                 });
             })
             .fail(function (err) {
+                console.log('recused');
+                console.log(err);
                 res.json({
                     success: false,
                     data: err

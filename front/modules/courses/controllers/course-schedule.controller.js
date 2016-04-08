@@ -12,9 +12,9 @@
       '$mdDialog',
       '$q',
       '$timeout',
-      'messages',
-      function (request, messages, _Schedule, $routeParams, $mdDialog, $q, $timeout
-                ) {
+      '$filter',
+      function (request, messages, _Schedule, $routeParams, $mdDialog, $q, $timeout,
+                $filter) {
         var vm = this;
         vm.subjects = [];
         vm.newSchedule = {
@@ -54,9 +54,9 @@
         }
 
         function createFilterFor(query) {
-          var lowercaseQuery = angular.lowercase(query);
+          var lowercaseQuery = $filter('removeAccentsFilter')(angular.lowercase(query));
           return function filterFn(state) {
-            return (state.description.toLowerCase().indexOf(lowercaseQuery) === 0);
+            return ($filter('removeAccentsFilter')(state.description.toLowerCase()).indexOf(lowercaseQuery) === 0);
           };
         }
 

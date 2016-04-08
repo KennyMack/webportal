@@ -168,7 +168,7 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
-          <div class="md-dialog-content" style="overflow-x: auto">
+          <div class="md-dialog-content" style="overflow-x: auto" id="tbl-subjects">
             <md-list ng-cloak>
               <md-list-item class="md-3-line" ng-repeat="item in courseDetail.subjects">
                 <div class="md-list-item-text" layout="column">
@@ -181,6 +181,7 @@
         </md-card-content>
         <md-card-actions layout="row"  style="padding: 0; margin-top: 20px;" layout-align="end end">
           <md-button style="float: right; margin-top: -25px; background: orange"
+                     id="btn-add-subjects"
                      ng-click="courseDetail.addSubjects()"
                      class="md-fab md-mini md-primary" aria-label="Home">
             <md-icon class="material-icons" md-svg-icon="images/ic_add_white.svg" style="width: 14px; height: 14px"></md-icon>
@@ -403,5 +404,9 @@
     border-spacing: 0;
     white-space: nowrap;
     font-size: .9em;
+  }
+
+  md-card md-card-content {
+    padding: 0;
   }
 </style>
