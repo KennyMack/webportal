@@ -9,7 +9,7 @@
         </md-button>
       </div>
     </md-toolbar>
-    <md-dialog-content>
+    <md-dialog-content class="md-dialog-body">
       <div class="md-dialog-content" layout="column" flex="100" layout-xs="column">
         <md-input-container flex="100" flex-xs="100" flex-sm="100">
           <md-autocomplete flex="100" flex-xs="100" flex-sm="100" required style="height: 50px;"
@@ -19,6 +19,7 @@
                            md-search-text="courseSubjects.searchSubjectText"
                            md-items="item in courseSubjects.querySubjectSearch(courseSubjects.searchSubjectText)"
                            md-item-text="item.description"
+                           md-min-length="0"
                            md-floating-label="Matéria*">
             <md-item-template>
               <span md-highlight-text="courseSubjects.searchSubjectText">{{item.description}}</span>
@@ -33,7 +34,9 @@
                            md-search-text="courseSubjects.searchTeacherText"
                            md-items="item in courseSubjects.queryTeacherSearch(courseSubjects.searchTeacherText)"
                            md-item-text="item.name"
+                           md-min-length="0"
                            md-floating-label="Professor*">
+
             <md-item-template>
               <span md-highlight-text="courseSubjects.searchTeacherText">{{item.name}}</span>
             </md-item-template>
@@ -56,4 +59,13 @@
     </md-dialog-actions>
   </form>
 </md-dialog>
+
+<style>
+  .md-dialog-content {
+    min-height: 100px;
+  }
+  .md-dialog-body{
+    min-height: 270px;
+  }
+</style>
 

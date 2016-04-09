@@ -13,11 +13,10 @@
       '$routeParams',
       '$filter',
       '$scope',
-      '$rootScope',
       '$mdDialog',
       '$mdMedia',
       function (resource, request, courses, messages, $location,
-                $routeParams, $filter, $scope, $rootScope,
+                $routeParams, $filter, $scope,
                 $mdDialog, $mdMedia) {
         var vm = this;
         vm.course = null;
@@ -25,7 +24,6 @@
         vm.subjects = [];
 
         vm.init = function () {
-          $rootScope.__showButton = false;
           courses.getCourse($routeParams.idcourse)
             .then(function (courses) {
               vm.course = courses.data;
@@ -45,19 +43,20 @@
             return $filter('filter')(vm.course.subjects,{ subject: {_id: id}})[0].teacher.name;
           }
           catch(ex) {
-            return 'a';
+            return '';
           }
         };
 
         var loadSubjects = function (subjects) {
           vm.subjects = subjects;
-
         };
 
         var loadSchedules = function (schedules) {
           vm.schedule = [];
+          console.log(schedules);
 
           for (var i = 0, length = schedules.length; i < length; i++) {
+            console.log(schedules[i]);
             vm.schedule.push({
               _id: schedules[i]['_id'],
               day_num: schedules[i]['day'],
@@ -96,7 +95,7 @@
         };
 
         vm.addSchedule = function () {
-          if (vm.course.subjects.length > 0) {
+          if (vm.subjects.length > 0) {
             $mdDialog.show({
               templateUrl: '../../../templates/courseScheduleForm.tpl.html',
               openFrom: '#btn-add-schedule',
@@ -111,6 +110,7 @@
               fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
             })
               .then(function (course) {
+                console.log(course);
                 loadSchedules(course.schedule);
 
               }, function (err) {
@@ -121,6 +121,7 @@
             messages.alert('Cronograma', 'Este curso ainda não possui nenhuma matéria relacionada.', 'btn-add-schedule', 'btn-add-schedule');
         };
 
+        /* TODO: Implementação futura - Atualização do Schedule
         var updateSchedule = function (schedule) {
           if (vm.course.subjects.length > 0) {
             $mdDialog.show({
@@ -145,10 +146,11 @@
           }
           else
             messages.alert('Cronograma', 'Este curso ainda não possui nenhuma matéria relacionada.', 'btn-add-schedule', 'btn-add-schedule');
-        };
+        };*/
 
         vm.optionClicked = function (index, id) {
-          /*if(index == 0) {
+          /*TODO: Implementação futura - Atualização do Schedule
+          if(index == 0) {
             updateSchedule($filter('filter')(vm.schedule,{ _id: id} )[0]);
           }
           else {*/

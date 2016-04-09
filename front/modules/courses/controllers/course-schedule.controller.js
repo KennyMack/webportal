@@ -15,9 +15,11 @@
       '$filter',
       function (request, messages, _Schedule, $routeParams, $mdDialog, $q, $timeout,
                 $filter) {
-        var vm = this;
-        vm.subjects = [];
-        vm.newSchedule = {
+        var self = this;
+        self.subjects = [];
+        self.error = [];
+        self.fieldError = false;
+        self.newSchedule = {
           _id: '',
           schedule: {
             _id: '',
@@ -30,53 +32,52 @@
           }
         };
 
-        vm.timeStart ={
+        self.timeStart ={
           hour:0,
           minute:0
         };
-        vm.timeEnd ={
+        self.timeEnd ={
           hour:0,
           minute:0
         };
 
-        vm.currentDateMinMax = new Date();
-        vm.currentTime= new Date();
+        self.currentDateMinMax = new Date();
+        self.currentTime= new Date();
 
-        vm.selectedItem  = null;
-        vm.searchText    = null;
-        vm.querySearch   = querySearch;
+        self.selectedItem  = null;
+        self.searchText    = null;
+        self.querySearch   = querySearch;
 
         function querySearch (query) {
-          var results = query ? vm.subjects.filter( createFilterFor(query) ) : vm.subjects;
+          var results = query ? self.subjects.filter( createFilterFor(query) ) : self.subjects;
           var deferred = $q.defer();
           $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
           return deferred.promise;
         }
 
         function createFilterFor(query) {
-          var lowercaseQuery = $filter('removeAccentsFilter')(angular.lowercase(query));
-          return function filterFn(state) {
-            return ($filter('removeAccentsFilter')(state.description.toLowerCase()).indexOf(lowercaseQuery) === 0);
+          return function filterFn(subject) {
+            return $filter('searchFilter')(query, subject.description) > -1;
           };
         }
 
-        vm.init = function () {
+        self.init = function () {
           if (_Schedule) {
-            vm.newSchedule['schedule']['_id'] = _Schedule['_id'];
-            vm.newSchedule['schedule']['day'] = _Schedule['day_num'];
-            vm.selectedItem = _Schedule['subject'];
+            self.newSchedule['schedule']['_id'] = _Schedule['_id'];
+            self.newSchedule['schedule']['day'] = _Schedule['day_num'];
+            self.selectedItem = _Schedule['subject'];
             var start = _Schedule['duration']['start'].split(':');
             var end = _Schedule['duration']['end'].split(':');
-            vm.timeStart.hour = start[0] || 0;
-            vm.timeStart.minute = start[1] || 0;
-            vm.timeEnd.hour = end[0] || 0;
-            vm.timeEnd.minute = end[1] || 0;
+            self.timeStart.hour = start[0] || 0;
+            self.timeStart.minute = start[1] || 0;
+            self.timeEnd.hour = end[0] || 0;
+            self.timeEnd.minute = end[1] || 0;
           }
 
           request.get(URLS.COURSESUBJECTS($routeParams.idcourse), function (err, data) {
             if(!err) {
               for (var i = 0, length = data.data.subjects.length; i < length; i++) {
-                vm.subjects.push({
+                self.subjects.push({
                     _id: data.data.subjects[i].subject._id,
                     description: data.data.subjects[i].subject.description
                 });
@@ -88,43 +89,43 @@
           })
         };
 
-        vm.getDayDescription = function (day) {
+        self.getDayDescription = function (day) {
           return DAYS.DAY_DESCRIPTION(day);
         };
 
-        vm.closeClick = function () {
+        self.closeClick = function () {
           $mdDialog.cancel();
         };
 
-        vm.cancelClick = function () {
+        self.cancelClick = function () {
           $mdDialog.cancel();
         };
 
-        vm.saveClick = function () {
+        self.saveClick = function () {
           //TODO: Implementar o salvar da edição
-          var date = new Date();
+          /*var date = new Date();
           var schedule = {
-            day: vm.newSchedule.schedule.day,
-            subject: vm.selectedItem._id,
+            day: self.newSchedule.schedule.day,
+            subject: self.selectedItem._id,
             duration: {
               start:new Date(date.getFullYear(), date.getMonth(), date.getDay(),
-                             vm.timeStart.hour, vm.timeStart.minute,
+                             self.timeStart.hour, self.timeStart.minute,
                              0, 0),
                 end:new Date(date.getFullYear(), date.getMonth(), date.getDay(),
-                             vm.timeEnd.hour, vm.timeEnd.minute,
+                             self.timeEnd.hour, self.timeEnd.minute,
                              0, 0)
             }
           };
           request.post(URLS.COURSEADDSCHEDULE($routeParams.idcourse), schedule, function (err, data) {
-              if (!err){
+              if (!err && data.success){
                 $mdDialog.hide(data.data);
               }
               else {
                 //TODO: Implementar tratativa de erro
-                alert(data.data);
+                self.error.push(data.data.subject);
               }
 
-          });
+          });*/
 
           //$mdDialog.hide();
         };

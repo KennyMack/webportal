@@ -97,8 +97,10 @@
 
       </ng-view>
       <div class="btn-action-control" layout="row" layout-align="end end" ng-show="index.ensureAuthenticated() && __showButton">
-        <md-fab-speed-dial md-open="index.isOpen" md-direction="up"
-                           ng-class="index.selectedMode">
+        <md-fab-speed-dial md-direction="up"
+                           class="md-fling"
+                           ng-open="index.isOpen"
+                           ng-class="{ 'md-hover-full': index.hover }">
           <md-fab-trigger>
             <md-button aria-label="Menu" class="md-fab  md-primary" style="background-color: #00b3ee">
               <md-tooltip md-direction="left">
@@ -189,6 +191,7 @@
 
     <script src="modules/utils/module.utils.js"></script>
     <script src="modules/utils/filters/removeAccents.filter.js"></script>
+    <script src="modules/utils/filters/search.filter.js"></script>
     <script src="modules/utils/controllers/gridList.controller.js"></script>
     <script src="modules/utils/services/localStorage.js"></script>
     <script src="modules/utils/services/messages.js"></script>
@@ -217,6 +220,7 @@
 
     <script src="modules/main/module.main.js"></script>
     <script src="modules/main/module.main.route.js"></script>
+    <script src="modules/main/factories/main.factory.js"></script>
     <script src="modules/main/controllers/main.controller.js"></script>
 
     <script src="modules/students/module.students.js"></script>

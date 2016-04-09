@@ -19,8 +19,10 @@
           controller:  frontApp.modules.courses.controllers.courseDetail.name,
           controllerAs:  frontApp.modules.courses.controllers.courseDetail.nameas,
           templateUrl: frontApp.modules.courses.templates.courseDetail.url,
+          showButton: false,
           access: {
             requiresLogin: true
+
           }
         })
     });

@@ -18,6 +18,9 @@
       main: {
         url: 'views/main.html'
       }
+    },
+    factories: {
+      principalButtonFactory: 'principalButtonFactory'
     }
   };
   angular.module(frontApp.modules.main.name, [

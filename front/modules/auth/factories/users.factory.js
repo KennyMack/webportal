@@ -39,7 +39,6 @@
         },
         setUserLocal: function (usr) {
           localSave.setJSONValueLS(LOCALNAME.SESSION_USER, usr);
-
         },
         getUserView: function (_id) {
           request.get(uri + '/view/' + _id, {}, function (err, data, status) {

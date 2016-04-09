@@ -61,12 +61,13 @@
     .run([
       frontApp.modules.auth.factories.authentication,
       frontApp.modules.auth.factories.authorization,
+      frontApp.modules.main.factories.principalButtonFactory,
       '$rootScope',
       '$location',
-      function (authentication, authorization, $rootScope, $location) {
+      function (authentication, authorization, principalButtonFactory, $rootScope, $location) {
 
         $rootScope.$on('$routeChangeStart', function (event, next) {
-          $rootScope.__showButton = true;
+          $rootScope.__showButton = principalButtonFactory.showButton(next);
           /*authorization.authorize(next, function (cont, path) {
             if(!cont)
               $location.path(path);

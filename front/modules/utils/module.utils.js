@@ -20,7 +20,8 @@
       messages: 'messagesService'
     },
     filters:{
-      removeAccents: 'removeAccentsFilter'
+      removeAccents: 'removeAccentsFilter',
+      searchFilter: 'searchFilter'
     }
   };
 

@@ -21,7 +21,9 @@ angular.module(frontApp.modules.index.name)
       vm.person = {};
       vm.toggleLeft = buildDelayedToggler('left');
       vm.toggleRight = buildToggler('right');
-      vm.isOpen = true;
+      vm.isOpen = false;
+
+
       vm.selectedMode = 'md-fling';
       vm.imagePath = '../images/android.svg';
 

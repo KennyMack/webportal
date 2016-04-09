@@ -288,7 +288,34 @@ module.exports.addSchedule = function (item, callback) {
                         deferred.reject(objRet);
                     }
                     else {
-                        course.schedule.push({
+                        var query = { _id: item['_id'] };
+                        var data = {
+                            $push: {
+                                "schedule": {
+                                    day: item['day'],
+                                    subject: item['subject'],
+                                    duration: {
+                                        start: moment(item['duration']['start']).format('YYYY-MM-DD HH:mm:ss'),
+                                        end: moment(item['duration']['end']).format('YYYY-MM-DD HH:mm:ss')
+
+                                    }
+                                }
+                            }
+                        };
+
+                        var options = { safe: true, upsert: true, new: true };
+                        coursesModel.courses.findOneAndUpdate(query, data, options)
+                            .populate('subjects.teacher', 'name')
+                            .populate('subjects.subject', 'description')
+                            .populate('schedule.subject').exec()
+                            .then(function (data) {
+                                deferred.resolve(data);
+                            }, function (err) {
+                                deferred.reject(err);
+                            });
+
+
+                        /*course.schedule.push({
                             day: item['day'],
                             subject: item['subject'],
                             duration: {
@@ -303,7 +330,7 @@ module.exports.addSchedule = function (item, callback) {
                             } else {
                                 deferred.resolve(course)
                             }
-                        });
+                        });*/
                     }
                 }
                 else
