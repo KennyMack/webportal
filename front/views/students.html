@@ -11,6 +11,38 @@
             <div class="md-media-sm card-media"></div>
           </md-card-title-media>
         </md-card-title>
+        <md-card-content>
+          <div>
+            <form name="myForm" class="form-horizontal" novalidate>
+              <fa-Search-Lookup name="txtName" ng-model='students.person.name' required></fa-Search-Lookup>
+              <fa-Search-Lookup name="txtSurName" ng-model='students.person.surname' required></fa-Search-Lookup>
+              <!--<div class="form-group">
+                <input-email ng-model='person.email' required></input-email>
+              </div>
+
+              <div class="form-group">
+                <input-age ng-model='person.age' required></input-age>
+              </div>-->
+
+              <!-- Not using a directive
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Country</label>
+                <div class="col-sm-4" ng-class="{'has-error': myForm.country.$invalid}">
+                  <input type="text" name="country" ng-model="person.country" class="form-control" required>
+                  <span ng-show="myForm.country.$error.required" class="help-block">Can't be blank</span>
+                </div>
+              </div>-->
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                  <button class="btn btn-primary" ng-disabled="myForm.$invalid">
+                    <span class="glyphicon glyphicon-cloud-upload"></span> Save
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </md-card-content>
         <md-card-actions layout="row">
           <md-button class="md-icon-button" aria-label="Mais">
             <md-icon md-svg-icon="../images/ic_vmore.svg"></md-icon>

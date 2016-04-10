@@ -53,10 +53,8 @@
 
         var loadSchedules = function (schedules) {
           vm.schedule = [];
-          console.log(schedules);
 
           for (var i = 0, length = schedules.length; i < length; i++) {
-            console.log(schedules[i]);
             vm.schedule.push({
               _id: schedules[i]['_id'],
               day_num: schedules[i]['day'],
@@ -110,7 +108,6 @@
               fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
             })
               .then(function (course) {
-                console.log(course);
                 loadSchedules(course.schedule);
 
               }, function (err) {

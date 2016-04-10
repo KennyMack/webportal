@@ -5,6 +5,12 @@
   'use strict';
   angular.module(frontApp.modules.students.name)
     .controller(frontApp.modules.students.controllers.students.name, [ function () {
+      var person = {
+        name: 'Jonathan',
+        surname: undefined
+      };
+
+      this.person = person;
 
     }]);
 }(angular, frontApp));
