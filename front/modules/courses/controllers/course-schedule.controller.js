@@ -19,6 +19,7 @@
         self.subjects = [];
         self.error = [];
         self.fieldError = false;
+        self.textF = 'hello';
         self.newSchedule = {
           _id: '',
           schedule: {

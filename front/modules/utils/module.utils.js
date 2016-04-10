@@ -22,6 +22,9 @@
     filters:{
       removeAccents: 'removeAccentsFilter',
       searchFilter: 'searchFilter'
+    },
+    directives: {
+      faSearchLookup: 'faSearchLookup'
     }
   };
 
