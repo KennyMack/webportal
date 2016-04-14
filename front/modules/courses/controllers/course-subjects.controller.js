@@ -12,8 +12,10 @@
       '$q',
       '$timeout',
       '$filter',
-      function (request, messages, $routeParams, $mdDialog, $q, $timeout,$filter) {
+      '$scope',
+      function (request, messages, $routeParams, $mdDialog, $q, $timeout,$filter, $scope) {
         var self = this;
+        var blur = false;
         self.subjects = [];
         self.teachers = [];
         self.error = [];
@@ -23,6 +25,29 @@
         self.searchSubjectText = null;
         self.queryTeacherSearch = queryTeacherSearch;
         self.querySubjectSearch = querySubjectSearch;
+        self.isTeacherTextValid = true;
+
+        self.log = function(){
+          blur = true;
+          console.log($scope);
+          validate(self.searchTeacherText);
+        };
+
+        $scope.$watch(self.teacher, function(newValue) {
+          console.log('alterou');
+          validate(newValue);
+        });
+
+        function validate(value){
+          if (value === undefined || value === "" || value === null) {
+            self.$valid = false;
+            if (blur)
+              self.isTeacherTextValid = false;
+          } else {
+            self.$valid = true;
+            self.isTeacherTextValid = true;
+          }
+        }
 
 
 

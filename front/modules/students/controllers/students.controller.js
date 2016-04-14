@@ -10,6 +10,10 @@
         surname: undefined
       };
 
+      this.upload = function () {
+        console.log(person);
+      };
+
       this.person = person;
 
     }]);

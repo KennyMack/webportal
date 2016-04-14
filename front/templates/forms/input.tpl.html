@@ -1,0 +1,5 @@
+<label ng-class="{ 'fa-label-invalid':!isValid   }" for="{{name}}" >{{label}}{{ requiredValue }}</label>
+<input type="text" name="{{name}}" id="{{name}}" fa-Blur="log()" ng-model="model" ng-required="required">
+<div ng-messages="!isValid">
+  <div ng-message="required" ng-bind="notnull"></div>
+</div>

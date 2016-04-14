@@ -13,9 +13,13 @@
         </md-card-title>
         <md-card-content>
           <div>
-            <form name="myForm" class="form-horizontal" novalidate>
-              <fa-Search-Lookup name="txtName" ng-model='students.person.name' required></fa-Search-Lookup>
-              <fa-Search-Lookup name="txtSurName" ng-model='students.person.surname' required></fa-Search-Lookup>
+            <form name="myForm" layout="column"  novalidate>
+              <md-input-container flex="100">
+                <fa-Input name="txtName" ng-model='students.person.name' label="Nome" notnull="Deve Selecionar"></fa-Input>
+              </md-input-container>
+              <md-input-container flex="100" >
+                <fa-Input name="txtSurName" ng-model='students.person.surname' label="Sobrenome" notnull="Deve Selecionar"></fa-Input>
+              </md-input-container>
               <!--<div class="form-group">
                 <input-email ng-model='person.email' required></input-email>
               </div>
@@ -35,7 +39,7 @@
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-4">
-                  <button class="btn btn-primary" ng-disabled="myForm.$invalid">
+                  <button class="btn btn-primary" ng-click="students.upload()" ng-disabled="myForm.$invalid">
                     <span class="glyphicon glyphicon-cloud-upload"></span> Save
                   </button>
                 </div>

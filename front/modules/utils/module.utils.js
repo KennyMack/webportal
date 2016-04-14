@@ -24,7 +24,10 @@
       searchFilter: 'searchFilter'
     },
     directives: {
-      faSearchLookup: 'faSearchLookup'
+      faSearchLookup: 'faSearchLookup',
+      faInput: 'faInput',
+      faBlur: 'faBlur',
+      faSearchBlur: 'faSearchBlur'
     }
   };
 

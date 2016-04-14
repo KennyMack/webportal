@@ -35,11 +35,15 @@
                            md-items="item in courseSubjects.queryTeacherSearch(courseSubjects.searchTeacherText)"
                            md-item-text="item.name"
                            md-min-length="0"
-                           md-floating-label="Professor*">
+                           md-floating-label="Professor *"
+                           fa-Search-Blur="courseSubjects.log()">
 
             <md-item-template>
               <span md-highlight-text="courseSubjects.searchTeacherText">{{item.name}}</span>
             </md-item-template>
+            <div ng-messages="!courseSubjects.isTeacherTextValid">
+              <div ng-message="required">Você <span>Deve</span> selecionar um professor.</div>
+            </div>
           </md-autocomplete>
         </md-input-container>
         <div ng-show="courseSubjects.error.length > 0" style="color:rgb(221,44,0)"  >
@@ -53,7 +57,7 @@
       <md-button ng-click="courseSubjects.cancelClick()">
         CANCELAR
       </md-button>
-      <md-button ng-click="courseSubjects.saveClick()" style="margin-right:20px;">
+      <md-button ng-click="courseSubjects.saveClick()" ng-disabled="searchForm.$invalid" style="margin-right:20px;">
         SALVAR
       </md-button>
     </md-dialog-actions>
