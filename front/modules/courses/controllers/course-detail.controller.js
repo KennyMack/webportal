@@ -52,23 +52,50 @@
         };
 
         var loadSchedules = function (schedules) {
-          vm.schedule = [];
+          var i = 0, length = 0;
+          if (schedules != undefined) {
+            vm.schedule = [];
 
-          for (var i = 0, length = schedules.length; i < length; i++) {
-            vm.schedule.push({
-              _id: schedules[i]['_id'],
-              day_num: schedules[i]['day'],
-              day: DAYS.DAY_DESCRIPTION(schedules[i]['day']),
-              subject: {
-                description: schedules[i]['subject']['description'],
-                _id: schedules[i]['subject']['_id']
-              },
-              duration: {
-                start: $filter('date')(schedules[i]['duration']['start'], 'HH:mm'),
-                end: $filter('date')(schedules[i]['duration']['end'], 'HH:mm')
-              },
-              teacher: getTeacher(schedules[i]['subject']['_id'])
-            });
+            for (i = 0, length = schedules.length; i < length; i++) {
+              vm.schedule.push({
+                _id: schedules[i]['_id'],
+                day_num: schedules[i]['day'],
+                day: DAYS.DAY_DESCRIPTION(schedules[i]['day']),
+                subject: {
+                  description: schedules[i]['subject']['description'],
+                  _id: schedules[i]['subject']['_id']
+                },
+                duration: {
+                  start: $filter('date')(schedules[i]['duration']['start'], 'HH:mm'),
+                  end: $filter('date')(schedules[i]['duration']['end'], 'HH:mm')
+                },
+                teacher: getTeacher(schedules[i]['subject']['_id'])
+              });
+            }
+          }
+          else {
+            var sched = vm.schedule;
+            vm.schedule = [];
+
+            for (i = 0, length = sched.length; i < length; i++) {
+              console.log(sched[i]);
+              vm.schedule.push({
+                _id: sched[i]['_id'],
+                day_num: sched[i]['day_num'],
+                day: DAYS.DAY_DESCRIPTION(sched[i]['day_num']),
+                subject: {
+                  description: sched[i]['subject']['description'],
+                  _id: sched[i]['subject']['_id']
+                },
+                duration: {
+                  start: $filter('date')(sched[i]['duration']['start'], 'HH:mm'),
+                  end: $filter('date')(sched[i]['duration']['end'], 'HH:mm')
+                },
+                teacher: getTeacher(sched[i]['subject']['_id'])
+              });
+            }
+            sched = null;
+            console.log(vm.schedule);
           }
           vm.schedule = $filter('orderBy')(vm.schedule, 'day_num');
         };
@@ -86,6 +113,7 @@
           })
             .then(function (course) {
               loadSubjects(course.subjects);
+              loadSchedules();
 
             }, function (err) {
               // TODO: implementar mensagens de erro
@@ -153,6 +181,30 @@
           else {*/
             removeSchedule(id);
           //}
+        };
+
+        vm.removeSubject = function (id) {
+          messages.confirm('Exclusão', 'Confirma a exclusão da matéria ?', 'opt-subjects-'+id, 'tbl-subjects')
+            .then(function () {
+              request.delete(URLS.COURSEREMOVESUBJECT($routeParams.idcourse, id),
+                function (err, data, status) {
+                  if(!err && status === 200 ){
+                    for (var i = 0, length = vm.subjects.length; i < length; i++) {
+                      if (vm.subjects[i]._id === id){
+                        vm.subjects.splice(i, 1);
+                        break;
+                      }
+                    }
+                    loadSchedules();
+                  }
+                });
+            },
+            function () {
+
+            });
+
+
+
         };
 
         var removeSchedule = function (id) {

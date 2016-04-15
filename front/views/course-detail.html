@@ -167,10 +167,25 @@
         <md-card-content  class="card-item-content" >
           <div class="md-dialog-content" style="overflow-x: auto" id="tbl-subjects">
             <md-list ng-cloak>
-              <md-list-item class="md-3-line" ng-repeat="item in courseDetail.subjects">
+              <md-list-item class="md-3-line" style="padding-left: 15px" ng-repeat="item in courseDetail.subjects">
                 <div class="md-list-item-text" layout="column">
                   <h3>{{ item.subject.description }}</h3>
                   <p>{{ item.teacher.name }}</p>
+                  <md-menu md-offset="-20 4" md-position-mode="target-right target"  class="md-secondary" style="right: 10px">
+                    <md-button aria-label="Open demo menu"
+                               class="md-icon-button"
+                               id="opt-subjects-{{ item._id }}"
+                               ng-click="$mdOpenMenu($event)">
+                      <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
+                    </md-button>
+                    <md-menu-content>
+                      <md-menu-item ng-repeat="opt in ['Excluir']">
+                        <md-button ng-click="courseDetail.removeSubject(item._id)" >
+                          <span md-menu-align-target>{{opt}} </span>
+                        </md-button>
+                      </md-menu-item>
+                    </md-menu-content>
+                  </md-menu>
                 </div>
               </md-list-item>
             </md-list>

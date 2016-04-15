@@ -48,6 +48,9 @@ var URLS = (function () {
     COURSEADDSUBJECT: function (idCourse) {
       return '/courses/' + idCourse + '/add-subject';
     },
+    COURSEREMOVESUBJECT: function (idCourse, idsubject) {
+      return '/courses/' + idCourse + '/remove-subject/' + idsubject;
+    },
     COURSEADDSCHEDULE: function (idCourse) {
       return '/courses/' + idCourse + '/add-schedule';
     },
