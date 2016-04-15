@@ -74,11 +74,11 @@ module.exports.updateCourse = function (course, callback) {
         }
     };
 
-    coursesModel.courses.findOneAndUpdate(query, data, { upsert: false }, function (err, course) {
+    coursesModel.courses.findOneAndUpdate(query, data, { upsert: false, new: true }, function (err, data) {
         if (err)
             deferred.reject(err);
         else
-            deferred.resolve(course);
+            deferred.resolve(data);
     });
 
 
@@ -334,7 +334,7 @@ module.exports.addSchedule = function (item, callback) {
                     }
                 }
                 else
-                    deferred.reject('404 - Not Found');
+                    deferred.reject(404);
             },
             function (err) {
                 deferred.reject(err);
@@ -351,7 +351,7 @@ var validateDateScheduleItem = function (item, course) {
         start: moment(item['duration']['start']).format('HH:mm:ss'),
         end: moment(item['duration']['end']).format('HH:mm:ss')
     };
-    if (candidateScheduleItem.start > candidateScheduleItem.end) {
+    if (candidateScheduleItem.start >= candidateScheduleItem.end) {
         objRet['duration'] = 'Período informado é inválido.';
     }
     else {
@@ -369,6 +369,14 @@ var validateDateScheduleItem = function (item, course) {
                 }
 
                 if (utils.betweenII(candidateScheduleItem.end, scheduleItem.start, scheduleItem.end)) {
+                    objRet['end'] = 'Já existe outra matéria vinculada neste Horário.';
+                }
+
+                if (utils.betweenII(scheduleItem.start, candidateScheduleItem.start, candidateScheduleItem.end)) {
+                    objRet['end'] = 'Já existe outra matéria vinculada neste Horário.';
+                }
+
+                if (utils.betweenII(scheduleItem.end, candidateScheduleItem.start, candidateScheduleItem.end)) {
                     objRet['end'] = 'Já existe outra matéria vinculada neste Horário.';
                 }
 

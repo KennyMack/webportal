@@ -159,10 +159,10 @@ module.exports = function (express, io) {
             .then(function (course) {
                 return coursesController.updateCourse(course);
             })
-            .then(function (course) {
+            .then(function (pcourse) {
                 res.json({
                     success: true,
-                    data: course
+                    data: pcourse
                 });
             })
             .fail(function (err) {
@@ -285,10 +285,18 @@ module.exports = function (express, io) {
                 });
             })
             .fail(function (err) {
-                res.json({
-                    success: false,
-                    data: err
-                });
+                if (err === 404) {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+                else {
+                    res.json({
+                        success: false,
+                        data: err
+                    });
+                }
             });
     });
 

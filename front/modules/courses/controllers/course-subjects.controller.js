@@ -15,7 +15,9 @@
       '$scope',
       function (request, messages, $routeParams, $mdDialog, $q, $timeout,$filter, $scope) {
         var self = this;
-        var blur = false;
+        var blurTeacher = false;
+        var blurSubject = false;
+        var initializing = false;
         self.subjects = [];
         self.teachers = [];
         self.error = [];
@@ -26,30 +28,23 @@
         self.queryTeacherSearch = queryTeacherSearch;
         self.querySubjectSearch = querySubjectSearch;
         self.isTeacherTextValid = true;
+        self.isSubjectTextValid = true;
 
-        self.log = function(){
-          blur = true;
-          console.log($scope);
-          validate(self.searchTeacherText);
+        self.logTeacher = function(){
+          blurTeacher = true;
+          self.isTeacherTextValid = validate(self.searchTeacherText, blurTeacher);
         };
 
-        $scope.$watch(self.teacher, function(newValue) {
-          console.log('alterou');
-          validate(newValue);
-        });
+        self.logSubject = function(){
+          blurSubject = true;
+          self.isSubjectTextValid = validate(self.searchSubjectText, blurSubject);
+        };
 
-        function validate(value){
-          if (value === undefined || value === "" || value === null) {
-            self.$valid = false;
-            if (blur)
-              self.isTeacherTextValid = false;
-          } else {
-            self.$valid = true;
-            self.isTeacherTextValid = true;
-          }
+        function validate(value, blur){
+          return !((!initializing) &&
+          (value === undefined || value === "" || value === null) &&
+          (blur));
         }
-
-
 
         function queryTeacherSearch (query) {
           var results = query ? self.teachers.filter( createFilterForTeacher(query) ) : self.teachers;
@@ -78,9 +73,10 @@
         }
 
         self.init = function () {
-
+          initializing = true;
           request.get(URLS.SUBJECTS(), function (err, data) {
             if(!err) {
+
               for (var i = 0, length = data.data.length; i < length; i++) {
                 self.subjects.push({
                   _id: data.data[i]._id,
@@ -94,6 +90,7 @@
           });
 
           request.get(URLS.TEACHERS(), function (err, data) {
+            initializing = false;
             if(!err) {
               for (var i = 0, length = data.data.length; i < length; i++) {
                 self.teachers.push({
@@ -118,20 +115,29 @@
 
         self.saveClick = function () {
           self.error = [];
-          var subject = {
-            teacher: self.selectedTeacherItem._id,
-            subject: self.selectedSubjectItem._id
-          };
+          if(self.selectedSubjectItem == null) {
+            self.error.push('Selecione a Matéria.');
+          }
+          if (self.selectedTeacherItem  == null){
+            self.error.push('Selecione o Professor.');
+          }
+          if (self.selectedTeacherItem != null && self.selectedSubjectItem != null){
 
-          request.post(URLS.COURSEADDSUBJECT($routeParams.idcourse), subject, function (err, data) {
-            if (!err && data.success){
-              $mdDialog.hide(data.data);
-            }
-            else {
-              self.error.push(data.data.subject);
-            }
+            var subject = {
+              teacher: self.selectedTeacherItem._id||'',
+              subject: self.selectedSubjectItem._id||''
+            };
 
-          });
+            request.post(URLS.COURSEADDSUBJECT($routeParams.idcourse), subject, function (err, data) {
+              if (!err && data.success) {
+                $mdDialog.hide(data.data);
+              }
+              else {
+                self.error.push(data.data.subject);
+              }
+
+            });
+          }
         };
 
       }]);

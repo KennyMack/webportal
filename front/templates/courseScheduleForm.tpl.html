@@ -1,5 +1,5 @@
 <md-dialog flex="50" flex-md="60" aria-label="Cronograma" ng-init="courseSchedule.init()">
-  <form ng-submit="$event.preventDefault()" name="subjectForm" novalidate>
+  <form ng-submit="$event.preventDefault()" name="courseSchedule.subjectForm" novalidate>
     <md-toolbar>
       <div class="md-toolbar-tools" style="background: dodgerblue">
         <h2>Cronograma</h2>
@@ -10,10 +10,9 @@
       </div>
     </md-toolbar>
     <md-dialog-content>
-      <fa-Search-Lookup ng-model="textF" required></fa-Search-Lookup>
       <div class="md-dialog-content" layout="column" flex="100" layout-xs="column">
         <md-input-container flex="100" flex-xs="100" flex-sm="100" >
-          <md-autocomplete flex="100" flex-xs="100" flex-sm="100" required
+          <md-autocomplete flex="100" flex-xs="100" flex-sm="100" required style="height: 50px"
                            md-input-name="txtSubject"
                            md-no-cache="courseSchedule.noCache"
                            md-selected-item="courseSchedule.selectedItem"
@@ -21,15 +20,10 @@
                            md-items="item in courseSchedule.querySearch(courseSchedule.searchText)"
                            md-item-text="item.description"
                            md-min-length="0"
-                           md-floating-label="Matéria*">
+                           md-floating-label="Matéria *">
             <md-item-template>
               <span md-highlight-text="courseSchedule.searchText">{{item.description}}</span>
             </md-item-template>
-            <div ng-messages="subjectForm.txtSubject.$error"
-
-                 ng-if="subjectForm.txtSubject.$touched">
-              <div ng-message="required">Você <b>Deve</b> selecionar uma matéria.</div>
-            </div>
           </md-autocomplete>
         </md-input-container>
         <md-input-container flex="100" flex-xs="100" flex-sm="100">
@@ -39,10 +33,6 @@
               {{ courseSchedule.getDayDescription(day) }}
             </md-option>
           </md-select>
-          <div ng-messages="subjectForm.cbeDayWeek.$error"
-               ng-if="subjectForm.cbeDayWeek.$touched">
-            <div ng-message="required">Você <b>Deve</b> selecionar um dia.</div>
-          </div>
         </md-input-container>
         <md-input-container flex="100" flex-xs="100" flex-sm="100">
           <div flex="100"  layout="column">
@@ -68,6 +58,13 @@
             <md-slider flex class="md-primary" md-discrete ng-model="courseSchedule.timeEnd.minute" step="1" min="0" max="59" aria-label="Minutos"></md-slider>
           </div>
         </md-input-container>
+        <div class="md-dialog-content" layout="column" flex="100" layout-xs="column" style="margin-top: 25px">
+          <div ng-show="courseSchedule.error.length > 0" style="color:rgb(221,44,0)"  >
+            <ul style="padding-left:20px" ng-repeat="er in courseSchedule.error">
+              <li>{{er}}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row" layout="end">

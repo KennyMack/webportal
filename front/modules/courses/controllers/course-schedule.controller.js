@@ -18,8 +18,6 @@
         var self = this;
         self.subjects = [];
         self.error = [];
-        self.fieldError = false;
-        self.textF = 'hello';
         self.newSchedule = {
           _id: '',
           schedule: {
@@ -104,29 +102,56 @@
 
         self.saveClick = function () {
           //TODO: Implementar o salvar da edição
-          /*var date = new Date();
-          var schedule = {
-            day: self.newSchedule.schedule.day,
-            subject: self.selectedItem._id,
-            duration: {
-              start:new Date(date.getFullYear(), date.getMonth(), date.getDay(),
-                             self.timeStart.hour, self.timeStart.minute,
-                             0, 0),
-                end:new Date(date.getFullYear(), date.getMonth(), date.getDay(),
-                             self.timeEnd.hour, self.timeEnd.minute,
-                             0, 0)
-            }
+
+          self.error = [];
+
+          var date = new Date();
+          var subject = {
+            _id: '',
+            description: ''
           };
-          request.post(URLS.COURSEADDSCHEDULE($routeParams.idcourse), schedule, function (err, data) {
-              if (!err && data.success){
+          if (self.selectedItem != null) {
+            subject['_id'] = self.selectedItem._id
+          }
+
+          if (!self.selectedItem)
+            self.error.push('Id da matéria é de preenchimento obrigatório.');
+
+          if (self.newSchedule.schedule.day < 1 ||
+              self.newSchedule.schedule.day > 7)
+            self.error.push('Dia da semana informado é inválido.');
+
+          if (self.selectedItem != null && self.newSchedule.schedule.day != null) {
+            var schedule = {
+              day: self.newSchedule.schedule.day,
+              subject: subject['_id'],
+              duration: {
+                start: new Date(date.getFullYear(), date.getMonth(), date.getDay(),
+                  self.timeStart.hour, self.timeStart.minute,
+                  0, 0),
+                end: new Date(date.getFullYear(), date.getMonth(), date.getDay(),
+                  self.timeEnd.hour, self.timeEnd.minute,
+                  0, 0)
+              }
+            };
+            request.post(URLS.COURSEADDSCHEDULE($routeParams.idcourse), schedule, function (err, data) {
+              if (!err && data.success) {
                 $mdDialog.hide(data.data);
               }
               else {
-                //TODO: Implementar tratativa de erro
-                self.error.push(data.data.subject);
+                if (data.data.duration)
+                  self.error.push(data.data.duration);
+                if (data.data.start)
+                  self.error.push('Hora Início: ' + data.data.start);
+                if (data.data.end)
+                  self.error.push('Hora Término: ' + data.data.end);
+                if (data.data.subject)
+                  self.error.push(data.data.subject);
+                /*if (data.data.day)
+                  self.error.push(data.data.day);*/
               }
-
-          });*/
+            });
+          }
 
           //$mdDialog.hide();
         };

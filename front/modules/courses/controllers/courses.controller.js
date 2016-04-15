@@ -39,16 +39,30 @@
 
         });
 
+        vm.editCourse = function (id) {
+          vm.selectedCourseIndex = id;
+          callEdit();
+        };
+
+        vm.editCourse = function (id, course) {
+          vm.selectedCourseIndex = id;
+          callEdit(course);
+        };
+
+        function callEdit(course){
+          request.get(URLS.COURSETYPE(),
+            function (err, data) {
+              if (!err) {
+                formAction('EDIT', data.data, course);
+              }
+              else
+                messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
+            });
+        }
+
         $scope.$on('actionMenu::EDIT', function() {
           if (vm.selectedCourseIndex != undefined) {
-            request.get(URLS.COURSETYPE(),
-              function (err, data) {
-                if (!err) {
-                  formAction('EDIT', data.data);
-                }
-                else
-                  messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
-              });
+            callEdit();
           }
           else {
             messages.alert('Edição', 'Selecione um curso para realizar a edição.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
@@ -58,6 +72,11 @@
         $scope.$on('actionMenu::REMOVE', function() {
           vm.removeCourse();
         });
+
+        vm.removeCourse = function (id) {
+          vm.selectedCourseIndex = id;
+          callRemove();
+        };
 
         vm.menuActionsCard = function (index) {
           if (vm.selectedCourseIndex === index) {
@@ -73,7 +92,7 @@
 
         };
 
-        vm.removeCourse = function () {
+        function callRemove() {
           if (vm.selectedCourseIndex != undefined) {
             messages.confirm('Exclusão', 'Confirma a exclusão do curso ?', 'bt-action-menu-REMOVE', 'grid-courses')
               .then(function () {
@@ -98,7 +117,7 @@
           else {
             messages.alert('Exclusão', 'Selecione um curso para realizar a exclusão.', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE');
           }
-        };
+        }
 
         vm.init = function () {
           $scope.$broadcast('actionMenu::SHOWBUTTON');
@@ -263,7 +282,7 @@
             messages.alert('Cronograma', 'Esse curso não possui cronograma.', 'btn-schedule-' + idCourse, 'btn-schedule-' + idCourse);
         };
 
-        var formAction = function (action, types) {
+        var formAction = function (action, types, pcourse) {
           $mdDialog.show({
             templateUrl: '../../../templates/courseForm.tpl.html',
             openFrom: '#bt-action-menu-' + action,
@@ -371,17 +390,33 @@
                 vm.courseslist.push(course);
               }
               else {
-                var foundCourse = $filter('filter')(vm.courseslist, {_id: vm.selectedCourseIndex});
-                foundCourse[0].name = course.name;
-                foundCourse[0].identify = course.identify;
-                foundCourse[0].description = course.description;
-                foundCourse[0].active = course.active;
-                foundCourse[0].course_type._id = course.course_type._id;
-                foundCourse[0].course_type.description = course.course_type.description;
-                foundCourse[0].duration.start = Date.parse(course.duration.start);
-                foundCourse[0].duration.end = Date.parse(course.duration.end);
+                if (pcourse == undefined) {
+                  var foundCourse = $filter('filter')(vm.courseslist, {_id: vm.selectedCourseIndex});
+                  if (foundCourse.length > 0) {
+                    foundCourse[0].name = course.name;
+                    foundCourse[0].identify = course.identify;
+                    foundCourse[0].description = course.description;
+                    foundCourse[0].active = course.active;
+                    foundCourse[0].course_type._id = course.course_type._id;
+                    foundCourse[0].course_type.description = course.course_type.description;
+                    foundCourse[0].duration.start = Date.parse(course.duration.start);
+                    foundCourse[0].duration.end = Date.parse(course.duration.end);
+                  }
+                }
+                else {
+                  pcourse.name = course.name;
+                  pcourse.identify = course.identify;
+                  pcourse.description = course.description;
+                  pcourse.active = course.active;
+                  pcourse.course_type._id = course.course_type._id;
+                  pcourse.course_type.description = course.course_type.description;
+                  pcourse.duration.start = course.duration.start;
+                  pcourse.duration.end = course.duration.end;
+                }
+
               }
-              createYearList();
+              if (pcourse == undefined)
+                createYearList();
 
           }, function (err) {
               // TODO: implementar mensagens de erro
