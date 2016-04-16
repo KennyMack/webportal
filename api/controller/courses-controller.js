@@ -545,6 +545,27 @@ module.exports.validateUpdateCourse = function (course, callback) {
     return deferred.promise;
 
 };
+/*
+module.exports.hasScheduleSubject = function (subject, callback) {
+    var deferred = q.defer();
+
+    var objRet = validateSubject(subject, utils.OPERATION_STATUS.DELETE);
+
+    if (Object.keys(objRet).length !== 0) {
+        deferred.reject(objRet);
+    }
+    else {
+        var query = {
+            _id: subject['_id'],
+            $in: { "schedule": { _id: subject['_idsubject'] } }
+        };
+
+    }
+
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+};*/
 
 module.exports.validateDate = validateDate;
 module.exports.validateCourse = validateCourse;

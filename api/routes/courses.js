@@ -244,6 +244,8 @@ module.exports = function (express, io) {
             _idsubject: req.params.idsubject || ''
         };
 
+        //coursesController.
+
         coursesController.removeSubject(subject)
             .then(function (course) {
                 res.json({
