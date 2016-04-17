@@ -216,7 +216,8 @@ module.exports = function (express, io) {
         var subject = {
             _id: req.params.id || '',
             teacher: req.body.teacher || '',
-            subject: req.body.subject || ''
+            subject: req.body.subject || '',
+            schedule: []
         };
 
         coursesController.addSubject(subject)
@@ -227,8 +228,6 @@ module.exports = function (express, io) {
                 });
             })
             .fail(function (err) {
-                console.log('recused');
-                console.log(err);
                 res.json({
                     success: false,
                     data: err
@@ -281,8 +280,6 @@ module.exports = function (express, io) {
 
         coursesController.addSchedule(item)
             .then(function (course) {
-                console.log(course);
-
                 res.json({
                     success: true,
                     data: course
@@ -305,10 +302,11 @@ module.exports = function (express, io) {
     });
 
     /* DELETE remove a Course schedule. */
-    router.delete('/:id/remove-schedule/:idschedule', function (req, res) {
+    router.delete('/:id/remove-schedule/:idsubject/item/:idschedule/', function (req, res) {
         var item = {
             _id: req.params.id || '',
-            _idschedule: req.params.idschedule || ''
+            _idschedule: req.params.idschedule || '',
+            _idsubject: req.params.idsubject || ''
         };
 
         coursesController.removeSchedule(item)

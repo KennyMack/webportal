@@ -93,7 +93,7 @@
                     </md-button>
                     <md-menu-content>
                       <md-menu-item ng-repeat="opt in ['Excluir']">
-                        <md-button ng-click="courseDetail.optionClicked($index, item._id)" >
+                        <md-button ng-click="courseDetail.optionClicked($index, item.subject._id, item._id)" >
                           <span md-menu-align-target>{{opt}} </span>
                         </md-button>
                       </md-menu-item>

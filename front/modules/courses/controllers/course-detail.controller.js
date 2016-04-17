@@ -18,19 +18,17 @@
       function (resource, request, courses, messages, $location,
                 $routeParams, $filter, $scope,
                 $mdDialog, $mdMedia) {
-        var vm = this;
-        vm.course = null;
-        vm.schedule = [];
-        vm.subjects = [];
+        var self = this;
+        self.course = null;
+        self.schedule = [];
+        self.subjects = [];
 
-        vm.init = function () {
+        self.init = function () {
           courses.getCourse($routeParams.idcourse)
             .then(function (courses) {
-              vm.course = courses.data;
-              loadSchedules(courses.data.schedule);
+              self.course = courses.data;
+              loadSchedules(courses.data.subjects);
               loadSubjects(courses.data.subjects);
-
-
               courses.data = null;
             },
             function () {
@@ -38,69 +36,35 @@
             });
         };
 
-        var getTeacher = function (id) {
-          try {
-            return $filter('filter')(vm.course.subjects,{ subject: {_id: id}})[0].teacher.name;
-          }
-          catch(ex) {
-            return '';
-          }
-        };
-
         var loadSubjects = function (subjects) {
-          vm.subjects = subjects;
+          self.subjects = subjects;
         };
 
         var loadSchedules = function (schedules) {
-          var i = 0, length = 0;
-          if (schedules != undefined) {
-            vm.schedule = [];
-
-            for (i = 0, length = schedules.length; i < length; i++) {
-              vm.schedule.push({
-                _id: schedules[i]['_id'],
-                day_num: schedules[i]['day'],
-                day: DAYS.DAY_DESCRIPTION(schedules[i]['day']),
+          self.schedule = [];
+          for (var i = 0, lenSubject = schedules.length; i < lenSubject; i++) {
+            for (var r = 0, lenSchedule = schedules[i].schedule.length; r < lenSchedule; r++) {
+              var item = {
+                _id: schedules[i].schedule[r]['_id'],
+                day_num: schedules[i].schedule[r]['day'],
+                day: DAYS.DAY_DESCRIPTION(schedules[i].schedule[r]['day']),
                 subject: {
                   description: schedules[i]['subject']['description'],
                   _id: schedules[i]['subject']['_id']
                 },
                 duration: {
-                  start: $filter('date')(schedules[i]['duration']['start'], 'HH:mm'),
-                  end: $filter('date')(schedules[i]['duration']['end'], 'HH:mm')
+                  start: $filter('date')(schedules[i].schedule[r]['duration']['start'], 'HH:mm'),
+                  end: $filter('date')(schedules[i].schedule[r]['duration']['end'], 'HH:mm')
                 },
-                teacher: getTeacher(schedules[i]['subject']['_id'])
-              });
+                teacher: schedules[i]['teacher']['name']
+              };
+              self.schedule.push(item);
             }
           }
-          else {
-            var sched = vm.schedule;
-            vm.schedule = [];
-
-            for (i = 0, length = sched.length; i < length; i++) {
-              console.log(sched[i]);
-              vm.schedule.push({
-                _id: sched[i]['_id'],
-                day_num: sched[i]['day_num'],
-                day: DAYS.DAY_DESCRIPTION(sched[i]['day_num']),
-                subject: {
-                  description: sched[i]['subject']['description'],
-                  _id: sched[i]['subject']['_id']
-                },
-                duration: {
-                  start: $filter('date')(sched[i]['duration']['start'], 'HH:mm'),
-                  end: $filter('date')(sched[i]['duration']['end'], 'HH:mm')
-                },
-                teacher: getTeacher(sched[i]['subject']['_id'])
-              });
-            }
-            sched = null;
-            console.log(vm.schedule);
-          }
-          vm.schedule = $filter('orderBy')(vm.schedule, 'day_num');
+          self.schedule = $filter('orderBy')(self.schedule, 'day_num');
         };
 
-        vm.addSubjects = function () {
+        self.addSubjects = function () {
           $mdDialog.show({
             templateUrl: '../../../templates/coursesSubjectsForm.tpl.html',
             openFrom: '#btn-add-subjects',
@@ -120,8 +84,8 @@
             });
         };
 
-        vm.addSchedule = function () {
-          if (vm.subjects.length > 0) {
+        self.addSchedule = function () {
+          if (self.subjects.length > 0) {
             $mdDialog.show({
               templateUrl: '../../../templates/courseScheduleForm.tpl.html',
               openFrom: '#btn-add-schedule',
@@ -136,7 +100,7 @@
               fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
             })
               .then(function (course) {
-                loadSchedules(course.schedule);
+                loadSchedules(course.subjects);
 
               }, function (err) {
                 // TODO: implementar mensagens de erro
@@ -148,7 +112,7 @@
 
         /* TODO: Implementação futura - Atualização do Schedule
         var updateSchedule = function (schedule) {
-          if (vm.course.subjects.length > 0) {
+          if (self.course.subjects.length > 0) {
             $mdDialog.show({
               templateUrl: '../../../templates/courseScheduleForm.tpl.html',
               openFrom: '#btn-add-schedule',
@@ -173,49 +137,46 @@
             messages.alert('Cronograma', 'Este curso ainda não possui nenhuma matéria relacionada.', 'btn-add-schedule', 'btn-add-schedule');
         };*/
 
-        vm.optionClicked = function (index, id) {
+        self.optionClicked = function (index, idSubject, id) {
           /*TODO: Implementação futura - Atualização do Schedule
           if(index == 0) {
-            updateSchedule($filter('filter')(vm.schedule,{ _id: id} )[0]);
+            updateSchedule($filter('filter')(self.schedule,{ _id: id} )[0]);
           }
           else {*/
-            removeSchedule(id);
+            removeSchedule(idSubject, id);
           //}
         };
 
-        vm.removeSubject = function (id) {
-          messages.confirm('Exclusão', 'Confirma a exclusão da matéria ?', 'opt-subjects-'+id, 'tbl-subjects')
+        self.removeSubject = function (id) {
+          messages.confirm('Exclusão', 'Confirma a exclusão da matéria, todas os horários vinculados serão removidos ?', 'opt-subjects-'+id, 'tbl-subjects')
             .then(function () {
               request.delete(URLS.COURSEREMOVESUBJECT($routeParams.idcourse, id),
                 function (err, data, status) {
                   if(!err && status === 200 ){
-                    for (var i = 0, length = vm.subjects.length; i < length; i++) {
-                      if (vm.subjects[i]._id === id){
-                        vm.subjects.splice(i, 1);
+                    for (var i = 0, length = self.subjects.length; i < length; i++) {
+                      if (self.subjects[i]._id === id){
+                        self.subjects.splice(i, 1);
                         break;
                       }
                     }
-                    loadSchedules();
+                    loadSchedules(self.subjects);
                   }
                 });
             },
             function () {
 
             });
-
-
-
         };
 
-        var removeSchedule = function (id) {
+        var removeSchedule = function (subject, id) {
           messages.confirm('Exclusão', 'Confirma a exclusão do horário ?', 'opt-schedule-'+id, 'tbl-schedule')
             .then(function () {
-              request.delete(URLS.COURSEREMOVESCHEDULE($routeParams.idcourse, id),
+              request.delete(URLS.COURSEREMOVESCHEDULE($routeParams.idcourse, subject, id),
                 function (err, data, status) {
                   if(!err && status === 200 ){
-                    for (var i = 0, length = vm.schedule.length; i < length; i++) {
-                      if (vm.schedule[i]._id === id){
-                        vm.schedule.splice(i, 1);
+                    for (var i = 0, length = self.schedule.length; i < length; i++) {
+                      if (self.schedule[i]._id === id){
+                        self.schedule.splice(i, 1);
                         break;
                       }
                     }

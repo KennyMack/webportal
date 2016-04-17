@@ -54,8 +54,9 @@ var URLS = (function () {
     COURSEADDSCHEDULE: function (idCourse) {
       return '/courses/' + idCourse + '/add-schedule';
     },
-    COURSEREMOVESCHEDULE: function (idCourse, idschedule) {
-      return '/courses/' + idCourse + '/remove-schedule/' + idschedule;
+    COURSEREMOVESCHEDULE: function (idCourse, idSubject, idSchedule) {
+      ////courses/          :id/       remove-schedule/:idsubject/item/:idschedule/
+      return '/courses/' + idCourse + '/remove-schedule/' + idSubject + '/item/' + idSchedule;
     },
     COURSETYPE: function () {
       return '/course-type';

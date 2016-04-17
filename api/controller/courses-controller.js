@@ -85,8 +85,6 @@ module.exports.updateCourse = function (course, callback) {
 
     deferred.promise.nodeify(callback);
     return deferred.promise;
-
-    //return coursesModel.courses.update(query, data, { upsert: false }).exec();
 };
 
 // Validate Subject
@@ -158,7 +156,8 @@ module.exports.addSubject = function(subject, callback) {
                         $push: {
                             "subjects": {
                                 teacher: subject['teacher'],
-                                subject: subject['subject']
+                                subject: subject['subject'],
+                                schedule: []
                             }
                         }
                     };
@@ -166,7 +165,7 @@ module.exports.addSubject = function(subject, callback) {
                     coursesModel.courses.findOneAndUpdate(query, data, options)
                         .populate('subjects.teacher', 'name')
                         .populate('subjects.subject', 'description')
-                        .populate('schedule.subject').exec()
+                        .exec()
                         .then(function (data) {
                             deferred.resolve(data);
                         }, function (err) {
@@ -257,6 +256,13 @@ var validateSchedule = function (item, status) {
             objRet['_idschedule'] = 'Id do item do cronograma é de preenchimento obrigatório.';
         else if (!validator.isMongoId(item['_idschedule']))
             objRet['_idschedule'] = 'Id do item do cronograma informado é inválido.';
+
+
+        item['_idsubject'] = validator.trim(validator.escape(item['_idsubject'].toString() || ''));
+        if (validator.isNull(item['_idsubject']))
+            objRet['_idsubject'] = 'Id da matéria é de preenchimento obrigatório.';
+        else if (!validator.isMongoId(item['_idsubject']))
+            objRet['_idsubject'] = 'Id da matéria informado é inválido.';
     }
 
     item['_id'] = validator.trim(validator.escape(item['_id'].toString() || ''));
@@ -454,20 +460,34 @@ module.exports.removeSchedule = function(item, callback) {
     }
     else {
         var query = { _id: item['_id'] };
-        var data = {
-            $pull: {
-                "schedule": {
-                    _id: item['_idschedule']
-                }
-            }
-        };
         var options = { safe: true, upsert: true, new: true };
-        coursesModel.courses.findOneAndUpdate(query, data, options, function (err, data) {
+
+        coursesModel.courses.findById(item['_id'], function (err, data) {
             if (err) {
                 deferred.reject(err);
             }
             else {
-                deferred.resolve(data);
+                for (var i = 0, lenSubject = data.subjects.length;  i < lenSubject; i++) {
+                    if (data.subjects[i].subject == item['_idsubject']) {
+                        for (var r = 0, lenSchedule = data.subjects[i].schedule.length; r < lenSchedule; r++) {
+                            if (data.subjects[i].schedule[r]._id == item['_idschedule']) {
+                                data.subjects[i].schedule.splice(r, 1);
+                                break;
+                            }
+
+                        }
+                    }
+                }
+                coursesModel.courses.findOneAndUpdate(query, data, options,
+                    function (err, data) {
+                        if (err) {
+                            deferred.reject(err);
+                        }
+                        else {
+                            deferred.resolve(data);
+                        }
+                    });
+
             }
         });
     }
