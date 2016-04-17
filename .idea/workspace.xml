@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/views/course-detail.html" afterPath="$PROJECT_DIR$/front/views/course-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/courses-controller.js" afterPath="$PROJECT_DIR$/api/controller/courses-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/courses.js" afterPath="$PROJECT_DIR$/api/routes/courses.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/utils/urls.js" afterPath="$PROJECT_DIR$/front/modules/utils/urls.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="" />
     <ignored path="auth.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +24,31 @@
     <favorites_list name="auth" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="course-subjects.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/course-subjects.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="81" column="40" selection-start-line="81" selection-start-column="40" selection-end-line="81" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="courses-controller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.19782871">
+              <caret line="291" column="47" selection-start-line="291" selection-start-column="47" selection-end-line="291" selection-end-column="47" />
+              <folding>
+                <element signature="e#11970#13027#0" expanded="false" />
+                <element signature="e#13727#15736#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -2720,7 +2737,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460872754237</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="changes in Schedule style 100 %">
+      <created>1460918109589</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1460918109589</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -2734,8 +2757,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="30" width="1922" height="994" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.48935038" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53504676" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.49574015" order="8" side_tool="false" content_ui="tabs" />
@@ -2744,7 +2768,7 @@
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22257721" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15282215" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39719626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3352804" sideWeight="0.4946752" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3352804" sideWeight="0.4946752" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17039403" sideWeight="0.5046729" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40186915" sideWeight="0.50532484" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="SvgViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30724174" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2753,7 +2777,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2796,7 +2819,8 @@
     <MESSAGE value="view details of class 77%, creating form directives 9%, changes in validations of  schedule, remove subjects 45 %" />
     <MESSAGE value="Before changes in Schedule style" />
     <MESSAGE value="changes in Schedule style 50 %" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes in Schedule style 50 %" />
+    <MESSAGE value="changes in Schedule style 100 %" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes in Schedule style 100 %" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3104,6 +3128,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20400728">
           <caret line="78" column="30" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3119,6 +3144,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24538745">
           <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3127,9 +3153,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="95" column="65" selection-start-line="95" selection-start-column="65" selection-end-line="95" selection-end-column="65" />
           <folding>
-            <element signature="n#style#0;n#md-list-item#0;n#md-list#0;n#div#0;n#md-card-content#0;n#md-card#1;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-menu#0;n#div#0;n#md-list-item#0;n#md-list#0;n#div#0;n#md-card-content#0;n#md-card#1;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-menu#0;n#div#0;n#md-list-item#0;n#md-list#0;n#div#0;n#md-card-content#0;n#md-card#1;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-list-item#0;n#md-list#0;n#div#0;n#md-card-content#0;n#md-card#1;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#md-menu#0;n#div#0;n#md-list-item#0;n#md-list#0;n#div#0;n#md-card-content#0;n#md-card#1;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-menu#0;n#div#0;n#md-list-item#0;n#md-list#0;n#div#0;n#md-card-content#0;n#md-card#1;n#div#1;n#md-content#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3166,14 +3192,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/course-subjects.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65313655">
-          <caret line="96" column="40" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/routes/courses.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3182,10 +3200,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/course-subjects.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="40" selection-start-line="81" selection-start-column="40" selection-end-line="81" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.398524">
-          <caret line="201" column="13" selection-start-line="201" selection-start-column="13" selection-end-line="201" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.19782871">
+          <caret line="291" column="47" selection-start-line="291" selection-start-column="47" selection-end-line="291" selection-end-column="47" />
           <folding>
             <element signature="e#11970#13027#0" expanded="false" />
             <element signature="e#13727#15736#0" expanded="false" />
