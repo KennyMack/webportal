@@ -1,10 +1,10 @@
 /**
  * Created by jonathan on 29/02/16.
  */
-var database   = require('../database/database');
-var utils      = require('../utils/utils');
+const database   = require('../database/database');
+const utils      = require('../utils/utils');
 
-var coursesSchema = database.mongoose.Schema({
+const coursesSchema = database.mongoose.Schema({
     identify: {
         type: String,
         required: true
@@ -40,7 +40,7 @@ var coursesSchema = database.mongoose.Schema({
         }
     },
     subjects: [{
-        teacher:{
+        teacher: {
             type: database.mongoose.Schema.Types.ObjectId,
             ref: 'teachers',
             required:true,
@@ -51,32 +51,26 @@ var coursesSchema = database.mongoose.Schema({
             ref: 'subjects',
             required:true,
             index:true
-        }
-    }],
-    schedule:[{
-        day:{
-            type: Number,
-            required: true,
-            index: true
         },
-        subject: {
-            type:  database.mongoose.Schema.Types.ObjectId,
-            ref: 'subjects',
-            required:true,
-            index:true
-        },
-        duration: {
-            start: {
-                type: Date,
+        schedule:[{
+            day: {
+                type: Number,
                 required: true,
-                index:true
+                index: true
             },
-            end: {
-                type: Date,
-                required: true,
-                index:true
+            duration: {
+                start: {
+                    type: Date,
+                    required: true,
+                    index:true
+                },
+                end: {
+                    type: Date,
+                    required: true,
+                    index:true
+                }
             }
-        }
+        }]
     }],
     class: [{
         _id: {
@@ -124,6 +118,10 @@ coursesSchema.pre('update', function(next) {
     preUpdate(course, next);
 
 });
+
+module.exports.getObjectId = function (id) {
+    return database.mongoose.Types.ObjectId(id)
+};
 
 
 module.exports.courses = database.db.model('courses', coursesSchema);

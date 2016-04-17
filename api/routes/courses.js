@@ -281,6 +281,8 @@ module.exports = function (express, io) {
 
         coursesController.addSchedule(item)
             .then(function (course) {
+                console.log(course);
+
                 res.json({
                     success: true,
                     data: course

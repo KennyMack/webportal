@@ -21,14 +21,14 @@ app.set('view engine', 'jade');
 
 // Middleware to Uncaught Exceptions
 app.use(function (req, res, next) {
-  console.log('domain');
+  //console.log('domain');
   var domain = require('domain').create();
 
   domain.on('error', function (err) {
-    console.error('DOMAIN ERROR CAUGHT\n', err.stack);
+    //console.error('DOMAIN ERROR CAUGHT\n', err.stack);
     try {
       setTimeout(function () {
-        console.error('Failsafe shutdown');
+        //console.error('Failsafe shutdown');
         process.exit(1);
       }, 5000);
 
@@ -42,7 +42,7 @@ app.use(function (req, res, next) {
         next(err);
       }
       catch(err) {
-        console.error('Express error mechanism failed.\n', err.stack);
+       // console.error('Express error mechanism failed.\n', err.stack);
         res.statusCode = 500;
         res.setHeader('content-type', 'application/json');
         res.end({
@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
       }
     }
     catch (err){
-      console.error('Unable to send 500 response.\n', err.stack);
+      //console.error('Unable to send 500 response.\n', err.stack);
     }
   });
 
@@ -76,7 +76,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function (req, res, next) {
 
   io.emit('hello', {hello: 'world'});
-  console.log('middleware');
+  //console.log('middleware');
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -146,7 +146,7 @@ app.use(function(err, req, res) {
 });
 
 io.on("connection", function(socket){
-  console.log('New connection found.');
+  //console.log('New connection found.');
 
   /*socket.on('loko', function (data) {
     console.log(data);

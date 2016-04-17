@@ -11,7 +11,7 @@ module.exports.listCourses = function() {
     return coursesModel.courses.find({})
         .populate('subjects.teacher', 'name')
         .populate('subjects.subject', 'description')
-        .populate('schedule.subject').exec();
+        .exec();
 };
 
 // Get Course By Id
@@ -19,7 +19,7 @@ module.exports.getById = function(id) {
     return coursesModel.courses.findById(id)
         .populate('subjects.teacher', 'name')
         .populate('subjects.subject', 'description')
-        .populate('schedule.subject').exec();
+        .exec();
 };
 
 // Get Subjects in Course
@@ -282,56 +282,33 @@ module.exports.addSchedule = function (item, callback) {
         coursesModel.courses.findById(item['_id']).exec()
             .then(function (course) {
                 if (course) {
-                    objRet = validateDateScheduleItem(item, course);
+                     getSchedules(item)
+                        .then(function (data) {
+                            return validateDateScheduleItem(item, data);
+                        })
+                        .then(function () {
+                             for (var i = 0, length = course.subjects.length; i < length; i++) {
+                                 if (course.subjects[i].subject == item['subject']) {
+                                     course.subjects[i].schedule.push({
+                                         day: item['day'],
+                                         subject: item['subject'],
+                                         duration: {
+                                             start: moment(item['duration']['start']).format('YYYY-MM-DD HH:mm:ss'),
+                                             end: moment(item['duration']['end']).format('YYYY-MM-DD HH:mm:ss')
+                                         }
+                                     });
+                                 }
+                             }
 
-                    if (Object.keys(objRet).length !== 0) {
-                        deferred.reject(objRet);
-                    }
-                    else {
-                        var query = { _id: item['_id'] };
-                        var data = {
-                            $push: {
-                                "schedule": {
-                                    day: item['day'],
-                                    subject: item['subject'],
-                                    duration: {
-                                        start: moment(item['duration']['start']).format('YYYY-MM-DD HH:mm:ss'),
-                                        end: moment(item['duration']['end']).format('YYYY-MM-DD HH:mm:ss')
+                             return addSubjectSchedule(course);
 
-                                    }
-                                }
-                            }
-                        };
-
-                        var options = { safe: true, upsert: true, new: true };
-                        coursesModel.courses.findOneAndUpdate(query, data, options)
-                            .populate('subjects.teacher', 'name')
-                            .populate('subjects.subject', 'description')
-                            .populate('schedule.subject').exec()
-                            .then(function (data) {
-                                deferred.resolve(data);
-                            }, function (err) {
-                                deferred.reject(err);
-                            });
-
-
-                        /*course.schedule.push({
-                            day: item['day'],
-                            subject: item['subject'],
-                            duration: {
-                                start: moment(item['duration']['start']).format('YYYY-MM-DD HH:mm:ss'),
-                                end: moment(item['duration']['end']).format('YYYY-MM-DD HH:mm:ss')
-                            }
+                        })
+                        .then(function (data) {
+                            deferred.resolve(data);
+                        })
+                        .fail(function (err) {
+                            deferred.reject(err);
                         });
-
-                        course.save(function (err, course) {
-                            if (err) {
-                                deferred.reject(err);
-                            } else {
-                                deferred.resolve(course)
-                            }
-                        });*/
-                    }
                 }
                 else
                     deferred.reject(404);
@@ -345,7 +322,74 @@ module.exports.addSchedule = function (item, callback) {
     return deferred.promise;
 };
 
-var validateDateScheduleItem = function (item, course) {
+// get a list with course schedule
+var getSchedules = function (item, callback) {
+    var deferred = q.defer();
+    coursesModel.courses
+        .aggregate([
+            {
+                "$project": {
+                    "_id":1, "subjects":1
+                }
+            },
+            {
+                $unwind:'$subjects'
+            },
+            {
+                "$match": {
+                    _id: coursesModel.getObjectId(item['_id'])
+                }
+            },
+            {
+                $unwind: "$subjects.schedule"
+            },
+            {
+                "$match": {
+                    "subjects.schedule.day": parseInt(item['day'])
+                }
+            },
+            {
+                $group: {
+                    _id:'$_id',
+                    subjects: {
+                        $push:'$subjects.schedule'
+                    }
+                }
+            }
+        ]).exec()
+        .then(function (data) {
+            deferred.resolve(data);
+        }, function (err) {
+            deferred.reject(err);
+        });
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+};
+
+// save new Schedule
+var addSubjectSchedule = function (course, callback) {
+    var deferred = q.defer();
+
+    var query = { _id: course._id };
+
+    var options = { safe: true, upsert: true, new: true };
+    coursesModel.courses.findOneAndUpdate(query, course, options)
+        .populate('subjects.teacher', 'name')
+        .populate('subjects.subject', 'description')
+        .populate('schedule.subject').exec()
+        .then(function (data) {
+            deferred.resolve(data);
+        }, function (err) {
+            deferred.reject(err);
+        });
+
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
+};
+
+var validateDateScheduleItem = function (item, schedule, callback) {
+    var deferred = q.defer();
     var objRet = {};
     var candidateScheduleItem = {
         start: moment(item['duration']['start']).format('HH:mm:ss'),
@@ -355,13 +399,11 @@ var validateDateScheduleItem = function (item, course) {
         objRet['duration'] = 'Período informado é inválido.';
     }
     else {
-
-        for (var i = 0, length = course.schedule.length; i < length; i++) {
-            if (course.schedule[i].day == item['day']) {
-
+        if (schedule.length > 0) {
+            for (var i = 0, length = schedule[0].subjects.length; i < length; i++) {
                 var scheduleItem = {
-                    start: moment(course.schedule[i].duration.start).format('HH:mm:ss'),
-                    end: moment(course.schedule[i].duration.end).format('HH:mm:ss')
+                    start: moment(schedule[0].subjects[i].duration.start).format('HH:mm:ss'),
+                    end: moment(schedule[0].subjects[i].duration.end).format('HH:mm:ss')
                 };
 
                 if (utils.betweenII(candidateScheduleItem.start, scheduleItem.start, scheduleItem.end)) {
@@ -388,9 +430,17 @@ var validateDateScheduleItem = function (item, course) {
             }
         }
     }
+    if (Object.keys(objRet).length !== 0) {
+        deferred.reject(objRet);
+    }
+    else {
+        deferred.resolve("ok");
+    }
+
     candidateScheduleItem = null;
 
-    return objRet;
+    deferred.promise.nodeify(callback);
+    return deferred.promise;
 };
 
 // Remove Schedule to Course
