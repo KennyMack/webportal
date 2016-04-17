@@ -18,14 +18,14 @@
       function (resource, request, messages, courses,
                 $controller, $scope, $filter, $location,
                 $mdDialog, $mdMedia) {
-        var vm = this;
+        var self = this;
         var GridListCtrl = $controller(frontApp.modules.courses.imports.gridlistctrl, {$scope: $scope});
         var active = true;
-        vm.expandedTextIndex = undefined;
-        vm.undefinedIndex = true;
-        vm.selectedCourseIndex = undefined;
-        vm.courseslist = [];
-        vm.yearsList = [];
+        self.expandedTextIndex = undefined;
+        self.undefinedIndex = true;
+        self.selectedCourseIndex = undefined;
+        self.courseslist = [];
+        self.yearsList = [];
 
         $scope.$on('actionMenu::NEW', function() {
           request.get(URLS.COURSETYPE(),
@@ -39,13 +39,13 @@
 
         });
 
-        vm.editCourse = function (id) {
-          vm.selectedCourseIndex = id;
+        self.editCourse = function (id) {
+          self.selectedCourseIndex = id;
           callEdit();
         };
 
-        vm.editCourse = function (id, course) {
-          vm.selectedCourseIndex = id;
+        self.editCourse = function (id, course) {
+          self.selectedCourseIndex = id;
           callEdit(course);
         };
 
@@ -61,7 +61,7 @@
         }
 
         $scope.$on('actionMenu::EDIT', function() {
-          if (vm.selectedCourseIndex != undefined) {
+          if (self.selectedCourseIndex != undefined) {
             callEdit();
           }
           else {
@@ -70,38 +70,38 @@
         });
 
         $scope.$on('actionMenu::REMOVE', function() {
-          vm.removeCourse();
+          self.removeCourse();
         });
 
-        vm.removeCourse = function (id) {
-          vm.selectedCourseIndex = id;
+        self.removeCourse = function (id) {
+          self.selectedCourseIndex = id;
           callRemove();
         };
 
-        vm.menuActionsCard = function (index) {
-          if (vm.selectedCourseIndex === index) {
+        self.menuActionsCard = function (index) {
+          if (self.selectedCourseIndex === index) {
             active = !active;
           }
         };
 
-        vm.optionClicked = function (index) {
+        self.optionClicked = function (index) {
 
           if(index === 0){
-            $location.path(URLS.COURSEDETAIL(vm.selectedCourseIndex));
+            $location.path(URLS.COURSEDETAIL(self.selectedCourseIndex));
           }
 
         };
 
         function callRemove() {
-          if (vm.selectedCourseIndex != undefined) {
+          if (self.selectedCourseIndex != undefined) {
             messages.confirm('Exclusão', 'Confirma a exclusão do curso ?', 'bt-action-menu-REMOVE', 'grid-courses')
               .then(function () {
-                request.delete(URLS.COURSES(vm.selectedCourseIndex),
+                request.delete(URLS.COURSES(self.selectedCourseIndex),
                   function (err, data, status) {
                     if(!err && status === 200 ){
-                      for (var i = 0, length = vm.courseslist.length; i < length; i++) {
-                        if (vm.courseslist[i]._id === vm.selectedCourseIndex){
-                          vm.courseslist.splice(i, 1);
+                      for (var i = 0, length = self.courseslist.length; i < length; i++) {
+                        if (self.courseslist[i]._id === self.selectedCourseIndex){
+                          self.courseslist.splice(i, 1);
                         }
 
                       }
@@ -119,13 +119,13 @@
           }
         }
 
-        vm.init = function () {
+        self.init = function () {
           $scope.$broadcast('actionMenu::SHOWBUTTON');
           courses.getCourses()
             .then(function (courses) {
-              vm.courseslist = [];
-              vm.yearsList = [];
-              vm.courseslist = courses.data;
+              self.courseslist = [];
+              self.yearsList = [];
+              self.courseslist = courses.data;
               createYearList();
             },
             function () {
@@ -134,21 +134,21 @@
         };
 
         var createYearList = function () {
-          vm.yearsList = [];
-          for (var i = 0, length = vm.courseslist.length; i < length; i++) {
-            var year = $filter('date')(vm.courseslist[i]['duration']['start'], 'yyyy');
+          self.yearsList = [];
+          for (var i = 0, length = self.courseslist.length; i < length; i++) {
+            var year = $filter('date')(self.courseslist[i]['duration']['start'], 'yyyy');
             if (!yearInList(year)) {
-              vm.yearsList.push({'name': year});
+              self.yearsList.push({'name': year});
             }
-            vm.courseslist[i]['year'] = year;
+            self.courseslist[i]['year'] = year;
           }
         };
 
         var yearInList = function (year) {
-          return $filter('filter')(vm.yearsList, { name: year }).length > 0;
+          return $filter('filter')(self.yearsList, { name: year }).length > 0;
         };
 
-        vm.showClass = function (idCourse, students) {
+        self.showClass = function (idCourse, students) {
           var studentsClass = [];
 
           if (students.length > 0) {
@@ -178,7 +178,7 @@
             messages.alert('Alunos', 'Esse curso não possui alunos.', 'btn-class-' + idCourse, 'btn-class-' + idCourse);
         };
 
-        vm.showSubjects = function (idCourse, subjects) {
+        self.showSubjects = function (idCourse, subjects) {
           var subjectsCourse = [];
 
           if (subjects.length > 0) {
@@ -199,10 +199,10 @@
 
             GridListCtrl.showGrid(grid)
               .then(function (subject) {
-                console.log(subject);
+                //console.log(subject);
                 subjectsCourse.length = 0;
               }, function (err) {
-                console.error(err);
+                //console.error(err);
                 subjectsCourse.length = 0;
               });
           }
@@ -210,16 +210,38 @@
             messages.alert('Matérias', 'Esse curso não possui matérias.', 'btn-subjects-' + idCourse, 'btn-subjects-' + idCourse);
         };
 
-        vm.showSchedule = function (idCourse, schedules) {
+        self.showSchedule = function (idCourse, subjects) {
 
-          if (schedules.length > 0 ) {
+          if (subjects.length > 0 ) {
+
+            var schedule = [];
+            for (var i = 0, lenSubject = subjects.length; i < lenSubject; i++) {
+              for (var r = 0, lenSchedule = subjects[i].schedule.length; r < lenSchedule; r++) {
+                var item = {
+                  _id: subjects[i].schedule[r]['_id'],
+                  day_num: subjects[i].schedule[r]['day'],
+                  day: DAYS.DAY_DESCRIPTION(subjects[i].schedule[r]['day']),
+                  subject: {
+                    description: subjects[i]['subject']['description'],
+                    _id: subjects[i]['subject']['_id']
+                  },
+                  duration: {
+                    start: $filter('date')(subjects[i].schedule[r]['duration']['start'], 'HH:mm'),
+                    end: $filter('date')(subjects[i].schedule[r]['duration']['end'], 'HH:mm')
+                  },
+                  teacher: subjects[i]['teacher']['name']
+                };
+                schedule.push(item);
+              }
+            }
+            schedule = $filter('orderBy')(schedule, 'day_num');
 
             $mdDialog.show({
               templateUrl: '../../../templates/gridListSchedule.tpl.html',
               openFrom: '#btn-schedule-' + idCourse,
               closeTo: '#btn-schedule-' + idCourse,
               locals: {
-                itemsList: schedules,
+                itemsList: schedule,
                 pageHeader: 'Cronograma'
               },
               controller: ['$scope', 'itemsList', 'pageHeader',
@@ -273,9 +295,9 @@
               fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
             })
               .then(function (day) {
-                console.log(day);
+                //console.log(day);
               }, function (err) {
-                console.error(err);
+                //console.error(err);
               });
           }
           else
@@ -293,14 +315,14 @@
               courses: courses,
               action: action,
               Course: courses.Course(),
-              id_course: vm.selectedCourseIndex
+              id_course: self.selectedCourseIndex
             },
             controller: ['$scope', 'courseType', 'pageHeader', '$q',
               'courses', 'action', 'Course', 'id_course',
               function ($scope, courseType, pageHeader, $q,
                         courses, action, Course, id_course) {
-                var vm = this;
-                vm.newCourse = {
+                var self = this;
+                self.newCourse = {
                   _id: '',
                   name: '',
                   identify: '',
@@ -316,10 +338,10 @@
                   }
                 };
 
-                vm.init = function () {
+                self.init = function () {
                   if (action !== 'NEW') {
                     Course.get({Id: id_course}, function (course) {
-                      vm.newCourse = {
+                      self.newCourse = {
                         _id: id_course,
                         name: course.data.name,
                         identify: course.data.identify,
@@ -338,25 +360,25 @@
                   }
                 };
 
-                vm.courseType = courseType;
-                vm.pageHeader = pageHeader;
+                self.courseType = courseType;
+                self.pageHeader = pageHeader;
 
-                vm.closeClick = function () {
+                self.closeClick = function () {
                   $mdDialog.cancel();
                 };
 
-                vm.cancelClick = function () {
+                self.cancelClick = function () {
                   $mdDialog.cancel();
                 };
 
-                vm.saveClick = function () {
+                self.saveClick = function () {
                   //TODO: Construir a validacao antes de inserir
-                  vm.newCourse.course_type.description = document.getElementById('cbe-course-type').innerText;
-                  vm.newCourse.duration.start = moment(vm.newCourse.duration.start)._d;
-                  vm.newCourse.duration.end = moment(vm.newCourse.duration.end)._d;
+                  self.newCourse.course_type.description = document.getElementById('cbe-course-type').innerText;
+                  self.newCourse.duration.start = moment(self.newCourse.duration.start)._d;
+                  self.newCourse.duration.end = moment(self.newCourse.duration.end)._d;
 
                   if (action === 'NEW') {
-                    var objCourse = new Course(vm.newCourse);
+                    var objCourse = new Course(self.newCourse);
                     objCourse.$post(function (course) {
                       if (course.success)
                         $mdDialog.hide(course.data);
@@ -368,7 +390,7 @@
                   }
                   else {
 
-                    Course.put({}, vm.newCourse, function (course) {
+                    Course.put({}, self.newCourse, function (course) {
                       if (course.success) {
                         $mdDialog.hide(course.data);
                       }
@@ -387,11 +409,11 @@
           })
           .then(function (course) {
               if (action === 'NEW') {
-                vm.courseslist.push(course);
+                self.courseslist.push(course);
               }
               else {
                 if (pcourse == undefined) {
-                  var foundCourse = $filter('filter')(vm.courseslist, {_id: vm.selectedCourseIndex});
+                  var foundCourse = $filter('filter')(self.courseslist, {_id: self.selectedCourseIndex});
                   if (foundCourse.length > 0) {
                     foundCourse[0].name = course.name;
                     foundCourse[0].identify = course.identify;
@@ -423,34 +445,34 @@
           });
         };
 
-        vm.showCollapseButton = function (text) {
+        self.showCollapseButton = function (text) {
           return text.length > 125;
         };
 
-        vm.getShortDescription = function (text) {
+        self.getShortDescription = function (text) {
           return $filter('limitTo')(text, 125, 0);
         };
 
-        vm.collapseDescription = function (index) {
-          if (vm.expandedTextIndex !== index) {
-            vm.expandedTextIndex = index;
+        self.collapseDescription = function (index) {
+          if (self.expandedTextIndex !== index) {
+            self.expandedTextIndex = index;
           }
           else {
-            vm.expandedTextIndex = undefined;
+            self.expandedTextIndex = undefined;
           }
         };
 
-        vm.selectCourseIndex = function (index) {
+        self.selectCourseIndex = function (index) {
           //active = !active;
 
-          vm.expandedTextIndex = undefined;
-          if (vm.selectedCourseIndex !== index) {
-            vm.selectedCourseIndex = index;
-            vm.undefinedIndex = false;
+          self.expandedTextIndex = undefined;
+          if (self.selectedCourseIndex !== index) {
+            self.selectedCourseIndex = index;
+            self.undefinedIndex = false;
           }
           else {
-            vm.selectedCourseIndex = undefined;
-            vm.undefinedIndex = true;
+            self.selectedCourseIndex = undefined;
+            self.undefinedIndex = true;
           }
         };
       }]);

@@ -14,10 +14,20 @@
     routes: {
       students: URLS.STUDENTS()
     },
+    factories: {
+      students: 'studentsFactory'
+    },
     templates: {
       students: {
         url: 'views/students.html'
       }
+    },
+    imports: {
+      gridlistctrl: frontApp.modules.utils.controllers.GridListCtrl.name,
+      messages: frontApp.modules.utils.services.messages,
+      request: frontApp.modules.utils.factories.request,
+      resource: frontApp.modules.utils.factories.resource,
+      localSave: frontApp.modules.utils.services.localSave
     }
   };
   angular.module(frontApp.modules.students.name, [

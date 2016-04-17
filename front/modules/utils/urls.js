@@ -15,7 +15,10 @@ var URLS = (function () {
         return '/mordor/credential';
       }
     },
-    STUDENTS: function () {
+    STUDENTS: function (code) {
+      if (code)
+        return '/students/' + code;
+      else
         return '/students';
     },
     SUBJECTS: function (code) {

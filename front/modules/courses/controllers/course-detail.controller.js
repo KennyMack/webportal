@@ -77,7 +77,7 @@
           })
             .then(function (course) {
               loadSubjects(course.subjects);
-              loadSchedules();
+              loadSchedules(course.subjects);
 
             }, function (err) {
               // TODO: implementar mensagens de erro

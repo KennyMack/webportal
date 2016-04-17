@@ -3,7 +3,7 @@
  */
 (function(angular, frontApp) {
   'use strict';
-  angular.module(frontApp.modules.utils.name)
+  angular.module(frontApp.modules.courses.name)
     .factory(frontApp.modules.courses.factories.courses, [
       frontApp.modules.utils.services.localSave,
       'LOCALNAME',
