@@ -189,4 +189,4 @@ module.exports = function (express, io) {
     });
 
     return router;
-}
+};

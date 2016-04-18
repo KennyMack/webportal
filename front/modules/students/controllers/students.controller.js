@@ -27,7 +27,6 @@
 
 
         self.init = function () {
-          $scope.$broadcast('actionMenu::SHOWBUTTON');
           students.getStudents()
             .then(function (students) {
               self.studentsList = [];
@@ -66,8 +65,6 @@
         };
 
         self.selectCourseIndex = function (index) {
-          //active = !active;
-
           self.expandedTextIndex = undefined;
           if (self.selectedCourseIndex !== index) {
             self.selectedCourseIndex = index;
@@ -78,6 +75,8 @@
             self.undefinedIndex = true;
           }
         };
+
+        self.ramdom
 
 
     }]);

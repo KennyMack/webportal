@@ -21,7 +21,8 @@
     },
     filters:{
       removeAccents: 'removeAccentsFilter',
-      searchFilter: 'searchFilter'
+      searchFilter: 'searchFilter',
+      genderFilter: 'genderFilter'
     },
     directives: {
       faSearchLookup: 'faSearchLookup',

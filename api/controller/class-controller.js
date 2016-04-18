@@ -23,7 +23,6 @@ module.exports.createClass = function (clas, callback) {
                 var classCourse = [];
                 for (var i = 0, length = clas['class'].length; i < length; i++) {
                     if (!studentExistsInCourse(clas['class'][i], course.class)) {
-                        console.log('item ' + i);
                         classCourse.push(clas['class'][i]);
                     }
                 }
@@ -91,7 +90,8 @@ var saveStudentsCourse = function (id, students, callback) {
                 _id: id,
                 active: 1,
                 duration: {
-                    start: moment()
+                    start: moment(),
+                    end: null
                 }
             });
             student.save(done);

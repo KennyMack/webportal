@@ -5,11 +5,11 @@
   -ms-transition: all 500ms cubic-bezier(.45,.05,.55,.95);
 }
 /* Sub Header */
-.accordeon .grid-data .group-header{
+.accordeon .group-header{
   height: 35px;
 }
 
-.accordeon .grid-data .group-header p {
+.accordeon .group-header p {
   text-align: end;
   padding-right: 25px;
   padding-top: 10px;
@@ -75,6 +75,17 @@
   width: 60px;
   display: table-cell;
   outline:none;
+}
+
+.accordeon .card-item-title-header .add-ons {
+  width: 60px;
+  display: table-cell;
+  outline:none;
+  background: green;
+}
+.accordeon .card-item-title-header .add-ons .item{
+  padding-top: 15px;
+  background: greenyellow;
 }
 
 .accordeon .card-item-title-header .tools md-menu {

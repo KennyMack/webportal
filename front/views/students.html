@@ -4,25 +4,32 @@
       <div class="group-header" flex="100">
         <p class="md-caption">{{ year.name }}</p>
       </div>
-      <div id="grid-courses" ng-repeat="itemcourse in students.studentsList| filter:{ year: year.name }">
+      <div id="grid-courses" ng-repeat="itemstudent in students.studentsList| filter:{ year: year.name }">
         <md-card class="card-item" style="overflow: hidden"
                  ng-class="{
-                        'card-expanded md-whiteframe-z3': itemcourse._id == students.selectedCourseIndex,
-                        'card-collapsed': (itemcourse._id != students.selectedCourseIndex && !students.undefinedIndex)
+                        'card-expanded md-whiteframe-z3': itemstudent._id == students.selectedCourseIndex,
+                        'card-collapsed': (itemstudent._id != students.selectedCourseIndex && !students.undefinedIndex)
                         }" >
           <md-card-title class="card-item-header" >
             <md-card-title-text class="card-item-title-header">
-              <div class="icon" ng-click="students.selectCourseIndex(itemcourse._id)">
-                <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>
+              <div class="icon" ng-click="students.selectCourseIndex(itemstudent._id)">
+                <md-icon md-svg-src="../images/ic_person_mark1.svg"></md-icon>
               </div>
-              <div class="title" ng-click="students.selectCourseIndex(itemcourse._id)">
-                <p ng-class="{'title-header-collapse': itemcourse._id == students.selectedCourseIndex }">{{ itemcourse.name }}
-                  <span ng-show="itemcourse._id != students.selectedCourseIndex" class="md-subhead center" >{{itemcourse.course_type.description }}</span></p>
+              <div class="title" ng-click="students.selectCourseIndex(itemstudent._id)">
+                <p ng-class="{'title-header-collapse': itemstudent._id == students.selectedCourseIndex }">{{ itemstudent.name }}
+                  <span ng-show="itemstudent._id != students.selectedCourseIndex" class="md-subhead center" >{{itemstudent.course_type.description }}</span></p>
               </div>
-              <div class="tools" ng-click="students.selectCourseIndex(itemcourse._id)">
+              <div class="add-ons">
+                <div class="item">
+                  <md-switch style="margin: 0; padding: 0" class="md-primary" md-no-ink aria-label="Status" ng-true-value="1" ng-false-value="0" ng-model="itemstudent.active">
+                  </md-switch>
+                </div>
+              </div>
+              <div class="tools" ng-click="students.selectCourseIndex(itemstudent._id)">
+
                 <md-menu md-offset="-20 4" md-position-mode="target-right target">
                   <md-button aria-label="Open demo menu"
-                             ng-show="itemcourse._id == students.selectedCourseIndex"
+                             ng-show="itemstudent._id == students.selectedCourseIndex"
                              class="md-icon-button"
                              ng-click="$mdOpenMenu($event)">
                     <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
@@ -39,51 +46,52 @@
             </md-card-title-text>
           </md-card-title>
           <md-card-content class="card-item-content"
-                           ng-class="{'card-item-content-expanded': itemcourse._id == students.selectedCourseIndex,
-                                      'card-item-content-text-expanded': itemcourse._id == students.expandedTextIndex }"
-                           ng-show="itemcourse._id == students.selectedCourseIndex">
+                           ng-class="{'card-item-content-expanded': itemstudent._id == students.selectedCourseIndex,
+                                      'card-item-content-text-expanded': itemstudent._id == students.expandedTextIndex }"
+                           ng-show="itemstudent._id == students.selectedCourseIndex">
             <div layout="column" layout-padding class="card-item-content-data">
               <div flex="100" layout="row" layout-xs="column" class="data-top">
                 <div flex="100" flex-xs="100" layout="column">
                   <div flex="100">
-                    <p class="name">{{ itemcourse.name  }}</p>
-                    <p class="identify">{{ itemcourse.identify }}</p>
-                    <p class="course-type-description">{{ itemcourse.course_type.description }}</p>
+                    <p class="name">{{ itemstudent.name  }}</p>
+                    <p class="identify">{{ itemstudent.identify }}</p>
+                    <p class="course-type-description">{{ itemstudent.course_type.description }}</p>
                   </div>
                 </div>
               </div>
               <div flex="100" layout-padding layout="row" layout-xs="column"
                    class="data-middle">
                 <div flex layout="row" layout-xs="column" class="left">
-                  <p>Inicio: {{ itemcourse.duration.start | date:'dd/MM/yyyy' }}</p>
-                  <p>Término: {{ itemcourse.duration.end | date:'dd/MM/yyyy' }}</p>
+                  <p>Sexo: {{ itemstudent.gender|genderFilter  }}</p>
+                  <p>Data de Nascimento: {{ itemstudent.dob | date:'dd/MM/yyyy' }}</p>
+                  <p>Status: </p>
                 </div>
                 <div flex layout="row" layout-align="end" class="right">
-                  <p>{{ itemcourse.create_at | date:'dd/MM/yyyy'}}</p>
-                  <p>{{ itemcourse.modified | date:'dd/MM/yyyy'}}</p>
+                  <p>{{ itemstudent.create_at | date:'dd/MM/yyyy'}}</p>
+                  <p>{{ itemstudent.modified | date:'dd/MM/yyyy'}}</p>
                 </div>
               </div>
               <div flex="100" layout-padding layout="column"
                    class="data-footer">
                 <div flex="67" layout="column" class="description">
-                  <p ng-show="students.expandedTextIndex != itemcourse._id">{{ students.getShortDescription(itemcourse.description) }}</p>
-                  <p ng-show="students.expandedTextIndex == itemcourse._id">{{ itemcourse.description }}</p>
+                  <p ng-show="students.expandedTextIndex != itemstudent._id">{{ students.getShortDescription(itemstudent.description) }}</p>
+                  <p ng-show="students.expandedTextIndex == itemstudent._id">{{ itemstudent.description }}</p>
                 </div>
                 <div flex="33" layout="column" class="button">
-                  <md-button  ng-show="students.expandedTextIndex != itemcourse._id && students.showCollapseButton(itemcourse.description)"
-                              ng-click="students.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver mais</md-button>
-                  <md-button  ng-show="students.expandedTextIndex == itemcourse._id && students.showCollapseButton(itemcourse.description)"
-                              ng-click="students.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver menos</md-button>
+                  <md-button  ng-show="students.expandedTextIndex != itemstudent._id && students.showCollapseButton(itemstudent.description)"
+                              ng-click="students.collapseDescription(itemstudent._id)" class="md-primary" md-no-ink>Ver mais</md-button>
+                  <md-button  ng-show="students.expandedTextIndex == itemstudent._id && students.showCollapseButton(itemstudent.description)"
+                              ng-click="students.collapseDescription(itemstudent._id)" class="md-primary" md-no-ink>Ver menos</md-button>
                 </div>
               </div>
             </div>
           </md-card-content>
           <md-card-footer class="card-item-footer"
-                          ng-show="itemcourse._id == students.selectedCourseIndex">
+                          ng-show="itemstudent._id == students.selectedCourseIndex">
             <section layout="row" layout-align="space-around center" layout-wrap>
-              <md-button class="md-primary" md-ink-ripple id="btn-class-{{ itemcourse._id }}" ng-click="students.showClass(itemcourse._id, itemcourse.class)">Alunos</md-button>
-              <md-button class="md-primary" md-ink-ripple id="btn-subjects-{{ itemcourse._id }}" ng-click="students.showSubjects(itemcourse._id, itemcourse.subjects)">Matérias</md-button>
-              <md-button class="md-primary" md-ink-ripple id="btn-schedule-{{ itemcourse._id }}" ng-click="students.showSchedule(itemcourse._id, itemcourse.schedule)">Cronograma</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-class-{{ itemstudent._id }}" ng-click="students.showClass(itemstudent._id, itemstudent.class)">Alunos</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-subjects-{{ itemstudent._id }}" ng-click="students.showSubjects(itemstudent._id, itemstudent.subjects)">Matérias</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-schedule-{{ itemstudent._id }}" ng-click="students.showSchedule(itemstudent._id, itemstudent.schedule)">Cronograma</md-button>
               <md-button class="md-primary" md-ink-ripple>Notas</md-button>
             </section>
           </md-card-footer>
