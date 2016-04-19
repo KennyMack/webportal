@@ -1,15 +1,17 @@
-var express    = require('express');
-var path       = require('path');
-var logger     = require('morgan');
-var bodyParser = require('body-parser');
-var config     = require('./config/config.js');
-var socket_io  = require( "socket.io" );
+'use strict';
+
+const express    = require('express');
+const path       = require('path');
+const logger     = require('morgan');
+const bodyParser = require('body-parser');
+const config     = require('./config/config.js');
+const socket_io  = require( "socket.io" );
 
 // App
-var app = express();
+const app = express();
 
 // Socket.io
-var io           = socket_io();
+const io           = socket_io();
 app.io           = io;
 
 // Globals
@@ -22,7 +24,7 @@ app.set('view engine', 'jade');
 // Middleware to Uncaught Exceptions
 app.use(function (req, res, next) {
   //console.log('domain');
-  var domain = require('domain').create();
+  let domain = require('domain').create();
 
   domain.on('error', function (err) {
     //console.error('DOMAIN ERROR CAUGHT\n', err.stack);
@@ -32,7 +34,7 @@ app.use(function (req, res, next) {
         process.exit(1);
       }, 5000);
 
-      var worker = require('cluster').worker;
+      let worker = require('cluster').worker;
       if (worker)
         worker.disconect();
 
@@ -95,15 +97,15 @@ app.use(function (req, res, next) {
 });
 
 // Routers
-var routes     = require('./routes/index')(express, io);
-var users      = require('./routes/users')(express, io);
-var auth       = require('./routes/auth')(express, io);
-var courseType = require('./routes/course-type')(express, io);
-var courses    = require('./routes/courses')(express, io);
-var teachers   = require('./routes/teachers')(express, io);
-var subjects   = require('./routes/subjects')(express, io);
-var students   = require('./routes/students')(express, io);
-var testapp    = require('./routes/testapp')(express, io);
+const routes     = require('./routes/index')(express, io);
+const users      = require('./routes/users')(express, io);
+const auth       = require('./routes/auth')(express, io);
+const courseType = require('./routes/course-type')(express, io);
+const courses    = require('./routes/courses')(express, io);
+const teachers   = require('./routes/teachers')(express, io);
+const subjects   = require('./routes/subjects')(express, io);
+const students   = require('./routes/students')(express, io);
+const testapp    = require('./routes/testapp')(express, io);
 
 
 app.use('/', routes);

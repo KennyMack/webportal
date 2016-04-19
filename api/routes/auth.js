@@ -1,11 +1,12 @@
 /*
  * Created by jonathan on 21/02/16.
  */
+'use strict';
 module.exports = function (express, io) {
 
-    var router = express.Router();
-    var auth = require('../auth/auth');
-    var authController = require('../controller/auth-controller');
+    const router = express.Router();
+    const auth = require('../auth/auth');
+    const authController = require('../controller/auth-controller');
 
     io.on('connection', function(socket){
         console.log('Connection on Auth');
@@ -16,20 +17,16 @@ module.exports = function (express, io) {
     });
 
     router.post('/authenticate', function (req, res) {
-        var user = {
+        let user = {
             login: req.body.username || '',
             password: req.body.password || ''
         };
 
         authController.verifyLoginUser(user)
-            .then(function (result) {
-                return authController.lastUpdateLogin(result);
-            })
-            .then(function (user) {
-                return authController.loginUser(user);
-            })
+            .then(authController.lastUpdateLogin)
+            .then(authController.loginUser)
             .then(function (ut) {
-                var usr = {
+                let usr = {
                     _id: ut.user._id,
                     email: ut.user.email,
                     username: ut.user.username,
@@ -46,7 +43,7 @@ module.exports = function (express, io) {
                     message: 'Enjoy your token'
                 });
             })
-            .fail(function (err) {
+            .catch(function (err) {
                 res.json(err);
             });
     });

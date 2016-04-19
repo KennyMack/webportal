@@ -1,9 +1,10 @@
 /**
  * Created by jonathan on 21/02/16.
  */
-var usersModel = require('../models/users-model');
-var validator  = require('validator');
-var utils      = require('../utils/utils');
+'use strict';
+const usersModel = require('../models/users-model');
+const validator  = require('validator');
+const utils      = require('../utils/utils');
 
 // List all Users
 module.exports.listUsers = function() {
@@ -26,12 +27,26 @@ module.exports.getUserByIdAllPath = function(id){
 
 // Get User By UserName
 module.exports.getUserByUserName = function(username){
-    return usersModel.users.findOne({ username: username }).exec();
+    return new Promise(function (resolve, reject) {
+        usersModel.users.findOne({ username: username }).exec()
+            .then(function (user) {
+                resolve(user);
+            }, function (err) {
+                reject(err);
+            });
+    });
 };
 
 // Get User By Email
 module.exports.getUserByEmail = function(email){
-    return usersModel.users.findOne({ email: email }).exec();
+    return new Promise(function (resolve, reject) {
+        usersModel.users.findOne({ email: email }).exec()
+            .then(function (user) {
+                resolve(user);
+            }, function (err) {
+                reject(err);
+            });
+    });
 };
 
 // Remove User By Id
@@ -52,8 +67,8 @@ module.exports.createUser = function(user) {
 // Update a User
 module.exports.updateUser = function (user) {
 
-    var query = { _id: user['_id'] };
-    var data = {
+    let query = { _id: user['_id'] };
+    let data = {
         'username': user['username'],
         'password': user['password'],
         'email': user['email'],
@@ -64,28 +79,26 @@ module.exports.updateUser = function (user) {
 };
 
 // Update last Login
-module.exports.updateLastLogin = function (id, callback) {
-    var q = require('q');
-    var deferred = q.defer();
-    var query = {'_id': id };
-    var data = {
-        $set: {
-            last_login: utils.getCurrentDateTime()
-        }
-    };
-    var options = { upsert: true };
+module.exports.updateLastLogin = function (id) {
+    return new Promise(function (resolve, reject) {
+        let query = { '_id': id};
+        let data = {
+            $set: {
+                last_login: utils.getCurrentDateTime()
+            }
+        };
+        let options = { upsert: true };
 
-    usersModel.users.findOneAndUpdate(query, data, options, function (err, data) {
-        if(err) {
-            deferred.reject(err);
-        }
-        else{
-            deferred.resolve(data);
-        }
+        usersModel.users.findOneAndUpdate(query, data, options, function (err, data) {
+            if(err) {
+                reject(err);
+            }
+            else{
+                resolve(data);
+            }
+        });
+
     });
-
-    deferred.promise.nodeify(callback);
-    return deferred.promise;
 };
 
 // Define a Person in user

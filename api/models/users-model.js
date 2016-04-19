@@ -1,11 +1,13 @@
 /**
  * Created by jonathan on 21/02/16.
  */
-var database = require('../database/database');
-var bcrypt = require('bcrypt');
-var date = require('../utils/utils');
+'use strict';
 
-var userSchema = database.mongoose.Schema({
+const database = require('../database/database');
+const bcrypt   = require('bcrypt');
+const date     = require('../utils/utils');
+
+const userSchema = database.mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -65,7 +67,7 @@ var userSchema = database.mongoose.Schema({
     }
 });
 
-var preUpdate = function(user, next){
+const preUpdate = function(user, next){
     user.modified = date.getCurrentDateTime();
 
     bcrypt.hash(user.password, 10, function (err, hash) {
@@ -77,12 +79,12 @@ var preUpdate = function(user, next){
 };
 
 userSchema.pre('save', function(next){
-    var user = this;
+    let user = this;
     preUpdate(user, next);
 });
 
 userSchema.pre('update', function(next) {
-    var user = this._update['$set'];
+    let user = this._update['$set'];
 
     preUpdate(user, next);
 
