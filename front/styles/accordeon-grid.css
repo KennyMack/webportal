@@ -75,17 +75,8 @@
   width: 60px;
   display: table-cell;
   outline:none;
-}
+  box-sizing: content-box;
 
-.accordeon .card-item-title-header .add-ons {
-  width: 60px;
-  display: table-cell;
-  outline:none;
-  background: green;
-}
-.accordeon .card-item-title-header .add-ons .item{
-  padding-top: 15px;
-  background: greenyellow;
 }
 
 .accordeon .card-item-title-header .tools md-menu {

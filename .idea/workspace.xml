@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/modules/utils/filters/gender.filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/modules/utils/gender.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/front/images/ic_person_mak4.svg" afterPath="" />
+    <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="students 15%">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/styles/accordeon-grid.css" afterPath="$PROJECT_DIR$/front/styles/accordeon-grid.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/class-controller.js" afterPath="$PROJECT_DIR$/api/controller/class-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/index.html" afterPath="$PROJECT_DIR$/front/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/utils/module.utils.js" afterPath="$PROJECT_DIR$/front/modules/utils/module.utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/utils/gender.js" afterPath="$PROJECT_DIR$/front/modules/utils/gender.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/students/controllers/students.controller.js" afterPath="$PROJECT_DIR$/front/modules/students/controllers/students.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/views/students.html" afterPath="$PROJECT_DIR$/front/views/students.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/students.js" afterPath="$PROJECT_DIR$/api/routes/students.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="auth.iws" />
@@ -36,22 +30,32 @@
     <favorites_list name="auth" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.50722814">
+    <splitter split-orientation="horizontal" split-proportion="0.654934">
       <split-first>
         <leaf>
           <file leaf-file-name="students.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/front/views/students.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5958987">
-                  <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+                <state vertical-scroll-proportion="0.33534378">
+                  <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
                   <folding>
                     <element signature="n#style#0;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#md-switch#0;n#div#0;n#div#2;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#md-switch#0;n#div#2;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-menu#0;n#div#3;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <marker date="1460939314388" expanded="true" signature="596:850" placeholder="{...}" />
-                    <marker date="1460939314388" expanded="true" signature="3032:3232" placeholder="{...}" />
+                    <marker date="1461036317225" expanded="true" signature="632:886" placeholder="{...}" />
+                    <marker date="1461036317225" expanded="true" signature="3028:3228" placeholder="{...}" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="students.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api/routes/students.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="186" column="19" selection-start-line="186" selection-start-column="19" selection-end-line="186" selection-end-column="19" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -80,7 +84,7 @@
             <entry file="file://$PROJECT_DIR$/front/modules/utils/gender.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                  <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#43#0" expanded="false" />
                   </folding>
@@ -92,7 +96,7 @@
             <entry file="file://$PROJECT_DIR$/front/modules/students/controllers/students.controller.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+                  <caret line="74" column="35" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
                   <folding />
                 </state>
               </provider>
@@ -125,8 +129,8 @@
           <file leaf-file-name="accordeon-grid.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/front/styles/accordeon-grid.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.610374">
-                  <caret line="85" column="50" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+                <state vertical-scroll-proportion="0.56453556">
+                  <caret line="79" column="1" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -203,9 +207,6 @@
       </map>
     </option>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="dummy://restClient/response13.html" root0="SKIP_INSPECTION" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -253,10 +254,10 @@
         <option value="$PROJECT_DIR$/api/routes/testapp.js" />
         <option value="$PROJECT_DIR$/api/routes/students.js" />
         <option value="$PROJECT_DIR$/api/controller/class-controller.js" />
-        <option value="$PROJECT_DIR$/front/modules/utils/gender.js" />
         <option value="$PROJECT_DIR$/front/modules/utils/module.utils.js" />
         <option value="$PROJECT_DIR$/front/modules/utils/filters/gender.filter.js" />
         <option value="$PROJECT_DIR$/front/index.html" />
+        <option value="$PROJECT_DIR$/front/modules/utils/gender.js" />
         <option value="$PROJECT_DIR$/front/modules/students/controllers/students.controller.js" />
         <option value="$PROJECT_DIR$/front/views/students.html" />
         <option value="$PROJECT_DIR$/front/styles/accordeon-grid.css" />
@@ -728,6 +729,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2889,7 +2908,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460918109589</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="students 15%">
+      <created>1460940354247</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1460940354247</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -2905,8 +2930,6 @@
     <frame x="-1" y="30" width="1922" height="994" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.4877529" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53504676" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.49574015" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2921,11 +2944,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.4877529" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -2966,7 +2991,8 @@
     <MESSAGE value="Before changes in Schedule style" />
     <MESSAGE value="changes in Schedule style 50 %" />
     <MESSAGE value="changes in Schedule style 100 %" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes in Schedule style 100 %" />
+    <MESSAGE value="students 15%" />
+    <option name="LAST_COMMIT_MESSAGE" value="students 15%" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3036,7 +3062,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24225865">
           <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3044,7 +3069,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6575592">
           <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3052,7 +3076,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3060,7 +3083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6881919">
           <caret line="136" column="104" selection-start-line="136" selection-start-column="104" selection-end-line="136" selection-end-column="104" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3068,7 +3090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3751508">
           <caret line="81" column="40" selection-start-line="81" selection-start-column="40" selection-end-line="81" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3076,7 +3097,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81642514">
           <caret line="45" column="3" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3084,7 +3104,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3092,7 +3111,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3100,7 +3118,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3108,7 +3125,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3116,7 +3132,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3124,7 +3139,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09167672">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3132,7 +3146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.48130277">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3140,7 +3153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3148,7 +3160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3164,7 +3175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3180,7 +3190,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3188,7 +3197,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.48130277">
           <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3196,7 +3204,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="25" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3212,9 +3219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3222,15 +3226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/students.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3238,7 +3233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0542823">
           <caret line="333" column="33" selection-start-line="333" selection-start-column="33" selection-end-line="333" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3246,10 +3240,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5814234">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#11970#13027#0" expanded="false" />
-            <element signature="e#13727#15736#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3273,7 +3263,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3281,7 +3270,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5729795">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3289,7 +3277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7792521">
           <caret line="95" column="65" selection-start-line="95" selection-start-column="65" selection-end-line="95" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3301,19 +3288,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/utils/module.utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/modules/utils/filters/removeAccents.filter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27503017">
           <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3322,16 +3300,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="114" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/utils/gender.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3348,9 +3316,7 @@
         <state vertical-scroll-proportion="0.72496986">
           <caret line="205" column="0" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#md-toolbar#0;n#md-sidenav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1460937047888" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460937047888" expanded="true" signature="-1:-1" placeholder="..." />
+            <element signature="n#style#0;n#md-toolbar#0;n#md-sidenav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3362,14 +3328,6 @@
           <folding>
             <element signature="e#0#43#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/students/controllers/students.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3394,26 +3352,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/styles/accordeon-grid.css">
+    <entry file="file://$PROJECT_DIR$/front/modules/utils/module.utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.610374">
-          <caret line="85" column="50" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/students/controllers/students.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="35" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/modules/utils/gender.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/students.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="186" column="19" selection-start-line="186" selection-start-column="19" selection-end-line="186" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front/views/students.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5958987">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.33534378">
+          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#md-switch#0;n#div#0;n#div#2;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-switch#0;n#div#2;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#md-menu#0;n#div#3;n#md-card-title-text#0;n#md-card-title#0;n#md-card#0;n#div#1;n#md-content#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1460939314388" expanded="true" signature="596:850" placeholder="{...}" />
-            <marker date="1460939314388" expanded="true" signature="3032:3232" placeholder="{...}" />
+            <marker date="1461036317225" expanded="true" signature="632:886" placeholder="{...}" />
+            <marker date="1461036317225" expanded="true" signature="3028:3228" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/styles/accordeon-grid.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56453556">
+          <caret line="79" column="1" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

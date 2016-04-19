@@ -2,7 +2,7 @@
   <div flex="100" class="accordeon">
     <md-content class="backview" style="  height: auto; padding-bottom: 50px" ng-repeat="year in students.yearsList | orderBy:'-name':false">
       <div class="group-header" flex="100">
-        <p class="md-caption">{{ year.name }}</p>
+        <p class="md-caption">{{ year.name + ' '+ students.getRamdomImageNum() }}</p>
       </div>
       <div id="grid-courses" ng-repeat="itemstudent in students.studentsList| filter:{ year: year.name }">
         <md-card class="card-item" style="overflow: hidden"
@@ -13,22 +13,20 @@
           <md-card-title class="card-item-header" >
             <md-card-title-text class="card-item-title-header">
               <div class="icon" ng-click="students.selectCourseIndex(itemstudent._id)">
-                <md-icon md-svg-src="../images/ic_person_mark1.svg"></md-icon>
+                <md-icon md-svg-src="{{ students.getRandomImage(itemstudent.active)}}"></md-icon>
               </div>
               <div class="title" ng-click="students.selectCourseIndex(itemstudent._id)">
                 <p ng-class="{'title-header-collapse': itemstudent._id == students.selectedCourseIndex }">{{ itemstudent.name }}
                   <span ng-show="itemstudent._id != students.selectedCourseIndex" class="md-subhead center" >{{itemstudent.course_type.description }}</span></p>
               </div>
-              <div class="add-ons">
-                <div class="item">
-                  <md-switch style="margin: 0; padding: 0" class="md-primary" md-no-ink aria-label="Status" ng-true-value="1" ng-false-value="0" ng-model="itemstudent.active">
-                  </md-switch>
-                </div>
+              <div class="tools">
+                <md-switch style="margin: 0; padding-top: 0;" class="md-primary" md-no-ink aria-label="Status" ng-true-value="1" ng-false-value="0" ng-model="itemstudent.active">
+                </md-switch>
               </div>
               <div class="tools" ng-click="students.selectCourseIndex(itemstudent._id)">
 
                 <md-menu md-offset="-20 4" md-position-mode="target-right target">
-                  <md-button aria-label="Open demo menu"
+                  <md-button aria-label="Menu de opções"
                              ng-show="itemstudent._id == students.selectedCourseIndex"
                              class="md-icon-button"
                              ng-click="$mdOpenMenu($event)">

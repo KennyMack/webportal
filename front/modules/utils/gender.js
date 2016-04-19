@@ -4,8 +4,7 @@
 var GENDER = (function () {
   return {
     GENDER_DESCRIPTION: function (gender) {
-      console.log(gender);
-      switch(gender) {
+      switch(gender.toUpperCase()) {
         case 'M':
           return 'Masculino';
         case 'F':

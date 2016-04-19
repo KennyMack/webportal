@@ -76,7 +76,13 @@
           }
         };
 
-        self.ramdom
+        self.getRandomImage = function (status) {
+          //console.log('../images/ic_person_mark' + (Math.floor(Math.random() * 5) + 1)  + '.svg');
+          if (status === 0)
+            return '../images/ic_person_mark4.svg';
+          return '../images/ic_person_mark1.svg';
+        };
+
 
 
     }]);
