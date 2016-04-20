@@ -7,7 +7,6 @@ var jwt = require('jsonwebtoken');
 var config = require('../config/config.js');
 var util = require('../utils/utils');
 
-
 var validateToken = function(token, callback) {
     jwt.verify(token, config['secretKey'],  function (err, decoded) {
         callback(err, decoded);

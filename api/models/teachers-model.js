@@ -1,10 +1,11 @@
 /**
  * Created by jonathan on 29/02/16.
  */
-var database      = require('../database/database');
-var utils         = require('../utils/utils');
+'use strict';
+const database      = require('../database/database');
+const utils         = require('../utils/utils');
 
-var teachersSchema = database.mongoose.Schema({
+const teachersSchema = database.mongoose.Schema({
     identify: {
         type: String,
         required: true,
@@ -89,12 +90,12 @@ var preUpdate = function(teacher, next) {
 };
 
 teachersSchema.pre('save', function(next){
-    var teacher = this;
+    let teacher = this;
     preUpdate(teacher, next);
 });
 
 teachersSchema.pre('update', function(next) {
-    var teacher = this._update['$set'];
+    let teacher = this._update['$set'];
 
     preUpdate(teacher, next);
 

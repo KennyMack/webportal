@@ -1,13 +1,14 @@
 /**
  * Created by jonathan on 01/03/16.
  */
+'use strict';
 module.exports = function (express, io) {
 
-    var router = express.Router();
-    var auth = require('../auth/auth');
-    var coursesController = require('../controller/courses-controller');
-    var classController = require('../controller/class-controller');
-    var utils = require('../utils/utils');
+    const router            = express.Router();
+    const auth              = require('../auth/auth');
+    const coursesController = require('../controller/courses-controller');
+    const classController   = require('../controller/class-controller');
+    const utils             = require('../utils/utils');
 
     io.on('connection', function(socket){
         console.log('Connection on Courses');
@@ -227,7 +228,7 @@ module.exports = function (express, io) {
                     data: course
                 });
             })
-            .fail(function (err) {
+            .catch(function (err) {
                 res.json({
                     success: false,
                     data: err
@@ -252,7 +253,7 @@ module.exports = function (express, io) {
                     data: course
                 });
             })
-            .fail(function (err) {
+            .catch(function (err) {
                 res.json({
                     success: false,
                     data: err
@@ -285,7 +286,7 @@ module.exports = function (express, io) {
                     data: course
                 });
             })
-            .fail(function (err) {
+            .catch(function (err) {
                 if (err === 404) {
                     res.status(404).json({
                         success: false,
@@ -316,7 +317,7 @@ module.exports = function (express, io) {
                     data: course
                 });
             })
-            .fail(function (err) {
+            .catch(function (err) {
                 res.json({
                     success: false,
                     data: err

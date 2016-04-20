@@ -1,11 +1,13 @@
 /**
  * Created by jonathan on 06/03/16.
  */
-var courseController   = require('../controller/courses-controller');
-var studentsController = require('../controller/students-controller');
-var validator          = require('validator');
-var q                  = require('q');
-var moment             = require('moment');
+'use strict';
+
+const courseController   = require('../controller/courses-controller');
+const studentsController = require('../controller/students-controller');
+const validator          = require('validator');
+const q                  = require('q');
+const moment             = require('moment');
 
 module.exports.createClass = function (clas, callback) {
     var deferred = q.defer();

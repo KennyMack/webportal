@@ -1,12 +1,13 @@
 /**
  * Created by jonathan on 29/02/16.
  */
-var database   = require('../database/database');
-var courses    = require('./courses-model');
-var courseType = require('./course-type-model');
-var utils      = require('../utils/utils');
+'use strict';
+const database   = require('../database/database');
+const courses    = require('./courses-model');
+const courseType = require('./course-type-model');
+const utils      = require('../utils/utils');
 
-var studentsSchema = database.mongoose.Schema({
+const studentsSchema = database.mongoose.Schema({
     identify: {
         type: String,
         required: true,
@@ -85,12 +86,12 @@ var preUpdate = function(student, next) {
 };
 
 studentsSchema.pre('save', function(next){
-    var student = this;
+    let student = this;
     preUpdate(student, next);
 });
 
 studentsSchema.pre('update', function(next) {
-    var student = this._update['$set'];
+    let student = this._update['$set'];
 
     preUpdate(student, next);
 

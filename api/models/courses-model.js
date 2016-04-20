@@ -1,6 +1,7 @@
 /**
  * Created by jonathan on 29/02/16.
  */
+'use strict';
 const database   = require('../database/database');
 const utils      = require('../utils/utils');
 
@@ -108,12 +109,12 @@ var preUpdate = function(student, next) {
 };
 
 coursesSchema.pre('save', function(next){
-    var course = this;
+    let course = this;
     preUpdate(course, next);
 });
 
 coursesSchema.pre('update', function(next) {
-    var course = this._update['$set'];
+    let course = this._update['$set'];
 
     preUpdate(course, next);
 

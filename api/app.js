@@ -11,7 +11,7 @@ const socket_io  = require( "socket.io" );
 const app = express();
 
 // Socket.io
-const io           = socket_io();
+const io         = socket_io();
 app.io           = io;
 
 // Globals
