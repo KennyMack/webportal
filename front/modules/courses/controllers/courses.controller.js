@@ -74,7 +74,7 @@
         });
 
         self.removeCourse = function (id) {
-          self.selectedCourseIndex = id;
+          //self.selectedCourseIndex = id;
           callRemove();
         };
 
@@ -102,6 +102,7 @@
                       for (var i = 0, length = self.courseslist.length; i < length; i++) {
                         if (self.courseslist[i]._id === self.selectedCourseIndex){
                           self.courseslist.splice(i, 1);
+                          break;
                         }
 
                       }

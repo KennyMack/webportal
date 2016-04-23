@@ -136,9 +136,7 @@ module.exports.addSubject = function(subject) {
         validateSubject(subject, utils.OPERATION_STATUS.NEW)
             .then(hasCourseSubject)
             .then(addSubjectItem)
-            .then(function (data) {
-                resolve(data);
-            })
+            .then(resolve)
             .catch(function (err) {
                 reject(err);
             });
@@ -199,9 +197,7 @@ module.exports.removeSubject = function(subject) {
     return new Promise(function (resolve, reject) {
         validateSubject(subject, utils.OPERATION_STATUS.DELETE)
             .then(removeSubjectItem)
-            .then(function (data) {
-                resolve(data);
-            })
+            .then(resolve)
             .catch(function (err) {
                 reject(err);
             });
@@ -584,61 +580,47 @@ var validateCourse = function (course, status) {
 
 // Validate Duration of course
 var validateDate = function (course) {
-    var objRet = {};
-    if (course['duration']['start'] > course['duration']['end'])
-        objRet['duration'] = 'Período informado é inválido.';
-
-    return objRet;
+    return new Promise(function (resolve, reject) {
+        if (course['duration']['start'] > course['duration']['end']){
+            reject( { duration : 'Período informado é inválido.'});
+        }
+        else
+            resolve(course);
+    });
 };
 
 // Validate a create Course
-module.exports.validateNewCourse = function (course, callback) {
-    var deferred = q.defer();
+module.exports.validateNewCourse = function (pcourse) {
+    return new Promise(function (resolve, reject) {
+        validateCourse(pcourse, utils.OPERATION_STATUS.NEW)
+            .then(validateDate)
+            .then(function (course) {
+                course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+                course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+                resolve(course);
+            })
+            .catch(function (err) {
+                reject(err);
+            });
 
-    var errors = validateCourse(course, utils.OPERATION_STATUS.NEW);
-    if (Object.keys(errors).length !== 0) {
-        deferred.reject(errors)
-    }
-    else {
-        errors = validateDate(course);
-        if (Object.keys(errors).length !== 0) {
-            deferred.reject(errors)
-        }
-        else {
-            course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
-            course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
-            deferred.resolve(course)
-        }
-    }
-
-
-    deferred.promise.nodeify(callback);
-    return deferred.promise;
+    });
 
 };
 
 // Validate a update Course
-module.exports.validateUpdateCourse = function (course, callback) {
-    var deferred = q.defer();
-
-    var errors = validateCourse(course, utils.OPERATION_STATUS.UPDATE);
-    if (Object.keys(errors).length !== 0) {
-        deferred.reject(errors)
-    }
-    else {
-        errors = validateDate(course);
-        if (Object.keys(errors).length !== 0) {
-            deferred.reject(errors)
-        }
-        else {
-            course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
-            course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
-            deferred.resolve(course)
-        }
-    }
-
-    deferred.promise.nodeify(callback);
-    return deferred.promise;
+module.exports.validateUpdateCourse = function (pcourse) {
+    return new Promise(function (resolve, reject) {
+        validateCourse(pcourse, utils.OPERATION_STATUS.UPDATE)
+            .then(validateDate)
+            .then(function (course) {
+                course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+                course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+                resolve(course);
+            })
+            .catch(function (err) {
+                reject(err);
+            });
+    });
 
 };
 

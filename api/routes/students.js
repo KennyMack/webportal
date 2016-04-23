@@ -1,12 +1,14 @@
 /**
  * Created by jonathan on 06/03/16.
  */
+'use strict';
+
 module.exports = function (express, io) {
 
-    var router = express.Router();
-    var auth = require('../auth/auth');
-    var studentsController = require('../controller/students-controller');
-    var utils = require('../utils/utils');
+    const router = express.Router();
+    const auth = require('../auth/auth');
+    const studentsController = require('../controller/students-controller');
+    const utils = require('../utils/utils');
 
     io.on('connection', function(socket){
         console.log('Connection on Students');
@@ -29,7 +31,8 @@ module.exports = function (express, io) {
                     success: true,
                     data: students
                 });
-            }, function (err) {
+            })
+            .catch(function (err) {
                 res.json({
                     success: false,
                     data: err
@@ -40,44 +43,38 @@ module.exports = function (express, io) {
 
     /* GET student by ID. */
     router.get('/:id', function (req, res) {
-        var student = {
+        let student = {
             _id: req.params.id || ''
         };
 
-        var errors = studentsController.validate(student, utils.OPERATION_STATUS.SELECT);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            studentsController.getById(student['_id'])
-                .then(function (students) {
-                    if (students) {
-                        res.json({
-                            success: true,
-                            data: students
-                        });
-                    } else {
-                        res.status(404).json({
-                            success: false,
-                            data: '404 - Not Found'
-                        });
-                    }
-                }, function (err) {
+        studentsController.validate(student, utils.OPERATION_STATUS.SELECT)
+            .then(function (rstudent) {
+                return studentsController.getById(rstudent['_id']);
+            })
+            .then(function (students) {
+                if (students) {
                     res.json({
-                        success: false,
-                        data: err
+                        success: true,
+                        data: students
                     });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+            })
+            .catch(function (err) {
+                res.json({
+                    success: false,
+                    data: err
                 });
-        }
+            });
     });
 
     /* POST create a student */
     router.post('/', function (req, res) {
-        var student = {
+        let student = {
             identify: req.body.identify || '',
             name: req.body.name || '',
             gender: req.body.gender || '',
@@ -86,35 +83,26 @@ module.exports = function (express, io) {
             social_number: req.body.social_number || ''
         };
 
-        var errors = studentsController.validate(student, utils.OPERATION_STATUS.NEW);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            studentsController.create(student)
-                .then(function (student) {
-                    res.json({
-                        success: true,
-                        data: student
-                    });
-                }, function (err) {
-                    res.json({
-                        success: false,
-                        data: err
-                    });
+        studentsController.validate(student, utils.OPERATION_STATUS.NEW)
+            .then(studentsController.create)
+            .then(function (student) {
+                res.json({
+                    success: true,
+                    data: student
                 });
-
-        }
+            })
+            .catch(function (err) {
+                res.json({
+                    success: false,
+                    data: err
+                });
+            });
     });
 
 
     /* PUT update a student */
     router.put('/', function (req, res) {
-        var student = {
+        let student = {
             _id: req.body._id || '',
             identify: req.body.identify || '',
             name: req.body.name || '',
@@ -124,68 +112,53 @@ module.exports = function (express, io) {
             social_number: req.body.social_number || ''
         };
 
-        var errors = studentsController.validate(student, utils.OPERATION_STATUS.UPDATE);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            studentsController.update(student)
-                .then(function (student) {
-                    res.json({
-                        success: true,
-                        data: student
-                    });
-                }, function (err) {
-                    res.json({
-                        success: false,
-                        data: err
-                    });
+        studentsController.validate(student, utils.OPERATION_STATUS.UPDATE)
+            .then(studentsController.update)
+            .then(function (student) {
+                res.json({
+                    success: true,
+                    data: student
                 });
-
-        }
+            })
+            .catch(function (err) {
+                res.json({
+                    success: false,
+                    data: err
+                });
+            });
     });
 
 
     /* DELETE remove a student. */
     router.delete('/:id', function (req, res) {
-        var student = {
+        let student = {
             _id: req.params.id || ''
         };
 
 
-        var errors = studentsController.validate(student, utils.OPERATION_STATUS.DELETE);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            studentsController.removeById(student['_id'])
-                .then(function (student) {
-                    if (student) {
-                        res.json({
-                            success: true,
-                            data: student
-                        });
-                    } else {
-                        res.status(404).json({
-                            success: false,
-                            data: '404 - Not Found'
-                        });
-                    }
-                }, function (err) {
+        studentsController.validate(student, utils.OPERATION_STATUS.DELETE)
+            .then(function (rstudent) {
+                return studentsController.removeById(rstudent['_id']);
+            })
+            .then(function (student) {
+                if (student) {
                     res.json({
-                        success: false,
-                        data: err
+                        success: true,
+                        data: student
                     });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+            })
+            .catch(function (err) {
+                res.json({
+                    success: false,
+                    data: err
                 });
-        }
+            });
     });
 
     return router;
