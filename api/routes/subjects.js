@@ -1,12 +1,14 @@
 /**
  * Created by jonathan on 03/03/16.
  */
+'use strict';
+
 module.exports = function (express, io) {
 
-    var router = express.Router();
-    var auth = require('../auth/auth');
-    var subjectsController = require('../controller/subjects-controller');
-    var utils = require('../utils/utils');
+    const router = express.Router();
+    const auth = require('../auth/auth');
+    const subjectsController = require('../controller/subjects-controller');
+    const utils = require('../utils/utils');
     io.on('connection', function (socket) {
         console.log('Connection on Subjects');
         /*socket.on('big', function(){
@@ -29,7 +31,8 @@ module.exports = function (express, io) {
                     success: true,
                     data: subjects
                 });
-            }, function (err) {
+            })
+            .catch(function (err) {
                 res.json({
                     success: false,
                     data: err
@@ -40,142 +43,111 @@ module.exports = function (express, io) {
 
     /* GET Course Type by ID. */
     router.get('/:id', function (req, res) {
-        var subject = {
+        let subject = {
             _id: req.params.id || ''
         };
 
-        var errors = subjectsController.validate(subject, utils.OPERATION_STATUS.SELECT);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            subjectsController.getById(subject['_id'])
-                .then(function (subject) {
-                    if (subject) {
-                        res.json({
-                            success: true,
-                            data: subject
-                        });
-                    } else {
-                        res.status(404).json({
-                            success: false,
-                            data: '404 - Not Found'
-                        });
-                    }
-                }, function (err) {
+        subjectsController.validate(subject, utils.OPERATION_STATUS.SELECT)
+            .then(function (psubject) {
+                return subjectsController.getById(psubject['_id'])
+            })
+            .then(function (result) {
+                if (result) {
                     res.json({
-                        success: false,
-                        data: err
+                        success: true,
+                        data: result
                     });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+            })
+            .catch(function (err) {
+                res.json({
+                    success: false,
+                    data: err
                 });
-        }
+            });
     });
 
     /* POST create a Course Type */
     router.post('/', function (req, res) {
-        var subject = {
+        let subject = {
             description: req.body.description || ''
         };
 
-        var errors = subjectsController.validate(subject, utils.OPERATION_STATUS.NEW);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            subjectsController.create(subject)
-                .then(function (subject) {
-                    res.json({
-                        success: true,
-                        data: subject
-                    });
-                }, function (err) {
-                    res.json({
-                        success: false,
-                        data: err
-                    });
+        subjectsController.validate(subject, utils.OPERATION_STATUS.NEW)
+            .then(subjectsController.create)
+            .then(function (subject) {
+                res.json({
+                    success: true,
+                    data: subject
                 });
-
-        }
+            })
+            .catch(function (err) {
+                res.json({
+                    success: false,
+                    data: err
+                });
+            });
     });
 
 
     /* PUT update a Course Type */
     router.put('/', function (req, res) {
-        var subject = {
+        let subject = {
             _id: req.body._id || '',
             description: req.body.description || ''
         };
 
-        var errors = subjectsController.validate(subject, utils.OPERATION_STATUS.UPDATE);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            subjectsController.update(subject)
-                .then(function (subject) {
-                    res.json({
-                        success: true,
-                        data: subject
-                    });
-                }, function (err) {
-                    res.json({
-                        success: false,
-                        data: err
-                    });
+        subjectsController.validate(subject, utils.OPERATION_STATUS.UPDATE)
+            .then(subjectsController.update)
+            .then(function (result) {
+                res.json({
+                    success: true,
+                    data: result
                 });
-
-        }
+            })
+            .catch(function (err) {
+                res.json({
+                    success: false,
+                    data: err
+                });
+            });
     });
 
 
     /* DELETE remove a Course Type by ID. */
     router.delete('/:id', function (req, res) {
-        var subject = {
+        let subject = {
             _id: req.params.id || ''
         };
 
-
-        var errors = subjectsController.validate(subject, utils.OPERATION_STATUS.DELETE);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            subjectsController.removeById(subject['_id'])
-                .then(function (subject) {
-                    if (subject) {
-                        res.json({
-                            success: true,
-                            data: subject
-                        });
-                    } else {
-                        res.status(404).json({
-                            success: false,
-                            data: '404 - Not Found'
-                        });
-                    }
-                }, function (err) {
+        subjectsController.validate(subject, utils.OPERATION_STATUS.DELETE)
+            .then(function (psubject) {
+                return subjectsController.removeById(psubject['_id']);
+            })
+            .then(function (result) {
+                if (result) {
                     res.json({
-                        success: false,
-                        data: err
+                        success: true,
+                        data: result
                     });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+            })
+            .catch(function (err) {
+                res.json({
+                    success: false,
+                    data: err
                 });
-        }
+            });
     });
 
     return router;

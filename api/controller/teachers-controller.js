@@ -13,8 +13,14 @@ module.exports.listTeachers = function() {
 };
 
 // Get Teacher By Id
-module.exports.getById = function(id) {
-    return teachersModel.teachers.findById(id).exec();
+module.exports.getById = getById;
+
+const getById = function (id) {
+  return new Promise(function (resolve, reject) {
+      teachersModel.teachers.findById(id)
+          .exec()
+          .then(resolve, reject);
+  });
 };
 
 // Remove Teacher By Id
@@ -52,106 +58,113 @@ module.exports.updateTeacher = function (teacher) {
 
 // Validate fields
 module.exports.validateTeacher = function (teacher, status) {
-    var objRet = {};
+    return new Promise(function (resolve, reject) {
 
-    if (status !== utils.OPERATION_STATUS.DELETE &&
-        status !== utils.OPERATION_STATUS.SELECT) {
-        teacher['identify'] = validator.trim(validator.escape(teacher['identify'].toString() || ''));
-        teacher['name'] = validator.trim(validator.escape(teacher['name'].toString() || ''));
-        teacher['gender'] = validator.trim(validator.escape(teacher['gender'].toString() || ''));
-        teacher['dob'] = validator.trim(teacher['dob'].toString() || '');
-        teacher['social_number'] = validator.trim(validator.escape(teacher['social_number'].toString() || ''));
-        teacher['active'] = validator.trim(validator.escape(teacher['active'].toString() || ''));
+        let objRet = {};
 
-        if (validator.isNull(teacher['name']))
-            objRet['name'] = 'Nome é de preenchimento obrigatório.';
+        if (status !== utils.OPERATION_STATUS.DELETE &&
+            status !== utils.OPERATION_STATUS.SELECT) {
+            teacher['identify'] = validator.trim(validator.escape(teacher['identify'].toString() || ''));
+            teacher['name'] = validator.trim(validator.escape(teacher['name'].toString() || ''));
+            teacher['gender'] = validator.trim(validator.escape(teacher['gender'].toString() || ''));
+            teacher['dob'] = validator.trim(teacher['dob'].toString() || '');
+            teacher['social_number'] = validator.trim(validator.escape(teacher['social_number'].toString() || ''));
+            teacher['active'] = validator.trim(validator.escape(teacher['active'].toString() || ''));
 
-        if (validator.isNull(teacher['gender']))
-            objRet['gender'] = 'Sexo é de preenchimento obrigatório.';
-        else if (!validator.isIn(teacher['gender'], ['M', 'F']))
-            objRet['gender'] = 'Sexo informado não é válido.';
+            if (validator.isNull(teacher['name']))
+                objRet['name'] = 'Nome é de preenchimento obrigatório.';
 
-        if (validator.isNull(teacher['dob']))
-            objRet['dob'] = 'Data de nascimento é de preenchimento obrigatório.';
-        else if (!validator.isDate(teacher['dob']))
-            objRet['dob'] = 'Data de nascimento informada não é válida.';
+            if (validator.isNull(teacher['gender']))
+                objRet['gender'] = 'Sexo é de preenchimento obrigatório.';
+            else if (!validator.isIn(teacher['gender'], ['M', 'F']))
+                objRet['gender'] = 'Sexo informado não é válido.';
 
-        if ((!validator.isNull(teacher['active'])) &&
-            (!validator.isIn(teacher['active'], [0, 1])))
-            objRet['active'] = 'Status informado não é válido.';
+            if (validator.isNull(teacher['dob']))
+                objRet['dob'] = 'Data de nascimento é de preenchimento obrigatório.';
+            else if (!validator.isDate(teacher['dob']))
+                objRet['dob'] = 'Data de nascimento informada não é válida.';
+
+            if ((!validator.isNull(teacher['active'])) &&
+                (!validator.isIn(teacher['active'], [0, 1])))
+                objRet['active'] = 'Status informado não é válido.';
 
 
-    }
+        }
 
-    if (status === utils.OPERATION_STATUS.UPDATE ||
-        status === utils.OPERATION_STATUS.SELECT ||
-        status === utils.OPERATION_STATUS.DELETE) {
-        teacher['_id'] = validator.trim(validator.escape(teacher['_id'].toString() || ''));
+        if (status === utils.OPERATION_STATUS.UPDATE ||
+            status === utils.OPERATION_STATUS.SELECT ||
+            status === utils.OPERATION_STATUS.DELETE) {
+            teacher['_id'] = validator.trim(validator.escape(teacher['_id'].toString() || ''));
 
-        var idNull = validator.isNull(teacher['_id']);
+            var idNull = validator.isNull(teacher['_id']);
 
-        if (idNull)
-            objRet['_id'] = 'Id do professor é de preenchimento obrigatório.';
+            if (idNull)
+                objRet['_id'] = 'Id do professor é de preenchimento obrigatório.';
 
-        if (!idNull && (!validator.isMongoId(teacher['_id'])))
-            objRet['_id'] = 'Id do professor informado não é válido.';
-    }
+            if (!idNull && (!validator.isMongoId(teacher['_id'])))
+                objRet['_id'] = 'Id do professor informado não é válido.';
+        }
 
-    return objRet;
+        if (Object.keys(objRet).length !== 0) {
+            reject(objRet)
+        }
+        else {
+            resolve(teacher);
+        }
+    });
 };
 
 // Validate Subject
-var validateSubject = function (subject, status) {
-    var objRet = {};
-    subject['_id'] = validator.trim(validator.escape(subject['_id'].toString() || ''));
-    subject['_idsubject'] = validator.trim(validator.escape(subject['_idsubject'].toString() || ''));
+const validateSubject = function (subject, status) {
+    return new Promise(function (resolve, reject) {
+        let objRet = {};
+        subject['_id'] = validator.trim(validator.escape(subject['_id'].toString() || ''));
+        subject['_idsubject'] = validator.trim(validator.escape(subject['_idsubject'].toString() || ''));
 
-    if (status === utils.OPERATION_STATUS.NEW) {
+        if (status === utils.OPERATION_STATUS.NEW) {
 
-        subject['description'] = validator.trim(validator.escape(subject['description'].toString() || ''));
+            subject['description'] = validator.trim(validator.escape(subject['description'].toString() || ''));
 
-        if (validator.isNull(subject['description']))
-            objRet['description'] = 'Descrição da Matéria é de preenchimento obrigatório.';
+            if (validator.isNull(subject['description']))
+                objRet['description'] = 'Descrição da Matéria é de preenchimento obrigatório.';
 
 
-    }
+        }
 
-    if (validator.isNull(subject['_idsubject']))
-        objRet['_idsubject'] = 'Id da materia é de preenchimento obrigatório.';
-    else if (!validator.isMongoId(subject['_idsubject']))
-        objRet['_idsubject'] = 'Id da materia informado é inválido.';
+        if (validator.isNull(subject['_idsubject']))
+            objRet['_idsubject'] = 'Id da materia é de preenchimento obrigatório.';
+        else if (!validator.isMongoId(subject['_idsubject']))
+            objRet['_idsubject'] = 'Id da materia informado é inválido.';
 
-    if (validator.isNull(subject['_id']))
-        objRet['_id'] = 'Id do Professor é de preenchimento obrigatório.';
-    else if (!validator.isMongoId(subject['_id']))
-        objRet['_id'] = 'Id do Professor informado é inválido.';
+        if (validator.isNull(subject['_id']))
+            objRet['_id'] = 'Id do Professor é de preenchimento obrigatório.';
+        else if (!validator.isMongoId(subject['_id']))
+            objRet['_id'] = 'Id do Professor informado é inválido.';
 
-    return objRet;
+        if (Object.keys(objRet).length !== 0) {
+            reject(objRet)
+        }
+        else {
+            resolve(subject);
+        }
+    });
 };
 
 // Add subjects to Course
-module.exports.addSubject = function(subject, callback) {
-    var deferred = q.defer();
+module.exports.addSubject = function(subject) {
+    return new Promise(function (resolve, reject) {
 
-    var objRet = validateSubject(subject, utils.OPERATION_STATUS.NEW);
-
-    if (Object.keys(objRet).length !== 0) {
-        deferred.reject(objRet);
-    }
-    else {
-        teachersModel.teachers.findById(subject['_id']).exec()
+        validateSubject(subject, utils.OPERATION_STATUS.NEW)
+            .then(function (psubject) {
+                return getById(psubject['_id']);
+            })
             .then(function (teacher) {
                 if (teacher) {
-                    console.log('subject');
-                    console.log(subject);
+                    let subjectOk = true;
+                    let teacherSubjects = teacher.subjects;
 
-                    var subjectOk = true;
-                    var teacherSubjects = teacher.subjects;
-                    console.log('teacherSubjects');
-                    console.log(teacherSubjects);
-
-                    for (var i = 0, length = teacherSubjects.length; i < length; i++){
-                        if (teacherSubjects[i]._id.toString() === subject['_idsubject'].toString()){
+                    for (let i = 0, length = teacherSubjects.length; i < length; i++) {
+                        if (teacherSubjects[i]._id.toString() === subject['_idsubject'].toString()) {
                             subjectOk = false;
                             break;
                         }
@@ -162,64 +175,63 @@ module.exports.addSubject = function(subject, callback) {
                             _id: subject['_idsubject'],
                             description: subject['description']
                         });
-                        console.log('teacher.subjects');
-                        console.log(teacher.subjects);
 
                         teacher.save(function (err, teacher) {
                             if (err) {
-                                deferred.reject(err);
+                                reject(err);
                             } else {
-                                deferred.resolve(teacher);
+                                resolve(teacher);
                             }
                         });
                     }
                     else {
-                        deferred.reject({ subject : "Matéria já vinculada neste professor." });
+                        reject({subject: "Matéria já vinculada neste professor."});
                     }
                 }
                 else
-                    deferred.reject('404 - Not Found');
-            },
-            function (err) {
-                deferred.reject(err);
-            });
-    }
+                    reject('404 - Not Found');
 
-    deferred.promise.nodeify(callback);
-    return deferred.promise;
+            })
+            .catch(function (err) {
+                reject(err);
+            });
+
+
+
+    });
 };
 
-// Remove subjects of Course
-module.exports.removeSubject = function(subject, callback) {
-    var deferred = q.defer();
-
-    var objRet = validateSubject(subject, utils.OPERATION_STATUS.DELETE);
-
-    if (Object.keys(objRet).length !== 0) {
-        deferred.reject(objRet);
-    }
-    else {
-        var query = { _id: subject['_id'] };
-        var data = {
+const removeItemSubject = function (subject) {
+    return new Promise(function (resolve, reject) {
+        const query = { _id: subject['_id'] };
+        const data = {
             $pull: {
                 "subjects": {
                     _id: subject['_idsubject']
                 }
             }
         };
-        var options = { safe: true, upsert: true, new: true };
+        const options = { safe: true, upsert: true, new: true };
         teachersModel.teachers.findOneAndUpdate(query, data, options, function (err, data) {
             if (err) {
-                deferred.reject(err);
+                reject(err);
             }
             else {
-                deferred.resolve(data);
+                resolve(data);
             }
         });
-    }
+    });
+};
 
-    deferred.promise.nodeify(callback);
-    return deferred.promise;
+// Remove subjects of Course
+module.exports.removeSubject = function(subject) {
+    return new Promise(function (resolve, reject) {
+        validateSubject(subject, utils.OPERATION_STATUS.DELETE)
+            .then(removeItemSubject)
+            .then(resolve)
+            .catch(reject);
+
+    });
 };
 
 // Validate Schedule
@@ -318,74 +330,83 @@ module.exports.addSchedule = function (item, callback) {
 };
 
 var validateDateScheduleItem = function (item, teacher) {
-    var objRet = {};
-    var candidateScheduleItem = {
-        start: moment(item['duration']['start']).format('HH:mm:ss'),
-        end: moment(item['duration']['end']).format('HH:mm:ss')
-    };
-    if (candidateScheduleItem.start > candidateScheduleItem.end) {
-        objRet['duration'] = 'Período informado é inválido.';
-    }
-    else {
+    // TODO: FINALIZAR
+    return new Promise(function (resolve, reject) {
+        let objRet = {};
+        let candidateScheduleItem = {
+            start: moment(item['duration']['start']).format('HH:mm:ss'),
+            end: moment(item['duration']['end']).format('HH:mm:ss')
+        };
+        if (candidateScheduleItem.start > candidateScheduleItem.end) {
+            objRet['duration'] = 'Período informado é inválido.';
+        }
+        else {
 
-        for (var i = 0, length = teacher.schedule.length; i < length; i++) {
-            if (teacher.schedule[i].day == item['day']) {
+            for (var i = 0, length = teacher.schedule.length; i < length; i++) {
+                if (teacher.schedule[i].day == item['day']) {
 
-                var scheduleItem = {
-                    start: moment(teacher.schedule[i].duration.start).format('HH:mm:ss'),
-                    end: moment(teacher.schedule[i].duration.end).format('HH:mm:ss')
-                };
+                    var scheduleItem = {
+                        start: moment(teacher.schedule[i].duration.start).format('HH:mm:ss'),
+                        end: moment(teacher.schedule[i].duration.end).format('HH:mm:ss')
+                    };
 
-                if (utils.betweenII(candidateScheduleItem.start, scheduleItem.start, scheduleItem.end)) {
-                    objRet['start'] = 'Já existe outra matéria vinculada neste Horário.';
+                    if (utils.betweenII(candidateScheduleItem.start, scheduleItem.start, scheduleItem.end)) {
+                        objRet['start'] = 'Já existe outra matéria vinculada neste Horário.';
+                    }
+
+                    if (utils.betweenII(candidateScheduleItem.end, scheduleItem.start, scheduleItem.end)) {
+                        objRet['end'] = 'Já existe outra matéria vinculada neste Horário.';
+                    }
+
+                    if (Object.keys(objRet).length !== 0) {
+                        break;
+                    }
+
+                    scheduleItem = null;
                 }
-
-                if (utils.betweenII(candidateScheduleItem.end, scheduleItem.start, scheduleItem.end)) {
-                    objRet['end'] = 'Já existe outra matéria vinculada neste Horário.';
-                }
-
-                if (Object.keys(objRet).length !== 0) {
-                    break;
-                }
-
-                scheduleItem = null;
             }
         }
-    }
-    candidateScheduleItem = null;
+        if (Object.keys(objRet).length !== 0) {
+            reject(objRet);
+        }
+        else {
+            resolve({item: course.item, course: course.course});
+        }
+        objRet = null;
+        candidateScheduleItem = null;
 
-    return objRet;
+    });
 };
 
-// Remove schedule of Teacher
-module.exports.removeSchedule = function(item, callback) {
-    var deferred = q.defer();
-
-    var objRet = validateSchedule(item, utils.OPERATION_STATUS.DELETE);
-
-    if (Object.keys(objRet).length !== 0) {
-        deferred.reject(objRet);
-    }
-    else {
-        var query = { _id: item['_id'] };
-        var data = {
+const removeItemSchedule = function (schedule) {
+    return new Promise(function (resolve, reject) {
+        const query = { _id: schedule['_id'] };
+        const data = {
             $pull: {
                 "schedule": {
-                    _id: item['_idschedule']
+                    _id: schedule['_idschedule']
                 }
             }
         };
-        var options = { safe: true, upsert: false, new: true };
+        const options = { safe: true, upsert: false, new: true };
         teachersModel.teachers.findOneAndUpdate(query, data, options, function (err, data) {
             if (err) {
-                deferred.reject(err);
+                reject(err);
             }
             else {
-                deferred.resolve(data);
+                resolve(data);
             }
         });
-    }
+    });
+};
 
-    deferred.promise.nodeify(callback);
-    return deferred.promise;
+// Remove schedule of Teacher
+module.exports.removeSchedule = function(item) {
+    return new Promise(function (resolve, reject) {
+        validateSchedule(item, utils.OPERATION_STATUS.DELETE)
+            .then(removeItemSchedule)
+            .then(resolve)
+            .catch(reject);
+    });
+
 };

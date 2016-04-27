@@ -1,12 +1,14 @@
 /**
  * Created by jonathan on 03/03/16.
  */
+'use strict';
+
 module.exports = function (express, io) {
 
-    var router = express.Router();
-    var auth = require('../auth/auth');
-    var teachersController = require('../controller/teachers-controller');
-    var utils = require('../utils/utils');
+    const router = express.Router();
+    const auth = require('../auth/auth');
+    const teachersController = require('../controller/teachers-controller');
+    const utils = require('../utils/utils');
     io.on('connection', function (socket) {
         console.log('Connection on Teachers');
         /*socket.on('big', function(){
@@ -202,7 +204,7 @@ module.exports = function (express, io) {
                     data: teacher
                 });
             })
-            .fail(function (err) {
+            .catch(function (err) {
                 res.json({
                     success: false,
                     data: err
@@ -225,7 +227,7 @@ module.exports = function (express, io) {
                     data: teacher
                 });
             })
-            .fail(function (err) {
+            .catch(function (err) {
                 res.json({
                     success: false,
                     data: err

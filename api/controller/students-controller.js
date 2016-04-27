@@ -10,24 +10,18 @@ const utils           = require('../utils/utils');
 // List all Courses Type
 module.exports.list = function() {
     return new Promise(function (resolve, reject) {
-        studentsModel.students.find({}).exec()
-            .then(function (students) {
-                resolve(students);
-            }, function (err) {
-                reject(err);
-            })
+        studentsModel.students.find({})
+            .exec()
+            .then(resolve, reject)
     });
 };
 
 // Get Course Type By Id
 module.exports.getById = function(id) {
     return new Promise(function (resolve, reject) {
-        studentsModel.students.findById(id).exec()
-            .then(function (students) {
-                resolve(students);
-            }, function (err) {
-                reject(err);
-            })
+        studentsModel.students.findById(id)
+            .exec()
+            .then(resolve, reject)
     });
 };
 
@@ -38,12 +32,9 @@ module.exports.getByList = function (list) {
                 $in: list
             }
         };
-        studentsModel.students.find(query).exec()
-            .then(function (students) {
-                resolve(students);
-            }, function (err) {
-                reject(err);
-            })
+        studentsModel.students.find(query)
+            .exec()
+            .then(resolve, reject)
     });
 
 };
@@ -51,12 +42,9 @@ module.exports.getByList = function (list) {
 // Remove Course Type By Id
 module.exports.removeById = function(id) {
     return new Promise(function (resolve, reject) {
-        studentsModel.students.findByIdAndRemove(id).exec()
-            .then(function (students) {
-                resolve(students);
-            }, function (err) {
-                reject(err);
-            })
+        studentsModel.students.findByIdAndRemove(id)
+            .exec()
+            .then(resolve, reject)
     });
 
 };
@@ -72,11 +60,7 @@ module.exports.create = function(student) {
             'active': student['active'],
             'social_number': student['social_number']
         }).save()
-            .then(function (students) {
-                resolve(students);
-            }, function (err) {
-                reject(err);
-            })
+            .then(resolve, reject)
     });
 };
 
@@ -94,12 +78,9 @@ module.exports.update = function (student) {
         };
 
 
-        studentsModel.students.update(query, data, { upsert: false }).exec()
-            .then(function (students) {
-                resolve(students);
-            }, function (err) {
-                reject(err);
-            })
+        studentsModel.students.update(query, data, { upsert: false })
+            .exec()
+            .then(resolve, reject)
     });
 };
 
