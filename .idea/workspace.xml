@@ -4,50 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/api/routes/courses.js" line="103" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/app-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/app-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/auth/auth-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/auth-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/auth/auth-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/auth-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/auth-controller-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/auth-controller-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/class-controller-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/class-controller-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/course-type-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/course-type-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/course-type-controller-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/course-type-controller-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/courses-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/courses-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/courses-controller-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/courses-controller-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/database/database-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/database/database-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/images/ic_person_mark4.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/index-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/index-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/students-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/students-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/students-controller-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/students-controller-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/subjects-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/subjects-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/subjects-controller-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/subjects-controller-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/teachers-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/teachers-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/teachers-controller-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/teachers-controller-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/testapp-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/testapp-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/users-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/routes/users-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/users-controller-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/controller/users-controller-compiled.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/utils/utils-compiled.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/utils/utils-compiled.js" />
+    <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="merging">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -148,21 +105,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.gitignore">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+                <state vertical-scroll-proportion="0.03460838">
+                  <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="auth.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="auth.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/routes/auth.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.27503017">
-                  <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -175,7 +132,7 @@
           <file leaf-file-name="users-controller.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/api/controller/users-controller.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.29794934">
+                <state vertical-scroll-proportion="0.4499089">
                   <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
                   <folding />
                 </state>
@@ -2822,7 +2779,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461818756059</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="merging">
+      <created>1461819216903</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1461819216903</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -2844,14 +2807,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3352804" sideWeight="0.5138445" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17039403" sideWeight="0.5046729" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="SvgViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30724174" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3271028" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.48509052" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3084112" sideWeight="0.49574015" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22257721" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20660277" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20660277" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.48615548" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3233,7 +3196,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controller/users-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29794934">
+        <state vertical-scroll-proportion="0.4499089">
           <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
           <folding />
         </state>
@@ -3315,14 +3278,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/npm-debug.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.48130277">
@@ -3333,8 +3288,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/routes/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27503017">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03460838">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
           <folding />
         </state>
       </provider>

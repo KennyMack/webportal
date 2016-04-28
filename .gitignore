@@ -11,6 +11,7 @@ front/bower_components
 
 *compiled.js
 *compiled.js.map
+auth-compiled.js
 
 .idea/workspace.xml
 tmp
