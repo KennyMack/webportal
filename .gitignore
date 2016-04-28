@@ -9,10 +9,6 @@ front/.tmp
 front/.sass-cache
 front/bower_components
 
-*-compiled.js
-*.js.map
-auth-compiled.js
-
 .idea/workspace.xml
 tmp
 .DS_Store
