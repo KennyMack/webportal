@@ -2,6 +2,7 @@
  * Created by jonathan on 06/03/16.
  */
 'use strict';
+//TODO: I will change in future, I promise :)
 
 const courseController   = require('../controller/courses-controller');
 const studentsController = require('../controller/students-controller');
@@ -9,46 +10,47 @@ const validator          = require('validator');
 const q                  = require('q');
 const moment             = require('moment');
 
-module.exports.createClass = function (clas, callback) {
-    var deferred = q.defer();
+module.exports.createClass =  (roomClass, callback) => {
 
-    var objRet = validateCourse(clas) && validateStudents(clas['class']);
+    let deferred = q.defer();
+
+    let objRet = validateCourse(roomClass) && validateStudents(roomClass['class']);
 
     if (Object.keys(objRet).length !== 0){
         deferred.reject(objRet);
     }
     else {
-        var actualCourse = null;
-        courseController.getById(clas['_id'])
-            .then(function (course) {
+        let actualCourse = null;
+        courseController.getById(roomClass['_id'])
+            .then( (course) => {
                 actualCourse = course;
-                var classCourse = [];
-                for (var i = 0, length = clas['class'].length; i < length; i++) {
-                    if (!studentExistsInCourse(clas['class'][i], course.class)) {
-                        classCourse.push(clas['class'][i]);
+                let classCourse = [];
+                for (let i = 0, length = roomClass['class'].length; i < length; i++) {
+                    if (!studentExistsInCourse(roomClass['class'][i], course.class)) {
+                        classCourse.push(roomClass['class'][i]);
                     }
                 }
                 return studentsController.getByList(classCourse);
             },
-            function (err) {
+             (err) => {
                 deferred.reject(err);
             })
-            .then(function (students) {
-                return saveStudentsCourse(clas['_id'], students);
+            .then( (students) => {
+                return saveStudentsCourse(roomClass['_id'], students);
             },
-            function(err){
+            (err)=> {
                 deferred.reject(err);
             })
-            .then(function (students) {
+            .then( (students) => {
                 return saveCourseClass(actualCourse, students);
             },
-            function(err){
+            (err)=> {
                 deferred.reject(err);
             })
-            .then(function (students) {
+            .then( (students) => {
                 deferred.resolve(students);
             },
-            function (err) {
+             (err) => {
                 deferred.reject(err);
             });
     }
@@ -57,16 +59,16 @@ module.exports.createClass = function (clas, callback) {
     return deferred.promise;
 };
 
-var saveCourseClass = function (course, students, callback) {
-    var deferred = q.defer();
+const saveCourseClass =  (course, students, callback) => {
+    let deferred = q.defer();
     if (students.length > 0) {
-        for (var i = 0, length = students.length; i < length; i++) {
+        for (let i = 0, length = students.length; i < length; i++) {
             course.class.push({
                 _id: students[i]._id,
                 name: students[i].name
             });
         }
-        course.save(function (err, course) {
+        course.save( (err, course) => {
             if (err)
                 deferred.reject('Não foi possível atualizar o curso.');
             else
@@ -81,11 +83,11 @@ var saveCourseClass = function (course, students, callback) {
     return deferred.promise;
 };
 
-var saveStudentsCourse = function (id, students, callback) {
-    var deferred = q.defer();
-    var async = require('async');
+const saveStudentsCourse =  (id, students, callback) => {
+    let deferred = q.defer();
+    let async = require('async');
     
-    async.eachSeries(students, function (student, done) {
+    async.eachSeries(students,  (student, done) => {
 
         if (!studentHasCourse(id, student.courses)) {
             student.courses.push({
@@ -99,7 +101,7 @@ var saveStudentsCourse = function (id, students, callback) {
             student.save(done);
         }
 
-    }, function(err) {
+    }, (err) => {
         if (err)
             deferred.reject(err);
         else
@@ -110,9 +112,9 @@ var saveStudentsCourse = function (id, students, callback) {
     return deferred.promise;
 };
 
-var studentHasCourse = function (id, courses) {
+const studentHasCourse =  (id, courses) => {
     if (courses > 0) {
-        for (var i = 0, length = courses.length; i < length; i++) {
+        for (let i = 0, length = courses.length; i < length; i++) {
             if (courses[i]['_id'].toString() === id.toString()){
                 return true;
             }
@@ -122,8 +124,8 @@ var studentHasCourse = function (id, courses) {
     return false;
 };
 
-var studentExistsInCourse = function (id, course) {
-    for (var i = 0, length = course.length; i < length; i++) {
+const studentExistsInCourse =  (id, course) => {
+    for (let i = 0, length = course.length; i < length; i++) {
         if (course[i]['_id'].toString() === id.toString()){
             return true;
         }
@@ -131,10 +133,10 @@ var studentExistsInCourse = function (id, course) {
     return false;
 };
 
-var validateStudents = function (students) {
-    var objRet = {};
+const validateStudents =  (students) => {
+    let objRet = {};
     if (students.length > 0) {
-        for (var i = 0, len = students.length; i < len; i++) {
+        for (let i = 0, len = students.length; i < len; i++) {
             students[i] = validator.trim(validator.escape(students[i].toString() || ''));
 
             if (!validator.isMongoId(students[i])) {
@@ -149,8 +151,8 @@ var validateStudents = function (students) {
     return objRet;
 };
 
-var validateCourse = function (course) {
-    var objRet = {};
+const validateCourse =  (course) => {
+    let objRet = {};
     course['_id'] = validator.trim(validator.escape(course['_id'].toString() || ''));
 
     if (validator.isNull(course['_id']))
@@ -161,8 +163,8 @@ var validateCourse = function (course) {
     return objRet;
 };
 
-var validateStudent = function(clas)  {
-    var objRet = {};
+const validateStudent = (clas)  => {
+    let objRet = {};
     clas['_id'] = validator.trim(validator.escape(clas['_id'].toString() || ''));
     clas['_idstudent'] = validator.trim(validator.escape(clas['_idstudent'].toString() || ''));
 
@@ -179,18 +181,18 @@ var validateStudent = function(clas)  {
     return objRet;
 };
 
-module.exports.deactiveStudent = function (clas, callback) {
-    var deferred = q.defer();
+module.exports.deactiveStudent =  (clas, callback) => {
+    let deferred = q.defer();
 
-    var objRet = validateStudent(clas);
+    let objRet = validateStudent(clas);
     if (Object.keys(objRet).length !== 0){
         deferred.reject(objRet);
     }
     else {
         studentsController.getById(clas['_idstudent'])
-            .then(function (student) {
-                var found = false;
-                for (var i = 0, length = student.courses.length; i < length; i++) {
+            .then( (student) => {
+                let found = false;
+                for (let i = 0, length = student.courses.length; i < length; i++) {
                     if (student.courses[i]._id.toString() === clas['_id'].toString()) {
                         student.courses[i].duration = {
                             start: student.courses[i].duration.start,
@@ -203,7 +205,7 @@ module.exports.deactiveStudent = function (clas, callback) {
                 }
 
                 if (found) {
-                    student.save(function (err, student) {
+                    student.save( (err, student) => {
                         if (err)
                             deferred.reject(err);
                         else
@@ -213,7 +215,7 @@ module.exports.deactiveStudent = function (clas, callback) {
                 else
                     deferred.resolve(student);
             },
-            function (err) {
+             (err) => {
                 deferred.reject(err);
 
             });
@@ -222,18 +224,18 @@ module.exports.deactiveStudent = function (clas, callback) {
     return deferred.promise;
 };
 
-module.exports.activateStudent = function (clas, callback) {
-    var deferred = q.defer();
+module.exports.activateStudent =  (clas, callback) => {
+    let deferred = q.defer();
 
-    var objRet = validateStudent(clas);
+    let objRet = validateStudent(clas);
     if (Object.keys(objRet).length !== 0){
         deferred.reject(objRet);
     }
     else {
         studentsController.getById(clas['_idstudent'])
-            .then(function (student) {
-                var found = false;
-                for (var i = 0, length = student.courses.length; i < length; i++) {
+            .then( (student) => {
+                let found = false;
+                for (let i = 0, length = student.courses.length; i < length; i++) {
                     if (student.courses[i]._id.toString() === clas['_id'].toString() &&
                         student.courses[i].active === 0) {
                         student.courses[i].duration = {
@@ -246,7 +248,7 @@ module.exports.activateStudent = function (clas, callback) {
                 }
 
                 if (found) {
-                    student.save(function (err, student) {
+                    student.save( (err, student) => {
                         if (err)
                             deferred.reject(err);
                         else
@@ -256,7 +258,7 @@ module.exports.activateStudent = function (clas, callback) {
                 else
                     deferred.resolve(student);
             },
-            function (err) {
+             (err) => {
                 deferred.reject(err);
 
             });

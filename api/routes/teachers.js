@@ -3,34 +3,36 @@
  */
 'use strict';
 
-module.exports = function (express, io) {
+module.exports =  (express, io) => {
 
     const router = express.Router();
     const auth = require('../auth/auth');
     const teachersController = require('../controller/teachers-controller');
     const utils = require('../utils/utils');
-    io.on('connection', function (socket) {
+
+    io.on('connection',  (socket) => {
         console.log('Connection on Teachers');
-        /*socket.on('big', function(){
+        /*socket.on('big', ()=> {
          console.log('big');
          });
          socket.emit('get', { 'get':'Express' });*/
     });
 
     /* Middleware for authentication */
-    router.use(function (req, res, next) {
+    router.use( (req, res, next) => {
         return auth.ensureAuthenticated(req, res, next);
     });
 
     /* GET Teacher listing. */
-    router.get('/', function (req, res) {
+    router.get('/',  (req, res) => {
         teachersController.listTeachers()
-            .then(function (teachers) {
+            .then( (teachers) => {
                 res.json({
                     success: true,
                     data: teachers
                 });
-            }, function (err) {
+            })
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -40,45 +42,39 @@ module.exports = function (express, io) {
     });
 
     /* GET Teacher by ID. */
-    router.get('/:id', function (req, res) {
-        var teacher = {
+    router.get('/:id',  (req, res) => {
+        let teacher = {
             _id: req.params.id || ''
         };
 
-        var errors = teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.SELECT);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            teachersController.getById(teacher['_id'])
-                .then(function (teacher) {
-                    if (teacher) {
-                        res.json({
-                            success: true,
-                            data: teacher
-                        });
-                    } else {
-                        res.status(404).json({
-                            success: false,
-                            data: '404 - Not Found'
-                        });
-                    }
-                }, function (err) {
+        teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.SELECT)
+            .then( (item) => {
+                return teachersController.getById(item['_id'])
+            })
+            .then( (teacher) => {
+                if (teacher) {
                     res.json({
-                        success: false,
-                        data: err
+                        success: true,
+                        data: teacher
                     });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+            })
+            .catch( (err) => {
+                res.json({
+                    success: false,
+                    data: err
                 });
-        }
+            });
     });
 
     /* POST create a Teacher */
-    router.post('/', function (req, res) {
-        var teacher = {
+    router.post('/',  (req, res) => {
+        let teacher = {
             identify: req.body.identify || '',
             name: req.body.name || '',
             gender: req.body.gender || '',
@@ -87,35 +83,26 @@ module.exports = function (express, io) {
             social_number: req.body.social_number || ''
         };
 
-        var errors = teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.NEW);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            teachersController.createTeacher(teacher)
-                .then(function (teacher) {
-                    res.json({
-                        success: true,
-                        data: teacher
-                    });
-                }, function (err) {
-                    res.json({
-                        success: false,
-                        data: err
-                    });
+        teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.NEW)
+            .then(teachersController.createTeacher)
+            .then( (result) => {
+                res.json({
+                    success: true,
+                    data: result
                 });
-
-        }
+            })
+            .catch( (err) => {
+                res.json({
+                    success: false,
+                    data: err
+                });
+            });
     });
 
 
     /* PUT update a Teacher */
-    router.put('/', function (req, res) {
-        var teacher = {
+    router.put('/',  (req, res) => {
+        let teacher = {
             _id: req.body._id || '',
             identify: req.body.identify || '',
             name: req.body.name || '',
@@ -125,86 +112,71 @@ module.exports = function (express, io) {
             social_number: req.body.social_number || ''
         };
 
-        var errors = teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.UPDATE);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            teachersController.updateTeacher(teacher)
-                .then(function (teacher) {
-                    res.json({
-                        success: true,
-                        data: teacher
-                    });
-                }, function (err) {
-                    res.json({
-                        success: false,
-                        data: err
-                    });
+        teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.UPDATE)
+            .then(teachersController.updateTeacher)
+            .then( (result) => {
+                res.json({
+                    success: true,
+                    data: result
                 });
-
-        }
+            })
+            .catch( (err) => {
+                res.json({
+                    success: false,
+                    data: err
+                });
+            });
     });
 
 
     /* DELETE remove a Teacher by ID. */
-    router.delete('/:id', function (req, res) {
-        var teacher = {
+    router.delete('/:id',  (req, res) => {
+        let teacher = {
             _id: req.params.id || ''
         };
 
-        var errors = teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.DELETE);
-
-        if (Object.keys(errors).length !== 0) {
-            res.json({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            teachersController.removeById(teacher['_id'])
-                .then(function (teacher) {
-                    if (teacher) {
-                        res.json({
-                            success: true,
-                            data: teacher
-                        });
-                    } else {
-                        res.status(404).json({
-                            success: false,
-                            data: '404 - Not Found'
-                        });
-                    }
-                }, function (err) {
+        teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.DELETE)
+            .then( (pteacher) => {
+                return teachersController.removeById(pteacher['_id'])
+            })
+            .then( (result) => {
+                if (result) {
                     res.json({
-                        success: false,
-                        data: err
+                        success: true,
+                        data: result
                     });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+            })
+            .catch( (err) => {
+                res.json({
+                    success: false,
+                    data: err
                 });
-        }
+            });
     });
 
 
     /* POST add a Subject. */
-    router.post('/:id/add-subject', function (req, res) {
-        var subject = {
+    router.post('/:id/add-subject',  (req, res) => {
+        let subject = {
             _id: req.params.id || '',
             _idsubject: req.body._idsubject || '',
             description: req.body.description || ''
         };
 
         teachersController.addSubject(subject)
-            .then(function (teacher) {
+            .then( (teacher) => {
                 res.json({
                     success: true,
                     data: teacher
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -214,20 +186,20 @@ module.exports = function (express, io) {
 
 
     /* DELETE remove a subject. */
-    router.delete('/:id/remove-subject/:idsubject', function (req, res) {
-        var subject = {
+    router.delete('/:id/remove-subject/:idsubject',  (req, res) => {
+        let subject = {
             _id: req.params.id || '',
             _idsubject: req.params.idsubject || ''
         };
 
         teachersController.removeSubject(subject)
-            .then(function (teacher) {
+            .then( (teacher) => {
                 res.json({
                     success: true,
                     data: teacher
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -236,8 +208,8 @@ module.exports = function (express, io) {
     });
 
     /* POST add a schedule. */
-    router.post('/:id/add-schedule', function (req, res) {
-        var duration = {
+    router.post('/:id/add-schedule',  (req, res) => {
+        let duration = {
             start: '',
             end: ''
         };
@@ -245,7 +217,7 @@ module.exports = function (express, io) {
         duration.start = (req.body.duration && req.body.duration.start || '');
         duration.end = (req.body.duration && req.body.duration.end || '');
 
-        var item = {
+        let item = {
             _id: req.params.id || '',
             day: req.body.day || '',
             duration: duration
@@ -253,13 +225,13 @@ module.exports = function (express, io) {
 
 
         teachersController.addSchedule(item)
-            .then(function (course) {
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .fail(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -268,20 +240,20 @@ module.exports = function (express, io) {
     });
 
     /* DELETE remove a schedule. */
-    router.delete('/:id/remove-schedule/:idschedule', function (req, res) {
-        var item = {
+    router.delete('/:id/remove-schedule/:idschedule',  (req, res) => {
+        let item = {
             _id: req.params.id || '',
             _idschedule: req.params.idschedule || ''
         };
 
         teachersController.removeSchedule(item)
-            .then(function (course) {
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .fail(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err

@@ -1,18 +1,20 @@
 
-module.exports = function (express, io) {
+'use strict';
 
-  var router = express.Router();
+module.exports =  (express, io) => {
 
-  io.on('connection', function(socket){
+  const router = express.Router();
+
+  io.on('connection', (socket)=> {
     console.log('Connection on Index');
-    /*socket.on('big', function(){
+    /*socket.on('big', ()=> {
      console.log('big');
      });
      socket.emit('get', { 'get':'Express' });*/
   });
 
   /* GET home page. */
-  router.get('/', function (req, res, next) {
+  router.get('/',  (req, res, next) => {
     res.json({index: 'index'});
   });
 

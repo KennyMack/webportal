@@ -1,12 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/api/routes/courses.js" line="103" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/.babelrc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/app.js" afterPath="$PROJECT_DIR$/api/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/auth-controller.js" afterPath="$PROJECT_DIR$/api/controller/auth-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/auth/auth.js" afterPath="$PROJECT_DIR$/api/auth/auth.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/auth.js" afterPath="$PROJECT_DIR$/api/routes/auth.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/class-controller.js" afterPath="$PROJECT_DIR$/api/controller/class-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/tests/config-test.js" afterPath="$PROJECT_DIR$/api/tests/config-test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/course-type-controller.js" afterPath="$PROJECT_DIR$/api/controller/course-type-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/course-type.js" afterPath="$PROJECT_DIR$/api/routes/course-type.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/courses-controller.js" afterPath="$PROJECT_DIR$/api/controller/courses-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/models/courses-model.js" afterPath="$PROJECT_DIR$/api/models/courses-model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/courses.js" afterPath="$PROJECT_DIR$/api/routes/courses.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/database/database.js" afterPath="$PROJECT_DIR$/api/database/database.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/index.js" afterPath="$PROJECT_DIR$/api/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/package.json" afterPath="$PROJECT_DIR$/api/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/students-controller.js" afterPath="$PROJECT_DIR$/api/controller/students-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/students.js" afterPath="$PROJECT_DIR$/api/routes/students.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/subjects-controller.js" afterPath="$PROJECT_DIR$/api/controller/subjects-controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/subjects.js" afterPath="$PROJECT_DIR$/api/routes/subjects.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/teachers-controller.js" afterPath="$PROJECT_DIR$/api/controller/teachers-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/models/teachers-model.js" afterPath="$PROJECT_DIR$/api/models/teachers-model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/tests/routes/teachers-spec.js" afterPath="$PROJECT_DIR$/api/tests/routes/teachers-spec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/teachers.js" afterPath="$PROJECT_DIR$/api/routes/teachers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/testapp.js" afterPath="$PROJECT_DIR$/api/routes/testapp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/users-controller.js" afterPath="$PROJECT_DIR$/api/controller/users-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/users.js" afterPath="$PROJECT_DIR$/api/routes/users.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/utils/utils.js" afterPath="$PROJECT_DIR$/api/utils/utils.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="auth.iws" />
@@ -31,44 +57,57 @@
     <favorites_list name="auth" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.70469797">
       <split-first>
         <leaf>
-          <file leaf-file-name="subjects.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/api/routes/subjects.js">
+          <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api/routes/users.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+                  <caret line="240" column="18" selection-start-line="240" selection-start-column="18" selection-end-line="240" selection-end-column="18" />
+                  <folding>
+                    <marker date="1461817860227" expanded="true" signature="2217:2297" placeholder="{&quot;success&quot;: true...}" />
+                    <marker date="1461817860227" expanded="true" signature="3030:3113" placeholder="{&quot;success&quot;: true...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api/utils/utils.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="teachers.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/api/routes/teachers.js">
+          <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api/database/database.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="226" column="28" selection-start-line="226" selection-start-column="28" selection-end-line="226" selection-end-column="28" />
+                  <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="teachers-controller.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/api/controller/teachers-controller.js">
+          <file leaf-file-name="auth.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api/auth/auth.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.48549324">
-                  <caret line="332" column="22" selection-start-line="332" selection-start-column="22" selection-end-line="332" selection-end-column="22" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="subjects-controller.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/api/controller/subjects-controller.js">
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/api/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="96" selection-end-column="9" />
+                <state vertical-scroll-proportion="-1.6127865">
+                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -78,11 +117,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="courses-controller.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
+          <file leaf-file-name="users-controller.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/api/controller/users-controller.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7369439">
-                  <caret line="465" column="29" selection-start-line="465" selection-start-column="29" selection-end-line="465" selection-end-column="29" />
+                <state vertical-scroll-proportion="0.29794934">
+                  <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -114,20 +153,14 @@
       </map>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="dummy://restClient/response69.json" root0="SKIP_INSPECTION" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/front/modules/courses/module.courses.route.js" />
-        <option value="$PROJECT_DIR$/front/modules/index/controllers/index.controller.js" />
-        <option value="$PROJECT_DIR$/front/modules/utils/directives/form.directives.js" />
-        <option value="$PROJECT_DIR$/front/styles/main.css" />
-        <option value="$PROJECT_DIR$/front/templates/forms/input.tpl.html" />
-        <option value="$PROJECT_DIR$/front/templates/forms/searchLookup.tpl.html" />
-        <option value="$PROJECT_DIR$/front/modules/utils/directives/form.directive.js" />
-        <option value="$PROJECT_DIR$/front/templates/coursesSubjectsForm.tpl.html" />
         <option value="$PROJECT_DIR$/front/modules/courses/controllers/course-subjects.controller.js" />
         <option value="$PROJECT_DIR$/front/templates/courseScheduleForm.tpl.html" />
-        <option value="$PROJECT_DIR$/api/database/database.js" />
         <option value="$PROJECT_DIR$/front/views/course-detail.html" />
         <option value="internal/module.js" />
         <option value="$PROJECT_DIR$/front/.jshintrc" />
@@ -138,7 +171,6 @@
         <option value="$PROJECT_DIR$/front/modules/students/module.students.js" />
         <option value="$PROJECT_DIR$/front/modules/students/factories/students.factory.js" />
         <option value="$PROJECT_DIR$/api/testapp.js" />
-        <option value="$PROJECT_DIR$/api/routes/testapp.js" />
         <option value="$PROJECT_DIR$/front/modules/utils/module.utils.js" />
         <option value="$PROJECT_DIR$/front/modules/utils/filters/gender.filter.js" />
         <option value="$PROJECT_DIR$/front/index.html" />
@@ -146,28 +178,38 @@
         <option value="$PROJECT_DIR$/front/modules/students/controllers/students.controller.js" />
         <option value="$PROJECT_DIR$/front/views/students.html" />
         <option value="$PROJECT_DIR$/front/styles/accordeon-grid.css" />
-        <option value="$PROJECT_DIR$/api/routes/auth.js" />
-        <option value="$PROJECT_DIR$/api/controller/users-controller.js" />
-        <option value="$PROJECT_DIR$/api/controller/auth-controller.js" />
         <option value="$PROJECT_DIR$/api/models/users-model.js" />
-        <option value="$PROJECT_DIR$/api/auth/auth.js" />
-        <option value="$PROJECT_DIR$/api/app.js" />
         <option value="$PROJECT_DIR$/api/models/subjects-model.js" />
-        <option value="$PROJECT_DIR$/api/models/teachers-model.js" />
-        <option value="$PROJECT_DIR$/api/models/courses-model.js" />
-        <option value="$PROJECT_DIR$/api/controller/class-controller.js" />
         <option value="$PROJECT_DIR$/api/models/course-type-model.js" />
         <option value="$PROJECT_DIR$/front/modules/courses/controllers/course-schedule.controller.js" />
         <option value="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" />
-        <option value="$PROJECT_DIR$/api/routes/courses.js" />
-        <option value="$PROJECT_DIR$/api/controller/courses-controller.js" />
         <option value="$PROJECT_DIR$/api/models/students-model.js" />
-        <option value="$PROJECT_DIR$/api/routes/students.js" />
+        <option value="$PROJECT_DIR$/api/tests/config-test.js" />
+        <option value="$PROJECT_DIR$/api/tests/routes/teachers-spec.js" />
+        <option value="$PROJECT_DIR$/api/models/teachers-model.js" />
+        <option value="$PROJECT_DIR$/api/models/courses-model.js" />
+        <option value="$PROJECT_DIR$/api/.babelrc" />
+        <option value="$PROJECT_DIR$/api/controller/auth-controller.js" />
+        <option value="$PROJECT_DIR$/api/routes/courses.js" />
+        <option value="$PROJECT_DIR$/api/routes/auth.js" />
+        <option value="$PROJECT_DIR$/api/routes/course-type.js" />
+        <option value="$PROJECT_DIR$/api/controller/course-type-controller.js" />
+        <option value="$PROJECT_DIR$/api/controller/class-controller.js" />
+        <option value="$PROJECT_DIR$/api/controller/courses-controller.js" />
         <option value="$PROJECT_DIR$/api/controller/students-controller.js" />
-        <option value="$PROJECT_DIR$/api/routes/subjects.js" />
         <option value="$PROJECT_DIR$/api/controller/subjects-controller.js" />
-        <option value="$PROJECT_DIR$/api/routes/teachers.js" />
         <option value="$PROJECT_DIR$/api/controller/teachers-controller.js" />
+        <option value="$PROJECT_DIR$/api/routes/index.js" />
+        <option value="$PROJECT_DIR$/api/routes/students.js" />
+        <option value="$PROJECT_DIR$/api/routes/subjects.js" />
+        <option value="$PROJECT_DIR$/api/routes/teachers.js" />
+        <option value="$PROJECT_DIR$/api/routes/testapp.js" />
+        <option value="$PROJECT_DIR$/api/controller/users-controller.js" />
+        <option value="$PROJECT_DIR$/api/routes/users.js" />
+        <option value="$PROJECT_DIR$/api/utils/utils.js" />
+        <option value="$PROJECT_DIR$/api/database/database.js" />
+        <option value="$PROJECT_DIR$/api/auth/auth.js" />
+        <option value="$PROJECT_DIR$/api/app.js" />
       </list>
     </option>
   </component>
@@ -186,8 +228,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-1" />
     <option name="y" value="30" />
-    <option name="width" value="1368" />
-    <option name="height" value="682" />
+    <option name="width" value="1922" />
+    <option name="height" value="994" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -304,6 +346,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -658,29 +701,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -734,20 +755,91 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Diff" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.splitter.proportion" value="0.19653179" />
     <property name="FullScreen" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="262" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -768,7 +860,7 @@
     <property name="recentsLimit" value="5" />
     <property name="js.buildTools.grunt.node_interpreter" value="/usr/bin/node" />
     <property name="js.buildTools.grunt.grunt-cli.package" value="/usr/lib/node_modules/grunt-cli" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/bin/www" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/node_modules/babel-cli/bin/babel.js" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="js.eslint.nodeInterpreter" value="/usr/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -776,7 +868,9 @@
     <property name="editor.config.accepted" value="true" />
     <property name="TODO_SCOPE" value="meus" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="JavaScriptLanguageLevel" value="JS_1_8_5" />
+    <property name="JavaScriptLanguageLevel" value="ES6" />
+    <property name="JavaScriptPreferStrict" value="true" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -828,7 +922,484 @@
           </option>
           <option name="parametersEnabled" value="true" />
           <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/mordor/authenticate" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;username&quot;: &quot;bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/mordor/authenticate" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
           <option name="textToSend" value="{   &quot;username&quot;: &quot;bill@gates.com&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/mordor/authenticate" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;username&quot;: &quot;bill@gates.com&quot;,   &quot;password&quot;: &quot;12356&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{      &quot;day&quot;: &quot;1&quot;,      &quot;duration&quot;: {     &quot;start&quot;: &quot;03-03-2016 08:13:00&quot;,     &quot;end&quot;: &quot;03-03-2016 09:03:00&quot;   }  }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802e7" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{      &quot;day&quot;: &quot;1&quot;,      &quot;duration&quot;: {     &quot;start&quot;: &quot;03-03-2016 08:13:00&quot;,     &quot;end&quot;: &quot;03-03-2016 09:03:00&quot;   }  }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="DELETE" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802e7/remove-schedule/572168c58dcd94ca3242a61e" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{      &quot;day&quot;: &quot;1&quot;,      &quot;duration&quot;: {     &quot;start&quot;: &quot;03-03-2016 08:13:00&quot;,     &quot;end&quot;: &quot;03-03-2016 09:03:00&quot;   }  }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="DELETE" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802e7/remove-subject/570946d9c5be5f5972c8e758" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{      &quot;day&quot;: &quot;1&quot;,      &quot;duration&quot;: {     &quot;start&quot;: &quot;03-03-2016 08:13:00&quot;,     &quot;end&quot;: &quot;03-03-2016 09:03:00&quot;   }  }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802e7/add-schedule" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{      &quot;day&quot;: &quot;1&quot;,      &quot;duration&quot;: {     &quot;start&quot;: &quot;03-03-2016 08:13:00&quot;,     &quot;end&quot;: &quot;03-03-2016 09:03:00&quot;   }  }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802e7/add-schedule" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{      &quot;day&quot;: &quot;1&quot;,      &quot;duration&quot;: {     &quot;start&quot;: &quot;03-03-2016 07:03:00&quot;,     &quot;end&quot;: &quot;03-03-2016 08:03:00&quot;   }  }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802e7/add-subject" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;_idsubject&quot;: &quot;570946d9c5be5f5972c8e758&quot;,   &quot;description&quot;: &quot;Inteligência Artificial&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802e7/add-subject" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;_idsubject&quot;: &quot;570946cbc5be5f5972c8e756&quot;,   &quot;description&quot;: &quot;Geomática&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802e7/add-subject" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;_idsubject&quot;: &quot;56db96183a8281116f5802ea&quot;,   &quot;description&quot;: &quot;Geomática&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://portal.com" />
+          <option name="urlPath" value="/api/teachers/56db953e3a8281116f5802a7/add-subject" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="x-access-token" />
+                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="" />
+                <option name="value" value="" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;_idsubject&quot;: &quot;570946cbc5be5f5972c8e756&quot;,   &quot;description&quot;: &quot;Geomática&quot; }" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
         <RestClientRequest>
@@ -903,43 +1474,6 @@
           <option name="parametersEnabled" value="true" />
           <option name="haveTextToSend" value="true" />
           <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;12345&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/mordor/authenticate" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
         <RestClientRequest>
@@ -2222,440 +2756,6 @@
           <option name="textToSend" value="" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/courses" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMTlUMTk6NDI6MzctMDM6MDAiLCJpYXQiOjE0NTg0MjczNTcsImV4cCI6MTQ1ODUxMzc1N30.rRh3jmgaUYgw-sysxnHwgy8ECNe_zp1L6N9O10nS6W4" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/courses" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMTVUMjE6MTA6MzMtMDM6MDAiLCJpYXQiOjE0NTgwODcwMzMsImV4cCI6MTQ1ODE3MzQzM30.-aAUhhr6Lwe-h0x301QfmZ5nzf6LUCFUIz9yktXKz9M" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/courses" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDMtMTVUMjE6MTA6MzMtMDM6MDAiLCJpYXQiOjE0NTgwODcwMzMsImV4cCI6MTQ1ODE3MzQzM30.-aAUhhr6Lwe-h0x301QfmZ5nzf6LUCFUIz9yktXKz9M" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{   &quot;username&quot;: &quot;Bill&quot;,   &quot;password&quot;: &quot;123456&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/mordor/authenticate" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/mordor/" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/courses" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/users" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;_id&quot;:&quot;56db8d5d3a8281116f5802e3&quot;,   &quot;idparent&quot;: &quot;56dcd7191d040b7452d6e193&quot;,  &quot;type&quot;: &quot;student&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/users/all-path/56db8d5d3a8281116f5802e3" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;_id&quot;:&quot;56db8d5d3a8281116f5802e3&quot;,   &quot;idparent&quot;: &quot;56dcd7191d040b7452d6e193&quot;,  &quot;type&quot;: &quot;student&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/users/all-path/56db8c0770eb564a6e9c23ce" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;_id&quot;:&quot;56db8d5d3a8281116f5802e3&quot;,   &quot;idparent&quot;: &quot;56dcd7191d040b7452d6e193&quot;,  &quot;type&quot;: &quot;student&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/users/add-person" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{   &quot;_id&quot;:&quot;56db8d5d3a8281116f5802e3&quot;,   &quot;idparent&quot;: &quot;56dcd7191d040b7452d6e193&quot;,  &quot;type&quot;: &quot;student&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/users/all-path/56db8d5d3a8281116f5802e3" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;_id&quot;:&quot;56db8c0770eb564a6e9c23ce&quot;,   &quot;idparent&quot;: &quot;56db953e3a8281116f5802e7&quot;,  &quot;type&quot;: &quot;teacher&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://portal.com" />
-          <option name="urlPath" value="/api/users/all-path/56db8c0770eb564a6e9c23ce" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="x-access-token" />
-                <option name="value" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwicGVyc29ucyI6W10sImRhdGUiOiIyMDE2LTAzLTEyVDE4OjI0OjM4LTAzOjAwIiwiaWF0IjoxNDU3ODE3ODc4LCJleHAiOjE0NTc5MDQyNzh9.8OYb4WhDDDahOU2j67eHhOD3VHx5uyIAeJBklSM8BFQ" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="" />
-                <option name="value" value="" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{   &quot;_id&quot;:&quot;56db8c0770eb564a6e9c23ce&quot;,   &quot;idparent&quot;: &quot;56db953e3a8281116f5802e7&quot;,  &quot;type&quot;: &quot;teacher&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
       </list>
     </option>
   </component>
@@ -2927,7 +3027,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461392560521</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Refactor Promises to remove defer() - 32%">
+      <created>1461726620203</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1461726620203</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -2940,29 +3046,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="30" width="1368" height="682" extended-state="6" />
+    <frame x="-1" y="30" width="1922" height="994" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5349265" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30882353" sideWeight="0.49574015" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22257721" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20694864" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5338785" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39719626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.48615548" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17039403" sideWeight="0.5046729" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3352804" sideWeight="0.5138445" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17039403" sideWeight="0.5046729" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="SvgViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30724174" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.48509052" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3084112" sideWeight="0.49574015" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22257721" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20660277" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.48615548" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.48509052" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2982,7 +3088,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Front end initiated, layout 50%&#10;" />
     <MESSAGE value="layout 100, pages: students, teachers, users, courses, main layout OK&#10;" />
     <MESSAGE value="layout 100%, pages: students, teachers, users, courses, main layout OK&#10;" />
     <MESSAGE value="layout 100%, login and security 100%, users type 10% &#10;" />
@@ -3007,22 +3112,24 @@
     <MESSAGE value="Refactor Promises to remove defer()" />
     <MESSAGE value="Refactor Promises to remove defer() - 20%" />
     <MESSAGE value="Refactor Promises to remove defer() - 30%" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Promises to remove defer() - 30%" />
+    <MESSAGE value="Refactor Promises to remove defer() - 32%" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Promises to remove defer() - 32%" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/controller/teachers-controller.js</url>
+          <line>319</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="72" />
+      <option name="time" value="86" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="NodeJSConfigurationType">
-        <watch expression="data" />
-        <watch expression="result" />
-        <watch expression="user" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <PATH>
@@ -3037,76 +3144,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/front/.gitattributes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/index-test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/courses/module.courses.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/utils/urls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/students/factories/students.factory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/courses/module.courses.route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48130277">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/students/module.students.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/frontApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/utils/days.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5729795">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/views/course-detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7792521">
@@ -3191,85 +3228,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/tests/routes/auth-spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.26055488">
-          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/auth/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5729795">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61881787">
-          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/controller/auth-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/teachers-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42702052">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/course-type-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18335344">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/users-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5729795">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/courses-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2689989">
-          <caret line="99" column="19" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/controller/course-type-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.42098916">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28950542">
-          <caret line="271" column="31" selection-start-line="271" selection-start-column="31" selection-end-line="271" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/course-type.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8733413">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/modules/courses/controllers/course-schedule.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.93124247">
@@ -3291,81 +3249,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/students-model.js">
+    <entry file="file://$PROJECT_DIR$/front/modules/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42702052">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.0290135">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/tests/routes/teachers-spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72677594">
+          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/tests/config-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5191257">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/tests/routes/auth-spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02291918">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/users-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/teachers-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/models/subjects-model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04583836">
+        <state vertical-scroll-proportion="0.0">
           <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/students-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/courses-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06921676">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controller/auth-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/routes/courses.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.392858">
-          <caret line="332" column="32" selection-start-line="332" selection-start-column="32" selection-end-line="332" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/students.js">
+    <entry file="file://$PROJECT_DIR$/api/routes/auth-compiled.js.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45068663">
+          <caret line="0" column="1898" selection-start-line="0" selection-start-column="1898" selection-end-line="0" selection-end-column="1898" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/auth-compiled.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/app.js">
+    <entry file="file://$PROJECT_DIR$/api/routes/course-type.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3320158">
-          <caret line="86" column="4" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/modules/app.js">
+    <entry file="file://$PROJECT_DIR$/api/controller/course-type-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0290135">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/controller/users-controller.js">
+    <entry file="file://$PROJECT_DIR$/api/controller/class-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16247582">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/testapp.js">
+    <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14700194">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="568" column="36" selection-start-line="568" selection-start-column="36" selection-end-line="568" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controller/students-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4332689">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/routes/subjects.js">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <caret line="58" column="34" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -3373,7 +3416,47 @@
     <entry file="file://$PROJECT_DIR$/api/controller/subjects-controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="96" selection-end-column="9" />
+          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controller/users-controller-compiled.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27503017">
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/course-type-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/students.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="139" column="29" selection-start-line="139" selection-start-column="29" selection-end-line="139" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/subjects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -3381,31 +3464,82 @@
     <entry file="file://$PROJECT_DIR$/api/routes/teachers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="226" column="28" selection-start-line="226" selection-start-column="28" selection-end-line="226" selection-end-column="28" />
+          <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/controller/class-controller.js">
+    <entry file="file://$PROJECT_DIR$/api/routes/testapp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6982592">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/controller/courses-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7369439">
-          <caret line="465" column="29" selection-start-line="465" selection-start-column="29" selection-end-line="465" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.4845173">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controller/teachers-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48549324">
-          <caret line="332" column="22" selection-start-line="332" selection-start-column="22" selection-end-line="332" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controller/users-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29794934">
+          <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="240" column="18" selection-start-line="240" selection-start-column="18" selection-end-line="240" selection-end-column="18" />
+          <folding>
+            <marker date="1461817860227" expanded="true" signature="2217:2297" placeholder="{&quot;success&quot;: true...}" />
+            <marker date="1461817860227" expanded="true" signature="3030:3113" placeholder="{&quot;success&quot;: true...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/utils/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/config/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13751508">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/database/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/auth/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6127865">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>

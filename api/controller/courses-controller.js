@@ -3,94 +3,104 @@
  */
 'use strict';
 const coursesModel = require('../models/courses-model');
-const validator   = require('validator');
-const utils       = require('../utils/utils');
-const q           = require('q');
-const moment      = require('moment');
+const validator    = require('validator');
+const utils        = require('../utils/utils');
+const moment       = require('moment');
+
 // List all Courses
-module.exports.listCourses = function() {
-    return coursesModel.courses.find({})
-        .populate('subjects.teacher', 'name')
-        .populate('subjects.subject', 'description')
-        .exec();
+module.exports.listCourses = () => {
+    return new Promise( (resolve, reject) => {
+        coursesModel.courses.find({})
+            .populate('subjects.teacher', 'name')
+            .populate('subjects.subject', 'description')
+            .exec()
+            .then(resolve, reject);
+    });
 };
 
 // Get Course By Id
-module.exports.getById = function(id) {
-    return coursesModel.courses.findById(id)
-        .populate('subjects.teacher', 'name')
-        .populate('subjects.subject', 'description')
-        .exec();
+module.exports.getById = (id) => {
+    return new Promise( (resolve, reject) => {
+        coursesModel.courses.findById(id)
+            .populate('subjects.teacher', 'name')
+            .populate('subjects.subject', 'description')
+            .exec()
+            .then(resolve, reject);
+    });
 };
 
 // Get Subjects in Course
-module.exports.getCourseSubjects = function (id) {
-    return coursesModel.courses.findById(id)
-        .select('subjects.subject')
-        .populate('subjects.subject', 'description')
-        .exec();
-
+module.exports.getCourseSubjects =  (id) => {
+    return new Promise( (resolve, reject) => {
+        coursesModel.courses.findById(id)
+            .select('subjects.subject')
+            .populate('subjects.subject', 'description')
+            .exec()
+            .then(resolve, reject);
+    });
 };
 
 // Remove Course By Id
-module.exports.removeById = function(id) {
-    return coursesModel.courses.findByIdAndRemove(id).exec();
+module.exports.removeById = (id) => {
+    return new Promise( (resolve, reject) => {
+        coursesModel.courses.findByIdAndRemove(id).exec()
+            .then(resolve, reject);
+    });
 };
 
 // Create a Course
-module.exports.createCourse = function(course) {
-    return new coursesModel.courses({
-        'identify': course['identify'],
-        'name': course['name'],
-        'description': course['description'],
-        'active': course['active'],
-        'duration': {
-            'start': course['duration']['start'],
-            'end': course['duration']['end']
-        },
-        course_type: {
-            '_id': course['course_type']['_id'],
-            'description': course['course_type']['description']
-        }
+module.exports.createCourse = (course) => {
+    return new Promise( (resolve, reject) => {
+        new coursesModel.courses({
+            'identify': course['identify'],
+            'name': course['name'],
+            'description': course['description'],
+            'active': course['active'],
+            'duration': {
+                'start': course['duration']['start'],
+                'end': course['duration']['end']
+            },
+            course_type: {
+                '_id': course['course_type']['_id'],
+                'description': course['course_type']['description']
+            }
 
-    }).save();
+        }).save()
+            .then(resolve, reject);
+    });
 };
 
 // Update a Course
-module.exports.updateCourse = function (course, callback) {
-    var deferred = q.defer();
-    var query = { _id: course['_id'] };
-    var data = {
-        'identify': course['identify'],
-        'name': course['name'],
-        'description': course['description'],
-        'active': course['active'],
-        'duration': {
-            'start': course['duration']['start'],
-            'end': course['duration']['end']
-        },
-        'course_type':  {
-            '_id': course['course_type']['_id'],
-            'description': course['course_type']['description']
-        }
-    };
+module.exports.updateCourse =  (course) => {
+    return new Promise( (resolve, reject) => {
+        let query = { _id: course['_id'] };
+        let data = {
+            'identify': course['identify'],
+            'name': course['name'],
+            'description': course['description'],
+            'active': course['active'],
+            'duration': {
+                'start': course['duration']['start'],
+                'end': course['duration']['end']
+            },
+            'course_type':  {
+                '_id': course['course_type']['_id'],
+                'description': course['course_type']['description']
+            }
+        };
 
-    coursesModel.courses.findOneAndUpdate(query, data, { upsert: false, new: true }, function (err, data) {
-        if (err)
-            deferred.reject(err);
-        else
-            deferred.resolve(data);
+        coursesModel.courses.findOneAndUpdate(query, data, { upsert: false, new: true },  (err, data) => {
+            if (err)
+                reject(err);
+            else
+                resolve(data);
+        });
     });
-
-
-
-    deferred.promise.nodeify(callback);
-    return deferred.promise;
 };
 
 // Validate Subject
-var validateSubject = function (subject, status) {
-    return new Promise(function (resolve, reject) {
+const validateSubject =  (subject, status) => {
+    return new Promise( (resolve, reject) => {
         let objRet = {};
         if (status === utils.OPERATION_STATUS.NEW) {
 
@@ -131,13 +141,13 @@ var validateSubject = function (subject, status) {
 };
 
 // Add subjects to Course
-module.exports.addSubject = function(subject) {
-    return new Promise(function (resolve, reject) {
+module.exports.addSubject = (subject) => {
+    return new Promise( (resolve, reject) => {
         validateSubject(subject, utils.OPERATION_STATUS.NEW)
             .then(hasCourseSubject)
             .then(addSubjectItem)
             .then(resolve)
-            .catch(function (err) {
+            .catch( (err) => {
                 reject(err);
             });
 
@@ -145,14 +155,14 @@ module.exports.addSubject = function(subject) {
 };
 
 // verify wheater course has subject
-var hasCourseSubject = function (subject) {
-    return new Promise(function (resolve, reject) {
+const hasCourseSubject =  (subject) => {
+    return new Promise( (resolve, reject) => {
         let query = {
             _id: subject['_id'],
             "subjects.subject": subject['subject']
         };
 
-        coursesModel.courses.find(query, function (err, course) {
+        coursesModel.courses.find(query,  (err, course) => {
             if (err)
                 reject(err);
             else
@@ -162,11 +172,11 @@ var hasCourseSubject = function (subject) {
 };
 
 // add new subject to course
-var addSubjectItem = function (course) {
-    return new Promise(function (resolve, reject) {
+const addSubjectItem =  (course) => {
+    return new Promise( (resolve, reject) => {
         if (course.course.length === 0) {
             let query = { _id: course.subject['_id'] };
-            let options = { safe: true, upsert: true, new: true };
+            let options = { safe: true, upsert: false, new: true };
             let data = {
                 $push: {
                     "subjects": {
@@ -180,9 +190,9 @@ var addSubjectItem = function (course) {
                 .populate('subjects.teacher', 'name')
                 .populate('subjects.subject', 'description')
                 .exec()
-                .then(function (data) {
+                .then( (data) => {
                     resolve(data);
-                }, function (err) {
+                },  (err) => {
                     reject(err);
                 });
         }
@@ -193,20 +203,20 @@ var addSubjectItem = function (course) {
 };
 
 // Remove subjects of Course
-module.exports.removeSubject = function(subject) {
-    return new Promise(function (resolve, reject) {
+module.exports.removeSubject = (subject) => {
+    return new Promise( (resolve, reject) => {
         validateSubject(subject, utils.OPERATION_STATUS.DELETE)
             .then(removeSubjectItem)
             .then(resolve)
-            .catch(function (err) {
+            .catch( (err) => {
                 reject(err);
             });
     });
 };
 
 // remove subject of course
-var removeSubjectItem = function (subject) {
-    return new Promise(function (resolve, reject) {
+const removeSubjectItem =  (subject) => {
+    return new Promise( (resolve, reject) => {
         let query = { _id: subject['_id'] };
         let data = {
             $pull: {
@@ -215,8 +225,8 @@ var removeSubjectItem = function (subject) {
                 }
             }
         };
-        let options = { safe: true, upsert: true, new: true };
-        coursesModel.courses.findOneAndUpdate(query, data, options, function (err, data) {
+        let options = { safe: true, upsert: false, new: true };
+        coursesModel.courses.findOneAndUpdate(query, data, options,  (err, data) => {
             if (err) {
                 reject(err);
             }
@@ -228,9 +238,9 @@ var removeSubjectItem = function (subject) {
 };
 
 // Validate Schedule
-var validateSchedule = function (item, status) {
-    return new Promise(function (resolve, reject) {
-        var objRet = {};
+const validateSchedule =  (item, status) => {
+    return new Promise( (resolve, reject) => {
+        let objRet = {};
         if (status === utils.OPERATION_STATUS.NEW ||
             status === utils.OPERATION_STATUS.UPDATE) {
             item['day'] = validator.trim(validator.escape(item['day'].toString() || ''));
@@ -294,16 +304,16 @@ var validateSchedule = function (item, status) {
 };
 
 // Add Schedule to Course
-module.exports.addSchedule = function (item) {
-    return new Promise(function (resolve, reject) {
+module.exports.addSchedule =  (item) => {
+    return new Promise( (resolve, reject) => {
         validateSchedule(item, utils.OPERATION_STATUS.NEW)
             .then(existsCourse)
             .then(getSchedules)
             .then(validateDateScheduleItem)
-            .then(function (result) {
+            .then( (result) => {
                 let course = result.course;
                 let item = result.item;
-                for (var i = 0, length = course.subjects.length; i < length; i++) {
+                for (let i = 0, length = course.subjects.length; i < length; i++) {
                     if (course.subjects[i].subject == item['subject']) {
                         course.subjects[i].schedule.push({
                             day: item['day'],
@@ -318,17 +328,17 @@ module.exports.addSchedule = function (item) {
                 return addSubjectSchedule(course);
             })
             .then(resolve)
-            .catch(function (err) {
+            .catch( (err) => {
                 reject(err);
             })
     });
 };
 
 // verify exists course
-var existsCourse = function (item) {
-    return new Promise(function (resolve, reject) {
+const existsCourse =  (item) => {
+    return new Promise( (resolve, reject) => {
         coursesModel.courses.findById(item['_id']).exec()
-            .then(function (course) {
+            .then( (course) => {
                 if (!course){
                     reject(404);
                 }
@@ -339,7 +349,7 @@ var existsCourse = function (item) {
                     });
                 }
             },
-            function (err) {
+             (err) => {
                 reject(err);
             });
 
@@ -347,8 +357,8 @@ var existsCourse = function (item) {
 };
 
 // get a list with course schedule
-var getSchedules = function (item) {
-    return new Promise(function (resolve, reject) {
+const getSchedules =  (item) => {
+    return new Promise( (resolve, reject) => {
         coursesModel.courses
             .aggregate([
                 {
@@ -381,13 +391,13 @@ var getSchedules = function (item) {
                     }
                 }
             ]).exec()
-            .then(function (data) {
+            .then( (data) => {
                 resolve({
                     item: item.item,
                     course: item.course,
                     schedule: data
                 });
-            }, function (err) {
+            },  (err) => {
                 reject(err);
             });
 
@@ -395,26 +405,26 @@ var getSchedules = function (item) {
 };
 
 // save new Schedule
-var addSubjectSchedule = function (course) {
-    return new Promise(function (resolve, reject) {
+const addSubjectSchedule =  (course) => {
+    return new Promise( (resolve, reject) => {
         let query = {_id: course._id};
 
-        let options = {safe: true, upsert: true, new: true};
+        let options = {safe: true, upsert: false, new: true};
         coursesModel.courses.findOneAndUpdate(query, course, options)
             .populate('subjects.teacher', 'name')
             .populate('subjects.subject', 'description')
             .exec()
-            .then(function (data) {
+            .then( (data) => {
                 resolve(data);
-            }, function (err) {
+            },  (err) => {
                 reject(err);
             });
     });
 };
 
 // validate Date Schedule Item
-var validateDateScheduleItem = function (course) {
-    return new Promise(function (resolve, reject) {
+const validateDateScheduleItem =  (course) => {
+    return new Promise( (resolve, reject) => {
         let objRet = {};
         let candidateScheduleItem = {
             start: moment(course.item['duration']['start']).format('HH:mm:ss'),
@@ -469,21 +479,19 @@ var validateDateScheduleItem = function (course) {
 };
 
 // Remove Schedule to Course
-module.exports.removeSchedule = function(item) {
-    return new Promise(function (resolve, reject) {
+module.exports.removeSchedule = (item) => {
+    return new Promise( (resolve, reject) => {
         validateSchedule(item, utils.OPERATION_STATUS.DELETE)
             .then(existsCourse)
             .then(removeScheduleItem)
             .then(resolve)
-            .catch(function (err) {
-                reject(err);
-            });
+            .catch(reject);
     });
 };
 
 // remove subject of course
-var removeScheduleItem = function (schedule) {
-    return new Promise(function (resolve, reject) {
+const removeScheduleItem =  (schedule) => {
+    return new Promise( (resolve, reject) => {
         let course = schedule.course;
         let item = schedule.item;
         let query = { _id: item._id };
@@ -498,8 +506,8 @@ var removeScheduleItem = function (schedule) {
                 }
             }
         }
-        let options = { safe: true, upsert: true, new: true };
-        coursesModel.courses.findOneAndUpdate(query, course, options, function (err, data) {
+        let options = { safe: true, upsert: false, new: true };
+        coursesModel.courses.findOneAndUpdate(query, course, options,  (err, data) => {
             if (err) {
                 reject(err);
             }
@@ -511,10 +519,10 @@ var removeScheduleItem = function (schedule) {
 };
 
 // Validate fields
-var validateCourse = function (course, status) {
-    return new Promise(function (resolve, reject) {
+const validateCourse =  (course, status) => {
+    return new Promise( (resolve, reject) => {
 
-        var objRet = {};
+        let objRet = {};
 
         if (status !== utils.OPERATION_STATUS.DELETE &&
             status !== utils.OPERATION_STATUS.SELECT) {
@@ -561,7 +569,7 @@ var validateCourse = function (course, status) {
             status === utils.OPERATION_STATUS.DELETE) {
             course['_id'] = validator.trim(validator.escape(course['_id'].toString() || ''));
 
-            var idNull = validator.isNull(course['_id']);
+            let idNull = validator.isNull(course['_id']);
 
             if (idNull)
                 objRet['_id'] = 'Id do curso é de preenchimento obrigatório.';
@@ -579,8 +587,8 @@ var validateCourse = function (course, status) {
 };
 
 // Validate Duration of course
-var validateDate = function (course) {
-    return new Promise(function (resolve, reject) {
+const validateDate =  (course) => {
+    return new Promise( (resolve, reject) => {
         if (course['duration']['start'] > course['duration']['end']){
             reject( { duration : 'Período informado é inválido.'});
         }
@@ -590,16 +598,16 @@ var validateDate = function (course) {
 };
 
 // Validate a create Course
-module.exports.validateNewCourse = function (pcourse) {
-    return new Promise(function (resolve, reject) {
+module.exports.validateNewCourse =  (pcourse) => {
+    return new Promise( (resolve, reject) => {
         validateCourse(pcourse, utils.OPERATION_STATUS.NEW)
             .then(validateDate)
-            .then(function (course) {
+            .then( (course) => {
                 course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
                 course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
                 resolve(course);
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 reject(err);
             });
 
@@ -608,16 +616,16 @@ module.exports.validateNewCourse = function (pcourse) {
 };
 
 // Validate a update Course
-module.exports.validateUpdateCourse = function (pcourse) {
-    return new Promise(function (resolve, reject) {
+module.exports.validateUpdateCourse =  (pcourse) => {
+    return new Promise( (resolve, reject) => {
         validateCourse(pcourse, utils.OPERATION_STATUS.UPDATE)
             .then(validateDate)
-            .then(function (course) {
+            .then( (course) => {
                 course['duration']['start'] = moment(course['duration']['start'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
                 course['duration']['end'] = moment(course['duration']['end'], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
                 resolve(course);
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 reject(err);
             });
     });

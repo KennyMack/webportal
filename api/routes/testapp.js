@@ -1,11 +1,11 @@
 /**
  * Created by jonathan on 17/04/16.
  */
-
+'use strict';
 // TODO: Just a test
-module.exports = function (express, io) {
+module.exports =  (express, io) => {
 
-    var router = express.Router();
+    const router = express.Router();
 
     const q = require('q');
     const students = require('../controller/students-controller');
@@ -13,13 +13,13 @@ module.exports = function (express, io) {
     const subjects = require('../controller/subjects-controller');
 
 
-    var getCourses = function (callback) {
-        var defer = q.defer();
+    const getCourses =  (callback) => {
+        let defer = q.defer();
 
         courses.listCourses()
-            .then(function (courses) {
+            .then( (courses) => {
                 defer.resolve(courses);
-            }, function (err) {
+            },  (err) => {
                 defer.reject(err);
             });
 
@@ -27,15 +27,15 @@ module.exports = function (express, io) {
         return defer.promise;
     };
 
-    var getStudents = function (value, callback) {
-        var defer = q.defer();
+    const getStudents =  (value, callback) => {
+        let defer = q.defer();
         console.log('students');
         console.log(value);
 
         students.list()
-            .then(function (students) {
+            .then( (students) => {
                 defer.resolve(students);
-            }, function (err) {
+            },  (err) => {
                 defer.reject(err);
             });
 
@@ -44,15 +44,15 @@ module.exports = function (express, io) {
         return defer.promise;
     };
 
-    var getSubjects = function (value, callback) {
-        var defer = q.defer();
+    const getSubjects =  (value, callback) => {
+        let defer = q.defer();
         console.log('Subjects');
         console.log(value);
 
         subjects.list()
-            .then(function (subjects) {
+            .then( (subjects) => {
                 defer.resolve(subjects);
-            }, function (err) {
+            },  (err) => {
                 defer.reject(err);
             });
 
@@ -61,16 +61,16 @@ module.exports = function (express, io) {
         return defer.promise;
     };
 
-    router.get('/', function (req, res) {
+    router.get('/',  (req, res) => {
         getCourses()
             .then(getStudents)
             .then(getSubjects)
-            .then(function (done) {
+            .then( (done) => {
                 //OK
                 console.log('end');
                 console.log(done);
             })
-            .fail(function (err) {
+            .fail( (err) => {
                 // error
                 console.log('err');
                 console.log(err);

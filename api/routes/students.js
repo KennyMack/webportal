@@ -3,36 +3,36 @@
  */
 'use strict';
 
-module.exports = function (express, io) {
+module.exports =  (express, io) => {
 
     const router = express.Router();
     const auth = require('../auth/auth');
     const studentsController = require('../controller/students-controller');
     const utils = require('../utils/utils');
 
-    io.on('connection', function(socket){
+    io.on('connection', (socket)=> {
         console.log('Connection on Students');
-        /*socket.on('big', function(){
+        /*socket.on('big', ()=> {
          console.log('big');
          });
          socket.emit('get', { 'get':'Express' });*/
     });
 
     /* Middleware for authentication */
-    router.use(function (req, res, next) {
+    router.use( (req, res, next) => {
         return auth.ensureAuthenticated(req, res, next);
     });
 
     /* GET student listing. */
-    router.get('/', function (req, res) {
+    router.get('/',  (req, res) => {
         studentsController.list()
-            .then(function (students) {
+            .then( (students) => {
                 res.json({
                     success: true,
                     data: students
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -42,16 +42,16 @@ module.exports = function (express, io) {
     });
 
     /* GET student by ID. */
-    router.get('/:id', function (req, res) {
+    router.get('/:id',  (req, res) => {
         let student = {
             _id: req.params.id || ''
         };
 
         studentsController.validate(student, utils.OPERATION_STATUS.SELECT)
-            .then(function (rstudent) {
+            .then( (rstudent) => {
                 return studentsController.getById(rstudent['_id']);
             })
-            .then(function (students) {
+            .then( (students) => {
                 if (students) {
                     res.json({
                         success: true,
@@ -64,7 +64,7 @@ module.exports = function (express, io) {
                     });
                 }
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -73,7 +73,7 @@ module.exports = function (express, io) {
     });
 
     /* POST create a student */
-    router.post('/', function (req, res) {
+    router.post('/',  (req, res) => {
         let student = {
             identify: req.body.identify || '',
             name: req.body.name || '',
@@ -85,13 +85,13 @@ module.exports = function (express, io) {
 
         studentsController.validate(student, utils.OPERATION_STATUS.NEW)
             .then(studentsController.create)
-            .then(function (student) {
+            .then( (student) => {
                 res.json({
                     success: true,
                     data: student
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -101,7 +101,7 @@ module.exports = function (express, io) {
 
 
     /* PUT update a student */
-    router.put('/', function (req, res) {
+    router.put('/',  (req, res) => {
         let student = {
             _id: req.body._id || '',
             identify: req.body.identify || '',
@@ -114,13 +114,13 @@ module.exports = function (express, io) {
 
         studentsController.validate(student, utils.OPERATION_STATUS.UPDATE)
             .then(studentsController.update)
-            .then(function (student) {
+            .then( (student) => {
                 res.json({
                     success: true,
                     data: student
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -130,17 +130,17 @@ module.exports = function (express, io) {
 
 
     /* DELETE remove a student. */
-    router.delete('/:id', function (req, res) {
+    router.delete('/:id',  (req, res) => {
         let student = {
             _id: req.params.id || ''
         };
 
 
         studentsController.validate(student, utils.OPERATION_STATUS.DELETE)
-            .then(function (rstudent) {
+            .then( (rstudent) => {
                 return studentsController.removeById(rstudent['_id']);
             })
-            .then(function (student) {
+            .then( (student) => {
                 if (student) {
                     res.json({
                         success: true,
@@ -153,7 +153,7 @@ module.exports = function (express, io) {
                     });
                 }
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err

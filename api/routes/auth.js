@@ -2,21 +2,21 @@
  * Created by jonathan on 21/02/16.
  */
 'use strict';
-module.exports = function (express, io) {
+module.exports =  (express, io) => {
 
     const router = express.Router();
     const auth = require('../auth/auth');
     const authController = require('../controller/auth-controller');
 
-    io.on('connection', function(socket){
+    io.on('connection', (socket) => {
         console.log('Connection on Auth');
-        /*socket.on('big', function(){
+        /*socket.on('big', ()=> {
          console.log('big');
          });
          socket.emit('get', { 'get':'Express' });*/
     });
 
-    router.post('/authenticate', function (req, res) {
+    router.post('/authenticate',  (req, res) => {
         let user = {
             login: req.body.username || '',
             password: req.body.password || ''
@@ -25,7 +25,7 @@ module.exports = function (express, io) {
         authController.verifyLoginUser(user)
             .then(authController.lastUpdateLogin)
             .then(authController.loginUser)
-            .then(function (ut) {
+            .then( (ut) => {
                 let usr = {
                     _id: ut.user._id,
                     email: ut.user.email,
@@ -43,13 +43,13 @@ module.exports = function (express, io) {
                     message: 'Enjoy your token'
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json(err);
             });
     });
 
 
-    router.get('/credential', auth.ensureAuthenticated, function (req, res) {
+    router.get('/credential', auth.ensureAuthenticated,  (req, res) => {
         res.json({
             success: true,
             credential: req.decoded

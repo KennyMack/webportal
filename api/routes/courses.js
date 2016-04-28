@@ -2,7 +2,7 @@
  * Created by jonathan on 01/03/16.
  */
 'use strict';
-module.exports = function (express, io) {
+module.exports =  (express, io) => {
 
     const router            = express.Router();
     const auth              = require('../auth/auth');
@@ -10,28 +10,29 @@ module.exports = function (express, io) {
     const classController   = require('../controller/class-controller');
     const utils             = require('../utils/utils');
 
-    io.on('connection', function(socket){
+    io.on('connection', (socket) => {
         console.log('Connection on Courses');
-        /*socket.on('big', function(){
+        /*socket.on('big', ()=> {
          console.log('big');
          });
          socket.emit('get', { 'get':'Express' });*/
     });
 
     /* Middleware for authentication */
-    router.use(function (req, res, next) {
+    router.use( (req, res, next) => {
         return auth.ensureAuthenticated(req, res, next);
     });
 
     /* GET Course listing. */
-    router.get('/', function (req, res) {
+    router.get('/',  (req, res) => {
         coursesController.listCourses()
-            .then(function (courses) {
+            .then( (courses) => {
                 res.json({
                     success: true,
                     data: courses
                 });
-            }, function (err) {
+            })
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -41,34 +42,29 @@ module.exports = function (express, io) {
     });
 
     /* GET Course by ID. */
-    router.get('/:id', function (req, res) {
+    router.get('/:id',  (req, res) => {
         let course = {
             _id: req.params.id || ''
         };
 
         coursesController.validateCourse(course, utils.OPERATION_STATUS.SELECT)
-            .then(function (rcourse) {
-                coursesController.getById(rcourse['_id'])
-                    .then(function (course) {
-                        if (course) {
-                            res.json({
-                                success: true,
-                                data: course
-                            });
-                        } else {
-                            res.status(404).json({
-                                success: false,
-                                data: '404 - Not Found'
-                            });
-                        }
-                    }, function (err) {
-                        res.json({
-                            success: false,
-                            data: err
-                        });
-                    });
+            .then( (rcourse) => {
+                return coursesController.getById(rcourse['_id']);
             })
-            .catch(function (err) {
+            .then( (result) => {
+                if (result) {
+                    res.json({
+                        success: true,
+                        data: result
+                    });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+            })
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -77,7 +73,7 @@ module.exports = function (express, io) {
     });
 
     /* POST create a Course */
-    router.post('/', function (req, res) {
+    router.post('/',  (req, res) => {
         let duration = {
             start: '',
             end: ''
@@ -104,21 +100,14 @@ module.exports = function (express, io) {
         };
 
         coursesController.validateNewCourse(course)
-            .then(function (course) {
-                coursesController.createCourse(course)
-                    .then(function (course) {
-                        res.json({
-                            success: true,
-                            data: course
-                        });
-                    }, function (err) {
-                        res.json({
-                            success: false,
-                            data: err
-                        });
-                    });
+            .then(coursesController.createCourse)
+            .then( (result) => {
+                res.json({
+                    success: true,
+                    data: result
+                });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -128,7 +117,7 @@ module.exports = function (express, io) {
 
 
     /* PUT update a Course */
-    router.put('/', function (req, res) {
+    router.put('/',  (req, res) => {
         let duration = {
             start: '',
             end: ''
@@ -156,16 +145,14 @@ module.exports = function (express, io) {
         };
 
         coursesController.validateUpdateCourse(course)
-            .then(function (course) {
-                return coursesController.updateCourse(course);
-            })
-            .then(function (pcourse) {
+            .then(coursesController.updateCourse)
+            .then( (result) => {
                 res.json({
                     success: true,
-                    data: pcourse
+                    data: result
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -175,34 +162,30 @@ module.exports = function (express, io) {
 
 
     /* DELETE remove a Course by ID. */
-    router.delete('/:id', function (req, res) {
+    router.delete('/:id',  (req, res) => {
         let course = {
             _id: req.params.id || ''
         };
 
         coursesController.validateCourse(course, utils.OPERATION_STATUS.DELETE)
-            .then(function (rcourse) {
-                coursesController.removeById(rcourse['_id'])
-                    .then(function (course) {
-                        if (course) {
-                            res.json({
-                                success: true,
-                                data: course
-                            });
-                        } else {
-                            res.status(404).json({
-                                success: false,
-                                data: '404 - Not Found'
-                            });
-                        }
-                    }, function (err) {
-                        res.json({
-                            success: false,
-                            data: err
-                        });
-                    });
+            .then( (rcourse) => {
+                return coursesController.removeById(rcourse['_id'])
             })
-            .catch(function (err) {
+            .then( (result) => {
+                if (result) {
+                    res.json({
+                        success: true,
+                        data: result
+                    });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+
+            })
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -211,7 +194,7 @@ module.exports = function (express, io) {
     });
 
     /* POST add a Course Subject. */
-    router.post('/:id/add-subject', function (req, res) {
+    router.post('/:id/add-subject',  (req, res) => {
         let subject = {
             _id: req.params.id || '',
             teacher: req.body.teacher || '',
@@ -220,13 +203,13 @@ module.exports = function (express, io) {
         };
 
         coursesController.addSubject(subject)
-            .then(function (course) {
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -236,20 +219,20 @@ module.exports = function (express, io) {
 
 
     /* DELETE remove a Course subject. */
-    router.delete('/:id/remove-subject/:idsubject', function (req, res) {
+    router.delete('/:id/remove-subject/:idsubject',  (req, res) => {
         let subject = {
             _id: req.params.id || '',
             _idsubject: req.params.idsubject || ''
         };
 
         coursesController.removeSubject(subject)
-            .then(function (course) {
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -258,7 +241,7 @@ module.exports = function (express, io) {
     });
 
     /* POST add a Course schedule. */
-    router.post('/:id/add-schedule', function (req, res) {
+    router.post('/:id/add-schedule',  (req, res) => {
         let duration = {
             start: '',
             end: ''
@@ -276,13 +259,13 @@ module.exports = function (express, io) {
 
 
         coursesController.addSchedule(item)
-            .then(function (course) {
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 if (err === 404) {
                     res.status(404).json({
                         success: false,
@@ -299,7 +282,7 @@ module.exports = function (express, io) {
     });
 
     /* DELETE remove a Course schedule. */
-    router.delete('/:id/remove-schedule/:idsubject/item/:idschedule/', function (req, res) {
+    router.delete('/:id/remove-schedule/:idsubject/item/:idschedule/',  (req, res) => {
         let item = {
             _id: req.params.id || '',
             _idschedule: req.params.idschedule || '',
@@ -307,13 +290,13 @@ module.exports = function (express, io) {
         };
 
         coursesController.removeSchedule(item)
-            .then(function (course) {
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -322,22 +305,22 @@ module.exports = function (express, io) {
     });
 
     /* POST add a class. */
-    router.post('/:id/add-class', function (req, res) {
-        let clas = {
+    router.post('/:id/add-class',  (req, res) => {
+        let roomClass = {
             _id: req.params.id || '',
             class: []
         };
 
-        clas.class = req.body.class || [];
+        roomClass.class = req.body.class || [];
 
-        classController.createClass(clas)
-            .then(function (course) {
+        classController.createClass(roomClass)
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .fail(function (err) {
+            .fail( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -346,21 +329,21 @@ module.exports = function (express, io) {
     });
 
     /* DELETE deactivate a student. */
-    router.delete('/:id/deactive-student/:idstudent', function (req, res) {
-        let clas = {
+    router.delete('/:id/deactive-student/:idstudent',  (req, res) => {
+        let roomClass = {
             _id: req.params.id || '',
             _idstudent: req.params.idstudent || ''
         };
 
 
-        classController.deactiveStudent(clas)
-            .then(function (course) {
+        classController.deactiveStudent(roomClass)
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .fail(function (err) {
+            .fail( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -369,21 +352,21 @@ module.exports = function (express, io) {
     });
 
     /* DELETE deactivate a student. */
-    router.post('/:id/activate-student', function (req, res) {
-        let clas = {
+    router.post('/:id/activate-student',  (req, res) => {
+        let roomClass = {
             _id: req.params.id || '',
             _idstudent: req.body._idstudent || ''
         };
 
 
-        classController.activateStudent(clas)
-            .then(function (course) {
+        classController.activateStudent(roomClass)
+            .then( (course) => {
                 res.json({
                     success: true,
                     data: course
                 });
             })
-            .fail(function (err) {
+            .fail( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -391,34 +374,29 @@ module.exports = function (express, io) {
             });
     });
 
-    router.get('/:id/subjects', function (req, res) {
+    router.get('/:id/subjects',  (req, res) => {
         let course = {
             _id: req.params.id || ''
         };
 
         coursesController.validateCourse(course, utils.OPERATION_STATUS.SELECT)
-            .then(function (rcourse) {
-                coursesController.getCourseSubjects(rcourse['_id'])
-                    .then(function (course) {
-                        if (course) {
-                            res.json({
-                                success: true,
-                                data: course
-                            });
-                        } else {
-                            res.status(404).json({
-                                success: false,
-                                data: '404 - Not Found'
-                            });
-                        }
-                    }, function (err) {
-                        res.json({
-                            success: false,
-                            data: err
-                        });
-                    });
+            .then( (rcourse) => {
+                return coursesController.getCourseSubjects(rcourse['_id'])
             })
-            .catch(function (err) {
+            .then( (result) => {
+                if (result) {
+                    res.json({
+                        success: true,
+                        data: result
+                    });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        data: '404 - Not Found'
+                    });
+                }
+            })
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err

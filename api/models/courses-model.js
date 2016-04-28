@@ -103,7 +103,7 @@ const coursesSchema = database.mongoose.Schema({
     }
 });
 
-var preUpdate = function(student, next) {
+const preUpdate = function(student, next) {
     student.modified = utils.getCurrentDateTime();
     next();
 };

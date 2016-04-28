@@ -9,8 +9,8 @@ const validator     = require('validator');
 const utils         = require('../utils/utils');
 
 // List all Teachers
-module.exports.list = function() {
-    return new Promise(function (resolve, reject) {
+module.exports.list = () => {
+    return new Promise( (resolve, reject) => {
         subjectsModel.subjects.find({})
         .exec()
         .then(resolve, reject);
@@ -18,8 +18,8 @@ module.exports.list = function() {
 };
 
 // Get Teacher By Id
-module.exports.getById = function(id) {
-    return new Promise(function (resolve, reject) {
+module.exports.getById = (id) => {
+    return new Promise( (resolve, reject) => {
         subjectsModel.subjects.findById(id)
             .exec()
             .then(resolve, reject);
@@ -27,8 +27,8 @@ module.exports.getById = function(id) {
 };
 
 // Remove Teacher By Id
-module.exports.removeById = function(id) {
-    return new Promise(function (resolve, reject) {
+module.exports.removeById = (id) => {
+    return new Promise( (resolve, reject) => {
         subjectsModel.subjects.findByIdAndRemove(id)
             .exec()
             .then(resolve, reject);
@@ -37,8 +37,8 @@ module.exports.removeById = function(id) {
 };
 
 // Create a Teacher
-module.exports.create = function(subject) {
-    return new Promise(function (resolve, reject) {
+module.exports.create = (subject) => {
+    return new Promise( (resolve, reject) => {
         new subjectsModel.subjects({
             'description': subject['description']
         }).save()
@@ -47,8 +47,8 @@ module.exports.create = function(subject) {
 };
 
 // Update a Teacher
-module.exports.update = function (subject) {
-    return new Promise(function (resolve, reject) {
+module.exports.update =  (subject) => {
+    return new Promise( (resolve, reject) => {
 
         let query = { _id: subject['_id'] };
         let data = {
@@ -62,8 +62,8 @@ module.exports.update = function (subject) {
 };
 
 // Validate fields
-module.exports.validate = function (subject, status) {
-    return new Promise(function (resolve, reject) {
+module.exports.validate =  (subject, status) => {
+    return new Promise( (resolve, reject) => {
 
         let objRet = {};
 
@@ -81,7 +81,7 @@ module.exports.validate = function (subject, status) {
             status === utils.OPERATION_STATUS.DELETE) {
             subject['_id'] = validator.trim(validator.escape(subject['_id'].toString() || ''));
 
-            var idNull = validator.isNull(subject['_id']);
+            let idNull = validator.isNull(subject['_id']);
 
             if (idNull)
                 objRet['_id'] = 'Id da matéria é de preenchimento obrigatório.';

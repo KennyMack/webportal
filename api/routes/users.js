@@ -1,13 +1,15 @@
-module.exports = function (express, io) {
+'use strict';
 
-  var router = express.Router();
-  var auth = require('../auth/auth');
-  var usersController = require('../controller/users-controller');
-  var utils = require('../utils/utils');
+module.exports =  (express, io) => {
 
-  io.on('connection', function(socket){
+  const router = express.Router();
+  const auth = require('../auth/auth');
+  const usersController = require('../controller/users-controller');
+  const utils = require('../utils/utils');
+
+  io.on('connection', (socket)=> {
     console.log('Connection on User');
-    /*socket.on('big', function(){
+    /*socket.on('big', ()=> {
       console.log('big');
     });
     socket.emit('get', { 'get':'Express' });*/
@@ -15,14 +17,15 @@ module.exports = function (express, io) {
 
 
   /* GET users listing. */
-  router.get('/', auth.ensureAuthenticated, function (req, res) {
+  router.get('/', auth.ensureAuthenticated,  (req, res) => {
     usersController.listUsers()
-        .then(function (users) {
+        .then((users) => {
           res.json({
             success: true,
             data: users
           });
-        }, function (err) {
+        })
+        .catch((err) => {
           res.json({
             success: false,
             data: err
@@ -32,128 +35,111 @@ module.exports = function (express, io) {
   });
 
   /* GET user by ID. */
-  router.get('/:id', auth.ensureAuthenticated, function (req, res) {
-    var user = {
+  router.get('/:id', auth.ensureAuthenticated,  (req, res) => {
+    let user = {
       _id: req.params.id || ''
     };
 
-    var errors = usersController.validateUser(user, utils.OPERATION_STATUS.SELECT);
-
-    if (Object.keys(errors).length !== 0) {
-      res.json({
-        success: false,
-        data: errors
-      });
-    }
-    else {
-      usersController.getUserById(user['_id'])
-          .then(function (user) {
-            if (user) {
-              res.json({
-                success: true,
-                data: user
-              });
-            } else {
-              res.status(404).json({
-                success: false,
-                data: '404 - Not Found'
-              });
-            }
-          }, function (err) {
+    usersController.validateUser(user, utils.OPERATION_STATUS.SELECT)
+        .then((ruser) => {
+            return usersController.getUserById(ruser['_id']);
+        })
+        .then((result) => {
+          if (result) {
             res.json({
-              success: false,
-              data: err
+              success: true,
+              data: result
             });
+          } else {
+            res.status(404).json({
+              success: false,
+              data: '404 - Not Found'
+            });
+          }
+        })
+        .catch((err) => {
+          res.json({
+            success: false,
+            data: err
           });
-    }
+        });
   });
 
   /* GET user by ID. */
-  router.get('/view/:id', auth.ensureAuthenticated, function (req, res) {
-    var user = {
+  router.get('/view/:id', auth.ensureAuthenticated,  (req, res) => {
+    let user = {
       _id: req.params.id || ''
     };
 
-    var errors = usersController.validateUser(user, utils.OPERATION_STATUS.SELECT);
+    usersController.validateUser(user, utils.OPERATION_STATUS.SELECT)
+        .then((ruser) => {
+            return usersController.getUserById(ruser['_id']);
+        })
+        .then((result) => {
+            if (result) {
+                let usr = {
+                  _id: result._id,
+                  email: result.email,
+                  username: result.username,
+                  last_login: result.last_login,
+                  persons: result.persons
+                };
 
-    if (Object.keys(errors).length !== 0) {
-      res.json({
-        success: false,
-        data: errors
-      });
-    }
-    else {
-      usersController.getUserById(user['_id'])
-          .then(function (user) {
-            if (user) {
-              var usr = {
-                _id: user._id,
-                email: user.email,
-                username: user.username,
-                last_login: user.last_login,
-                persons: user.persons
-              };
-
-              res.json({
-                success: true,
-                data: usr
-              });
+                res.json({
+                  success: true,
+                  data: usr
+                });
             } else {
-              res.status(404).json({
-                success: false,
-                data: '404 - Not Found'
-              });
+                res.status(404).json({
+                  success: false,
+                  data: '404 - Not Found'
+                });
             }
-          }, function (err) {
+        })
+        .catch((err) => {
             res.json({
               success: false,
               data: err
             });
-          });
-    }
+        });
+
   });
 
 
   /* GET user by ID. */
-  router.get('/all-path/:id', auth.ensureAuthenticated, function (req, res) {
-    var user = {
+  router.get('/all-path/:id', auth.ensureAuthenticated,  (req, res) => {
+    let user = {
       _id: req.params.id || ''
     };
 
-    var errors = usersController.validateUser(user, utils.OPERATION_STATUS.SELECT);
-
-    if (Object.keys(errors).length !== 0) {
-      res.json({
-        success: false,
-        data: errors
-      });
-    }
-    else {
-      usersController.getUserByIdAllPath(user['_id'])
-          .then(function (user) {
-            if (user) {
-              res.json({
-                success: true,
-                data: user
-              });
+    usersController.validateUser(user, utils.OPERATION_STATUS.SELECT)
+        .then((ruser) => {
+            return usersController.getUserByIdAllPath(ruser['_id']);
+        })
+        .then((result) => {
+            if (result) {
+                res.json({
+                  success: true,
+                  data: result
+                });
             } else {
-              res.status(404).json({
-                success: false,
-                data: '404 - Not Found'
-              });
+                res.status(404).json({
+                  success: false,
+                  data: '404 - Not Found'
+                });
             }
-          }, function (err) {
+        })
+        .catch((err) => {
             res.json({
               success: false,
               data: err
             });
-          });
-    }
+        });
   });
 
   /* POST create a new user */
-  router.post('/', function (req, res) {
-    var user = {
+  router.post('/',  (req, res) => {
+    let user = {
       email: req.body.email || '',
       username: req.body.username || '',
       password: req.body.password || '',
@@ -161,35 +147,26 @@ module.exports = function (express, io) {
       active: req.body.active || '1'
     };
 
-    var errors = usersController.validateUser(user, utils.OPERATION_STATUS.NEW);
-
-    if (Object.keys(errors).length !== 0) {
-      res.json({
-        success: false,
-        data: errors
-      });
-    }
-    else {
-      usersController.createUser(user)
-          .then(function (user) {
+    usersController.validateUser(user, utils.OPERATION_STATUS.NEW)
+        .then(usersController.createUser)
+        .then((result) => {
             res.json({
               success: true,
-              data: user
+              data: result
             });
-          }, function (err) {
+        })
+        .catch((err) => {
             res.json({
               success: false,
               data: err
             });
-          });
-
-    }
+        });
   });
 
 
   /* PUT update a user */
-  router.put('/', auth.ensureAuthenticated, function (req, res) {
-    var user = {
+  router.put('/', auth.ensureAuthenticated,  (req, res) => {
+    let user = {
       _id: req.body._id || '',
       email: req.body.email || '',
       username: req.body.username || '',
@@ -198,79 +175,64 @@ module.exports = function (express, io) {
       active: req.body.active || ''
     };
 
-    var errors = usersController.validateUser(user, utils.OPERATION_STATUS.UPDATE);
-
-    if (Object.keys(errors).length !== 0) {
-      res.json({
-        success: false,
-        data: errors
-      });
-    }
-    else {
-      usersController.updateUser(user)
-          .then(function (user) {
+    usersController.validateUser(user, utils.OPERATION_STATUS.NEW)
+        .then(usersController.updateUser)
+        .then((result) => {
             res.json({
               success: true,
-              data: user
+              data: result
             });
-          }, function (err) {
+        })
+        .catch((err) => {
             res.json({
               success: false,
               data: err
             });
-          });
-
-    }
+        });
   });
 
 
   /* DELETE remove a user by ID. */
-  router.delete('/:id', auth.ensureAuthenticated, function (req, res) {
-    var user = {
+  router.delete('/:id', auth.ensureAuthenticated,  (req, res) => {
+    let user = {
       _id: req.params.id || ''
     };
 
-    var errors = usersController.validateUser(user, utils.OPERATION_STATUS.DELETE);
-
-    if (Object.keys(errors).length !== 0) {
-      res.json({
-        success: false,
-        data: errors
-      });
-    }
-    else {
-      usersController.removeById(user['_id'])
-          .then(function (user) {
-            if (user) {
-              res.json({
-                success: true,
-                data: user
-              });
-            } else {
-              res.status(404).json({
-                success: false,
-                data: '404 - Not Found'
-              });
-            }
-          }, function (err) {
+    usersController.validateUser(user, utils.OPERATION_STATUS.DELETE)
+        .then((ruser) => {
+          return usersController.removeById(ruser['_id']);
+        })
+        .then((result) => {
+          if (result) {
             res.json({
-              success: false,
-              data: err
+              success: true,
+              data: result
             });
+          } else {
+            res.status(404).json({
+              success: false,
+              data: '404 - Not Found'
+            });
+          }
+        })
+        .catch((err) => {
+          res.json({
+            success: false,
+            data: err
           });
-    }
+        });
   });
 
   /* POST add a person to User */
-  router.post('/add-person', auth.ensureAuthenticated, function (req, res) {
-    var user = {
+  router.post('/add-person', auth.ensureAuthenticated,  (req, res) => {
+    let user = {
       _id: req.body._id || '',
       idparent: req.body.idparent || '',
       type: req.body.type || ''
     };
 
     usersController.setLoginPerson(user)
-        .then(function (user) {
+        .then( (user) => {
           if (user) {
             res.json({
               success: true,
@@ -283,7 +245,7 @@ module.exports = function (express, io) {
             });
           }
         })
-        .fail(function (err) {
+        .catch((err) => {
           res.json({
             success: false,
             data: err

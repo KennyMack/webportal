@@ -3,15 +3,15 @@
  */
 'use strict';
 
-module.exports = function (express, io) {
+module.exports =  (express, io) => {
 
     const router = express.Router();
     const auth = require('../auth/auth');
     const subjectsController = require('../controller/subjects-controller');
     const utils = require('../utils/utils');
-    io.on('connection', function (socket) {
+    io.on('connection',  (socket) => {
         console.log('Connection on Subjects');
-        /*socket.on('big', function(){
+        /*socket.on('big', ()=> {
          console.log('big');
          });
          socket.emit('get', { 'get':'Express' });*/
@@ -19,20 +19,20 @@ module.exports = function (express, io) {
 
 
     /* Middleware for authentication */
-    router.use(function (req, res, next) {
+    router.use( (req, res, next) => {
         return auth.ensureAuthenticated(req, res, next);
     });
 
     /* GET Course Type listing. */
-    router.get('/', function (req, res) {
+    router.get('/',  (req, res) => {
         subjectsController.list()
-            .then(function (subjects) {
+            .then( (subjects) => {
                 res.json({
                     success: true,
                     data: subjects
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -42,16 +42,16 @@ module.exports = function (express, io) {
     });
 
     /* GET Course Type by ID. */
-    router.get('/:id', function (req, res) {
+    router.get('/:id',  (req, res) => {
         let subject = {
             _id: req.params.id || ''
         };
 
         subjectsController.validate(subject, utils.OPERATION_STATUS.SELECT)
-            .then(function (psubject) {
+            .then( (psubject) => {
                 return subjectsController.getById(psubject['_id'])
             })
-            .then(function (result) {
+            .then( (result) => {
                 if (result) {
                     res.json({
                         success: true,
@@ -64,7 +64,7 @@ module.exports = function (express, io) {
                     });
                 }
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -73,20 +73,20 @@ module.exports = function (express, io) {
     });
 
     /* POST create a Course Type */
-    router.post('/', function (req, res) {
+    router.post('/',  (req, res) => {
         let subject = {
             description: req.body.description || ''
         };
 
         subjectsController.validate(subject, utils.OPERATION_STATUS.NEW)
             .then(subjectsController.create)
-            .then(function (subject) {
+            .then( (subject) => {
                 res.json({
                     success: true,
                     data: subject
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -96,7 +96,7 @@ module.exports = function (express, io) {
 
 
     /* PUT update a Course Type */
-    router.put('/', function (req, res) {
+    router.put('/',  (req, res) => {
         let subject = {
             _id: req.body._id || '',
             description: req.body.description || ''
@@ -104,13 +104,13 @@ module.exports = function (express, io) {
 
         subjectsController.validate(subject, utils.OPERATION_STATUS.UPDATE)
             .then(subjectsController.update)
-            .then(function (result) {
+            .then( (result) => {
                 res.json({
                     success: true,
                     data: result
                 });
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err
@@ -120,16 +120,16 @@ module.exports = function (express, io) {
 
 
     /* DELETE remove a Course Type by ID. */
-    router.delete('/:id', function (req, res) {
+    router.delete('/:id',  (req, res) => {
         let subject = {
             _id: req.params.id || ''
         };
 
         subjectsController.validate(subject, utils.OPERATION_STATUS.DELETE)
-            .then(function (psubject) {
+            .then( (psubject) => {
                 return subjectsController.removeById(psubject['_id']);
             })
-            .then(function (result) {
+            .then( (result) => {
                 if (result) {
                     res.json({
                         success: true,
@@ -142,7 +142,7 @@ module.exports = function (express, io) {
                     });
                 }
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 res.json({
                     success: false,
                     data: err

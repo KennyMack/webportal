@@ -18,73 +18,26 @@ const inativeUserJson = {
     data: "Usuário informado está inátivo."
 };
 
-module.exports.verifyLoginUser = function (user) {
-    return new Promise(function (resolve, reject) {
+module.exports.verifyLoginUser = (user) => {
+    return new Promise((resolve, reject) => {
         let userLogin = {
             username: user['login'] || '',
             password: user['password'] || ''
         };
-        let errors = validateLogin(userLogin);
-
-        if (Object.keys(errors).length !== 0) {
-            reject({
-                success: false,
-                data: errors
-            });
-        }
-        else {
-            if (validator.isEmail(userLogin.username)){
-                userController.getUserByEmail(userLogin.username)
-                    .then(function (user) {
-                        return comparePassword(userLogin, user);
-                    })
-                    .then(function (result) {
-                        if (result.match) {
-                            resolve(result.user);
-                        }
-                        else {
-                            reject(invalidLoginJSON);
-                        }
-                    })
-                    .catch(function (err) {
-                        reject({
-                            success: false,
-                            data: err
-                        });
-                    });
-            }
-            else {
-                userController.getUserByUserName(userLogin.username)
-                    .then(function (user) {
-                        return comparePassword(userLogin, user);
-                    })
-                    .then(function (result) {
-                        if (result.match) {
-                            resolve(result.user);
-                        }
-                        else {
-                            reject(invalidLoginJSON);
-                        }
-                    })
-                    .catch(function (err) {
-                        reject({
-                            success: false,
-                            data: err
-                        });
-                    });
-            }
-        }
-
-    });
-};
-
-module.exports.lastUpdateLogin = function (user) {
-    return new Promise(function (resolve, reject) {
-        userController.updateLastLogin(user._id)
-            .then(function (user) {
-                resolve(user);
+        validateLogin(userLogin)
+            .then(getUser)
+            .then((user) => {
+                return comparePassword(userLogin, user);
             })
-            .catch(function (err) {
+            .then((result) => {
+                if (result.match) {
+                    resolve(result.user);
+                }
+                else {
+                    reject(invalidLoginJSON);
+                }
+            })
+            .catch((err) => {
                 reject({
                     success: false,
                     data: err
@@ -93,15 +46,35 @@ module.exports.lastUpdateLogin = function (user) {
     });
 };
 
-module.exports.loginUser = function (user) {
-    return new Promise(function (resolve, reject) {
+const getUser =  (userLogin) => {
+    if (validator.isEmail(userLogin.username))
+        return userController.getUserByEmail(userLogin.username);
+
+    return userController.getUserByUserName(userLogin.username);
+};
+
+module.exports.lastUpdateLogin = (user) => {
+    return new Promise((resolve, reject) => {
+        userController.updateLastLogin(user._id)
+            .then(resolve)
+            .catch((err) => {
+                reject({
+                    success: false,
+                    data: err
+                });
+            });
+    });
+};
+
+module.exports.loginUser = (user) => {
+    return new Promise((resolve, reject)  => {
         if (user.active) {
             let token = auth.getNewToken(user);
             userController.getUserByIdAllPath(user._id)
-                .then(function (userPath) {
+                .then((userPath) => {
                     resolve({ user: userPath, token: token});
                 },
-                function (err) {
+                (err) => {
                     reject({
                         success: false,
                         data: err
@@ -115,29 +88,35 @@ module.exports.loginUser = function (user) {
     });
 };
 
-var validateLogin = function (user) {
-    var objRet = {};
-    user['username'] = validator.trim(validator.escape(user['username'].toString() || ''));
-    user['password'] = validator.trim(validator.escape(user['password'].toString() || ''));
+const validateLogin = (user) => {
+    return new Promise((resolve, reject) => {
+        let objRet = {};
+        user['username'] = validator.trim(validator.escape(user['username'].toString() || ''));
+        user['password'] = validator.trim(validator.escape(user['password'].toString() || ''));
 
-    if (validator.isNull(user['username']))
-        objRet['username'] = 'Informe o E-mail ou Usuário.';
+        if (validator.isNull(user['username']))
+            objRet['username'] = 'Informe o E-mail ou Usuário.';
 
-    if (validator.isNull(user['password']))
-        objRet['password'] = 'Senha é de preenchimento obrigatório.';
+        if (validator.isNull(user['password']))
+            objRet['password'] = 'Senha é de preenchimento obrigatório.';
 
-    return objRet;
+        if (Object.keys(objRet).length !== 0) {
+            reject(objRet);
+        }
+        else {
+            resolve(user);
+        }
+    });
 };
 
-var comparePassword = function(candidateUser, userHash){
-    return new Promise(function (resolve, reject) {
+const comparePassword = (candidateUser, userHash) => {
+    return new Promise((resolve, reject) => {
         if (!userHash){
             reject(invalidLoginJSON);
         }
         else {
-
             crypt.compare(candidateUser.password, userHash.password,
-                function (err, isMatch) {
+                 (err, isMatch) => {
                     if (err)
                         reject(err);
                     else {

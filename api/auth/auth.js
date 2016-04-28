@@ -3,22 +3,22 @@
  */
 'use strict';
 
-var jwt = require('jsonwebtoken');
-var config = require('../config/config.js');
-var util = require('../utils/utils');
+const jwt = require('jsonwebtoken');
+const config = require('../config/config.js');
+const util = require('../utils/utils');
 
-var validateToken = function(token, callback) {
-    jwt.verify(token, config['secretKey'],  function (err, decoded) {
+const validateToken = (token, callback) => {
+    jwt.verify(token, config['secretKey'],   (err, decoded) => {
         callback(err, decoded);
     });
 };
 
-module.exports.ensureAuthenticated = function(req, res, next) {
+module.exports.ensureAuthenticated = (req, res, next) => {
 
-    var token = req.headers['x-access-token'] || req.body.token || req.params.token;
+    let token = req.headers['x-access-token'] || req.body.token || req.params.token;
 
     if (token) {
-        validateToken(token, function (err, decoded) {
+        validateToken(token,  (err, decoded) => {
             if (err) {
                 return res.status(401).json({
                     success: false,
@@ -34,13 +34,12 @@ module.exports.ensureAuthenticated = function(req, res, next) {
             success: false,
             data: 'No token provided.'
         });
-
     }
 };
 
 module.exports.validateToken = validateToken;
 
-module.exports.getNewToken = function (user){
+module.exports.getNewToken =  (user) => {
     return jwt.sign({
         _id: user._id,
         email: user.email,

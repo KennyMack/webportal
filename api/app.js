@@ -22,14 +22,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // Middleware to Uncaught Exceptions
-app.use(function (req, res, next) {
+app.use( (req, res, next)  => {
   //console.log('domain');
   let domain = require('domain').create();
 
-  domain.on('error', function (err) {
+  domain.on('error',  (err)  => {
     //console.error('DOMAIN ERROR CAUGHT\n', err.stack);
     try {
-      setTimeout(function () {
+      setTimeout( ()  => {
         //console.error('Failsafe shutdown');
         process.exit(1);
       }, 5000);
@@ -75,7 +75,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Middleware to headers
-app.use(function (req, res, next) {
+app.use( (req, res, next)  => {
 
   io.emit('hello', {hello: 'world'});
   //console.log('middleware');
@@ -119,8 +119,8 @@ app.use('/students', students);
 app.use('/test', testapp);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+app.use((req, res, next)  => {
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -130,7 +130,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res) {
+  app.use((err, req, res)  => {
     res.status(err.status || 500);
     res.json({
       message: err.message,
@@ -141,7 +141,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res) {
+app.use((err, req, res)  => {
   res.status(err.status || 500);
   res.json({
     message: err.message,
@@ -149,10 +149,10 @@ app.use(function(err, req, res) {
   });
 });
 
-io.on("connection", function(socket){
+io.on("connection", (socket) => {
   //console.log('New connection found.');
 
-  /*socket.on('loko', function (data) {
+  /*socket.on('loko',  (data)  => {
     console.log(data);
     socket.broadcast.emit('loko', data);
   })*/

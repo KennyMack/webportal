@@ -3,13 +3,13 @@
  */
 'use strict';
 const studentsModel = require('../models/students-model');
-const validator       = require('validator');
-const utils           = require('../utils/utils');
+const validator     = require('validator');
+const utils         = require('../utils/utils');
 
 
 // List all Courses Type
-module.exports.list = function() {
-    return new Promise(function (resolve, reject) {
+module.exports.list = () => {
+    return new Promise( (resolve, reject) => {
         studentsModel.students.find({})
             .exec()
             .then(resolve, reject)
@@ -17,16 +17,16 @@ module.exports.list = function() {
 };
 
 // Get Course Type By Id
-module.exports.getById = function(id) {
-    return new Promise(function (resolve, reject) {
+module.exports.getById = (id) => {
+    return new Promise( (resolve, reject) => {
         studentsModel.students.findById(id)
             .exec()
             .then(resolve, reject)
     });
 };
 
-module.exports.getByList = function (list) {
-    return new Promise(function (resolve, reject) {
+module.exports.getByList =  (list) => {
+    return new Promise( (resolve, reject) => {
         let query = {
             '_id': {
                 $in: list
@@ -40,8 +40,8 @@ module.exports.getByList = function (list) {
 };
 
 // Remove Course Type By Id
-module.exports.removeById = function(id) {
-    return new Promise(function (resolve, reject) {
+module.exports.removeById = (id) => {
+    return new Promise( (resolve, reject) => {
         studentsModel.students.findByIdAndRemove(id)
             .exec()
             .then(resolve, reject)
@@ -50,8 +50,8 @@ module.exports.removeById = function(id) {
 };
 
 // Create a Course Type
-module.exports.create = function(student) {
-    return new Promise(function (resolve, reject) {
+module.exports.create = (student) => {
+    return new Promise( (resolve, reject) => {
         new studentsModel.students({
             'identify': student['identify'],
             'name': student['name'],
@@ -65,8 +65,8 @@ module.exports.create = function(student) {
 };
 
 // Update a Course Type
-module.exports.update = function (student) {
-    return new Promise(function (resolve, reject) {
+module.exports.update =  (student) => {
+    return new Promise( (resolve, reject) => {
         let query = { _id: student['_id'] };
         let data = {
             'identify': student['identify'],
@@ -84,8 +84,8 @@ module.exports.update = function (student) {
     });
 };
 
-module.exports.validate = function (student, status) {
-    return new Promise(function (resolve, reject) {
+module.exports.validate =  (student, status) => {
+    return new Promise( (resolve, reject) => {
         let objRet = {};
 
         if (status !== utils.OPERATION_STATUS.DELETE &&
@@ -124,7 +124,7 @@ module.exports.validate = function (student, status) {
 
             student['_id'] = validator.trim(validator.escape(student['_id'].toString() || ''));
 
-            var idNull = validator.isNull(student['_id']);
+            let idNull = validator.isNull(student['_id']);
 
             if (idNull)
                 objRet['_id'] = 'Id do Aluno é de preenchimento obrigatório.';
