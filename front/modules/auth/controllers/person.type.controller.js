@@ -80,7 +80,7 @@
 
       vm.selectedUser = function () {
         try {
-          return $filter('filter')(vm.personType, {id: vm.selectedId})[0];
+          return vm.personType[vm.selectedId]; //$filter('filter')(vm.personType, {id: vm.selectedId})[0];
         }
         catch (e) {
           return '';

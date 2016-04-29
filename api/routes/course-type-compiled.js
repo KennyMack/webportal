@@ -43,7 +43,7 @@ module.exports = function (express, io) {
       _id: req.params.id || ''
     };
 
-    validateCourseType(courseType, utils.OPERATION_STATUS.SELECT).then(function (coursetype) {
+    courseTypeController.validateCourseType(courseType, utils.OPERATION_STATUS.SELECT).then(function (coursetype) {
       return courseTypeController.getById(coursetype['_id']);
     }).then(function (result) {
       if (result) {
@@ -110,7 +110,7 @@ module.exports = function (express, io) {
       _id: req.params.id || ''
     };
 
-    validateCourseType(courseType, utils.OPERATION_STATUS.DELETE).then(function (coursetype) {
+    courseTypeController.validateCourseType(courseType, utils.OPERATION_STATUS.DELETE).then(function (coursetype) {
       return courseTypeController.removeById(coursetype['_id']);
     }).then(function (result) {
       if (result) {

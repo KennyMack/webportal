@@ -9,7 +9,7 @@ var options = {
     request: {
         headers: {
             'Content-Type': 'application/json',
-            'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjdUMjE6MDI6NTItMDM6MDAiLCJpYXQiOjE0NjE4MDE3NzIsImV4cCI6MTQ2MTg4ODE3Mn0.h54DgqmdOp0JIgjmgkySz_3AGlmgnB4s-mUo015hLfg'
+            'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmRiOGMwNzcwZWI1NjRhNmU5YzIzY2UiLCJlbWFpbCI6ImJpbGxAZ2F0ZXMuY29tIiwidXNlcm5hbWUiOiJCaWxsIiwiZGF0ZSI6IjIwMTYtMDQtMjhUMjI6Mjc6MjMtMDM6MDAiLCJpYXQiOjE0NjE4OTMyNDMsImV4cCI6MTQ2MTk3OTY0M30.3zzPgAJp2hMn3mu8b7V7UPBCl8r_oDP3ifhMpt-9878'
         }
     }
 };

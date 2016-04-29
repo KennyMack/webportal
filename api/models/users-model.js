@@ -55,14 +55,12 @@ const userSchema = database.mongoose.Schema({
     },
     manager_id: {
         type: database.mongoose.Schema.Types.ObjectId,
-        //TODO: Adicionar a referencia ao manager
-        //ref: 'teachers',
+        ref: 'managers',
         index: true
     },
     master_id: {
         type: database.mongoose.Schema.Types.ObjectId,
-        //TODO: Adicionar a referencia ao master
-        //ref: 'teachers',
+        ref: 'masters',
         index: true
     }
 });

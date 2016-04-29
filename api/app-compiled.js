@@ -6,6 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var config = require('./config/config.js');
 var socket_io = require("socket.io");
+require('events').EventEmitter.defaultMaxListeners = Infinity;
 
 // App
 var app = express();
@@ -100,6 +101,8 @@ var teachers = require('./routes/teachers')(express, io);
 var subjects = require('./routes/subjects')(express, io);
 var students = require('./routes/students')(express, io);
 var testapp = require('./routes/testapp')(express, io);
+var managers = require('./routes/managers')(express, io);
+var masters = require('./routes/masters')(express, io);
 
 app.use('/', routes);
 app.use('/users', users);
@@ -109,6 +112,8 @@ app.use('/courses', courses);
 app.use('/teachers', teachers);
 app.use('/subjects', subjects);
 app.use('/students', students);
+app.use('/managers', managers);
+app.use('/masters', masters);
 app.use('/test', testapp);
 
 // catch 404 and forward to error handler

@@ -45,7 +45,7 @@ module.exports =  (express, io)  => {
       _id: req.params.id || ''
     };
 
-    validateCourseType(courseType, utils.OPERATION_STATUS.SELECT)
+    courseTypeController.validateCourseType(courseType, utils.OPERATION_STATUS.SELECT)
       .then((coursetype) => {
         return courseTypeController.getById(coursetype['_id']);
       })
@@ -123,7 +123,7 @@ module.exports =  (express, io)  => {
       _id: req.params.id || ''
     };
 
-    validateCourseType(courseType, utils.OPERATION_STATUS.DELETE)
+    courseTypeController.validateCourseType(courseType, utils.OPERATION_STATUS.DELETE)
       .then((coursetype) => {
         return courseTypeController.removeById(coursetype['_id']);
       })

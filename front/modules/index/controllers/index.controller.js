@@ -201,7 +201,7 @@ angular.module(frontApp.modules.index.name)
           case 'master':
             vm.mainMenu = [
               {
-                url: URLS.HOME()(),
+                url: URLS.HOME(),
                 name: 'Home',
                 icon: 'images/ic_home.svg'
               },

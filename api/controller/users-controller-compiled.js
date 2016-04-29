@@ -87,7 +87,7 @@ module.exports.updateLastLogin = function (id) {
                 last_login: utils.getCurrentDateTime()
             }
         };
-        var options = { upsert: true };
+        var options = { upsert: false };
 
         usersModel.users.findOneAndUpdate(query, data, options, function (err, data) {
             if (err) {

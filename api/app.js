@@ -6,6 +6,7 @@ const logger     = require('morgan');
 const bodyParser = require('body-parser');
 const config     = require('./config/config.js');
 const socket_io  = require( "socket.io" );
+require('events').EventEmitter.defaultMaxListeners = Infinity;
 
 // App
 const app = express();
@@ -106,6 +107,8 @@ const teachers   = require('./routes/teachers')(express, io);
 const subjects   = require('./routes/subjects')(express, io);
 const students   = require('./routes/students')(express, io);
 const testapp    = require('./routes/testapp')(express, io);
+const managers   = require('./routes/managers')(express, io);
+const masters    = require('./routes/masters')(express, io);
 
 
 app.use('/', routes);
@@ -116,6 +119,8 @@ app.use('/courses', courses);
 app.use('/teachers', teachers);
 app.use('/subjects', subjects);
 app.use('/students', students);
+app.use('/managers', managers);
+app.use('/masters', masters);
 app.use('/test', testapp);
 
 // catch 404 and forward to error handler
@@ -157,6 +162,7 @@ io.on("connection", (socket) => {
     socket.broadcast.emit('loko', data);
   })*/
 });
+
 
 
 module.exports = app;
