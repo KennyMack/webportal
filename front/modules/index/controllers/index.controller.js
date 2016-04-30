@@ -15,41 +15,41 @@ angular.module(frontApp.modules.index.name)
               authentication, localSave, users,
               $scope, $timeout, $mdSidenav,
               $log, $location, $rootScope) {
-      var vm = this;
-      vm.mainMenu = [];
-      vm.user = users.getUser();
-      vm.person = {};
-      vm.toggleLeft = buildDelayedToggler('left');
-      vm.toggleRight = buildToggler('right');
-      vm.isOpen = false;
+      var self = this;
+      self.mainMenu = [];
+      self.user = users.getUser();
+      self.person = {};
+      self.toggleLeft = buildDelayedToggler('left');
+      self.toggleRight = buildToggler('right');
+      self.isOpen = false;
 
 
-      vm.selectedMode = 'md-fling';
-      vm.imagePath = '../images/android.svg';
+      self.selectedMode = 'md-fling';
+      self.imagePath = '../images/android.svg';
 
-      vm.actionMenu = function (action) {
+      self.actionMenu = function (action) {
         $scope.$broadcast('actionMenu::'+ action);
       };
 
-      vm.init = function () {
-        authentication.credential(function (err, data, status) {
+      self.init = function () {
+        authentication.credential(function (err, data, success, status) {
           if (err || status !== 200) {
             authentication.logOut();
-            vm.goTo(URLS.LOGIN());
+            self.goTo(URLS.LOGIN());
           }
         });
       };
 
-      vm.goTo = function (path) {
+      self.goTo = function (path) {
         $mdSidenav('left').close();
         $location.path(path);
       };
 
-      vm.ensureAuthenticated = function () {
+      self.ensureAuthenticated = function () {
         return authentication.isAuthenticated() && localSave.getValueLS(LOCALNAME.PERSON_ID);
       };
 
-      vm.test = function () {
+      self.test = function () {
         $scope.$broadcast('actionMenu::HIDEBUTTON');
         //$scope.$broadcast('actionDirective::NEW');
         /*localSave.setValueLS(LOCALNAME.USER_TOKEN, 'sadasd');*/
@@ -73,18 +73,18 @@ angular.module(frontApp.modules.index.name)
         return debounce(function () {
           var user = localSave.getJSONValueLS(LOCALNAME.SESSION_USER);
           var person = localSave.getJSONValueLS(LOCALNAME.PERSON_ID);
-          vm.user._id = user._id;
-          vm.user.email = user.email;
-          vm.user.username = user.username;
-          vm.user.pass = '';
-          vm.user.last_login = user.last_login;
-          vm.user.student_id = user.student_id;
-          vm.user.teachers_id = user.teachers_id;
-          vm.user.manager_id = user.manager_id;
-          vm.user.master_id = user.master_id;
-          vm.person['_id'] = person._id;
-          vm.person['name'] = person.name;
-          vm.person['type'] = person.type;
+          self.user._id = user._id;
+          self.user.email = user.email;
+          self.user.username = user.username;
+          self.user.pass = '';
+          self.user.last_login = user.last_login;
+          self.user.student_id = user.student_id;
+          self.user.teachers_id = user.teachers_id;
+          self.user.manager_id = user.manager_id;
+          self.user.master_id = user.master_id;
+          self.person['_id'] = person._id;
+          self.person['name'] = person.name;
+          self.person['type'] = person.type;
           buildMenu();
 
           $mdSidenav(navID)
@@ -105,14 +105,14 @@ angular.module(frontApp.modules.index.name)
         }
       }
 
-      vm.closeLeft = function () {
+      self.closeLeft = function () {
         $mdSidenav('left').close()
           .then(function () {
             $log.debug("close LEFT is done");
           });
       };
 
-      vm.closeRight = function () {
+      self.closeRight = function () {
         $mdSidenav('right').close()
           .then(function () {
             $log.debug("close RIGHT is done");
@@ -122,12 +122,12 @@ angular.module(frontApp.modules.index.name)
 
       function buildMenu() {
         console.log('show');
-        vm.mainMenu = [];
+        self.mainMenu = [];
         var type = localSave.getJSONValueLS(LOCALNAME.PERSON_ID).type;
         console.log(type);
         switch (type) {
           case 'student':
-            vm.mainMenu = [
+            self.mainMenu = [
               {
                 url: URLS.HOME(),
                 name: 'Home',
@@ -146,7 +146,7 @@ angular.module(frontApp.modules.index.name)
             ];
             break;
           case 'teacher':
-            vm.mainMenu = [
+            self.mainMenu = [
               {
                 url: URLS.HOME(),
                 name: 'Home',
@@ -170,7 +170,7 @@ angular.module(frontApp.modules.index.name)
             ];
             break;
           case 'manager':
-            vm.mainMenu = [
+            self.mainMenu = [
               {
                 url: URLS.HOME(),
                 name: 'Home',
@@ -199,7 +199,7 @@ angular.module(frontApp.modules.index.name)
             ];
             break;
           case 'master':
-            vm.mainMenu = [
+            self.mainMenu = [
               {
                 url: URLS.HOME(),
                 name: 'Home',
@@ -233,7 +233,7 @@ angular.module(frontApp.modules.index.name)
             ];
             break;
         }
-        return vm.mainMenu;
+        return self.mainMenu;
       }
     }]);
 

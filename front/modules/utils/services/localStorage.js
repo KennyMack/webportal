@@ -25,7 +25,6 @@
             $window.localStorage.setItem(key, JSON.stringify(value));
           },
           removeValueLS: function (key) {
-            console.log('removeValueLS');
             $window.localStorage.removeItem(key);
           }
         }

@@ -19,7 +19,7 @@
                 $controller, $scope, $filter, $location,
                 $mdDialog, $mdMedia) {
         var self = this;
-        var GridListCtrl = $controller(frontApp.modules.courses.imports.gridlistctrl, {$scope: $scope});
+        var GridListCtrl = $controller(frontApp.modules.courses.imports.gridlistctrl, { $scope: $scope });
         var active = true;
         self.expandedTextIndex = undefined;
         self.undefinedIndex = true;
@@ -28,14 +28,16 @@
         self.yearsList = [];
 
         $scope.$on('actionMenu::NEW', function() {
-          request.get(URLS.COURSETYPE(),
-            function (err, data) {
-              if(!err) {
-                formAction('NEW', data.data);
-              }
-              else
-                messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-NEW', 'bt-action-menu-NEW');
+          request.get(URLS.COURSETYPE())
+            .then(function (result) {
+                if (result.success)
+                  formAction('NEW', result.data);
+                else
+                  messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
             })
+            .catch(function () {
+              messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
+            });
 
         });
 
@@ -50,13 +52,15 @@
         };
 
         function callEdit(course){
-          request.get(URLS.COURSETYPE(),
-            function (err, data) {
-              if (!err) {
-                formAction('EDIT', data.data, course);
-              }
+          request.get(URLS.COURSETYPE())
+            .then(function (result) {
+              if (result.success)
+                formAction('EDIT', result.data, course);
               else
                 messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
+            })
+            .catch(function () {
+              messages.alert('Tipo de curso', 'Não foi possível carregar os tipos de cursos.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
             });
         }
 
@@ -96,19 +100,28 @@
           if (self.selectedCourseIndex != undefined) {
             messages.confirm('Exclusão', 'Confirma a exclusão do curso ?', 'bt-action-menu-REMOVE', 'grid-courses')
               .then(function () {
-                request.delete(URLS.COURSES(self.selectedCourseIndex),
-                  function (err, data, status) {
-                    if(!err && status === 200 ){
-                      for (var i = 0, length = self.courseslist.length; i < length; i++) {
+                request.delete(URLS.COURSES(self.selectedCourseIndex))
+                  .then(function (result) {
+                    if(result.status === 200 ){
+                      var selectedCourse = $filter('filter')(self.courseslist, { _id : self.selectedCourseIndex })[0];
+                      self.courseslist.splice(self.courseslist.indexOf(selectedCourse) , 1);
+
+
+                      /*for (var i = 0, length = self.courseslist.length; i < length; i++) {
                         if (self.courseslist[i]._id === self.selectedCourseIndex){
                           self.courseslist.splice(i, 1);
                           break;
                         }
-
-                      }
+                      }*/
 
                       createYearList();
                     }
+                    else {
+                      messages.alert('Curso', 'Não foi possível realizar a exclusão.', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE');
+                    }
+                  })
+                  .catch(function () {
+                    messages.alert('Curso', 'Não foi possível realizar a exclusão.', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE');
                   });
               },
               function () {
@@ -167,11 +180,9 @@
             };
 
             GridListCtrl.showGrid(grid)
-              .then(function (student) {
-                console.log(student);
+              .then(function () {
                 studentsClass.length = 0;
-              }, function (err) {
-                console.error(err);
+              }, function () {
                 studentsClass.length = 0;
               });
           }
@@ -199,11 +210,9 @@
             };
 
             GridListCtrl.showGrid(grid)
-              .then(function (subject) {
-                //console.log(subject);
+              .then(function () {
                 subjectsCourse.length = 0;
-              }, function (err) {
-                //console.error(err);
+              }, function () {
                 subjectsCourse.length = 0;
               });
           }
@@ -295,10 +304,8 @@
               clickOutsideToClose: true,
               fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
             })
-              .then(function (day) {
-                //console.log(day);
-              }, function (err) {
-                //console.error(err);
+              .then(function () {
+              }, function () {
               });
           }
           else

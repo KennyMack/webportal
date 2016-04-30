@@ -16,6 +16,7 @@
       function (request, messages, _Schedule, $routeParams, $mdDialog, $q, $timeout,
                 $filter) {
         var self = this;
+        var idCourse = $routeParams.idcourse;
         self.subjects = [];
         self.error = [];
         self.newSchedule = {
@@ -73,19 +74,22 @@
             self.timeEnd.minute = end[1] || 0;
           }
 
-          request.get(URLS.COURSESUBJECTS($routeParams.idcourse), function (err, data) {
-            if(!err) {
-              for (var i = 0, length = data.data.subjects.length; i < length; i++) {
-                self.subjects.push({
+          request.get(URLS.COURSESUBJECTS(idCourse))
+            .then(function (data) {
+              if (data.status === 200) {
+                for (var i = 0, length = data.data.subjects.length; i < length; i++) {
+                  self.subjects.push({
                     _id: data.data.subjects[i].subject._id,
                     description: data.data.subjects[i].subject.description
-                });
+                  });
+                }
               }
-
-            }
-            else
-              messages.alert('Matérias', 'Não foi possível carregar as matérias.');
-          })
+              else
+                messages.alert('Matérias', 'Não foi possível carregar as matérias.');
+            })
+            .catch(function () {
+                messages.alert('Matérias', 'Não foi possível carregar as matérias.');
+            });
         };
 
         self.getDayDescription = function (day) {
@@ -101,8 +105,6 @@
         };
 
         self.saveClick = function () {
-          //TODO: Implementar o salvar da edição
-
           self.error = [];
 
           var date = new Date();
@@ -134,26 +136,28 @@
                   0, 0)
               }
             };
-            request.post(URLS.COURSEADDSCHEDULE($routeParams.idcourse), schedule, function (err, data) {
-              if (!err && data.success) {
-                $mdDialog.hide(data.data);
-              }
-              else {
-                if (data.data.duration)
-                  self.error.push(data.data.duration);
-                if (data.data.start)
-                  self.error.push('Hora Início: ' + data.data.start);
-                if (data.data.end)
-                  self.error.push('Hora Término: ' + data.data.end);
-                if (data.data.subject)
-                  self.error.push(data.data.subject);
-                /*if (data.data.day)
-                  self.error.push(data.data.day);*/
-              }
-            });
-          }
+            request.post(URLS.COURSEADDSCHEDULE(idCourse), schedule)
+              .then(function (result) {
+                if (!result.err && result.success) {
+                  $mdDialog.hide(result.data);
+                }
+                else {
+                  if (result.data.duration)
+                    self.error.push(result.data.duration);
+                  if (result.data.start)
+                    self.error.push('Hora Início: ' + result.data.start);
+                  if (result.data.end)
+                    self.error.push('Hora Término: ' + result.data.end);
+                  if (result.data.subject)
+                    result.error.push(result.data.subject);
+                  /*if (data.data.day)
+                    self.error.push(data.data.day);*/
+                }
+              })
+              .catch(function () {
 
-          //$mdDialog.hide();
+              });
+          }
         };
 
       }]);

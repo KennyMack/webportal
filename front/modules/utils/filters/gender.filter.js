@@ -7,7 +7,6 @@
     .filter(frontApp.modules.utils.filters.genderFilter, [
       function () {
         return function (text) {
-          console.log(text);
           return GENDER.GENDER_DESCRIPTION(text);
         }
       }

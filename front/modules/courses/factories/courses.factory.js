@@ -10,15 +10,17 @@
       'BASEURLS',
       '$resource',
     function (localSave, LOCALNAME, BASEURLS, $resource) {
+      var Headers = {
+        'Content-Type': 'application/json',
+        'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
+      };
+
       return{
         getCourses: function () {
           return $resource(BASEURLS.BASE_API + URLS.COURSES(), {},
             {
               get: {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
-                }
+                headers: Headers
               }
             }
           ).get({}).$promise;
@@ -27,10 +29,7 @@
           return $resource(BASEURLS.BASE_API + URLS.COURSES(id), {},
             {
               get: {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
-                }
+                headers: Headers
               }
             }
           ).get({}).$promise;
@@ -40,24 +39,15 @@
             {
               post: {
                 method: "POST",
-                headers: {
-                  'Content-Type': 'application/json',
-                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
-                }
+                headers: Headers
               },
               put: {
                 method: "PUT",
-                headers: {
-                  'Content-Type': 'application/json',
-                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
-                }
+                headers: Headers
               },
               get: {
                 method: "GET",
-                headers: {
-                  'Content-Type': 'application/json',
-                  'x-access-token': localSave.getValueLS(LOCALNAME.USER_TOKEN)
-                }
+                headers: Headers
               }
             }
           );

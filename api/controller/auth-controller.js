@@ -38,10 +38,7 @@ module.exports.verifyLoginUser = (user) => {
                 }
             })
             .catch((err) => {
-                reject({
-                    success: false,
-                    data: err
-                });
+                reject(err);
             });
     });
 };
@@ -101,7 +98,10 @@ const validateLogin = (user) => {
             objRet['password'] = 'Senha é de preenchimento obrigatório.';
 
         if (Object.keys(objRet).length !== 0) {
-            reject(objRet);
+            reject({
+                success: false,
+                data: objRet
+            });
         }
         else {
             resolve(user);
@@ -117,8 +117,12 @@ const comparePassword = (candidateUser, userHash) => {
         else {
             crypt.compare(candidateUser.password, userHash.password,
                  (err, isMatch) => {
-                    if (err)
-                        reject(err);
+                    if (err) {
+                        reject({
+                            success: false,
+                            data: err
+                        });
+                    }
                     else {
                         resolve({ match: isMatch, user: userHash});
                     }

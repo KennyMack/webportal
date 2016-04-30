@@ -36,9 +36,11 @@ module.exports = function (express, io) {
             };
             res.json({
                 success: true,
-                token: ut.token,
-                user: usr,
-                message: 'Enjoy your token'
+                data: {
+                    token: ut.token,
+                    user: usr,
+                    message: 'Enjoy your token'
+                }
             });
         }).catch(function (err) {
             res.json(err);
@@ -48,7 +50,7 @@ module.exports = function (express, io) {
     router.get('/credential', auth.ensureAuthenticated, function (req, res) {
         res.json({
             success: true,
-            credential: req.decoded
+            data: req.decoded
         });
     });
 

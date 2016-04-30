@@ -21,9 +21,9 @@
               url: uri,
               headers: Header
             }).success(function (data, status) {
-               q.resolve({ err: false, data: data, status: status });
+               q.resolve({ err: false, data: data.data, success: data.success, status: status });
             }).error(function (data, status) {
-              q.reject({ err: true, data: data, status: status });
+              q.reject({ err: true, data: data, success:false, status: status });
             });
 
             return q.promise;
@@ -37,9 +37,9 @@
               headers: Header,
               data: data
             }).success(function (data, status) {
-              q.resolve({ err: false, data: data, status: status });
+              q.resolve({ err: false, data: data.data, success: data.success, status: status });
             }).error(function (data, status) {
-              q.reject({ err: true, data: data, status: status });
+              q.reject({ err: true, data: data, success:false, status: status });
             });
             return q.promise;
           },
@@ -51,9 +51,9 @@
               headers: Header,
               data: data
             }).success(function (data, status) {
-              q.resolve({ err: false, data: data, status: status });
+              q.resolve({ err: false, data: data.data, success: data.success, status: status });
             }).error(function (data, status) {
-              q.reject({ err: true, data: data, status: status });
+              q.reject({ err: true, data: data, success:false, status: status });
             });
             return q.promise;
           },
@@ -65,9 +65,9 @@
               url: uri,
               headers: Header
             }).success(function (data, status) {
-              q.resolve({ err: false, data: data, status: status });
+              q.resolve({ err: false, data: data.data, success: data.success, status: status });
             }).error(function (data, status) {
-              q.reject({ err: true, data: data, status: status });
+              q.reject({ err: true, data: data,  success:false, status: status });
             });
             return q.promise;
           }

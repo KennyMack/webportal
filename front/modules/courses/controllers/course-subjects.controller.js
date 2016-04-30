@@ -17,7 +17,10 @@
         var self = this;
         var blurTeacher = false;
         var blurSubject = false;
+        var loadSubject = false;
+        var loadTeacher = false;
         var initializing = false;
+        var idCourse = $routeParams.idcourse;
         self.subjects = [];
         self.teachers = [];
         self.error = [];
@@ -74,35 +77,87 @@
 
         self.init = function () {
           initializing = true;
-          request.get(URLS.SUBJECTS(), function (err, data) {
-            if(!err) {
 
-              for (var i = 0, length = data.data.length; i < length; i++) {
-                self.subjects.push({
-                  _id: data.data[i]._id,
-                  description: data.data[i].description
-                });
+          $q.all({
+            subjects: request.get(URLS.SUBJECTS()),
+            teachers: request.get(URLS.TEACHERS())
+          }).then(function(results) {
+            loadSubjects(results.subjects);
+            loadTeachers(results.teachers);
+          });
+/*
+          initializing = true;
+          request.get(URLS.SUBJECTS())
+            .then(function (result) {
+              if(!result.err) {
+                for (var i = 0, length = result.data.length; i < length; i++) {
+                  self.subjects.push({
+                    _id: result.data[i]._id,
+                    description: result.data[i].description
+                  });
+                }
+                result.data = null;
               }
-              data.data = null;
-            }
-            else
+              else
+                messages.alert('Matérias', 'Não foi possível carregar as matérias.');
+            })
+            .catch(function () {
               messages.alert('Matérias', 'Não foi possível carregar as matérias.');
-          });
+            });
 
-          request.get(URLS.TEACHERS(), function (err, data) {
-            initializing = false;
-            if(!err) {
-              for (var i = 0, length = data.data.length; i < length; i++) {
-                self.teachers.push({
-                  _id: data.data[i]._id,
-                  name: data.data[i].name
-                });
+          request.get(URLS.TEACHERS())
+            .then(function (result) {
+              initializing = false;
+              if(!result.err) {
+                for (var i = 0, length = result.data.length; i < length; i++) {
+                  self.teachers.push({
+                    _id: result.data[i]._id,
+                    name: result.data[i].name
+                  });
+                }
+                result.data = null;
               }
-              data.data = null;
-            }
-            else
+              else
+                messages.alert('Professores', 'Não foi possível carregar os professores.');
+            })
+            .catch(function () {
               messages.alert('Professores', 'Não foi possível carregar os professores.');
-          });
+            })*/
+        };
+
+        var loadSubjects = function (result) {
+
+          if(!result.err) {
+            var subjects = result.data;
+            for (var i = 0, length = subjects.length; i < length; i++) {
+              self.subjects.push({
+                _id: subjects[i]._id,
+                description: subjects[i].description
+              });
+            }
+          }
+          else
+            messages.alert('Matérias', 'Não foi possível carregar as matérias.');
+
+          loadSubject = true;
+          initializing = !(loadSubject && loadTeacher);
+        };
+
+        var loadTeachers = function (result) {
+          if (!result.err) {
+            var teachers = result.data;
+            for (var i = 0, length = teachers.length; i < length; i++) {
+              self.teachers.push({
+                _id: teachers[i]._id,
+                name: teachers[i].name
+              });
+            }
+          }
+          else
+            messages.alert('Professores', 'Não foi possível carregar os professores.');
+
+          loadTeacher = true;
+          initializing = !(loadSubject && loadTeacher);
         };
 
         self.closeClick = function () {
@@ -124,19 +179,26 @@
           if (self.selectedTeacherItem != null && self.selectedSubjectItem != null){
 
             var subject = {
-              teacher: self.selectedTeacherItem._id||'',
-              subject: self.selectedSubjectItem._id||''
+              teacher: self.selectedTeacherItem._id || '',
+              subject: self.selectedSubjectItem._id || ''
             };
 
-            request.post(URLS.COURSEADDSUBJECT($routeParams.idcourse), subject, function (err, data) {
-              if (!err && data.success) {
-                $mdDialog.hide(data.data);
-              }
-              else {
-                self.error.push(data.data.subject);
-              }
+            request.post(URLS.COURSEADDSUBJECT(idCourse), subject)
+              .then(function (result) {
+                if (result.success) {
+                  $mdDialog.hide(result.data);
+                }
+                else {
+                  self.error.push(result.data.subject);
+                }
+              })
+              .catch(function (err) {
 
-            });
+                if (err.data.subject)
+                  self.error.push(err.data.subject);
+                else
+                  self.error.push('Ocorreu um erro ao salvar a matéria.');
+              });
           }
         };
 

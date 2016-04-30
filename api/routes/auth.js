@@ -25,7 +25,7 @@ module.exports =  (express, io) => {
         authController.verifyLoginUser(user)
             .then(authController.lastUpdateLogin)
             .then(authController.loginUser)
-            .then( (ut) => {
+            .then((ut) => {
                 let usr = {
                     _id: ut.user._id,
                     email: ut.user.email,
@@ -38,12 +38,14 @@ module.exports =  (express, io) => {
                 };
                 res.json({
                     success: true,
-                    token: ut.token,
-                    user: usr,
-                    message: 'Enjoy your token'
+                    data: {
+                        token: ut.token,
+                        user: usr,
+                        message: 'Enjoy your token'
+                    }
                 });
             })
-            .catch( (err) => {
+            .catch((err) => {
                 res.json(err);
             });
     });
@@ -52,7 +54,7 @@ module.exports =  (express, io) => {
     router.get('/credential', auth.ensureAuthenticated,  (req, res) => {
         res.json({
             success: true,
-            credential: req.decoded
+            data: req.decoded
         })
     });
 

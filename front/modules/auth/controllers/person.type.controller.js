@@ -13,17 +13,17 @@
       '$filter',
     function (LOCALNAME, messages, localSave,
               $location, $scope, $filter) {
-      var vm = this;
-      vm.personType = [];
+      var self = this;
+      self.personType = [];
 
-      vm.init = function () {
+      self.init = function () {
         var teacher_id = localSave.getJSONValueLS(LOCALNAME.TEACHERS_ID);
         var student_id = localSave.getJSONValueLS(LOCALNAME.STUDENT_ID);
         var manager_id = localSave.getJSONValueLS(LOCALNAME.MANAGER_ID);
         var master_id = localSave.getJSONValueLS(LOCALNAME.MASTER_ID);
 
         if (Object.keys(teacher_id || '').length > 0) {
-          vm.personType.push({
+          self.personType.push({
             typedesc: 'Professor',
             type: 'teacher',
             name: teacher_id.name,
@@ -31,7 +31,7 @@
           });
         }
         if (Object.keys(student_id || '').length > 0) {
-          vm.personType.push({
+          self.personType.push({
             typedesc: 'Estudante',
             type: 'student',
             name: student_id.name,
@@ -39,7 +39,7 @@
           });
         }
         if (Object.keys(manager_id || '').length > 0) {
-          vm.personType.push({
+          self.personType.push({
             typedesc: 'Gestor',
             type: 'manager',
             name: manager_id.name,
@@ -47,7 +47,7 @@
           });
         }
         if (Object.keys(master_id || '').length > 0) {
-          vm.personType.push({
+          self.personType.push({
             typedesc: 'Administrador',
             type: 'master',
             name: master_id.name,
@@ -55,19 +55,19 @@
           });
         }
 
-        if (vm.personType.length === 1) {
-          vm.selectedId = vm.personType[0].id;
-          vm.doAccess();
+        if (self.personType.length === 1) {
+          self.selectedId = self.personType[0].id;
+          self.doAccess();
         }
-        else if (vm.personType.length === 0) {
+        else if (self.personType.length === 0) {
           //TODO: Redirecionar para a pagina de vincular usuario
         }
 
       };
 
-      vm.doAccess = function () {
-        if (vm.selectedId !== -1) {
-          var id = vm.selectedUser();
+      self.doAccess = function () {
+        if (self.selectedId !== -1) {
+          var id = self.selectedUser();
           localSave.setJSONValueLS(LOCALNAME.PERSON_ID, id);
           $location.path(URLS.HOME());
         }
@@ -76,11 +76,11 @@
         }
       };
 
-      vm.selectedId = -1;
+      self.selectedId = -1;
 
-      vm.selectedUser = function () {
+      self.selectedUser = function () {
         try {
-          return vm.personType[vm.selectedId]; //$filter('filter')(vm.personType, {id: vm.selectedId})[0];
+          return self.personType[self.selectedId]; //$filter('filter')(vm.personType, {id: vm.selectedId})[0];
         }
         catch (e) {
           return '';

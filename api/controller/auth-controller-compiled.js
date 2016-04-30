@@ -33,10 +33,7 @@ module.exports.verifyLoginUser = function (user) {
                 reject(invalidLoginJSON);
             }
         }).catch(function (err) {
-            reject({
-                success: false,
-                data: err
-            });
+            reject(err);
         });
     });
 };
@@ -89,7 +86,10 @@ var validateLogin = function validateLogin(user) {
         if (validator.isNull(user['password'])) objRet['password'] = 'Senha é de preenchimento obrigatório.';
 
         if (Object.keys(objRet).length !== 0) {
-            reject(objRet);
+            reject({
+                success: false,
+                data: objRet
+            });
         } else {
             resolve(user);
         }
@@ -102,7 +102,12 @@ var comparePassword = function comparePassword(candidateUser, userHash) {
             reject(invalidLoginJSON);
         } else {
             crypt.compare(candidateUser.password, userHash.password, function (err, isMatch) {
-                if (err) reject(err);else {
+                if (err) {
+                    reject({
+                        success: false,
+                        data: err
+                    });
+                } else {
                     resolve({ match: isMatch, user: userHash });
                 }
             });

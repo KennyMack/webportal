@@ -17,18 +17,24 @@
             password: pass
           };
           request.post(URLS.MORDOR.AUTHENTICATE(), user)
-            .then(function (err, data) {
-            callback(err, data);
-          })
-          ;
+            .then(function (data) {
+              callback(data.err, data.data, data.success, data.status);
+            })
+            .catch(function(err){
+              callback(err.err, err.data, err.success, err.status);
+            });
         },
         setToken: function (value) {
           localSave.setValueLS(LOCALNAME.USER_TOKEN, value);
         },
         credential: function (callback) {
-          request.get(URLS.MORDOR.CREDENTIAL(), function (err, data, status) {
-            callback(err, data, status);
-          })
+          request.get(URLS.MORDOR.CREDENTIAL())
+            .then(function (data) {
+              callback(data.err, data.data, data.success, data.status);
+            })
+            .catch(function (err) {
+              callback(err.err, err.data, false, err.status);
+            })
         },
         logOut: function () {
           localSave.removeValueLS(LOCALNAME.USER_TOKEN);
@@ -46,9 +52,10 @@
       };
     }])
     .factory(frontApp.modules.auth.factories.authorization, [
+      'LOCALNAME',
       frontApp.modules.auth.imports.localSave,
       frontApp.modules.auth.factories.authentication,
-      function (localSave, authentication) {
+      function (LOCALNAME, localSave, authentication) {
         return {
           authorize: function (next, callback) {
             var authorized = false;

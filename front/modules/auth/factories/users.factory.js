@@ -41,11 +41,17 @@
           localSave.setJSONValueLS(LOCALNAME.SESSION_USER, usr);
         },
         getUserView: function (_id) {
-          request.get(uri + '/view/' + _id, {}, function (err, data, status) {
-            if (!err && status === 200 && data.success) {
+          request.get(uri + '/view/' + _id)
+            .then(function (data) {
+              if (!data.err && data.status === 200 && data.data.success) {
 
-            }
-          });
+              }
+            })
+            .catch(function (err) {
+              if (!err.err && err.status === 200 && err.data.success) {
+
+              }
+            })
         }
       };
     }])
