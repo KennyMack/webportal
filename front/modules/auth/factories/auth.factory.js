@@ -16,9 +16,11 @@
             username: usr,
             password: pass
           };
-          request.post(URLS.MORDOR.AUTHENTICATE(), user, function (err, data) {
+          request.post(URLS.MORDOR.AUTHENTICATE(), user)
+            .then(function (err, data) {
             callback(err, data);
-          });
+          })
+          ;
         },
         setToken: function (value) {
           localSave.setValueLS(LOCALNAME.USER_TOKEN, value);
