@@ -19,13 +19,8 @@
                 <p ng-class="{'title-header-collapse': itemstudent._id == students.selectedCourseIndex }">{{ itemstudent.name }}
                   <span ng-show="itemstudent._id != students.selectedCourseIndex" class="md-subhead center" >{{itemstudent.course_type.description }}</span></p>
               </div>
-              <div class="tools">
-                <md-switch style="margin: 0; padding-top: 0;" class="md-primary" md-no-ink aria-label="Status" ng-true-value="1" ng-false-value="0" ng-model="itemstudent.active">
-                </md-switch>
-              </div>
               <div class="tools" ng-click="students.selectCourseIndex(itemstudent._id)">
-
-                <md-menu md-offset="-20 4" md-position-mode="target-right target">
+                <!--<md-menu md-offset="-20 4" md-position-mode="target-right target">
                   <md-button aria-label="Menu de opções"
                              ng-show="itemstudent._id == students.selectedCourseIndex"
                              class="md-icon-button"
@@ -39,7 +34,7 @@
                       </md-button>
                     </md-menu-item>
                   </md-menu-content>
-                </md-menu>
+                </md-menu>-->
               </div>
             </md-card-title-text>
           </md-card-title>
@@ -62,24 +57,10 @@
                 <div flex layout="row" layout-xs="column" class="left">
                   <p>Sexo: {{ itemstudent.gender|genderFilter  }}</p>
                   <p>Data de Nascimento: {{ itemstudent.dob | date:'dd/MM/yyyy' }}</p>
-                  <p>Status: </p>
                 </div>
                 <div flex layout="row" layout-align="end" class="right">
                   <p>{{ itemstudent.create_at | date:'dd/MM/yyyy'}}</p>
                   <p>{{ itemstudent.modified | date:'dd/MM/yyyy'}}</p>
-                </div>
-              </div>
-              <div flex="100" layout-padding layout="column"
-                   class="data-footer">
-                <div flex="67" layout="column" class="description">
-                  <p ng-show="students.expandedTextIndex != itemstudent._id">{{ students.getShortDescription(itemstudent.description) }}</p>
-                  <p ng-show="students.expandedTextIndex == itemstudent._id">{{ itemstudent.description }}</p>
-                </div>
-                <div flex="33" layout="column" class="button">
-                  <md-button  ng-show="students.expandedTextIndex != itemstudent._id && students.showCollapseButton(itemstudent.description)"
-                              ng-click="students.collapseDescription(itemstudent._id)" class="md-primary" md-no-ink>Ver mais</md-button>
-                  <md-button  ng-show="students.expandedTextIndex == itemstudent._id && students.showCollapseButton(itemstudent.description)"
-                              ng-click="students.collapseDescription(itemstudent._id)" class="md-primary" md-no-ink>Ver menos</md-button>
                 </div>
               </div>
             </div>
@@ -87,10 +68,7 @@
           <md-card-footer class="card-item-footer"
                           ng-show="itemstudent._id == students.selectedCourseIndex">
             <section layout="row" layout-align="space-around center" layout-wrap>
-              <md-button class="md-primary" md-ink-ripple id="btn-class-{{ itemstudent._id }}" ng-click="students.showClass(itemstudent._id, itemstudent.class)">Alunos</md-button>
-              <md-button class="md-primary" md-ink-ripple id="btn-subjects-{{ itemstudent._id }}" ng-click="students.showSubjects(itemstudent._id, itemstudent.subjects)">Matérias</md-button>
-              <md-button class="md-primary" md-ink-ripple id="btn-schedule-{{ itemstudent._id }}" ng-click="students.showSchedule(itemstudent._id, itemstudent.schedule)">Cronograma</md-button>
-              <md-button class="md-primary" md-ink-ripple>Notas</md-button>
+              <md-button class="md-primary" md-ink-ripple id="btn-courses-{{ itemstudent._id }}" ng-click="students.showClass(itemstudent._id, itemstudent.class)">Cursos</md-button>
             </section>
           </md-card-footer>
         </md-card>
@@ -98,5 +76,19 @@
     </md-content>
   </div>
 </div>
+<style>
+
+  .accordeon .card-item-content-expanded {
+    height: 120px;
+  }
+
+  /* On Select */
+  @media screen and (max-width: 600px) {
+    .accordeon .card-item-content-expanded {
+      height: 250px;
+
+    }
+  }
+</style>
 
 
