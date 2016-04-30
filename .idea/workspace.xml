@@ -5,26 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="731d37f9-1e1a-425d-a9f0-8a4f6dfd1093" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/auth-compiled.js.map" afterPath="$PROJECT_DIR$/api/routes/auth-compiled.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/auth-compiled.js" afterPath="$PROJECT_DIR$/api/routes/auth-compiled.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/auth-controller-compiled.js.map" afterPath="$PROJECT_DIR$/api/controller/auth-controller-compiled.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/auth-controller-compiled.js" afterPath="$PROJECT_DIR$/api/controller/auth-controller-compiled.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controller/auth-controller.js" afterPath="$PROJECT_DIR$/api/controller/auth-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/auth/factories/auth.factory.js" afterPath="$PROJECT_DIR$/front/modules/auth/factories/auth.factory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/auth.js" afterPath="$PROJECT_DIR$/api/routes/auth.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/course-detail.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/controllers/course-schedule.controller.js" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/course-schedule.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/controllers/course-subjects.controller.js" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/course-subjects.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" afterPath="$PROJECT_DIR$/front/modules/courses/controllers/courses.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js" afterPath="$PROJECT_DIR$/front/modules/courses/factories/courses.factory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/utils/filters/gender.filter.js" afterPath="$PROJECT_DIR$/front/modules/utils/filters/gender.filter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/index/controllers/index.controller.js" afterPath="$PROJECT_DIR$/front/modules/index/controllers/index.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/utils/services/localStorage.js" afterPath="$PROJECT_DIR$/front/modules/utils/services/localStorage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/auth/controllers/login.controller.js" afterPath="$PROJECT_DIR$/front/modules/auth/controllers/login.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/auth/controllers/person.type.controller.js" afterPath="$PROJECT_DIR$/front/modules/auth/controllers/person.type.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/utils/factories/request.js" afterPath="$PROJECT_DIR$/front/modules/utils/factories/request.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/students/factories/students.factory.js" afterPath="$PROJECT_DIR$/front/modules/students/factories/students.factory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/modules/auth/factories/users.factory.js" afterPath="$PROJECT_DIR$/front/modules/auth/factories/users.factory.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="auth.iws" />
@@ -3104,7 +3084,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461992954033</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="changes in Request.js 100%">
+      <created>1462054182936</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1462054182936</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -3120,6 +3106,7 @@
     <frame x="-1" y="30" width="1922" height="994" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5337995" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3084112" sideWeight="0.49574015" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -3137,7 +3124,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="V8 Profiling" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272059" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.48509052" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -3160,7 +3146,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="view details of class 60%" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="view details of class 70%" />
     <MESSAGE value="view details of class 71%, a test with boyer moore algorithm" />
     <MESSAGE value="view details of class 73%, changes in return of schedules and filter using boyer-moore augorithm" />
@@ -3185,7 +3172,8 @@
     <MESSAGE value="manager and master created" />
     <MESSAGE value="Before changes in Request.js" />
     <MESSAGE value="changes in Request.js 2%" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes in Request.js 2%" />
+    <MESSAGE value="changes in Request.js 100%" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes in Request.js 100%" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
