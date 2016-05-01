@@ -106,14 +106,6 @@
                       var selectedCourse = $filter('filter')(self.courseslist, { _id : self.selectedCourseIndex })[0];
                       self.courseslist.splice(self.courseslist.indexOf(selectedCourse) , 1);
 
-
-                      /*for (var i = 0, length = self.courseslist.length; i < length; i++) {
-                        if (self.courseslist[i]._id === self.selectedCourseIndex){
-                          self.courseslist.splice(i, 1);
-                          break;
-                        }
-                      }*/
-
                       createYearList();
                     }
                     else {

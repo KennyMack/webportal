@@ -9,6 +9,10 @@
       students: {
         name: 'StudentsCtrl',
         nameas: 'students'
+      },
+      studentPerson: {
+        name: 'StudentPersonCtrl',
+        nameas: 'PersonCtrl'
       }
     },
     routes: {
@@ -20,6 +24,9 @@
     templates: {
       students: {
         url: 'views/students.html'
+      },
+      person: {
+        url: '../../../templates/personForm.tpl.html'
       }
     },
     imports: {

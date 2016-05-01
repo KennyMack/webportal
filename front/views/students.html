@@ -4,25 +4,25 @@
       <div class="group-header" flex="100">
         <p class="md-caption">{{ year.name + ' '+ students.getRamdomImageNum() }}</p>
       </div>
-      <div id="grid-courses" ng-repeat="itemstudent in students.studentsList| filter:{ year: year.name }">
+      <div id="grid-students" ng-repeat="itemstudent in students.studentsList| filter:{ year: year.name }">
         <md-card class="card-item" style="overflow: hidden"
                  ng-class="{
-                        'card-expanded md-whiteframe-z3': itemstudent._id == students.selectedCourseIndex,
-                        'card-collapsed': (itemstudent._id != students.selectedCourseIndex && !students.undefinedIndex)
+                        'card-expanded md-whiteframe-z3': itemstudent._id == students.selectedStudentIndex,
+                        'card-collapsed': (itemstudent._id != students.selectedStudentIndex && !students.undefinedIndex)
                         }" >
           <md-card-title class="card-item-header" >
             <md-card-title-text class="card-item-title-header">
-              <div class="icon" ng-click="students.selectCourseIndex(itemstudent._id)">
+              <div class="icon" ng-click="students.selectStudentIndex(itemstudent._id)">
                 <md-icon md-svg-src="{{ students.getRandomImage(itemstudent.active)}}"></md-icon>
               </div>
-              <div class="title" ng-click="students.selectCourseIndex(itemstudent._id)">
-                <p ng-class="{'title-header-collapse': itemstudent._id == students.selectedCourseIndex }">{{ itemstudent.name }}
-                  <span ng-show="itemstudent._id != students.selectedCourseIndex" class="md-subhead center" >{{itemstudent.course_type.description }}</span></p>
+              <div class="title" ng-click="students.selectStudentIndex(itemstudent._id)">
+                <p ng-class="{'title-header-collapse': itemstudent._id == students.selectedStudentIndex }">{{ itemstudent.name }}
+                  <span ng-show="itemstudent._id != students.selectedStudentIndex" class="md-subhead center" >{{itemstudent.course_type.description }}</span></p>
               </div>
-              <div class="tools" ng-click="students.selectCourseIndex(itemstudent._id)">
+              <div class="tools" ng-click="students.selectStudentIndex(itemstudent._id)">
                 <!--<md-menu md-offset="-20 4" md-position-mode="target-right target">
                   <md-button aria-label="Menu de opções"
-                             ng-show="itemstudent._id == students.selectedCourseIndex"
+                             ng-show="itemstudent._id == students.selectedStudentIndex"
                              class="md-icon-button"
                              ng-click="$mdOpenMenu($event)">
                     <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
@@ -39,9 +39,9 @@
             </md-card-title-text>
           </md-card-title>
           <md-card-content class="card-item-content"
-                           ng-class="{'card-item-content-expanded': itemstudent._id == students.selectedCourseIndex,
+                           ng-class="{'card-item-content-expanded': itemstudent._id == students.selectedStudentIndex,
                                       'card-item-content-text-expanded': itemstudent._id == students.expandedTextIndex }"
-                           ng-show="itemstudent._id == students.selectedCourseIndex">
+                           ng-show="itemstudent._id == students.selectedStudentIndex">
             <div layout="column" layout-padding class="card-item-content-data">
               <div flex="100" layout="row" layout-xs="column" class="data-top">
                 <div flex="100" flex-xs="100" layout="column">
@@ -66,7 +66,7 @@
             </div>
           </md-card-content>
           <md-card-footer class="card-item-footer"
-                          ng-show="itemstudent._id == students.selectedCourseIndex">
+                          ng-show="itemstudent._id == students.selectedStudentIndex">
             <section layout="row" layout-align="space-around center" layout-wrap>
               <md-button class="md-primary" md-ink-ripple id="btn-courses-{{ itemstudent._id }}" ng-click="students.showClass(itemstudent._id, itemstudent.class)">Cursos</md-button>
             </section>

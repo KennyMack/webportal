@@ -1,0 +1,82 @@
+<md-dialog flex="50" flex-md="60" aria-label="{{ PersonCtrl.pageHeader }}" ng-init="PersonCtrl.init()">
+  <form name="frmPerson" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools" style="background: dodgerblue">
+        <h2>{{ PersonCtrl.pageHeader}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="PersonCtrl.closeClick()">
+          <md-icon md-svg-src="../images/ic_close_white.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column" flex="100" layout-xs="column" style="overflow-x: auto">
+        <div layout="row" flex="100" layout-xs="column" layout-sm="column">
+          <md-input-container flex="40" flex-xs="100" flex-sm="100">
+            <fa-Input name="txtName" ng-model='PersonCtrl.newPerson.name' label="Nome" notnull="Por favor digite o Nome"></fa-Input>
+          </md-input-container>
+          <md-input-container flex="40" flex-xs="100" flex-sm="100">
+            <fa-Input name="txtIdentify" ng-model='PersonCtrl.newPerson.identify' label="Identificador" notnull="Por favor digite o identificador"></fa-Input>
+          </md-input-container>
+          <md-input-container flex="20" flex-xs="100" flex-sm="100">
+            <label>Sexo *</label>
+            <md-select id="cbe-gender"  ng-model="PersonCtrl.newPerson.gender" required>
+              <md-option ng-repeat="gender in PersonCtrl.genders" value="{{ gender.code }}">
+                {{ gender.description }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div layout="row" flex="100" layout-xs="column" layout-sm="column" style="padding: 0">
+          <md-input-container flex="40" flex-xs="100" flex-sm="100">
+            <fa-Input name="txtSocialNumber" ng-model='PersonCtrl.newPerson.social_number' label="CPF"></fa-Input>
+          </md-input-container>
+
+          <div flex="40" flex-xs="100" layout="column" style="padding: 0">
+            <label class="lblDob">Data de Nascimento *</label>
+            <md-datepicker ng-model="PersonCtrl.newPerson.dob" md-placeholder="Selecione" required></md-datepicker>
+          </div>
+
+          <div flex="20" flex-xs="100" layout="column" style="padding: 0">
+            <label>Status</label>
+            <md-switch class="md-primary" md-no-ink aria-label="Status" ng-true-value="'1'" ng-false-value="'0'" ng-model="PersonCtrl.newPerson.active">
+
+            </md-switch>
+          </div>
+        </div>
+        <div class="md-dialog-content" layout="column" flex="100" layout-xs="column" style="margin-top: 25px">
+          <div ng-show="PersonCtrl.errors.length > 0" style="color:rgb(221,44,0)"  >
+            <ul style="padding-left:20px" ng-repeat="er in PersonCtrl.errors">
+              <li>{{er}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout="end">
+      <md-button ng-click="PersonCtrl.cancelClick()">
+        CANCELAR
+      </md-button>
+      <md-button ng-click="PersonCtrl.saveClick()" style="margin-right:20px;">
+        SALVAR
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+<style>
+  md-datepicker {
+    padding-left: 0;
+  }
+  .lblDate {
+    padding-left: 15px;
+  }
+  .field-no-error{
+    height: 50px!important;
+    background: #366097;
+  }
+
+  .field-error{
+    height: auto;
+    background: #440044;
+  }
+</style>

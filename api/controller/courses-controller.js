@@ -538,6 +538,9 @@ const validateCourse =  (course, status) => {
             if (validator.isNull(course['description']))
                 objRet['description'] = 'Descrição é de preenchimento obrigatório.';
 
+            if (validator.isNull(student['identify']))
+                objRet['identify'] = 'Identificador é de preenchimento obrigatório.';
+
             if (validator.isNull(course['name']))
                 objRet['description'] = 'Nome do curso é de preenchimento obrigatório.';
 

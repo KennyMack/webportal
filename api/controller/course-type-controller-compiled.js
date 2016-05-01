@@ -45,7 +45,7 @@ module.exports.updateCourseType = function (courseType) {
             'description': courseType['description']
         };
 
-        courseTypeModel.courseType.update(query, data, { upsert: false, new: true }).exec().then(resolve, reject);
+        courseTypeModel.courseType.findOneAndUpdate(query, data, { upsert: false, new: true }).exec().then(resolve, reject);
     });
 };
 

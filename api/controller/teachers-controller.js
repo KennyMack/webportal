@@ -67,7 +67,7 @@ module.exports.updateTeacher =  (teacher) => {
             'social_number': teacher['social_number']
         };
 
-        teachersModel.teachers.update(query, data, { upsert: false, new: true })
+        teachersModel.teachers.findOneAndUpdate(query, data, { upsert: false, new: true })
             .exec()
             .then(resolve, reject);
     })
@@ -92,6 +92,9 @@ module.exports.validateTeacher =  (teacher, status) => {
 
             if (validator.isNull(teacher['name']))
                 objRet['name'] = 'Nome é de preenchimento obrigatório.';
+
+            if (validator.isNull(student['identify']))
+                objRet['identify'] = 'Identificador é de preenchimento obrigatório.';
 
             if (validator.isNull(teacher['gender']))
                 objRet['gender'] = 'Sexo é de preenchimento obrigatório.';

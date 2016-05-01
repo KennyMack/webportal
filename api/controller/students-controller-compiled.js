@@ -7,14 +7,14 @@ var studentsModel = require('../models/students-model');
 var validator = require('validator');
 var utils = require('../utils/utils');
 
-// List all Courses Type
+// List all Students
 module.exports.list = function () {
     return new Promise(function (resolve, reject) {
         studentsModel.students.find({}).exec().then(resolve, reject);
     });
 };
 
-// Get Course Type By Id
+// Get Student By Id
 module.exports.getById = function (id) {
     return new Promise(function (resolve, reject) {
         studentsModel.students.findById(id).exec().then(resolve, reject);
@@ -32,14 +32,14 @@ module.exports.getByList = function (list) {
     });
 };
 
-// Remove Course Type By Id
+// Remove Student By Id
 module.exports.removeById = function (id) {
     return new Promise(function (resolve, reject) {
         studentsModel.students.findByIdAndRemove(id).exec().then(resolve, reject);
     });
 };
 
-// Create a Course Type
+// Create a Student
 module.exports.create = function (student) {
     return new Promise(function (resolve, reject) {
         new studentsModel.students({
@@ -53,7 +53,7 @@ module.exports.create = function (student) {
     });
 };
 
-// Update a Course Type
+// Update a Student
 module.exports.update = function (student) {
     return new Promise(function (resolve, reject) {
         var query = { _id: student['_id'] };
@@ -66,7 +66,7 @@ module.exports.update = function (student) {
             'social_number': student['social_number']
         };
 
-        studentsModel.students.update(query, data, { upsert: false }).exec().then(resolve, reject);
+        studentsModel.students.findOneAndUpdate(query, data, { upsert: false, new: true }).exec().then(resolve, reject);
     });
 };
 
@@ -83,6 +83,8 @@ module.exports.validate = function (student, status) {
             student['active'] = validator.trim(validator.escape(student['active'].toString() || ''));
 
             if (validator.isNull(student['name'])) objRet['name'] = 'Nome é de preenchimento obrigatório.';
+
+            if (validator.isNull(student['identify'])) objRet['identify'] = 'Identificador é de preenchimento obrigatório.';
 
             if (validator.isNull(student['gender'])) objRet['gender'] = 'Sexo é de preenchimento obrigatório.';else if (!validator.isIn(student['gender'], ['M', 'F'])) objRet['gender'] = 'Sexo informado não é válido.';
 

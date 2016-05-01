@@ -74,7 +74,7 @@ module.exports.updateUser = function (user) {
             'active': user['active']
         };
 
-        usersModel.users.update(query, data, { upsert: false, new: true }).exec().then(resolve, reject);
+        usersModel.users.findOneAndUpdate(query, data, { upsert: false, new: true }).exec().then(resolve, reject);
     });
 };
 

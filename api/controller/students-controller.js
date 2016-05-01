@@ -7,7 +7,7 @@ const validator     = require('validator');
 const utils         = require('../utils/utils');
 
 
-// List all Courses Type
+// List all Students
 module.exports.list = () => {
     return new Promise( (resolve, reject) => {
         studentsModel.students.find({})
@@ -16,7 +16,7 @@ module.exports.list = () => {
     });
 };
 
-// Get Course Type By Id
+// Get Student By Id
 module.exports.getById = (id) => {
     return new Promise( (resolve, reject) => {
         studentsModel.students.findById(id)
@@ -39,7 +39,7 @@ module.exports.getByList =  (list) => {
 
 };
 
-// Remove Course Type By Id
+// Remove Student By Id
 module.exports.removeById = (id) => {
     return new Promise( (resolve, reject) => {
         studentsModel.students.findByIdAndRemove(id)
@@ -49,7 +49,7 @@ module.exports.removeById = (id) => {
 
 };
 
-// Create a Course Type
+// Create a Student
 module.exports.create = (student) => {
     return new Promise( (resolve, reject) => {
         new studentsModel.students({
@@ -64,7 +64,7 @@ module.exports.create = (student) => {
     });
 };
 
-// Update a Course Type
+// Update a Student
 module.exports.update =  (student) => {
     return new Promise( (resolve, reject) => {
         let query = { _id: student['_id'] };
@@ -78,7 +78,7 @@ module.exports.update =  (student) => {
         };
 
 
-        studentsModel.students.update(query, data, { upsert: false })
+        studentsModel.students.findOneAndUpdate(query, data, { upsert: false, new: true })
             .exec()
             .then(resolve, reject)
     });
@@ -99,6 +99,9 @@ module.exports.validate =  (student, status) => {
 
             if (validator.isNull(student['name']))
                 objRet['name'] = 'Nome é de preenchimento obrigatório.';
+
+            if (validator.isNull(student['identify']))
+                objRet['identify'] = 'Identificador é de preenchimento obrigatório.';
 
             if (validator.isNull(student['gender']))
                 objRet['gender'] = 'Sexo é de preenchimento obrigatório.';

@@ -21,7 +21,7 @@
         var self = this;
         self.expandedTextIndex = undefined;
         self.undefinedIndex = true;
-        self.selectedCourseIndex = undefined;
+        self.selectedStudentIndex = undefined;
         self.studentsList = [];
         self.yearsList = [];
 
@@ -64,14 +64,14 @@
           }
         };
 
-        self.selectCourseIndex = function (index) {
+        self.selectStudentIndex = function (index) {
           self.expandedTextIndex = undefined;
-          if (self.selectedCourseIndex !== index) {
-            self.selectedCourseIndex = index;
+          if (self.selectedStudentIndex !== index) {
+            self.selectedStudentIndex = index;
             self.undefinedIndex = false;
           }
           else {
-            self.selectedCourseIndex = undefined;
+            self.selectedStudentIndex = undefined;
             self.undefinedIndex = true;
           }
         };
@@ -81,6 +81,58 @@
             return '../images/ic_person_mark4.svg';
           return '../images/ic_person_mark1.svg';
         };
+
+        // create a new Schedule
+        var formAction = function (action) {
+          $mdDialog.show({
+            templateUrl: frontApp.modules.students.templates.person.url,
+            openFrom: '#bt-action-menu-' + action,
+            closeTo: '#grid-students',
+            controllerAs: frontApp.modules.students.controllers.studentPerson.nameas,
+            controller: frontApp.modules.students.controllers.studentPerson.name,
+            parent: angular.element(document.body),
+            clickOutsideToClose: false,
+            locals: {
+              pageHeader: action === 'EDIT' ? 'Alterar Aluno' : 'Novo Aluno',
+              action: action,
+              idStudent: self.selectedStudentIndex
+            },
+            fullscreen: ($mdMedia('sm') || $mdMedia('xs'))
+          })
+            .then(function (student) {
+              if (action === 'NEW') {
+                self.studentsList.push(student);
+              }
+              else {
+                var studentItem = $filter('filter')(self.studentsList, { _id: self.selectedStudentIndex });
+                if (studentItem.length > 0){
+                    studentItem[0].identify = student.identify ;
+                    studentItem[0].name = student.name ;
+                    studentItem[0].gender = student.gender ;
+                    studentItem[0].dob = new Date(student.dob);
+                    studentItem[0].social_number = student.social_number ;
+                    studentItem[0].active = student.active;
+                }
+              }
+              createYearList();
+
+            }, function () {
+              // TODO: implementar mensagens de erro
+            });
+        };
+
+        $scope.$on('actionMenu::NEW', function() {
+            formAction('NEW');
+        });
+
+        $scope.$on('actionMenu::EDIT', function() {
+          if (self.selectedStudentIndex != undefined) {
+            formAction('EDIT');
+          }
+          else {
+            messages.alert('Edição', 'Selecione um aluno para realizar a edição.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
+          }
+        });
 
 
 

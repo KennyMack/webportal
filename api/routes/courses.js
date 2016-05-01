@@ -146,13 +146,13 @@ module.exports =  (express, io) => {
 
         coursesController.validateUpdateCourse(course)
             .then(coursesController.updateCourse)
-            .then( (result) => {
+            .then((result) => {
                 res.json({
                     success: true,
                     data: result
                 });
             })
-            .catch( (err) => {
+            .catch((err) => {
                 res.json({
                     success: false,
                     data: err

@@ -8,7 +8,9 @@ const utils      = require('../utils/utils');
 const coursesSchema = database.mongoose.Schema({
     identify: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
+        index: true
     },
     name: {
         type: String,

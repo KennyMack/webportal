@@ -77,7 +77,7 @@ module.exports.update =  (manager) => {
             'social_number': manager['social_number']
         };
 
-        managersModel.managers.update(query, data, { upsert: false, new: true })
+        managersModel.managers.findOneAndUpdate(query, data, { upsert: false, new: true })
             .exec()
             .then(resolve, reject)
     });
@@ -98,6 +98,9 @@ module.exports.validate =  (manager, status) => {
 
             if (validator.isNull(manager['name']))
                 objRet['name'] = 'Nome é de preenchimento obrigatório.';
+
+            if (validator.isNull(student['identify']))
+                objRet['identify'] = 'Identificador é de preenchimento obrigatório.';
 
             if (validator.isNull(manager['gender']))
                 objRet['gender'] = 'Sexo é de preenchimento obrigatório.';
