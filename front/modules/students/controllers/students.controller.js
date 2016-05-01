@@ -5,7 +5,6 @@
   'use strict';
   angular.module(frontApp.modules.students.name)
     .controller(frontApp.modules.students.controllers.students.name, [
-      frontApp.modules.students.imports.resource,
       frontApp.modules.students.imports.request,
       frontApp.modules.students.imports.messages,
       frontApp.modules.students.factories.students,
@@ -15,7 +14,7 @@
       '$location',
       '$mdDialog',
       '$mdMedia',
-      function (resource, request, messages, students,
+      function (request, messages, students,
                 $controller, $scope, $filter, $location,
                 $mdDialog, $mdMedia) {
         var self = this;
@@ -131,6 +130,35 @@
           }
           else {
             messages.alert('Edição', 'Selecione um aluno para realizar a edição.', 'bt-action-menu-EDIT', 'bt-action-menu-EDIT');
+          }
+        });
+
+        $scope.$on('actionMenu::REMOVE', function() {
+          if (self.selectedStudentIndex != undefined) {
+            messages.confirm('Exclusão', 'Confirma a exclusão do curso ?', 'bt-action-menu-REMOVE', 'grid-courses')
+              .then(function () {
+                request.delete(URLS.STUDENTS(self.selectedStudentIndex))
+                  .then(function (result) {
+                    if(result.status === 200 ){
+                      var selectedStudent = $filter('filter')(self.studentsList, { _id : self.selectedStudentIndex })[0];
+                      self.studentsList.splice(self.studentsList.indexOf(selectedStudent) , 1);
+
+                      createYearList();
+                    }
+                    else {
+                      messages.alert('Exclusão', 'Não foi possível realizar a exclusão.', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE');
+                    }
+                  })
+                  .catch(function () {
+                    messages.alert('Exclusão', 'Não foi possível realizar a exclusão.', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE');
+                  });
+              },
+              function () {
+
+              });
+          }
+          else {
+            messages.alert('Exclusão', 'Selecione um professor para realizar a exclusão.', 'bt-action-menu-REMOVE', 'bt-action-menu-REMOVE');
           }
         });
 

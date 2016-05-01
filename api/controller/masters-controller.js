@@ -99,7 +99,7 @@ module.exports.validate =  (master, status) => {
             if (validator.isNull(master['name']))
                 objRet['name'] = 'Nome é de preenchimento obrigatório.';
 
-            if (validator.isNull(student['identify']))
+            if (validator.isNull(master['identify']))
                 objRet['identify'] = 'Identificador é de preenchimento obrigatório.';
 
             if (validator.isNull(master['gender']))

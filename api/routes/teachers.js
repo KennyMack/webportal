@@ -82,6 +82,7 @@ module.exports =  (express, io) => {
             active: req.body.active || '1',
             social_number: req.body.social_number || ''
         };
+        console.log(teacher);
 
         teachersController.validateTeacher(teacher, utils.OPERATION_STATUS.NEW)
             .then(teachersController.createTeacher)

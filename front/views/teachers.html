@@ -1,28 +1,94 @@
-<div ng-cloak >
-  <md-content class="md-padding backview" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="100" layout="column">
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Professores</span>
-            <span class="md-subhead">Small</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row">
-          <md-button class="md-icon-button" aria-label="Mais">
-            <md-icon md-svg-icon="../images/ic_vmore.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Opções">
-            <md-icon md-svg-icon="../images/ic_menu.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Compartilhar">
-            <md-icon md-svg-icon="../images/ic_share_arrow.svg"></md-icon>
-          </md-button>
-        </md-card-actions>
-      </md-card>
-    </div>
-  </md-content>
+<div layout="row" layout-padding layout-sm="column" layout-xs="column" class="grid-data" ng-init="teachers.init()">
+  <div flex="100" class="accordeon">
+    <md-content class="backview" style="  height: auto; padding-bottom: 50px" ng-repeat="year in teachers.yearsList | orderBy:'-name':false">
+      <div class="group-header" flex="100">
+        <p class="md-caption">{{ year.name + ' '+ teachers.getRamdomImageNum() }}</p>
+      </div>
+      <div id="grid-students" ng-repeat="itemteacher in teachers.teachersList| filter:{ year: year.name }">
+        <md-card class="card-item" style="overflow: hidden"
+                 ng-class="{
+                        'card-expanded md-whiteframe-z3': itemteacher._id == teachers.selectedTeacherIndex,
+                        'card-collapsed': (itemteacher._id != teachers.selectedTeacherIndex && !teachers.undefinedIndex)
+                        }" >
+          <md-card-title class="card-item-header" >
+            <md-card-title-text class="card-item-title-header">
+              <div class="icon" ng-click="teachers.selectStudentIndex(itemteacher._id)">
+                <md-icon md-svg-src="{{ teachers.getRandomImage(itemteacher.active)}}"></md-icon>
+              </div>
+              <div class="title" ng-click="teachers.selectStudentIndex(itemteacher._id)">
+                <p ng-class="{'title-header-collapse': itemteacher._id == teachers.selectedTeacherIndex }">{{ itemteacher.name }}
+                  <span ng-show="itemteacher._id != teachers.selectedTeacherIndex" class="md-subhead center" >{{itemteacher.course_type.description }}</span></p>
+              </div>
+              <div class="tools" ng-click="teachers.selectStudentIndex(itemteacher._id)">
+                <!--<md-menu md-offset="-20 4" md-position-mode="target-right target">
+                  <md-button aria-label="Menu de opções"
+                             ng-show="itemteacher._id == teachers.selectedTeacherIndex"
+                             class="md-icon-button"
+                             ng-click="$mdOpenMenu($event)">
+                    <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item ng-repeat="item in ['Detalhar', 'Encerrar']">
+                      <md-button ng-click="teachers.optionClicked($index)">
+                        <span md-menu-align-target>{{item}} </span>
+                      </md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>-->
+              </div>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content class="card-item-content"
+                           ng-class="{'card-item-content-expanded': itemteacher._id == teachers.selectedTeacherIndex,
+                                      'card-item-content-text-expanded': itemteacher._id == teachers.expandedTextIndex }"
+                           ng-show="itemteacher._id == teachers.selectedTeacherIndex">
+            <div layout="column" layout-padding class="card-item-content-data">
+              <div flex="100" layout="row" layout-xs="column" class="data-top">
+                <div flex="100" flex-xs="100" layout="column">
+                  <div flex="100">
+                    <p class="name">{{ itemteacher.name  }}</p>
+                    <p class="identify">{{ itemteacher.identify }}</p>
+                    <p class="course-type-description">{{ itemteacher.course_type.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="row" layout-xs="column"
+                   class="data-middle">
+                <div flex layout="row" layout-xs="column" class="left">
+                  <p>Sexo: {{ itemteacher.gender|genderFilter  }}</p>
+                  <p>Data de Nascimento: {{ itemteacher.dob | date:'dd/MM/yyyy' }}</p>
+                </div>
+                <div flex layout="row" layout-align="end" class="right">
+                  <p>{{ itemteacher.create_at | date:'dd/MM/yyyy'}}</p>
+                  <p>{{ itemteacher.modified | date:'dd/MM/yyyy'}}</p>
+                </div>
+              </div>
+            </div>
+          </md-card-content>
+          <md-card-footer class="card-item-footer"
+                          ng-show="itemteacher._id == teachers.selectedTeacherIndex">
+            <section layout="row" layout-align="space-around center" layout-wrap>
+              <md-button class="md-primary" md-ink-ripple id="btn-courses-{{ itemteacher._id }}" ng-click="teachers.showClass(itemteacher._id, itemteacher.class)">Cursos</md-button>
+            </section>
+          </md-card-footer>
+        </md-card>
+      </div>
+    </md-content>
+  </div>
 </div>
+<style>
+
+  .accordeon .card-item-content-expanded {
+    height: 120px;
+  }
+
+  /* On Select */
+  @media screen and (max-width: 600px) {
+    .accordeon .card-item-content-expanded {
+      height: 250px;
+
+    }
+  }
+</style>
+
+
