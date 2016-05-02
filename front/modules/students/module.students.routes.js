@@ -17,6 +17,15 @@
             permissionType: 'AtLeastOne'
           }
         })
+        .when(frontApp.modules.students.routes.studentDetail, {
+          controller:  frontApp.modules.students.controllers.studentDetail.name,
+          controllerAs:  frontApp.modules.students.controllers.studentDetail.nameas,
+          templateUrl: frontApp.modules.students.templates.studentsDetail.url,
+          access: {
+            requiresLogin: true
+          }
+        })
+
     });
 
 }(angular, frontApp));

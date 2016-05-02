@@ -10,13 +10,18 @@
         name: 'StudentsCtrl',
         nameas: 'students'
       },
+      studentDetail: {
+        name: 'StudentDetailCtrl',
+        nameas: 'studentDetail'
+      },
       studentPerson: {
         name: 'StudentPersonCtrl',
         nameas: 'PersonCtrl'
       }
     },
     routes: {
-      students: URLS.STUDENTS()
+      students: URLS.STUDENTS(),
+      studentDetail: URLS.STUDENTDETAIL(':idstudent')
     },
     factories: {
       students: 'studentsFactory'
@@ -24,6 +29,9 @@
     templates: {
       students: {
         url: 'views/students.html'
+      },
+      studentsDetail: {
+        url: 'views/student-detail.html'
       },
       person: {
         url: '../../../templates/personForm.tpl.html'

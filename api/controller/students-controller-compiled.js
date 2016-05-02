@@ -17,7 +17,19 @@ module.exports.list = function () {
 // Get Student By Id
 module.exports.getById = function (id) {
     return new Promise(function (resolve, reject) {
-        studentsModel.students.findById(id).exec().then(resolve, reject);
+        studentsModel.students.findById(id).populate({
+            path: 'courses._id',
+            select: '-class -create_at -modified',
+            populate: [{
+                path: 'subjects.subject',
+                model: 'subjects',
+                select: 'description'
+            }, {
+                path: 'subjects.teacher',
+                model: 'teachers',
+                select: 'name'
+            }]
+        }).exec().then(resolve, reject);
     });
 };
 

@@ -47,7 +47,7 @@ const studentsSchema = database.mongoose.Schema({
         active: {
             type: Number,
             required: true,
-            default: true
+            default: 1
         },
         duration: {
             start: {

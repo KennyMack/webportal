@@ -81,6 +81,14 @@
           return '../images/ic_person_mark1.svg';
         };
 
+        self.optionClicked = function (index) {
+
+          if(index === 0){
+            $location.path(URLS.STUDENTDETAIL(self.selectedStudentIndex));
+          }
+
+        };
+
         // create a new Schedule
         var formAction = function (action) {
           $mdDialog.show({

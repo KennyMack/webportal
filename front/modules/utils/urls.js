@@ -21,6 +21,12 @@ var URLS = (function () {
       else
         return '/students';
     },
+    STUDENTDETAIL: function (code) {
+      if (code)
+        return '/student-detail/' + code;
+      else
+        return '/student-detail';
+    },
     SUBJECTS: function (code) {
       if (code)
         return '/subjects/' + code;

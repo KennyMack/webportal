@@ -20,6 +20,21 @@ module.exports.list = () => {
 module.exports.getById = (id) => {
     return new Promise( (resolve, reject) => {
         studentsModel.students.findById(id)
+            .populate({
+                path: 'courses._id',
+                select: '-class -create_at -modified',
+                populate: [
+                    {
+                        path: 'subjects.subject',
+                        model: 'subjects',
+                        select: 'description'
+                    },
+                    {
+                        path: 'subjects.teacher',
+                        model: 'teachers',
+                        select: 'name'
+                    }]
+            })
             .exec()
             .then(resolve, reject)
     });

@@ -20,7 +20,7 @@
                   <span ng-show="itemstudent._id != students.selectedStudentIndex" class="md-subhead center" >{{itemstudent.course_type.description }}</span></p>
               </div>
               <div class="tools" ng-click="students.selectStudentIndex(itemstudent._id)">
-                <!--<md-menu md-offset="-20 4" md-position-mode="target-right target">
+                <md-menu md-offset="-20 4" md-position-mode="target-right target">
                   <md-button aria-label="Menu de opções"
                              ng-show="itemstudent._id == students.selectedStudentIndex"
                              class="md-icon-button"
@@ -28,13 +28,13 @@
                     <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
                   </md-button>
                   <md-menu-content>
-                    <md-menu-item ng-repeat="item in ['Detalhar', 'Encerrar']">
+                    <md-menu-item ng-repeat="item in ['Detalhar']">
                       <md-button ng-click="students.optionClicked($index)">
                         <span md-menu-align-target>{{item}} </span>
                       </md-button>
                     </md-menu-item>
                   </md-menu-content>
-                </md-menu>-->
+                </md-menu>
               </div>
             </md-card-title-text>
           </md-card-title>

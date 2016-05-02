@@ -1,0 +1,99 @@
+<div ng-cloak ng-init="studentDetail.init()">
+  <md-content class="md-padding backview" layout-md="row"  layout-sm="column" layout-xs="column" layout="row">
+    <div layout="column" flex="20" flex-md="30" flex-sm="100"  flex-xs="100">
+      <md-card class="card-right">
+        <md-card-content  class="card-item-content" >
+          <div class="md-dialog-content" style="overflow-x: auto" layout-align="center center" layout="column" layout-md="column"  layout-sm="column" layout-xs="column">
+            <div flex="20">
+              <div class="icon">
+                <md-icon md-svg-src="../images/ic_book_hover.svg" style="width: 110px; height: 110px"></md-icon>
+              </div>
+            </div>
+            <div flex="80" layout-padding>
+
+              <p ng-bind="studentDetail.student.identify"></p>
+              <p ng-bind="studentDetail.student.name"></p>
+              <p ng-bind="studentDetail.student.gender|genderFilter"></p>
+              <p ng-bind="studentDetail.student.dob| date:'dd/MM/yyyy'"></p>
+              <p ng-bind="studentDetail.student.social_number"></p>
+            </div>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="row" ng-controller="StudentsCtrl as student">
+          <md-button class="md-icon-button" aria-label="Editar" ng-click="student.editStudent(studentDetail.student._id, studentDetail.student)">
+            <md-icon md-svg-icon="../images/ic_edit.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Impressão">
+            <md-icon md-svg-icon="../images/ic_printer.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <div layout="column" flex="80" flex-md="70" flex-sm="100" flex-xs="100">
+      <md-card class="card-right" ng-repeat="course in studentDetail.student.courses">
+        <md-card-content  class="card-item-content" >
+          <div flex="100" layout="row" layout-xs="column" class="data-top">
+            <div flex="100" flex-xs="100" layout="column">
+              <div flex="100">
+                <p class="name">{{ course.name  }}</p>
+                <p class="identify">{{ course.identify }}</p>
+                <p class="course-type-description">{{ course.course_type.description }}</p>
+              </div>
+            </div>
+          </div>
+          <div flex="100" layout-padding layout="row" layout-xs="column"
+               class="data-middle">
+            <div flex layout="row" layout-xs="column" class="left">
+              <p>Inicio: {{ course.duration.start | date:'dd/MM/yyyy' }}</p>
+              <p>Término: {{ course.duration.end | date:'dd/MM/yyyy' }}</p>
+            </div>
+            <div flex layout="row" layout-align="end" class="right">
+              <p>{{ course.create_at | date:'dd/MM/yyyy'}}</p>
+              <p>{{ course.modified | date:'dd/MM/yyyy'}}</p>
+            </div>
+          </div>
+          <div flex="100" layout-padding layout="column"
+               class="data-footer">
+            <div flex="67" layout="column" class="description">
+              <p>{{ course.description }}</p>
+            </div>
+          </div>
+          <div class="md-dialog-content" style="overflow-x: auto">
+            <div class="md-list-item-text" layout="column">
+              <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="one">
+                  <md-content class="md-padding">
+                    <h1 class="md-display-2">Tab One</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+                  </md-content>
+                </md-tab>
+                <md-tab label="two">
+                  <md-content class="md-padding">
+                    <h1 class="md-display-2">Tab Two</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+                    <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                  </md-content>
+                </md-tab>
+                <md-tab label="three">
+                  <md-content class="md-padding">
+                    <h1 class="md-display-2">Tab Three</h1>
+                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                  </md-content>
+                </md-tab>
+              </md-tabs>
+            </div>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="row"  style="padding: 0; margin-top: 20px;" layout-align="end end">
+          <md-button style="float: right; margin-top: -25px; background: orange"
+                     id="btn-add-subject"
+                     ng-click="studentDetail.addSubjects()"
+                     class="md-fab md-mini md-primary" aria-label="Home">
+            <md-icon class="material-icons" md-svg-icon="images/ic_add_white.svg" style="width: 14px; height: 14px"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </md-content>
+</div>
