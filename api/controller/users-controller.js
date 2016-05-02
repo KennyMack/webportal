@@ -29,7 +29,8 @@ module.exports.getUserByIdAllPath = (id)=> {
         usersModel.users.findById(id)
             .populate('student_id', 'name')
             .populate('teachers_id', 'name')
-            // TODO: Adicionar os campos que faltam quando fizer os vinculos
+            .populate('master_id', 'name')
+            .populate('manager_id', 'name')
             .exec()
             .then(resolve, reject);
     });

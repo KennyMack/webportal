@@ -14,18 +14,26 @@
     function (authentication, localSave, users, LOCALNAME, $location, $scope) {
       var self = this;
       self.user = users.getUser();
-
+      $scope.error = [];
       self.init = function () {
-        authentication.credential(function (err, data, success, status) {
-          if (!err && status !== 401) {
+        /*authentication.credential(function (err, data, success, status) {
+          console.log('crede');
+
+          if (status === 200) {
             $location.path(URLS.HOME());
+          }
+          else if (status === 401) {
+            $scope.error = [];
+            users.clearUser();
+            authentication.logOut();
           }
           else {
             $scope.error = [];
             users.clearUser();
             authentication.logOut();
+            $location.path(URLS.SERVERERROR(status));
           }
-        });
+        });*/
       };
 
       self.doLogin = function () {
@@ -40,15 +48,19 @@
         }
 
         if ($scope.error.length <= 0) {
-          authentication.authenticate(self.user.username, self.user.pass, function (err, data, success) {
-            if (err || !success) {
+          authentication.authenticate(self.user.username, self.user.pass, function (err, data, success, status) {
+            if (err){
+              //$scope.error.push('Ocorreu um erro no aplicativo.');
+              $location.path(URLS.SERVERERROR(status));
+            }
+            else if (!err && !success) {
               $scope.error = [];
-              if ((data.data instanceof Object)) {
+              if ((data instanceof Object)) {
                 angular.forEach(data.data, function (value) {
                   this.push(value);
                 }, $scope.error);
               } else {
-                $scope.error.push(data || 'Ocorreu um erro no aplicativo.');
+                $scope.error.push(data);
               }
             }
             else {
@@ -68,11 +80,12 @@
               localSave.setJSONValueLS(LOCALNAME.MANAGER_ID, self.user.manager_id);
               localSave.setJSONValueLS(LOCALNAME.MASTER_ID, self.user.master_id);
               $location.path(URLS.PERSONTYPE());
+
+
             }
           });
         }
       };
-      $scope.error = [];
 
       self.doLogOut = function () {
         $scope.error = [];

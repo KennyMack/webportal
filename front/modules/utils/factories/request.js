@@ -7,9 +7,12 @@
   angular.module(frontApp.modules.utils.name)
     .factory(frontApp.modules.utils.factories.request,
       function (BASEURLS, $http, $window, $q) {
-        var Header = {
-          'Content-Type': 'application/json',
-          'x-access-token': $window.localStorage.getItem('User-Token')
+
+        var getHeader = function () {
+          return {
+            'Content-Type': 'application/json',
+            'x-access-token': $window.localStorage.getItem('User-Token')
+          };
         };
 
         return {
@@ -19,7 +22,7 @@
             $http({
               method: 'GET',
               url: uri,
-              headers: Header
+              headers: getHeader()
             }).success(function (data, status) {
                q.resolve({ err: false, data: data.data, success: data.success, status: status });
             }).error(function (data, status) {
@@ -34,7 +37,7 @@
             $http({
               method: 'POST',
               url: uri,
-              headers: Header,
+              headers: getHeader(),
               data: data
             }).success(function (data, status) {
               q.resolve({ err: false, data: data.data, success: data.success, status: status });
@@ -48,7 +51,7 @@
             $http({
               method: 'PUT',
               url: uri,
-              headers: Header,
+              headers: getHeader(),
               data: data
             }).success(function (data, status) {
               q.resolve({ err: false, data: data.data, success: data.success, status: status });
@@ -63,7 +66,7 @@
             $http({
               method: 'DELETE',
               url: uri,
-              headers: Header
+              headers: getHeader()
             }).success(function (data, status) {
               q.resolve({ err: false, data: data.data, success: data.success, status: status });
             }).error(function (data, status) {

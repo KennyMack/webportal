@@ -57,61 +57,96 @@
       frontApp.modules.auth.factories.authentication,
       function (LOCALNAME, localSave, authentication) {
         return {
-          authorize: function (next, callback) {
-            var authorized = false;
+          authorize: function (next) {
+            return new Promise(function (resolve, reject) {
+              var sessionUser = localSave.getJSONValueLS(LOCALNAME.SESSION_USER);
+              var personType = localSave.getJSONValueLS(LOCALNAME.PERSON_ID);
 
-            if (next.access != undefined) {
-              var type = localSave.getJSONValueLS(LOCALNAME.PERSON_ID);
-              if (type != null && next.access.requiresLogin && next.access.requiredPermissions !== undefined) {
-                for (var i = 0, length = next.access.requiredPermissions.length; i < length; i++) {
-                  if (type.type == next.access.requiredPermissions[i]) {
-                    authorized = true;
-                    break;
-                  }
-                }
+              if (next.originalPath === '/person-type' &&
+                sessionUser != null &&
+                personType  == null) {
+                resolve('');
               }
-              else
-                authorized = true;
-            }
-            else {
-              authorized = true;
-            }
+              else if (sessionUser  != null &&
+                personType == null){
+                reject(URLS.PERSONTYPE());
 
-            if (!authorized) {
-              callback(false, URLS.NOTAUTHORIZED());
-            }
-            else {
-              if (!authentication.isAuthenticated()){
-                authentication.logOut();
-                callback(false, URLS.LOGIN());
               }
               else {
-                authentication.credential(function (err) {
-                  if (err || status === 401) {
-                    authentication.logOut();
-                    authorized = false;
+
+                var authorized = false;
+                var requiresLogin = true;
+
+                if (next.access != undefined) {
+
+
+                  if (next.access.hasOwnProperty('requiresLogin')) {
+                    requiresLogin = next.access.requiresLogin;
                   }
-                  callback(authorized, URLS.LOGIN());
-                });
+
+                  if (personType != null &&
+                    requiresLogin &&
+                    next.access.requiredPermissions !== undefined) {
+
+                    var found = 0;
+                    var nPermiss = next.access.requiredPermissions.length;
+
+                    for (var i = 0; i < nPermiss; i++) {
+                      if (personType.type === next.access.requiredPermissions[i])
+                        found++;
+                    }
+
+                    if (nPermiss > 0 &&
+                      found > 0) {
+                      authorized = true;
+                    }
+                    else if (nPermiss === 0) {
+                      authorized = true;
+                    }
+                  }
+                  else
+                    authorized = true;
+                }
+                else {
+                  requiresLogin = true;
+                  authorized = true;
+                }
+
+                if (!authorized && requiresLogin) {
+                  if (personType != null)
+                    reject(URLS.NOTAUTHORIZED());
+                  else
+                    reject(URLS.LOGIN());
+                }
+                else if (requiresLogin) {
+                  if (!authentication.isAuthenticated()) {
+                    authentication.logOut();
+                    reject(URLS.LOGIN());
+                  }
+                  else {
+                    authentication.credential(function (err, data, success, status) {
+                      if (status === 200) {
+                        resolve('');
+                      }
+                      else if (status === 401) {
+                        authentication.logOut();
+                        reject(URLS.LOGIN());
+                      }
+                      else {
+                        reject(URLS.SERVERERROR(status));
+                      }
+
+                    });
+                  }
+                }
+                else
+                  resolve('');
               }
-            }
+            });
+
           }
         }
       }
 
     ]);
-
-
-    /*TODO: Verificar utilidade
-    .factory('authInterceptor', function(localSave) {
-      return {
-        request: function (config) {
-          var token = localSave.getValueLS('User-Token');
-          if (token) {
-            config.headers['x-access-token'] = token;
-          }
-          return config;
-        }
-      }
-    });*/
 }(angular, frontApp));

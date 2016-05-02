@@ -24,9 +24,7 @@ module.exports.getUserById = function (id) {
 // Get User By Id
 module.exports.getUserByIdAllPath = function (id) {
     return new Promise(function (resolve, reject) {
-        usersModel.users.findById(id).populate('student_id', 'name').populate('teachers_id', 'name')
-        // TODO: Adicionar os campos que faltam quando fizer os vinculos
-        .exec().then(resolve, reject);
+        usersModel.users.findById(id).populate('student_id', 'name').populate('teachers_id', 'name').populate('master_id', 'name').populate('manager_id', 'name').exec().then(resolve, reject);
     });
 };
 

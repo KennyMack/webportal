@@ -32,12 +32,26 @@ angular.module(frontApp.modules.index.name)
       };
 
       self.init = function () {
-        authentication.credential(function (err, data, success, status) {
+        /*authentication.credential(function (err, data, success, status) {
+          if (status === 200) {
+            $location.path(URLS.HOME());
+          }
+          else if (status === 401) {
+            $scope.error = [];
+            users.clearUser();
+            authentication.logOut();
+          }
+          else {
+            $scope.error = [];
+            users.clearUser();
+            authentication.logOut();
+            $location.path(URLS.SERVERERROR(status));
+          }
           if (err || status !== 200) {
             authentication.logOut();
             self.goTo(URLS.LOGIN());
           }
-        });
+        });*/
       };
 
       self.goTo = function (path) {
@@ -90,7 +104,7 @@ angular.module(frontApp.modules.index.name)
           $mdSidenav(navID)
             .toggle()
             .then(function () {
-              $log.debug("toggle " + navID + " is done");
+              //$log.debug("toggle " + navID + " is done");
             });
         }, 200);
       }
@@ -100,7 +114,7 @@ angular.module(frontApp.modules.index.name)
           $mdSidenav(navID)
             .toggle()
             .then(function () {
-              $log.debug("toggle " + navID + " is done");
+              //$log.debug("toggle " + navID + " is done");
             });
         }
       }
@@ -108,23 +122,21 @@ angular.module(frontApp.modules.index.name)
       self.closeLeft = function () {
         $mdSidenav('left').close()
           .then(function () {
-            $log.debug("close LEFT is done");
+            //$log.debug("close LEFT is done");
           });
       };
 
       self.closeRight = function () {
         $mdSidenav('right').close()
           .then(function () {
-            $log.debug("close RIGHT is done");
+            //$log.debug("close RIGHT is done");
           });
       };
 
 
       function buildMenu() {
-        console.log('show');
         self.mainMenu = [];
         var type = localSave.getJSONValueLS(LOCALNAME.PERSON_ID).type;
-        console.log(type);
         switch (type) {
           case 'student':
             self.mainMenu = [

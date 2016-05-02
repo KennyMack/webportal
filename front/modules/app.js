@@ -68,12 +68,23 @@
 
         $rootScope.$on('$routeChangeStart', function (event, next) {
           $rootScope.__showButton = principalButtonFactory.showButton(next);
-          /*authorization.authorize(next, function (cont, path) {
-            if(!cont)
-              $location.path(path);
-          });*/
 
         });
+
+        $rootScope.$on('$routeChangeSuccess', function (event, next) {
+          authorization.authorize(next)
+            .then(function (url) {
+
+            })
+            .catch(function (url) {
+              $location.path(url);
+            });
+        });
+
+        $rootScope.$on('$viewContentLoaded', function(){
+
+        });
+
       }]);
 }(angular, frontApp));
 
