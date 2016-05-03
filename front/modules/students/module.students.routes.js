@@ -21,8 +21,10 @@
           controller:  frontApp.modules.students.controllers.studentDetail.name,
           controllerAs:  frontApp.modules.students.controllers.studentDetail.nameas,
           templateUrl: frontApp.modules.students.templates.studentsDetail.url,
+          showButton: false,
           access: {
-            requiresLogin: true
+            requiresLogin: true,
+
           }
         })
 

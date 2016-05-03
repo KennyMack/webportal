@@ -4,14 +4,17 @@
 var GENDER = (function () {
   return {
     GENDER_DESCRIPTION: function (gender) {
-      switch(gender.toUpperCase()) {
-        case 'M':
-          return 'Masculino';
-        case 'F':
-          return 'Feminino';
-        default:
-          return 'Não Especificado';
+      if (gender) {
+        switch (gender.toUpperCase()) {
+          case 'M':
+            return 'Masculino';
+          case 'F':
+            return 'Feminino';
+          default:
+            return 'Não Especificado';
+        }
       }
+      return 'Não Especificado';
     }
   }
 })();

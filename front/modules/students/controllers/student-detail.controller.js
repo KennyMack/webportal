@@ -20,6 +20,8 @@
                 $routeParams, $filter, $scope,
                 $mdDialog, $mdMedia) {
         var self = this;
+        self.undefinedIndex = true;
+        self.selectedCourseIndex = undefined;
         self.student = null;
         self.schedule = [];
         self.subjects = [];
@@ -37,6 +39,37 @@
             function () {
               $location.path(URLS.SERVERERROR(500));
             });
+        };
+
+        self.showCollapseButton = function (text) {
+          return text.length > 125;
+        };
+
+        self.getShortDescription = function (text) {
+          return $filter('limitTo')(text, 125, 0);
+        };
+
+        self.collapseDescription = function (index) {
+          if (self.expandedTextIndex !== index) {
+            self.expandedTextIndex = index;
+          }
+          else {
+            self.expandedTextIndex = undefined;
+          }
+        };
+
+        self.selectCourseIndex = function (index) {
+          //active = !active;
+
+          self.expandedTextIndex = undefined;
+          if (self.selectedCourseIndex !== index) {
+            self.selectedCourseIndex = index;
+            self.undefinedIndex = false;
+          }
+          else {
+            self.selectedCourseIndex = undefined;
+            self.undefinedIndex = true;
+          }
         };
 
       }]);
