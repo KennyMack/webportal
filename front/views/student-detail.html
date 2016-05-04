@@ -1,157 +1,186 @@
-<div ng-cloak ng-init="studentDetail.init()">
-  <md-content class="md-padding backview" layout-md="row"  layout-sm="column" layout-xs="column" layout="row">
-    <div layout="column" flex="20" flex-md="30" flex-sm="100"  flex-xs="100">
-      <md-card class="card-left">
-        <md-card-content  class="card-item-content" >
-          <div class="md-dialog-content" style="overflow-x: auto" layout-align="center center" layout="column" layout-md="column"  layout-sm="column" layout-xs="column">
-            <div flex="20">
-              <div class="icon">
-                <md-icon md-svg-src="../images/ic_book_hover.svg" style="width: 110px; height: 110px"></md-icon>
-              </div>
-            </div>
-            <div flex="80" layout-padding>
+<div layout="row" layout-padding layout-sm="column" layout-xs="column" class="grid-data" ng-init="studentDetail.init()">
 
-              <p ng-bind="studentDetail.student.identify"></p>
-              <p ng-bind="studentDetail.student.name"></p>
-              <p ng-bind="studentDetail.student.gender|genderFilter"></p>
-              <p ng-bind="studentDetail.student.dob| date:'dd/MM/yyyy'"></p>
-              <p ng-bind="studentDetail.student.social_number"></p>
+  <div layout="column" flex="20" flex-md="30" flex-sm="100"  flex-xs="100">
+    <md-card class="card-left">
+      <md-card-content  class="card-item-content" >
+        <div class="md-dialog-content" style="overflow-x: auto" layout-align="center center" layout="column" layout-md="column"  layout-sm="column" layout-xs="column">
+          <div flex="20">
+            <div class="icon">
+              <md-icon md-svg-src="../images/ic_person_mark1.svg" style="width: 110px; height: 110px"></md-icon>
             </div>
           </div>
-        </md-card-content>
-        <md-card-actions layout="row" ng-controller="StudentsCtrl as student">
-          <md-button class="md-icon-button" aria-label="Editar" ng-click="student.editStudent(studentDetail.student._id, studentDetail.student)">
-            <md-icon md-svg-icon="../images/ic_edit.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Impressão">
-            <md-icon md-svg-icon="../images/ic_printer.svg"></md-icon>
-          </md-button>
-        </md-card-actions>
-      </md-card>
-    </div>
-    <div layout="column" flex="80" flex-md="70" flex-sm="100" flex-xs="100">
-      <div flex="100" class="card-right accordeon">
-        <div id="grid-courses" ng-repeat="course in studentDetail.student.courses">
-          <md-card class="card-item" style="overflow: hidden"
-                   ng-class="{
-                        'card-expanded md-whiteframe-z3': course._id._id == studentDetail.selectedCourseIndex,
-                        'card-collapsed': (course._id._id != courses.selectedCourseIndex && !studentDetail.undefinedIndex)
+          <div flex="80" layout-padding>
+
+            <p ng-bind="studentDetail.student.identify"></p>
+            <p ng-bind="studentDetail.student.name"></p>
+            <p ng-bind="studentDetail.student.gender|genderFilter"></p>
+            <p ng-bind="studentDetail.student.dob| date:'dd/MM/yyyy'"></p>
+            <p ng-bind="studentDetail.student.social_number"></p>
+          </div>
+        </div>
+      </md-card-content>
+      <md-card-actions layout="row" ng-controller="StudentsCtrl as student">
+        <md-button class="md-icon-button" aria-label="Editar" ng-click="student.editStudent(studentDetail.student._id, studentDetail.student)">
+          <md-icon md-svg-icon="../images/ic_edit.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Impressão">
+          <md-icon md-svg-icon="../images/ic_printer.svg"></md-icon>
+        </md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+  <div flex="80" flex="80" flex-md="70" flex-sm="100" flex-xs="100"
+       class="accordeon" layout-md="column"  layout-sm="column" layout-xs="column" layout="column">
+    <md-content class="backview" style="  height: auto; padding-bottom: 50px" ng-repeat="year in studentDetail.yearsList | orderBy:'-name':false">
+      <div class="group-header" flex="100">
+        <p class="md-caption">{{ year.name }}</p>
+      </div>
+      <div id="grid-courses" ng-repeat="itemcourse in studentDetail.courseslist| filter:{ year: year.name }">
+        <md-card class="card-item" style="overflow: hidden"
+                 ng-class="{
+                        'card-expanded md-whiteframe-z3': itemcourse._id == studentDetail.selectedCourseIndex,
+                        'card-collapsed': (itemcourse._id != studentDetail.selectedCourseIndex && !studentDetail.undefinedIndex)
                         }" >
-            <md-card-title class="card-item-header" >
-              <md-card-title-text class="card-item-title-header">
-                <div class="icon" ng-click="studentDetail.selectCourseIndex(course._id._id)">
-                  <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>
-                </div>
-                <div class="title" ng-click="studentDetail.selectCourseIndex(course._id._id)">
-                  <p ng-class="{'title-header-collapse': course._id._id == studentDetail.selectedCourseIndex }">{{ course._id.name }}
-                    <span ng-show="course._id._id != studentDetail.selectedCourseIndex" class="md-subhead center" >{{course._id.course_type.description }}</span></p>
-                </div>
-                <div class="tools" ng-click="studentDetail.selectCourseIndex(course._id._id)">
-                  <md-menu md-offset="-20 4" md-position-mode="target-right target">
-                    <md-button aria-label="Open demo menu"
-                               ng-show="course._id._id == studentDetail.selectedCourseIndex"
-                               class="md-icon-button"
-                               ng-click="$mdOpenMenu($event)">
-                      <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
-                    </md-button>
-                    <md-menu-content>
-                      <md-menu-item ng-repeat="item in ['Detalhar', 'Encerrar']">
-                        <md-button ng-click="studentDetail.optionClicked($index)">
-                          <span md-menu-align-target>{{item}} </span>
-                        </md-button>
-                      </md-menu-item>
-                    </md-menu-content>
-                  </md-menu>
-                </div>
-              </md-card-title-text>
-            </md-card-title>
-            <md-card-content class="card-item-content"
-                             ng-class="{'card-item-content-expanded': course._id._id == studentDetail.selectedCourseIndex,
-                                      'card-item-content-text-expanded': course._id._id == studentDetail.expandedTextIndex }"
-                             ng-show="course._id._id == studentDetail.selectedCourseIndex">
-              <div layout="column" layout-padding class="card-item-content-data">
-                <div flex="100" layout="row" layout-xs="column" class="data-top">
-                  <div flex="100" flex-xs="100" layout="column">
-                    <div flex="100">
-                      <p class="name">{{ course._id.name  }}</p>
-                      <p class="identify">{{ course._id.identify }}</p>
-                      <p class="course-type-description">{{ course._id.course_type.description }}</p>
-                    </div>
-                  </div>
-                </div>
-                <div flex="100" layout-padding layout="row" layout-xs="column"
-                     class="data-middle">
-                  <div flex layout="row" layout-xs="column" class="left">
-                    <p>Inicio: {{ course._id.duration.start | date:'dd/MM/yyyy' }}</p>
-                    <p>Término: {{ course._id.duration.end | date:'dd/MM/yyyy' }}</p>
-                  </div>
-                  <div flex layout="row" layout-align="end" class="right">
-                    <p>{{ course._id.create_at | date:'dd/MM/yyyy'}}</p>
-                    <p>{{ course._id.modified | date:'dd/MM/yyyy'}}</p>
-                  </div>
-                </div>
-                <div flex="100" layout-padding layout="column"
-                     class="data-footer">
-                  <div flex="67" layout="column" class="description">
-                    <p ng-show="studentDetail.expandedTextIndex != course._id._id">{{ studentDetail.getShortDescription(course._id.description) }}</p>
-                    <p ng-show="studentDetail.expandedTextIndex == course._id._id">{{ course._id.description }}</p>
-                  </div>
-                  <div flex="33" layout="column" class="button">
-                    <md-button  ng-show="studentDetail.expandedTextIndex != course._id._id && studentDetail.showCollapseButton(course._id.description)"
-                                ng-click="studentDetail.collapseDescription(course._id._id)" class="md-primary" md-no-ink>Ver mais</md-button>
-                    <md-button  ng-show="studentDetail.expandedTextIndex == course._id._id && studentDetail.showCollapseButton(course._id.description)"
-                                ng-click="studentDetail.collapseDescription(course._id._id)" class="md-primary" md-no-ink>Ver menos</md-button>
-                  </div>
-                </div>
-                <div flex="100" layout-padding layout="column"
-                     class="data-footer">
-                  <div class="md-list-item-text" layout="column">
-                    <md-tabs md-dynamic-height md-border-bottom>
-                      <md-tab label="Cronograma">
-                        <md-content class="md-padding">
-                          <h1 class="md-display-2">Cronograma</h1>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
-                        </md-content>
-                      </md-tab>
-                      <md-tab label="Matérias">
-                        <md-content class="md-padding">
-                          <h1 class="md-display-2">Matérias</h1>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-                          <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-                          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                        </md-content>
-                      </md-tab>
-                      <md-tab label="Notas">
-                        <md-content class="md-padding">
-                          <h1 class="md-display-2">Notas</h1>
-                          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                        </md-content>
-                      </md-tab>
-                    </md-tabs>
+          <md-card-title class="card-item-header" >
+            <md-card-title-text class="card-item-title-header">
+              <div class="icon" ng-click="studentDetail.selectCourseIndex(itemcourse._id)">
+                <md-icon md-svg-src="../images/ic_book_hover.svg"></md-icon>
+              </div>
+              <div class="title" ng-click="studentDetail.selectCourseIndex(itemcourse._id)">
+                <p ng-class="{'title-header-collapse': itemcourse._id == studentDetail.selectedCourseIndex }">{{ itemcourse.name }}
+                  <span ng-show="itemcourse._id != studentDetail.selectedCourseIndex" class="md-subhead center" >{{itemcourse.course_type.description }}</span></p>
+              </div>
+              <div class="tools" ng-click="studentDetail.selectCourseIndex(itemcourse._id)">
+                <md-menu md-offset="-20 4" md-position-mode="target-right target">
+                  <md-button aria-label="Open demo menu"
+                             ng-show="itemcourse._id == studentDetail.selectedCourseIndex"
+                             class="md-icon-button"
+                             ng-click="$mdOpenMenu($event)">
+                    <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item ng-repeat="item in ['Detalhar', 'Encerrar']">
+                      <md-button ng-click="studentDetail.optionClicked($index)">
+                        <span md-menu-align-target>{{item}} </span>
+                      </md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+              </div>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content class="card-item-content"
+                           ng-class="{'card-item-content-expanded': itemcourse._id == studentDetail.selectedCourseIndex,
+                                      'card-item-content-text-expanded': itemcourse._id == studentDetail.expandedTextIndex }"
+                           ng-show="itemcourse._id == studentDetail.selectedCourseIndex">
+            <div layout="column" layout-padding class="card-item-content-data">
+              <div flex="100" layout="row" layout-xs="column" class="data-top">
+                <div flex="100" flex-xs="100" layout="column">
+                  <div flex="100">
+                    <p class="name">{{ itemcourse.name  }}</p>
+                    <p class="identify">{{ itemcourse.identify }}</p>
+                    <p class="course-type-description">{{ itemcourse.course_type.description }}</p>
                   </div>
                 </div>
               </div>
-            </md-card-content>
-            <md-card-footer class="card-item-footer"
-                            ng-show="course._id._id == studentDetail.selectedCourseIndex">
-              <section layout="row" layout-align="space-around center" layout-wrap>
-                <md-button class="md-primary" md-ink-ripple id="btn-class-{{ course._id._id }}" ng-click="studentDetail.showClass(course._id._id, course._id.class)">Alunos</md-button>
-                <md-button class="md-primary" md-ink-ripple id="btn-subjects-{{ course._id._id }}" ng-click="studentDetail.showSubjects(course._id._id, course._id.subjects)">Matérias</md-button>
-                <md-button class="md-primary" md-ink-ripple id="btn-schedule-{{ course._id._id }}" ng-click="studentDetail.showSchedule(course._id._id, course._id.subjects)">Cronograma</md-button>
-                <md-button class="md-primary" md-ink-ripple>Notas</md-button>
-              </section>
-            </md-card-footer>
-          </md-card>
-        </div>
+              <div flex="100" layout-padding layout="row" layout-xs="column"
+                   class="data-middle">
+                <div flex layout="row" layout-xs="column" class="left">
+                  <p>Inicio: {{ itemcourse.duration.start | date:'dd/MM/yyyy' }}</p>
+                  <p>Término: {{ itemcourse.duration.end | date:'dd/MM/yyyy' }}</p>
+                </div>
+                <div flex layout="row" layout-align="end" class="right">
+                  <p>{{ itemcourse.create_at | date:'dd/MM/yyyy'}}</p>
+                  <p>{{ itemcourse.modified | date:'dd/MM/yyyy'}}</p>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="column"
+                   class="data-footer">
+                <div flex="67" layout="column" class="description">
+                  <p ng-show="studentDetail.expandedTextIndex != itemcourse._id">{{ studentDetail.getShortDescription(itemcourse.description) }}</p>
+                  <p ng-show="studentDetail.expandedTextIndex == itemcourse._id">{{ itemcourse.description }}</p>
+                </div>
+                <div flex="33" layout="column" class="button">
+                  <md-button  ng-show="studentDetail.expandedTextIndex != itemcourse._id && studentDetail.showCollapseButton(itemcourse.description)"
+                              ng-click="studentDetail.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver mais</md-button>
+                  <md-button  ng-show="studentDetail.expandedTextIndex == itemcourse._id && studentDetail.showCollapseButton(itemcourse.description)"
+                              ng-click="studentDetail.collapseDescription(itemcourse._id)" class="md-primary" md-no-ink>Ver menos</md-button>
+                </div>
+              </div>
+              <div flex="100" layout-padding layout="column"
+                   class="data-footer">
+                <div class="md-list-item-text" layout="column">
+                  <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="Cronograma">
+                      <md-content class="md-padding">
+                        <table flex="100" flex-xs="100" id="tbl-schedule">
+                          <thead>
+                          <tr>
+                            <th>Dia</th>
+                            <th>Professor</th>
+                            <th>Matéria</th>
+                            <th>Inicio</th>
+                            <th>Término</th>
+                            <th></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr ng-repeat="item in courseDetail.schedule">
+                            <td>{{ item.day }}</td>
+                            <td>{{ item.teacher }}</td>
+                            <td>{{ item.subject.description }}</td>
+                            <td>{{ item.duration.start }}</td>
+                            <td>{{ item.duration.end }}</td>
+                            <td>
+                              <md-menu md-offset="-20 4" md-position-mode="target-right target" >
+                                <md-button aria-label="Open demo menu"
+                                           class="md-icon-button"
+                                           id="opt-schedule-{{ item._id }}"
+                                           ng-click="$mdOpenMenu($event)">
+                                  <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
+                                </md-button>
+                                <md-menu-content>
+                                  <md-menu-item ng-repeat="opt in ['Excluir']">
+                                    <md-button ng-click="courseDetail.optionClicked($index, item.subject._id, item._id)" >
+                                      <span md-menu-align-target>{{opt}} </span>
+                                    </md-button>
+                                  </md-menu-item>
+                                </md-menu-content>
+                              </md-menu>
+                              <!--<md-button class="md-icon-button" aria-label="Mais" layout="center">
+                                <md-icon md-svg-icon="../images/ic_vmore.svg" style="width: 14px; height: 14px"></md-icon>
+                              </md-button>-->
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </md-content>
+                    </md-tab>
+                    <md-tab label="Matérias">
+                      <md-content class="md-padding">
+                        <h1 class="md-display-2">Matérias</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+                        <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                      </md-content>
+                    </md-tab>
+                    <md-tab label="Notas">
+                      <md-content class="md-padding">
+                        <h1 class="md-display-2">Notas</h1>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                      </md-content>
+                    </md-tab>
+                  </md-tabs>
+                </div>
+              </div>
+            </div>
+          </md-card-content>
+        </md-card>
       </div>
-    </div>
-  </md-content>
+    </md-content>
+  </div>
 </div>
 <style>
-
-  .card-right {
-    margin-top: 8px;
-  }
 
 
   .tabsdemoDynamicHeight md-content {
