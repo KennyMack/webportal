@@ -121,36 +121,15 @@
                             <th>Matéria</th>
                             <th>Inicio</th>
                             <th>Término</th>
-                            <th></th>
                           </tr>
                           </thead>
                           <tbody>
-                          <tr ng-repeat="item in courseDetail.schedule">
+                          <tr ng-repeat="item in studentDetail.schedule|filter:{ course_id: itemcourse._id }">
                             <td>{{ item.day }}</td>
                             <td>{{ item.teacher }}</td>
                             <td>{{ item.subject.description }}</td>
                             <td>{{ item.duration.start }}</td>
                             <td>{{ item.duration.end }}</td>
-                            <td>
-                              <md-menu md-offset="-20 4" md-position-mode="target-right target" >
-                                <md-button aria-label="Open demo menu"
-                                           class="md-icon-button"
-                                           id="opt-schedule-{{ item._id }}"
-                                           ng-click="$mdOpenMenu($event)">
-                                  <md-icon md-menu-origin md-svg-icon="images/ic_vmore.svg" style="width: 18px; height: 18px;"></md-icon>
-                                </md-button>
-                                <md-menu-content>
-                                  <md-menu-item ng-repeat="opt in ['Excluir']">
-                                    <md-button ng-click="courseDetail.optionClicked($index, item.subject._id, item._id)" >
-                                      <span md-menu-align-target>{{opt}} </span>
-                                    </md-button>
-                                  </md-menu-item>
-                                </md-menu-content>
-                              </md-menu>
-                              <!--<md-button class="md-icon-button" aria-label="Mais" layout="center">
-                                <md-icon md-svg-icon="../images/ic_vmore.svg" style="width: 14px; height: 14px"></md-icon>
-                              </md-button>-->
-                            </td>
                           </tr>
                           </tbody>
                         </table>
@@ -158,16 +137,20 @@
                     </md-tab>
                     <md-tab label="Matérias">
                       <md-content class="md-padding">
-                        <h1 class="md-display-2">Matérias</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-                        <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                        <md-list ng-cloak>
+                          <md-list-item class="md-3-line" style="padding-left: 15px" ng-repeat="item in studentDetail.subjects|filter:{ course_id: itemcourse._id }">
+                            <div class="md-list-item-text" layout="column">
+                              <h3>{{ item.subject.description }}</h3>
+                              <p>{{ item.teacher.name }}</p>
+                            </div>
+                          </md-list-item>
+                        </md-list>
                       </md-content>
                     </md-tab>
                     <md-tab label="Notas">
                       <md-content class="md-padding">
                         <h1 class="md-display-2">Notas</h1>
-                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                        <p>Todo :)</p>
                       </md-content>
                     </md-tab>
                   </md-tabs>
@@ -214,7 +197,73 @@
 
 
 
+  table#tbl-schedule > thead > tr > th {
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    color: rgba(0,0,0,.85);
+    vertical-align: bottom;
+    text-align: start;
+    padding-left: 5px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
 
+  table#tbl-schedule > thead > tr > th:first-child{
+    padding-left: 15px;
+  }
+  table#tbl-schedule > tbody > tr > th:last-child{
+    width: 40px;
+  }
+
+  table#tbl-schedule > tbody > tr > td {
+    vertical-align: middle;
+    text-align: start;
+    text-overflow: ellipsis;
+    color: rgba(0,0,0,.8);
+    padding-left: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    cursor: pointer;
+  }
+
+
+  table#tbl-schedule > tbody > tr > td:first-child {
+    padding-left: 15px;
+  }
+
+  table#tbl-schedule > tbody > tr > td:last-child{
+    width: 40px;
+  }
+
+  table#tbl-schedule > tbody > tr > td > md-button {
+    padding: 0;
+    margin: 0;
+  }
+
+  table#tbl-schedule > tbody > tr{
+    -webkit-transition: all 300ms cubic-bezier(.45,.05,.55,.95);
+    -moz-transition: all 300ms cubic-bezier(.45,.05,.55,.95);
+    -o-transition: all 300ms cubic-bezier(.45,.05,.55,.95);
+    -ms-transition: all 300ms cubic-bezier(.45,.05,.55,.95);
+  }
+  table#tbl-schedule > tbody > tr:hover{
+    background-color: rgba(0,0,0,.05);
+    color: #262626;
+  }
+
+  table#tbl-schedule{
+    width:100%;
+    margin:0;
+    margin-top: 10px;
+    padding:0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    white-space: nowrap;
+    font-size: .9em;
+  }
 </style>
 
 

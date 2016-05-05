@@ -38,8 +38,6 @@
 
               self.student = student.data;
               createCourseList(self.student.courses);
-              loadSchedules(self.student.courses.subjects);
-              loadSubjects(self.student.courses.subjects);
               createYearList();
               student.data = null;
             },
@@ -67,19 +65,31 @@
               },
               student_active: courses[i].student_active
             });
+
+            loadSubjects(courses[i]._id.subjects, courses[i]._id._id);
+            loadSchedules(courses[i]._id.subjects, courses[i]._id._id);
           }
         };
 
         // Load local subjects
-        var loadSubjects = function (subjects) {
-          self.subjects = subjects;
+        var loadSubjects = function (subjects, id) {
+          self.subjects = [];
+          // through all the subjects of course
+          for (var i = 0, lenSubject = subjects.length; i < lenSubject; i++) {
+
+            self.subjects.push({
+              course_id: id,
+              _id: subjects[i]._id,
+              subject: subjects[i].subject,
+              teacher: subjects[i].teacher
+            });
+          }
+
         };
 
         // Load local Schedules
-        var loadSchedules = function (schedules) {
+        var loadSchedules = function (schedules, id) {
           self.schedule = [];
-
-          c
 
           // through all the subjects of course
           for (var i = 0, lenSubject = schedules.length; i < lenSubject; i++) {
@@ -88,6 +98,7 @@
             for (var r = 0, lenSchedule = schedules[i].schedule.length; r < lenSchedule; r++) {
               // create a item schedule
               var item = {
+                course_id: id,
                 _id: schedules[i].schedule[r]['_id'],
                 day_num: schedules[i].schedule[r]['day'],
                 day: DAYS.DAY_DESCRIPTION(schedules[i].schedule[r]['day']),
@@ -139,6 +150,14 @@
           else {
             self.expandedTextIndex = undefined;
           }
+        };
+
+        self.optionClicked = function (index) {
+
+          if(index === 0){
+            $location.path(URLS.COURSEDETAIL(self.selectedCourseIndex));
+          }
+
         };
 
         self.selectCourseIndex = function (index) {
