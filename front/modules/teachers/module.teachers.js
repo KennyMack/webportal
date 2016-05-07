@@ -10,13 +10,18 @@
         name: 'TeachersCtrl',
         nameas: 'teachers'
       },
+      teacherDetail: {
+        name: 'TeacherDetailCtrl',
+        nameas: 'TeacherDetail'
+      },
       teacherPerson: {
         name: 'TeacherPersonCtrl',
         nameas: 'PersonCtrl'
       }
     },
     routes: {
-      teachers: URLS.TEACHERS()
+      teachers: URLS.TEACHERS(),
+      studentDetail: URLS.STUDENTDETAIL(':idstudent')
     },
     factories: {
       teachers: 'teachersFactory'
@@ -27,6 +32,9 @@
       },
       person: {
         url: '../../../templates/personForm.tpl.html'
+      },
+      teacherDetail: {
+        url: 'views/teacher-detail.html'
       }
     },
     imports: {

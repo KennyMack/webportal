@@ -17,6 +17,17 @@
             permissionType: 'AtLeastOne'
           }
         })
+        .when(frontApp.modules.teachers.routes.teacherDetail, {
+          controller:  frontApp.modules.teachers.controllers.teacherDetail.name,
+          controllerAs:  frontApp.modules.teachers.controllers.teacherDetail.nameas,
+          templateUrl: frontApp.modules.teachers.templates.teacherDetail.url,
+          showButton: false,
+          access: {
+            requiresLogin: true,
+            requiredPermissions: ['manager', 'master', 'teacher'],
+            permissionType: 'AtLeastOne'
+          }
+        })
     });
 
 }(angular, frontApp));

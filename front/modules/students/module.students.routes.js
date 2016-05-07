@@ -23,8 +23,7 @@
           templateUrl: frontApp.modules.students.templates.studentsDetail.url,
           showButton: false,
           access: {
-            requiresLogin: true,
-
+            requiresLogin: true
           }
         })
 

@@ -39,6 +39,12 @@ var URLS = (function () {
       else
         return '/teachers';
     },
+    TEACHERDETAIL: function (code) {
+      if (code)
+        return '/teacher-detail/' + code;
+      else
+        return '/teacher-detail';
+    },
     COURSES: function (code) {
       if (code)
         return '/courses/' + code;
