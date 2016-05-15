@@ -108,7 +108,6 @@ module.exports.updateLastLogin =  (id) => {
                 resolve(data);
             }
         });
-
     });
 };
 

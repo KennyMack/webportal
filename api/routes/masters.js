@@ -99,7 +99,6 @@ module.exports =  (express, io) => {
             });
     });
 
-
     /* PUT update a master */
     router.put('/',  (req, res) => {
         let master = {

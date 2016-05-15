@@ -92,7 +92,6 @@ module.exports =  (express, io)  => {
       });
   });
 
-
   /* PUT update a Course Type */
   router.put('/', (req, res)  => {
     let courseType = {

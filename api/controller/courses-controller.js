@@ -613,7 +613,6 @@ module.exports.validateNewCourse =  (pcourse) => {
             .catch( (err) => {
                 reject(err);
             });
-
     });
 
 };

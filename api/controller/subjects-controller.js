@@ -73,7 +73,6 @@ module.exports.validate =  (subject, status) => {
 
             if (validator.isNull(subject['description']))
                 objRet['description'] = 'Descrição é de preenchimento obrigatório.';
-
         }
 
         if (status === utils.OPERATION_STATUS.UPDATE ||

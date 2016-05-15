@@ -147,6 +147,5 @@
           }
         }
       }
-
     ]);
 }(angular, frontApp));

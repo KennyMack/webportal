@@ -43,5 +43,5 @@
   };
   angular.module(frontApp.modules.handlers.name, [
     'ngRoute'
-  ])
+  ]);
 }(angular, frontApp));

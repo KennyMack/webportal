@@ -84,7 +84,6 @@
               teacher: subjects[i].teacher
             });
           }
-
         };
 
         // Load local Schedules
@@ -127,7 +126,6 @@
             if (!yearInList(year)) {
               self.yearsList.push({'name': year});
             }
-            //self.courseslist[i]['year'] = year;
           }
         };
 
@@ -173,6 +171,5 @@
             self.undefinedIndex = true;
           }
         };
-
       }]);
 }(angular, frontApp));

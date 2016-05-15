@@ -53,8 +53,6 @@ const managersSchema = database.mongoose.Schema({
     }
 });
 
-
-
 const preUpdate = function(manager, next) {
     manager.modified = utils.getCurrentDateTime();
     next();

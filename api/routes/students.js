@@ -99,7 +99,6 @@ module.exports =  (express, io) => {
             });
     });
 
-
     /* PUT update a student */
     router.put('/',  (req, res) => {
         let student = {

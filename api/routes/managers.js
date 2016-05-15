@@ -99,7 +99,6 @@ module.exports =  (express, io) => {
             });
     });
 
-
     /* PUT update a manager */
     router.put('/',  (req, res) => {
         let manager = {

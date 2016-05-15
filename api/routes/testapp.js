@@ -56,7 +56,6 @@ module.exports =  (express, io) => {
                 defer.reject(err);
             });
 
-
         defer.promise.nodeify(callback);
         return defer.promise;
     };

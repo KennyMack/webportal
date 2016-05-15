@@ -27,7 +27,6 @@
     'ngRoute',
     frontApp.modules.utils.name,
     frontApp.modules.auth.name
-  ])
-
+  ]);
 }(angular, frontApp));
 

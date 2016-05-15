@@ -17,4 +17,5 @@ var GENDER = (function () {
       return 'Não Especificado';
     }
   }
+
 })();

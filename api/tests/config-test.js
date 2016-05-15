@@ -13,6 +13,7 @@ var options = {
         }
     }
 };
+
 module.exports.names =[
     'Edward',
     'Jean',
@@ -22,6 +23,7 @@ module.exports.names =[
     'Carl',
     'Guz'
 ];
+
 module.exports.surnames = [
     'Ortiz',
     'Marc',

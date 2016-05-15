@@ -79,7 +79,6 @@ const studentsSchema = database.mongoose.Schema({
     }
 });
 
-
 const preUpdate = function(student, next) {
     student.modified = utils.getCurrentDateTime();
     next();

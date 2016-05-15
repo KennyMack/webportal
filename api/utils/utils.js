@@ -15,6 +15,7 @@ module.exports.OPERATION_STATUS = {
 
 module.exports.getCurrentDateTime =  () => {
     return moment().format();
+
 };
 
 module.exports.isDate =  (date) => {

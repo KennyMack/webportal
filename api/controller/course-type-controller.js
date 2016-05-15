@@ -14,7 +14,6 @@ module.exports.listCoursesType = () => {
             .exec()
             .then(resolve, reject);
     });
-
 };
 
 // Get Course Type By Id

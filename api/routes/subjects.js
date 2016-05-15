@@ -17,7 +17,6 @@ module.exports =  (express, io) => {
          socket.emit('get', { 'get':'Express' });*/
     });
 
-
     /* Middleware for authentication */
     router.use( (req, res, next) => {
         return auth.ensureAuthenticated(req, res, next);

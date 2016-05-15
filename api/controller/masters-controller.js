@@ -116,7 +116,6 @@ module.exports.validate =  (master, status) => {
                 (!validator.isIn(master['active'], [0, 1])))
                 objRet['active'] = 'Status informado não é válido.';
 
-
         }
 
         if (status === utils.OPERATION_STATUS.UPDATE ||

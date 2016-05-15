@@ -88,5 +88,4 @@ userSchema.pre('update', function(next) {
 
 });
 
-
 exports.users = database.db.model('users', userSchema);

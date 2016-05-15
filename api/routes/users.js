@@ -15,7 +15,6 @@ module.exports =  (express, io) => {
     socket.emit('get', { 'get':'Express' });*/
   });
 
-
   /* GET users listing. */
   router.get('/', auth.ensureAuthenticated,  (req, res) => {
     usersController.listUsers()

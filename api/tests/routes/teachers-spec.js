@@ -22,7 +22,6 @@ config.frisby.create('return error 404 (json)')
     .toss();
 
 
-
 config.frisby.create('return Teacher (json)')
     .get(url + '/56db953e3a8281116f5802e7')
     .expectStatus(200)

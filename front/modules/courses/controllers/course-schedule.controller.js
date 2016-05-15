@@ -159,6 +159,5 @@
               });
           }
         };
-
       }]);
 }(angular, frontApp));

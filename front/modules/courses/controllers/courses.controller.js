@@ -464,7 +464,6 @@
 
         self.selectCourseIndex = function (index) {
           //active = !active;
-
           self.expandedTextIndex = undefined;
           if (self.selectedCourseIndex !== index) {
             self.selectedCourseIndex = index;

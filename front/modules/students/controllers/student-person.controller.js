@@ -46,7 +46,6 @@
           phone : []
         };
 
-
         self.init = function () {
           if (action !== 'NEW') {
             Student.get({Id: idStudent}, function (student) {
@@ -116,9 +115,6 @@
                 this.push(value);
               }, self.errors);
             });
-
-
         };
-
       }]);
 }(angular, frontApp));

@@ -20,6 +20,7 @@ var forms = (function () {
         if (person.hasOwnProperty('active'))
           objectOk++;
 
+
         if (objectOk !== 6)
           reject({ obj: 'Objeto não parece ser uma pessoa' });
         else {

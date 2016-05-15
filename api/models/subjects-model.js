@@ -13,5 +13,4 @@ const subjectsSchema = database.mongoose.Schema({
     }
 });
 
-
 module.exports.subjects = database.db.model('subjects', subjectsSchema);

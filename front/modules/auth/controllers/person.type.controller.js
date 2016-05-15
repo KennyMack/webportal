@@ -80,7 +80,7 @@
 
       self.selectedUser = function () {
         try {
-          return self.personType[self.selectedId]; //$filter('filter')(vm.personType, {id: vm.selectedId})[0];
+          return self.personType[self.selectedId];
         }
         catch (e) {
           return '';

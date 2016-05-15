@@ -23,7 +23,6 @@ angular.module(frontApp.modules.index.name)
       self.toggleRight = buildToggler('right');
       self.isOpen = false;
 
-
       self.selectedMode = 'md-fling';
       self.imagePath = '../images/android.svg';
 

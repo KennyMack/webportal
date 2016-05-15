@@ -46,7 +46,6 @@
           phone : []
         };
 
-
         self.init = function () {
           if (action !== 'NEW') {
             teachers.getTeacher(idTeacher)
@@ -116,6 +115,5 @@
               }, self.errors);
             });
         };
-
       }]);
 }(angular, frontApp));

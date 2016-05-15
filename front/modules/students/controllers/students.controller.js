@@ -82,11 +82,9 @@
         };
 
         self.optionClicked = function (index) {
-
           if(index === 0){
             $location.path(URLS.STUDENTDETAIL(self.selectedStudentIndex));
           }
-
         };
 
         // create a new Schedule

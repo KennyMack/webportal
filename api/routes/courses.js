@@ -115,7 +115,6 @@ module.exports =  (express, io) => {
             });
     });
 
-
     /* PUT update a Course */
     router.put('/',  (req, res) => {
         let duration = {

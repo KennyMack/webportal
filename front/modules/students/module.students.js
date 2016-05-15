@@ -36,6 +36,7 @@
       person: {
         url: '../../../templates/personForm.tpl.html'
       }
+
     },
     imports: {
       gridlistctrl: frontApp.modules.utils.controllers.GridListCtrl.name,
@@ -48,5 +49,4 @@
   angular.module(frontApp.modules.students.name, [
     'ngRoute'
   ]);
-
 }(angular, frontApp));

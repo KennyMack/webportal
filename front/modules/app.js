@@ -53,7 +53,6 @@
       $httpProvider.interceptors.push(
           frontApp.modules.handlers.factories.serverError);
 
-
       $routeProvider.otherwise({
         redirectTo: URLS.NOTFOUND()
       });
@@ -84,7 +83,6 @@
         $rootScope.$on('$viewContentLoaded', function(){
 
         });
-
       }]);
 }(angular, frontApp));
 

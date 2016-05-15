@@ -50,7 +50,6 @@ module.exports =  (express, io) => {
             });
     });
 
-
     router.get('/credential', auth.ensureAuthenticated,  (req, res) => {
         res.json({
             success: true,

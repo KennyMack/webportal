@@ -53,8 +53,6 @@ const mastersSchema = database.mongoose.Schema({
     }
 });
 
-
-
 const preUpdate = function(master, next) {
     master.modified = utils.getCurrentDateTime();
     next();

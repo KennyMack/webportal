@@ -21,7 +21,6 @@ config.frisby.create('return error 404 (json)')
     })
     .toss();
 
-
 config.frisby.create('return user (json)')
     .get(url + '/56db8d5d3a8281116f5802e3')
     .expectStatus(200)

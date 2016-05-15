@@ -3,7 +3,6 @@
  */
 'use strict';
 const database = require('../database/database');
-const utils = require('../utils/utils');
 
 const courseTypeSchema = database.mongoose.Schema({
     description: {

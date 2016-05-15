@@ -203,5 +203,4 @@
         };
 
       }]);
-
 }(angular, frontApp));

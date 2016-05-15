@@ -172,6 +172,5 @@
             self.undefinedIndex = true;
           }
         };
-
       }]);
 }(angular, frontApp));

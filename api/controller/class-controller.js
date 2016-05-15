@@ -78,7 +78,6 @@ const saveCourseClass =  (course, students, callback) => {
     else
         deferred.resolve(course);
 
-
     deferred.promise.nodeify(callback);
     return deferred.promise;
 };

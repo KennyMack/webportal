@@ -14,7 +14,6 @@ const validateToken = (token, callback) => {
 };
 
 module.exports.ensureAuthenticated = (req, res, next) => {
-
     let token = req.headers['x-access-token'] || req.body.token || req.params.token;
 
     if (token) {

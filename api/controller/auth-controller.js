@@ -81,7 +81,6 @@ module.exports.loginUser = (user) => {
         else {
             reject(inativeUserJson);
         }
-
     });
 };
 

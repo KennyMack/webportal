@@ -81,11 +81,11 @@
               localSave.setJSONValueLS(LOCALNAME.MASTER_ID, self.user.master_id);
               $location.path(URLS.PERSONTYPE());
 
-
             }
           });
         }
       };
+
 
       self.doLogOut = function () {
         $scope.error = [];

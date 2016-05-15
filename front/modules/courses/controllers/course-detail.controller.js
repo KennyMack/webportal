@@ -136,17 +136,11 @@
               request.delete(URLS.COURSEREMOVESUBJECT(idCourse, id))
                 .then(function (data) {
                   if (data.status === 200) {
+
                     // Updating local subjects
                     var subjectItem = $filter('filter')(self.subjects, {_id: id})[0];
                     self.subjects.splice(self.subjects.indexOf(subjectItem), 1);
 
-
-                    /*for (var i = 0, length = self.subjects.length; i < length; i++) {
-                     if (self.subjects[i]._id === id){
-                     self.subjects.splice(i, 1);
-                     break;
-                     }
-                     }*/
                     // updating local schedules
                     loadSchedules(self.subjects);
                   }

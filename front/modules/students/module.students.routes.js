@@ -24,9 +24,8 @@
           showButton: false,
           access: {
             requiresLogin: true
+
           }
         })
-
     });
-
 }(angular, frontApp));

@@ -92,7 +92,6 @@ module.exports.update =  (student) => {
             'social_number': student['social_number']
         };
 
-
         studentsModel.students.findOneAndUpdate(query, data, { upsert: false, new: true })
             .exec()
             .then(resolve, reject)

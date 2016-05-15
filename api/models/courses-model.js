@@ -126,5 +126,4 @@ module.exports.getObjectId = function (id) {
     return database.mongoose.Types.ObjectId(id)
 };
 
-
 module.exports.courses = database.db.model('courses', coursesSchema);
